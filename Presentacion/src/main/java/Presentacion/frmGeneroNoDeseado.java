@@ -51,22 +51,47 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
 
         btnBanda.setBackground(new java.awt.Color(224, 224, 224));
         btnBanda.setText("Banda");
+        btnBanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBandaActionPerformed(evt);
+            }
+        });
         pnlGenNoDes.add(btnBanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 150, 30));
 
         btnReggaeton.setBackground(new java.awt.Color(224, 224, 224));
         btnReggaeton.setText("Reggaetón");
+        btnReggaeton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReggaetonActionPerformed(evt);
+            }
+        });
         pnlGenNoDes.add(btnReggaeton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 150, 30));
 
         btnRock.setBackground(new java.awt.Color(224, 224, 224));
         btnRock.setText("Rock and Roll");
+        btnRock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRockActionPerformed(evt);
+            }
+        });
         pnlGenNoDes.add(btnRock, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 150, 30));
 
         btnCountry.setBackground(new java.awt.Color(224, 224, 224));
         btnCountry.setText("Country");
+        btnCountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCountryActionPerformed(evt);
+            }
+        });
         pnlGenNoDes.add(btnCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 150, 30));
 
         btnPop.setBackground(new java.awt.Color(224, 224, 224));
         btnPop.setText("POP");
+        btnPop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPopActionPerformed(evt);
+            }
+        });
         pnlGenNoDes.add(btnPop, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 150, 30));
 
         btnVolver.setText("Volver");
@@ -87,6 +112,11 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
 
         btnNorteno.setBackground(new java.awt.Color(224, 224, 224));
         btnNorteno.setText("Norteño");
+        btnNorteno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNortenoActionPerformed(evt);
+            }
+        });
         pnlGenNoDes.add(btnNorteno, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 150, 30));
 
         getContentPane().add(pnlGenNoDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 470));
@@ -99,6 +129,43 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
       menu.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnPopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopActionPerformed
+       frmSobrePuestoGeneroELimi el=new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled);
+       el.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPopActionPerformed
+
+    private void btnBandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBandaActionPerformed
+        frmSobrePuestoGeneroELimi el=new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled);
+       el.setVisible(true);
+       this.dispose();
+                      
+    }//GEN-LAST:event_btnBandaActionPerformed
+
+    private void btnReggaetonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReggaetonActionPerformed
+      frmSobrePuestoGeneroELimi el=new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled);
+       el.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnReggaetonActionPerformed
+
+    private void btnRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRockActionPerformed
+      frmSobrePuestoGeneroELimi el=new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled);
+       el.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnRockActionPerformed
+
+    private void btnCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCountryActionPerformed
+      frmSobrePuestoGeneroELimi el=new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled);
+       el.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnCountryActionPerformed
+
+    private void btnNortenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNortenoActionPerformed
+       frmSobrePuestoGeneroELimi el=new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled);
+       el.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnNortenoActionPerformed
 
     /**
      * @param args the command line arguments
