@@ -34,7 +34,6 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         txtCorreoElectronico = new javax.swing.JTextField();
         txtContrsena = new javax.swing.JTextField();
         lblTituloCorreoElectronico = new javax.swing.JLabel();
-        lblTituloanadirFoto = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
         lblLogoTitulo = new javax.swing.JLabel();
         lblTituloLogo = new javax.swing.JLabel();
@@ -57,35 +56,32 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblTituloRegistro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTituloRegistro.setText("Registro de Usuario");
-        jPanel1.add(lblTituloRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+        lblTituloRegistro.setText("Editar Perfil");
+        jPanel1.add(lblTituloRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         lblTituloNombreUsuario.setText("Nombre Usuario");
-        jPanel1.add(lblTituloNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
-        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 140, -1));
+        jPanel1.add(lblTituloNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
+        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 140, -1));
 
         txtCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoElectronicoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, -1));
+        jPanel1.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 140, -1));
 
         txtContrsena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContrsenaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtContrsena, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 140, -1));
+        jPanel1.add(txtContrsena, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 140, -1));
 
         lblTituloCorreoElectronico.setText("CorreoElectronico");
-        jPanel1.add(lblTituloCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
-
-        lblTituloanadirFoto.setText("Añadir foto perfil(opcional)");
-        jPanel1.add(lblTituloanadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        jPanel1.add(lblTituloCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Guardar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -102,10 +98,10 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         jPanel1.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
         lblTituloContrasena.setText("Contraseña");
-        jPanel1.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        jPanel1.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
-        btnAnadirFoto.setText("Añadir Foto");
-        jPanel1.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 110, 30));
+        btnAnadirFoto.setText("Cambiar Foto");
+        jPanel1.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,7 +120,9 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-
+frmMenu menu=new frmMenu();
+menu.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
@@ -185,7 +183,6 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloLogo;
     private javax.swing.JLabel lblTituloNombreUsuario;
     private javax.swing.JLabel lblTituloRegistro;
-    private javax.swing.JLabel lblTituloanadirFoto;
     private javax.swing.JTextField txtContrsena;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtNombreUsuario;

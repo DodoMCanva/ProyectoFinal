@@ -41,8 +41,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         tblArtistas = new javax.swing.JTable();
         lblArtistas = new javax.swing.JLabel();
         lblEstFavorito = new javax.swing.JLabel();
-        lblLogoTitulo = new javax.swing.JLabel();
-        lblTituloLogo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Favoritos");
@@ -127,19 +126,27 @@ public class frmFavoritos extends javax.swing.JFrame {
         lblEstFavorito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/estrella (2).png"))); // NOI18N
         pnlFavoritos.add(lblEstFavorito, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 30, 40));
 
-        lblLogoTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/Untitled (6).png"))); // NOI18N
-        lblLogoTitulo.setText("jLabel9");
-        pnlFavoritos.add(lblLogoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 90, 40));
-
-        lblTituloLogo.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
-        lblTituloLogo.setText("Music plux");
-        pnlFavoritos.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, -1, -1));
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        pnlFavoritos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
 
         getContentPane().add(pnlFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 640));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        frmMenu menu = new frmMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,13 +185,12 @@ public class frmFavoritos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblArtistas;
     private javax.swing.JLabel lblCanciones;
     private javax.swing.JLabel lblEstFavorito;
-    private javax.swing.JLabel lblLogoTitulo;
     private javax.swing.JLabel lblTituloFavoritos;
-    private javax.swing.JLabel lblTituloLogo;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel pnlFavoritos;
     private javax.swing.JScrollPane scllpAlbumes;

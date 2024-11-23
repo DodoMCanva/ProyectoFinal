@@ -56,6 +56,11 @@ private frmMenu menu;
 
         btnFavoritos.setBackground(new java.awt.Color(249, 212, 103));
         btnFavoritos.setText("Favoritos");
+        btnFavoritos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFavoritosActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 90, 30));
 
         btnCerarSesion.setBackground(new java.awt.Color(255, 0, 0));
@@ -71,6 +76,11 @@ private frmMenu menu;
         btnGeneroNOdeseado.setBackground(new java.awt.Color(204, 51, 0));
         btnGeneroNOdeseado.setForeground(new java.awt.Color(255, 255, 255));
         btnGeneroNOdeseado.setText("Genero NO deseado");
+        btnGeneroNOdeseado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeneroNOdeseadoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnGeneroNOdeseado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -87,7 +97,17 @@ private frmMenu menu;
     }//GEN-LAST:event_closeDialog
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-        // TODO add your handling code here:
+       // Cierra el JDialog (frmMenuSobrePuesto)
+        this.dispose();
+
+        // Cierra el frmMenu
+        if (menu != null) {
+            menu.dispose();
+        }
+
+        // Abre la pantalla de inicio de sesión
+        frmEditarPerfil ini = new frmEditarPerfil();
+        ini.setVisible(true);
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 
     private void btnCerarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerarSesionActionPerformed
@@ -104,6 +124,34 @@ private frmMenu menu;
         ini.setVisible(true);
                                  
     }//GEN-LAST:event_btnCerarSesionActionPerformed
+
+    private void btnFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavoritosActionPerformed
+      // Cierra el JDialog (frmMenuSobrePuesto)
+        this.dispose();
+
+        // Cierra el frmMenu
+        if (menu != null) {
+            menu.dispose();
+        }
+
+        // Abre la pantalla de inicio de sesión
+        frmFavoritos ini = new frmFavoritos();
+        ini.setVisible(true);
+    }//GEN-LAST:event_btnFavoritosActionPerformed
+
+    private void btnGeneroNOdeseadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneroNOdeseadoActionPerformed
+       // Cierra el JDialog (frmMenuSobrePuesto)
+        this.dispose();
+
+        // Cierra el frmMenu
+        if (menu != null) {
+            menu.dispose();
+        }
+
+        // Abre la pantalla de inicio de sesión
+        frmGeneroNoDeseado ini = new frmGeneroNoDeseado();
+        ini.setVisible(true);
+    }//GEN-LAST:event_btnGeneroNOdeseadoActionPerformed
 
     /**
      * @param args the command line arguments
