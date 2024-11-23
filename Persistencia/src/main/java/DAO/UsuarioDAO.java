@@ -27,12 +27,12 @@ public class UsuarioDAO implements IUsuarioDAO {
     }
 
     @Override
-    public Document buscarPorEmail(String email) {
+    public Document buscarPorEmail(String nombre) {
         // Inicializa la conexión y obtiene la colección
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
         MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
         
         // Busca el documento por el email
-        return coleccionUsuarios.find(Filters.eq("email", email)).first();
+        return coleccionUsuarios.find(Filters.eq("nombre", nombre)).first();
     }
 }

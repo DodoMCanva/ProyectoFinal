@@ -14,5 +14,5 @@ public interface IUsuarioBO {
 
     void guardarUsuario(UsuarioDTO usuarioDTO) throws Exception;
 
-    boolean iniciarSesion(String email, String password) throws Exception;
+    boolean iniciarSesion(String nombre, String password) throws Exception;
 }

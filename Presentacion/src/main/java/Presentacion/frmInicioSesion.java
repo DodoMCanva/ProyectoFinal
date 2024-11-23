@@ -153,11 +153,11 @@ public class frmInicioSesion extends javax.swing.JFrame {
         IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
 
         // Obtener datos del formulario
-        String email = txtUsuario.getText();
+        String nombre = txtUsuario.getText();
         String password = txtContrasena.getText();
 
         // Validar inicio de sesión
-        boolean exito = usuarioBO.iniciarSesion(email, password);
+        boolean exito = usuarioBO.iniciarSesion(nombre, password);
 
         if (exito) {
             javax.swing.JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");

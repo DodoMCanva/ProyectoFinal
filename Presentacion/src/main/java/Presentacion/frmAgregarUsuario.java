@@ -6,10 +6,8 @@ package Presentacion;
 
 import BO.UsuarioBO;
 import DAO.UsuarioDAO;
-import DTO.FavoritosDTO;
 import DTO.UsuarioDTO;
 import IBO.IUsuarioBO;
-import java.util.ArrayList;
 
 /**
  *

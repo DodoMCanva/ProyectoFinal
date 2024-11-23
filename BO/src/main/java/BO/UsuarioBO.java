@@ -39,9 +39,9 @@ public class UsuarioBO implements IUsuarioBO {
 
    
     @Override
-    public boolean iniciarSesion(String email, String password) {
+    public boolean iniciarSesion(String nombre, String password) {
         // Buscar al usuario por email usando el DAO
-        Document usuarioDoc = usuarioDAO.buscarPorEmail(email);
+        Document usuarioDoc = usuarioDAO.buscarPorEmail(nombre);
 
         if (usuarioDoc == null) {
             return false; // Usuario no encontrado
