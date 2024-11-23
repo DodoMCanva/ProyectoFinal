@@ -6,9 +6,9 @@ package DAO;
 
 import Conexion.ConexionDB;
 import IDAO.IUsuarioDAO;
-import POJO.UsuarioModelo;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
 
 /**
@@ -16,22 +16,23 @@ import org.bson.Document;
  * @author cesar
  */
 public class UsuarioDAO implements IUsuarioDAO {
+    @Override
+    public void guardarUsuario(Document usuario) {
+        // Inicializa la conexión y obtiene la colección
+        MongoDatabase baseDeDatos = new ConexionDB().conexion();
+        MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
+        
+        // Inserta el documento
+        coleccionUsuarios.insertOne(usuario);
+    }
 
     @Override
-    public void guardar(UsuarioModelo usuario) throws Exception {
+    public Document buscarPorEmail(String email) {
+        // Inicializa la conexión y obtiene la colección
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
-        MongoCollection<Document> collectionUsuarios = baseDeDatos.getCollection("usuarios");
-
-        Document documento = new Document()
-                .append("nombre", usuario.getNombre())
-                .append("apellidoPaterno", usuario.getApellidoPaterno())
-                .append("apellidoMaterno", usuario.getApellidoMaterno())
-                .append("celular", usuario.getCelular())
-                .append("correoElectronico", usuario.getCorreoElectronico())
-                .append("contrasenaUsuario", usuario.getContrasenaUsuario());
-
-        collectionUsuarios.insertOne(documento);
+        MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
+        
+        // Busca el documento por el email
+        return coleccionUsuarios.find(Filters.eq("email", email)).first();
     }
-    
-
 }

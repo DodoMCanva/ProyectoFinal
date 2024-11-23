@@ -11,5 +11,8 @@ import DTO.UsuarioDTO;
  * @author cesar
  */
 public interface IUsuarioBO {
-      void guardarUsuario(UsuarioDTO usuario) throws Exception;
+
+    void guardarUsuario(UsuarioDTO usuarioDTO) throws Exception;
+
+    boolean iniciarSesion(String email, String password) throws Exception;
 }

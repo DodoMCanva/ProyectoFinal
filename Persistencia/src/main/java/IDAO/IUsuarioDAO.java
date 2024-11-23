@@ -4,12 +4,13 @@
  */
 package IDAO;
 
-import POJO.UsuarioModelo;
+import org.bson.Document;
 
 /**
  *
  * @author cesar
  */
 public interface IUsuarioDAO {
-      void guardar(UsuarioModelo usuario) throws Exception;
+    void guardarUsuario(Document usuario); // Inserta un usuario en la colección
+    Document buscarPorEmail(String email); // Busca un usuario por su email
 }

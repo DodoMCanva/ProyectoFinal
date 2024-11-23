@@ -32,7 +32,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>DTO_POJO</artifactId>
+            <artifactId>DTO</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
