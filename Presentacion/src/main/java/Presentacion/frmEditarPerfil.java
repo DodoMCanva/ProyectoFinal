@@ -4,21 +4,16 @@
  */
 package Presentacion;
 
-import BO.UsuarioBO;
-import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
-import IBO.IUsuarioBO;
-
 /**
  *
  * @author cesar
  */
-public class frmAgregarUsuario extends javax.swing.JFrame {
+public class frmEditarPerfil extends javax.swing.JFrame {
 
     /**
-     * Creates new form JframeAgregarUsuario
+     * Creates new form frmEditarPerfil
      */
-    public frmAgregarUsuario() {
+    public frmEditarPerfil() {
         initComponents();
     }
 
@@ -128,46 +123,21 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
- try {
-        // Crear instancia del BO
-        IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
 
-        // Obtener datos del formulario
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
-        usuarioDTO.setNombre(txtNombreUsuario.getText());
-        usuarioDTO.setEmail(txtCorreoElectronico.getText());
-        usuarioDTO.setPassword(txtContrsena.getText());
-        //usuarioDTO.setImagen(txtImagen.getText()); // Suponiendo que tienes un campo para la URL de la imagen
-        //usuarioDTO.setFavoritos(new FavoritosDTO(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-        //usuarioDTO.setRestringidosGeneros(new ArrayList<>());
-
-        // Registrar usuario
-        usuarioBO.guardarUsuario(usuarioDTO);
-        System.out.println("sss"+ usuarioDTO.getNombre());
-
-        // Mensaje de éxito
-        javax.swing.JOptionPane.showMessageDialog(this, "Usuario registrado con éxito.");
-    } catch (Exception e) {
-        // Mostrar error
-        javax.swing.JOptionPane.showMessageDialog(this, "Error al registrar usuario: " + e.getMessage());
-    }
-        frmInicioSesion ini=new frmInicioSesion();
-        ini.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void txtContrsenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrsenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContrsenaActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+    private void txtContrsenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrsenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContrsenaActionPerformed
 
-    }//GEN-LAST:event_btnVolverActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+     
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -186,21 +156,20 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(frmAgregarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(frmAgregarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(frmAgregarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frmAgregarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
-//        //</editor-fold>
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new frmAgregarUsuario().setVisible(true);
+//                new frmEditarPerfil().setVisible(true);
 //            }
 //        });
 //    }

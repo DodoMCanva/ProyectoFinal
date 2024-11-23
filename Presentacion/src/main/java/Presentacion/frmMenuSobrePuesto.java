@@ -9,14 +9,18 @@ package Presentacion;
  * @author cesar
  */
 public class frmMenuSobrePuesto extends java.awt.Dialog {
-
+private frmMenu menu;
     /**
      * Creates new form frmMenuSobrePuesto
      */
     public frmMenuSobrePuesto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
+          // Guardamos la referencia del frmMenu
+        if (parent instanceof frmMenu) {
+            this.menu = (frmMenu) parent;
+        }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +61,11 @@ public class frmMenuSobrePuesto extends java.awt.Dialog {
         btnCerarSesion.setBackground(new java.awt.Color(255, 0, 0));
         btnCerarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerarSesion.setText("Cerrar Sesion");
+        btnCerarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerarSesionActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCerarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 110, 30));
 
         btnGeneroNOdeseado.setBackground(new java.awt.Color(204, 51, 0));
@@ -80,6 +89,21 @@ public class frmMenuSobrePuesto extends java.awt.Dialog {
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
+
+    private void btnCerarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerarSesionActionPerformed
+     // Cierra el JDialog (frmMenuSobrePuesto)
+        this.dispose();
+
+        // Cierra el frmMenu
+        if (menu != null) {
+            menu.dispose();
+        }
+
+        // Abre la pantalla de inicio de sesión
+        frmInicioSesion ini = new frmInicioSesion();
+        ini.setVisible(true);
+                                 
+    }//GEN-LAST:event_btnCerarSesionActionPerformed
 
     /**
      * @param args the command line arguments

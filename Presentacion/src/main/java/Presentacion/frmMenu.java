@@ -58,8 +58,9 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      frmMenuSobrePuesto mennn= new frmMenuSobrePuesto(this,false);
-      mennn.setVisible(true);
+      // Pasamos la referencia del frmMenu al JDialog
+    frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true); // 'this' es el frmMenu actual
+    dialog.setVisible(true);
       
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -24,12 +24,12 @@ public class UsuarioPOJO {
     public UsuarioPOJO() {
     }
 
-    public UsuarioPOJO(String nombre, String email, String password, String imagen, List<String> restringidosGeneros) {
+    public UsuarioPOJO(String nombre, String email, String password, String imagen) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.imagen = imagen;
-        this.restringidosGeneros = restringidosGeneros;
+        //this.restringidosGeneros = restringidosGeneros;
     }
 
     public ObjectId getId() {

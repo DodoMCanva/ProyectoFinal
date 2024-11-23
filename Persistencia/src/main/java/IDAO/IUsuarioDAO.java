@@ -4,13 +4,13 @@
  */
 package IDAO;
 
-import org.bson.Document;
+import POJO.UsuarioPOJO;
 
 /**
  *
  * @author cesar
  */
 public interface IUsuarioDAO {
-    void guardarUsuario(Document usuario); // Inserta un usuario en la colección
-    Document buscarPorEmail(String nombre); // Busca un usuario por su nombreUsuario
+    void guardarUsuario(UsuarioPOJO usuario); // Inserta un usuario en la colección
+    UsuarioPOJO buscarPorNombre(String nombre); // Busca un usuario por su nombreUsuario
 }
