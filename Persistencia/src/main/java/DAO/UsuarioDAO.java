@@ -5,6 +5,7 @@
 package DAO;
 
 import Conexion.ConexionDB;
+import Exceptions.ExceptionDAO;
 import IDAO.IUsuarioDAO;
 import POJO.UsuarioPOJO;
 import com.mongodb.client.MongoCollection;
@@ -19,7 +20,8 @@ import org.bson.Document;
 public class UsuarioDAO implements IUsuarioDAO {
 
     @Override
-    public void guardarUsuario(UsuarioPOJO usuarioPOJO) {
+    public void guardarUsuario(UsuarioPOJO usuarioPOJO) throws ExceptionDAO {
+      try{
         // Inicializa la conexión y obtiene la colección
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
         MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
@@ -33,10 +35,14 @@ public class UsuarioDAO implements IUsuarioDAO {
 
         // Insertamos el documento en MongoDB
         coleccionUsuarios.insertOne(usuarioDoc);
+      }catch(Exception e){
+          throw new ExceptionDAO("Error al guardar el usuario en la base de datos", e);
+      }
     }
 
     @Override
-    public UsuarioPOJO buscarPorNombre(String nombre) {
+    public UsuarioPOJO buscarPorNombre(String nombre) throws ExceptionDAO {
+        try{
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
         MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
 
@@ -52,5 +58,8 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
 
         return null;
+        } catch (Exception e) {
+            throw new ExceptionDAO("Error al buscar el usuario por nombre en la base de datos", e);
     }
+}
 }

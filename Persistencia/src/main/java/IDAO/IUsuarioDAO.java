@@ -4,6 +4,7 @@
  */
 package IDAO;
 
+import Exceptions.ExceptionDAO;
 import POJO.UsuarioPOJO;
 
 /**
@@ -11,6 +12,6 @@ import POJO.UsuarioPOJO;
  * @author cesar
  */
 public interface IUsuarioDAO {
-    void guardarUsuario(UsuarioPOJO usuario); // Inserta un usuario en la colección
-    UsuarioPOJO buscarPorNombre(String nombre); // Busca un usuario por su nombreUsuario
+    void guardarUsuario(UsuarioPOJO usuario)throws ExceptionDAO; // Inserta un usuario en la colección
+    UsuarioPOJO buscarPorNombre(String nombre) throws ExceptionDAO;// Busca un usuario por su nombreUsuario
 }

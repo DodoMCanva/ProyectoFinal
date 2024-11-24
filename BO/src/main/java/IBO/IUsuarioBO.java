@@ -5,6 +5,7 @@
 package IBO;
 
 import DTO.UsuarioDTO;
+import Exceptions.ExceptionBO;
 
 /**
  *
@@ -12,7 +13,7 @@ import DTO.UsuarioDTO;
  */
 public interface IUsuarioBO {
 
-    void guardarUsuario(UsuarioDTO usuarioDTO) throws Exception;
+    void guardarUsuario(UsuarioDTO usuarioDTO) throws ExceptionBO;
 
     boolean iniciarSesion(String nombre, String password) throws Exception;
 }

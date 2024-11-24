@@ -5,10 +5,10 @@
 package BO;
 
 import DTO.UsuarioDTO;
+import Exceptions.ExceptionBO;
 import IBO.IUsuarioBO;
 import IDAO.IUsuarioDAO;
 import POJO.UsuarioPOJO;
-import org.bson.Document;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -24,17 +24,22 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     @Override
-    public void guardarUsuario(UsuarioDTO usuarioDTO) {
+    public void guardarUsuario(UsuarioDTO usuarioDTO)throws ExceptionBO {
+        try{
         String hashedPassword = BCrypt.hashpw(usuarioDTO.getPassword(),BCrypt.gensalt());
         // Convertir UsuarioDTO a UsuarioPOJO
         UsuarioPOJO usuarioPOJO = new UsuarioPOJO(usuarioDTO.getNombre(), usuarioDTO.getEmail(),hashedPassword, usuarioDTO.getImagen());
 
         // Llamar al DAO para guardar el POJO en MongoDB
         usuarioDAO.guardarUsuario(usuarioPOJO);
+        }catch(Exception e){
+            throw new ExceptionBO("no se mando la informacion a persistencia",e);
+        }
     }
 
   @Override
-public boolean iniciarSesion(String nombre, String password) {
+public boolean iniciarSesion(String nombre, String password)throws ExceptionBO{
+    try{
     // Buscar el UsuarioPOJO por nombre o email (asegúrate de que el método sea correcto)
     UsuarioPOJO usuarioPOJO = usuarioDAO.buscarPorNombre(nombre); // O buscarPorEmail, según tu caso
 
@@ -53,6 +58,9 @@ public boolean iniciarSesion(String nombre, String password) {
     }
 
     return contraseñaValida;
+    }catch(Exception e){
+        throw new ExceptionBO("Error al iniciar sesion, fallo la busqueda del usuario", e);
+    }
 }
 
 }
