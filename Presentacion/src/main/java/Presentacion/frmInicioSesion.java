@@ -4,20 +4,34 @@
  */
 package Presentacion;
 
+import BO.ArtistaBO;
+import BO.CancionBO;
 import BO.UsuarioBO;
+import DAO.ArtistaDAO;
+import DAO.CancionDAO;
 import DAO.UsuarioDAO;
+import IBO.IArtistasBO;
+import IBO.ICancionBO;
 import IBO.IUsuarioBO;
+import IDAO.IArtistaDAO;
+import IDAO.ICancionDAO;
 
 /**
  *
  * @author cesar
  */
 public class frmInicioSesion extends javax.swing.JFrame {
-
+    
+    
+    private final IArtistasBO artistasBO;
+     private final ICancionBO cancionBO;
+    
     /**
      * Creates new form JframeInicioSesion
      */
-    public frmInicioSesion() {
+      public frmInicioSesion(IArtistasBO artistasBO,ICancionBO cancionBO) {
+        this.artistasBO = artistasBO;
+         this.cancionBO = cancionBO;
         initComponents();
     }
 
@@ -182,7 +196,8 @@ public class frmInicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResgistrarseActionPerformed
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
-        // TODO add your handling code here:
+       artistasBO.insertarArtistas(); 
+       cancionBO.insertarCanciones();
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     /**
@@ -212,11 +227,15 @@ public class frmInicioSesion extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+              IArtistaDAO artistasDAO = new ArtistaDAO();
+        ICancionDAO cancionDAO = new CancionDAO();
 
+        IArtistasBO artistasBO = new ArtistaBO(artistasDAO);
+        ICancionBO cancionBO = new CancionBO(cancionDAO);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmInicioSesion().setVisible(true);
+                new frmInicioSesion(artistasBO,cancionBO).setVisible(true);
             }
         });
     }

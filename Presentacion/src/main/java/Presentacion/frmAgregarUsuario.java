@@ -7,6 +7,8 @@ package Presentacion;
 import BO.UsuarioBO;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import IBO.IArtistasBO;
+import IBO.ICancionBO;
 import IBO.IUsuarioBO;
 
 /**
@@ -14,6 +16,8 @@ import IBO.IUsuarioBO;
  * @author cesar
  */
 public class frmAgregarUsuario extends javax.swing.JFrame {
+ private final IArtistasBO boArtista = null;
+      private final ICancionBO cancionBO=null;
 
     /**
      * Creates new form JframeAgregarUsuario
@@ -152,7 +156,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         // Mostrar error
         javax.swing.JOptionPane.showMessageDialog(this, "Error al registrar usuario: " + e.getMessage());
     }
-        frmInicioSesion ini=new frmInicioSesion();
+        frmInicioSesion ini=new frmInicioSesion(boArtista,cancionBO);
         ini.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed

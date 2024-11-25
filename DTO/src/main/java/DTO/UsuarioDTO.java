@@ -4,6 +4,7 @@
  */
 package DTO;
 
+import java.util.List;
 
 /**
  *
@@ -11,12 +12,13 @@ package DTO;
  */
 public class UsuarioDTO {
 
+    private String id;
     private String nombre;
     private String email;
     private String password;
     private String imagen;
-    //private FavoritosDTO favoritos;
-    //private List<String> restringidosGeneros;
+    private FavoritosDTO favoritos;
+    private List<String> restringidosGeneros;
 
     public UsuarioDTO() {
     }
@@ -26,9 +28,25 @@ public class UsuarioDTO {
         this.email = email;
         this.password = password;
         this.imagen = imagen;
-        // this.favoritos = new FavoritosDTO();
-        // this.restringidosGeneros = restringidosGeneros;
     }
+
+    public UsuarioDTO(String nombre, String email, String password, String imagen, FavoritosDTO favoritos, List<String> restringidosGeneros) {
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.imagen = imagen;
+        this.favoritos = favoritos;
+        this.restringidosGeneros = restringidosGeneros;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
 
     public String getNombre() {
         return nombre;
@@ -62,27 +80,31 @@ public class UsuarioDTO {
         this.imagen = imagen;
     }
 
-//    public FavoritosDTO getFavoritos() {
-//        return favoritos;
-//    }
-//
-//    public void setFavoritos(FavoritosDTO favoritos) {
-//        this.favoritos = favoritos;
-//    }
-//
-//    public List<String> getRestringidosGeneros() {
-//        return restringidosGeneros;
-//    }
-//
-//    public void setRestringidosGeneros(List<String> restringidosGeneros) {
-//        this.restringidosGeneros = restringidosGeneros;
-//    }
+    public FavoritosDTO getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(FavoritosDTO favoritos) {
+        this.favoritos = favoritos;
+    }
+
+    public List<String> getRestringidosGeneros() {
+        return restringidosGeneros;
+    }
+
+    public void setRestringidosGeneros(List<String> restringidosGeneros) {
+        this.restringidosGeneros = restringidosGeneros;
+    }
+
     @Override
     public String toString() {
         return "UsuarioDTO{" + "nombre="
                 + nombre + ", email=" + email
-                + ", password=" + password + ", imagen="
-                + imagen + '}';
+                + ", password=" + password
+                + ", imagen=" + imagen
+                + ", favoritos=" + favoritos
+                + ", restringidosGeneros="
+                + restringidosGeneros + '}';
     }
 
 }

@@ -4,12 +4,18 @@
  */
 package Presentacion;
 
+import IBO.IArtistasBO;
+import IBO.ICancionBO;
+
 /**
  *
  * @author cesar
  */
 public class frmMenuSobrePuesto extends java.awt.Dialog {
 private frmMenu menu;
+    private final IArtistasBO boArtista = null;
+          private final ICancionBO cancionBO=null;
+
     /**
      * Creates new form frmMenuSobrePuesto
      */
@@ -120,7 +126,7 @@ private frmMenu menu;
         }
 
         // Abre la pantalla de inicio de sesión
-        frmInicioSesion ini = new frmInicioSesion();
+        frmInicioSesion ini = new frmInicioSesion(boArtista,cancionBO);
         ini.setVisible(true);
                                  
     }//GEN-LAST:event_btnCerarSesionActionPerformed
