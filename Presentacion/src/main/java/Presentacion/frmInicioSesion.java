@@ -42,15 +42,17 @@ public class frmInicioSesion extends javax.swing.JFrame {
         btnResgistrarse = new javax.swing.JButton();
         lblTituloRegistrarse = new javax.swing.JLabel();
         btnCargarDatos = new javax.swing.JButton();
-        lblTituloInsert = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
-        lblFlecha = new javax.swing.JLabel();
         lblTituloLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio Sesión");
+        setPreferredSize(new java.awt.Dimension(370, 540));
 
         JPanelInicioSesion.setBackground(new java.awt.Color(204, 190, 255));
+        JPanelInicioSesion.setToolTipText("");
+        JPanelInicioSesion.setMinimumSize(new java.awt.Dimension(370, 540));
+        JPanelInicioSesion.setPreferredSize(new java.awt.Dimension(370, 540));
         JPanelInicioSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -58,30 +60,30 @@ public class frmInicioSesion extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        JPanelInicioSesion.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 190, 30));
+        JPanelInicioSesion.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 220, 30));
 
         lblConstrasenaTitul.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblConstrasenaTitul.setText("Contraseña");
-        JPanelInicioSesion.add(lblConstrasenaTitul, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, -1));
+        JPanelInicioSesion.add(lblConstrasenaTitul, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
 
         lblUsuarioTitul.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuarioTitul.setText("Usuario");
-        JPanelInicioSesion.add(lblUsuarioTitul, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
-        JPanelInicioSesion.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 190, 30));
+        JPanelInicioSesion.add(lblUsuarioTitul, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+        JPanelInicioSesion.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 220, 30));
 
         btniniciarSesion.setBackground(new java.awt.Color(153, 153, 153));
         btniniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btniniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        btniniciarSesion.setText("Iniciar Sesion");
+        btniniciarSesion.setText("Iniciar Sesión");
         btniniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btniniciarSesionActionPerformed(evt);
             }
         });
-        JPanelInicioSesion.add(btniniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 150, 40));
+        JPanelInicioSesion.add(btniniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 120, 35));
 
         btnResgistrarse.setBackground(new java.awt.Color(153, 153, 153));
-        btnResgistrarse.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnResgistrarse.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnResgistrarse.setForeground(new java.awt.Color(255, 255, 255));
         btnResgistrarse.setText("Registrarse");
         btnResgistrarse.addActionListener(new java.awt.event.ActionListener() {
@@ -89,48 +91,28 @@ public class frmInicioSesion extends javax.swing.JFrame {
                 btnResgistrarseActionPerformed(evt);
             }
         });
-        JPanelInicioSesion.add(btnResgistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 120, 40));
+        JPanelInicioSesion.add(btnResgistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 440, 110, 35));
 
         lblTituloRegistrarse.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTituloRegistrarse.setText("Registrarse");
-        JPanelInicioSesion.add(lblTituloRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
+        JPanelInicioSesion.add(lblTituloRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 420, -1, -1));
 
-        btnCargarDatos.setText("Click aqui");
+        btnCargarDatos.setText("Insertar Datos");
+        btnCargarDatos.setActionCommand("Insertar Datos");
         btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCargarDatosActionPerformed(evt);
             }
         });
-        JPanelInicioSesion.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
-
-        lblTituloInsert.setText("INSERTAR DATOS");
-        JPanelInicioSesion.add(lblTituloInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(51, 204, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        JPanelInicioSesion.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 40));
+        JPanelInicioSesion.add(btnCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 13, -1, 30));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/Untitled (3).png"))); // NOI18N
         lblLogo.setText("jLabel2");
-        JPanelInicioSesion.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 220, 110));
-
-        lblFlecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/flecha (1).png"))); // NOI18N
-        JPanelInicioSesion.add(lblFlecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, -10, -1, -1));
+        JPanelInicioSesion.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 220, 80));
 
         lblTituloLogo.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         lblTituloLogo.setText("Music plux");
-        JPanelInicioSesion.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
+        JPanelInicioSesion.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,10 +122,11 @@ public class frmInicioSesion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JPanelInicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+            .addComponent(JPanelInicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -229,11 +212,8 @@ public class frmInicioSesion extends javax.swing.JFrame {
     private javax.swing.JButton btnCargarDatos;
     private javax.swing.JButton btnResgistrarse;
     private javax.swing.JButton btniniciarSesion;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblConstrasenaTitul;
-    private javax.swing.JLabel lblFlecha;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblTituloInsert;
     private javax.swing.JLabel lblTituloLogo;
     private javax.swing.JLabel lblTituloRegistrarse;
     private javax.swing.JLabel lblUsuarioTitul;
