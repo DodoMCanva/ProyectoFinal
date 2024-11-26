@@ -1,22 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package IBO;
 
 import DTO.ArtistasDTO;
-import DTO.IntegranteDTO;
-import java.util.List;
 
 /**
  *
- * @author cesar
+ * @author Equipo 2
  */
 public interface IArtistasBO {
 
-    public void insertarArtistasSolistas(ArtistasDTO artista);
-
-    public void insertarArtistasGrupo(ArtistasDTO artista,List<IntegranteDTO> lista);
+    public void insertarArtista(ArtistasDTO artista);
 
     String obtenerIdPorNombre(String nombreArtista);
 }

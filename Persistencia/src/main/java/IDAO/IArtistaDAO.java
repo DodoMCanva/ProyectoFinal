@@ -1,18 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package IDAO;
 
+import Exceptions.ExceptionDAO;
 import POJO.ArtistaPOJO;
 
 /**
  *
- * @author cesar
+ * @author Equipo 2
  */
 public interface IArtistaDAO {
 
-    void insertarArtistasSolistas(ArtistaPOJO artistaPOJO);
-    void insertarArtistasGrupo();
+    void insertarArtistas(ArtistaPOJO artistaPOJO) throws ExceptionDAO;
+    
     String obtenerIdPorNombre(String nombreArtista);
 }

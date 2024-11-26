@@ -1,16 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import Conexion.ConexionDB;
+import Exceptions.ExceptionDAO;
 import IDAO.IArtistaDAO;
 import POJO.ArtistaPOJO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -29,6 +28,50 @@ public class ArtistaDAO implements IArtistaDAO {
         this.database = conexionDB.conexion();  // Obtener la base de datos
     }
 
+    @Override
+    public void insertarArtistas(ArtistaPOJO artistaPOJO) throws ExceptionDAO {
+        try {
+            MongoDatabase baseDeDatos = new ConexionDB().conexion();
+            MongoCollection<Document> coleccionArtistas = baseDeDatos.getCollection("artistas");
+            Document artDoc;
+            if (artistaPOJO.getIntegrantes() != null) {
+                artDoc = new Document()
+                        .append("nombre", artistaPOJO.getNombre())
+                        .append("imagen", artistaPOJO.getImagen())
+                        .append("tipo", artistaPOJO.getTipo())
+                        .append("genero", artistaPOJO.getGenero())
+                        .append("integrantes", artistaPOJO.getIntegrantes());
+
+            } else {
+                artDoc = new Document()
+                        .append("nombre", artistaPOJO.getNombre())
+                        .append("imagen", artistaPOJO.getImagen())
+                        .append("tipo", artistaPOJO.getTipo())
+                        .append("genero", artistaPOJO.getGenero());
+            }
+
+            coleccionArtistas.insertOne(artDoc);
+        } catch (Exception e) {
+            throw new ExceptionDAO("Error al guardar el artista en la base de datos", e);
+        }
+    }
+
+    @Override
+    public String obtenerIdPorNombre(String nombreArtista) {
+        try {
+            MongoCollection<Document> collection = database.getCollection("artistas");
+            Document artista = collection.find(Filters.eq("nombre", nombreArtista)).first();
+
+            if (artista != null) {
+                ObjectId id = artista.getObjectId("_id");
+                return id.toHexString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    /*
     @Override
     public void insertarArtistasSolistas(ArtistaPOJO artistaPOJO) {
         MongoCollection<Document> collection = database.getCollection("artistas");
@@ -415,22 +458,6 @@ public class ArtistaDAO implements IArtistaDAO {
 
         collection.insertMany(artistas);
     }
-
-    @Override
-    public String obtenerIdPorNombre(String nombreArtista) {
-        try {
-            MongoCollection<Document> collection = database.getCollection("artistas");
-            Document artista = collection.find(Filters.eq("nombre", nombreArtista)).first();
-
-            if (artista != null) {
-                ObjectId id = artista.getObjectId("_id");
-                return id.toHexString();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
+     */
 
 }

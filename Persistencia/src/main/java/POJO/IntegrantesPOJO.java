@@ -1,29 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package POJO;
 
-import java.util.Date;
+import java.time.LocalDate;
 import org.bson.types.ObjectId;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class IntegrantesPOJO {
 
     private ObjectId id;
     private String nombre;
     private String rol;
-    private Date ingreso;
-    private Date salida;
+    private LocalDate ingreso;
+    private LocalDate salida;
     private boolean estado;
 
     public IntegrantesPOJO() {
     }
 
-    public IntegrantesPOJO(String nombre, String rol, Date ingreso, Date salida, boolean estado) {
+    public IntegrantesPOJO(String nombre, String rol, LocalDate ingreso, LocalDate salida, boolean estado) {
         this.nombre = nombre;
         this.rol = rol;
         this.ingreso = ingreso;
@@ -55,19 +52,19 @@ public class IntegrantesPOJO {
         this.rol = rol;
     }
 
-    public Date getIngreso() {
+    public LocalDate getIngreso() {
         return ingreso;
     }
 
-    public void setIngreso(Date ingreso) {
+    public void setIngreso(LocalDate ingreso) {
         this.ingreso = ingreso;
     }
 
-    public Date getSalida() {
+    public LocalDate getSalida() {
         return salida;
     }
 
-    public void setSalida(Date salida) {
+    public void setSalida(LocalDate salida) {
         this.salida = salida;
     }
 
