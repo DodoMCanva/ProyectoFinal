@@ -4,13 +4,19 @@
  */
 package IBO;
 
+import DTO.ArtistasDTO;
+import DTO.IntegranteDTO;
+import java.util.List;
 
 /**
  *
  * @author cesar
  */
 public interface IArtistasBO {
-    void insertarArtistas(); 
+
+    public void insertarArtistasSolistas(ArtistasDTO artista);
+
+    public void insertarArtistasGrupo(ArtistasDTO artista,List<IntegranteDTO> lista);
+
+    String obtenerIdPorNombre(String nombreArtista);
 }
-
-

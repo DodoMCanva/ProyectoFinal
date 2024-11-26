@@ -4,12 +4,10 @@
  */
 package IBO;
 
-import DTO.CancionDTO;
-
 /**
  *
  * @author cesar
  */
-public interface ICancionBO {
-     void insertarCanciones(CancionDTO cancion);
+public interface IArranqueInicio {
+    public void InsertarArtistas();
 }

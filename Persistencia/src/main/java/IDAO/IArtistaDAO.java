@@ -4,13 +4,15 @@
  */
 package IDAO;
 
-
-
+import POJO.ArtistaPOJO;
 
 /**
  *
  * @author cesar
  */
 public interface IArtistaDAO {
-   void insertarArtistas();
+
+    void insertarArtistasSolistas(ArtistaPOJO artistaPOJO);
+    void insertarArtistasGrupo();
+    String obtenerIdPorNombre(String nombreArtista);
 }

@@ -12,9 +12,10 @@ import IBO.ICancionBO;
  * @author cesar
  */
 public class frmMenuSobrePuesto extends java.awt.Dialog {
-private frmMenu menu;
+
+    private frmMenu menu;
     private final IArtistasBO boArtista = null;
-          private final ICancionBO cancionBO=null;
+    private final ICancionBO cancionBO = null;
 
     /**
      * Creates new form frmMenuSobrePuesto
@@ -22,11 +23,11 @@ private frmMenu menu;
     public frmMenuSobrePuesto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-          // Guardamos la referencia del frmMenu
+        // Guardamos la referencia del frmMenu
         if (parent instanceof frmMenu) {
             this.menu = (frmMenu) parent;
         }
-}
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,7 +104,7 @@ private frmMenu menu;
     }//GEN-LAST:event_closeDialog
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-       // Cierra el JDialog (frmMenuSobrePuesto)
+        // Cierra el JDialog (frmMenuSobrePuesto)
         this.dispose();
 
         // Cierra el frmMenu
@@ -117,7 +118,7 @@ private frmMenu menu;
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 
     private void btnCerarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerarSesionActionPerformed
-     // Cierra el JDialog (frmMenuSobrePuesto)
+        // Cierra el JDialog (frmMenuSobrePuesto)
         this.dispose();
 
         // Cierra el frmMenu
@@ -126,13 +127,13 @@ private frmMenu menu;
         }
 
         // Abre la pantalla de inicio de sesión
-        frmInicioSesion ini = new frmInicioSesion(boArtista,cancionBO);
+        frmInicioSesion ini = new frmInicioSesion();
         ini.setVisible(true);
-                                 
+
     }//GEN-LAST:event_btnCerarSesionActionPerformed
 
     private void btnFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavoritosActionPerformed
-      // Cierra el JDialog (frmMenuSobrePuesto)
+        // Cierra el JDialog (frmMenuSobrePuesto)
         this.dispose();
 
         // Cierra el frmMenu
@@ -146,7 +147,7 @@ private frmMenu menu;
     }//GEN-LAST:event_btnFavoritosActionPerformed
 
     private void btnGeneroNOdeseadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneroNOdeseadoActionPerformed
-       // Cierra el JDialog (frmMenuSobrePuesto)
+        // Cierra el JDialog (frmMenuSobrePuesto)
         this.dispose();
 
         // Cierra el frmMenu

@@ -4,34 +4,23 @@
  */
 package Presentacion;
 
-import BO.ArtistaBO;
-import BO.CancionBO;
+import BO.ArranqueInicio;
 import BO.UsuarioBO;
-import DAO.ArtistaDAO;
-import DAO.CancionDAO;
 import DAO.UsuarioDAO;
-import IBO.IArtistasBO;
-import IBO.ICancionBO;
+import IBO.IArranqueInicio;
 import IBO.IUsuarioBO;
-import IDAO.IArtistaDAO;
-import IDAO.ICancionDAO;
 
 /**
  *
  * @author cesar
  */
 public class frmInicioSesion extends javax.swing.JFrame {
-    
-    
-    private final IArtistasBO artistasBO;
-     private final ICancionBO cancionBO;
-    
+        private IArranqueInicio arranqueInicio=  new ArranqueInicio();
     /**
      * Creates new form JframeInicioSesion
      */
-      public frmInicioSesion(IArtistasBO artistasBO,ICancionBO cancionBO) {
-        this.artistasBO = artistasBO;
-         this.cancionBO = cancionBO;
+    public frmInicioSesion() {
+
         initComponents();
     }
 
@@ -162,42 +151,41 @@ public class frmInicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btniniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciarSesionActionPerformed
-       try {
-        // Crear instancia del BO
-        IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
+        try {
+            // Crear instancia del BO
+            IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
 
-        // Obtener datos del formulario
-        String nombre = txtUsuario.getText();
-        String password = txtContrasena.getText();
+            // Obtener datos del formulario
+            String nombre = txtUsuario.getText();
+            String password = txtContrasena.getText();
 
-        // Validar inicio de sesión
-        boolean exito = usuarioBO.iniciarSesion(nombre, password);
+            // Validar inicio de sesión
+            boolean exito = usuarioBO.iniciarSesion(nombre, password);
 
-        if (exito) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
-            // Redirigir al siguiente formulario o funcionalidad
-            
-        frmMenu menu= new frmMenu();
-        menu.setVisible(true);
-        this.dispose();
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
+            if (exito) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+                // Redirigir al siguiente formulario o funcionalidad
+
+                frmMenu menu = new frmMenu();
+                menu.setVisible(true);
+                this.dispose();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
+            }
+        } catch (Exception e) {
+            // Mostrar error
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al iniciar sesión: " + e.getMessage());
         }
-    } catch (Exception e) {
-        // Mostrar error
-        javax.swing.JOptionPane.showMessageDialog(this, "Error al iniciar sesión: " + e.getMessage());
-    }
     }//GEN-LAST:event_btniniciarSesionActionPerformed
 
     private void btnResgistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarseActionPerformed
-      frmAgregarUsuario inii=new frmAgregarUsuario();
-      inii.setVisible(true);
-      this.dispose();
+        frmAgregarUsuario inii = new frmAgregarUsuario();
+        inii.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnResgistrarseActionPerformed
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
-       artistasBO.insertarArtistas(); 
-       cancionBO.insertarCanciones();
+        arranqueInicio.InsertarArtistas();
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     /**
@@ -227,15 +215,11 @@ public class frmInicioSesion extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-              IArtistaDAO artistasDAO = new ArtistaDAO();
-        ICancionDAO cancionDAO = new CancionDAO();
 
-        IArtistasBO artistasBO = new ArtistaBO(artistasDAO);
-        ICancionBO cancionBO = new CancionBO(cancionDAO);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmInicioSesion(artistasBO,cancionBO).setVisible(true);
+                new frmInicioSesion().setVisible(true);
             }
         });
     }

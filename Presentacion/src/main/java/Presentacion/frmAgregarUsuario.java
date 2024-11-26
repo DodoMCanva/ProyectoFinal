@@ -156,7 +156,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         // Mostrar error
         javax.swing.JOptionPane.showMessageDialog(this, "Error al registrar usuario: " + e.getMessage());
     }
-        frmInicioSesion ini=new frmInicioSesion(boArtista,cancionBO);
+        frmInicioSesion ini=new frmInicioSesion();
         ini.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed

@@ -4,6 +4,7 @@
  */
 package BO;
 
+import DTO.CancionDTO;
 import IBO.ICancionBO;
 import IDAO.ICancionDAO;
 
@@ -19,8 +20,8 @@ public class CancionBO implements ICancionBO{
     }
 
     @Override
-    public void insertarCanciones() {
-        cancionDAO.insertarCanciones(); // Llama al DAO para insertar las canciones
+    public void insertarCanciones(CancionDTO cancion) {
+        cancionDAO.insertarCanciones(); 
     }
 }
 

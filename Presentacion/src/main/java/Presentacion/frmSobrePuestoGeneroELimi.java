@@ -4,7 +4,6 @@
  */
 package Presentacion;
 
-
 /**
  *
  * @author cesar
@@ -25,9 +24,8 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
                 System.out.println("Intento de cerrar bloqueado.");
             }
         });
-    
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -122,13 +120,13 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
     }//GEN-LAST:event_closeDialog
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       frmGeneroNoDeseado gen=new frmGeneroNoDeseado();
-       gen.setVisible(true);
-       this.dispose();
+        frmGeneroNoDeseado gen = new frmGeneroNoDeseado();
+        gen.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frmGeneroNoDeseado gene=new frmGeneroNoDeseado();
+        frmGeneroNoDeseado gene = new frmGeneroNoDeseado();
         gene.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

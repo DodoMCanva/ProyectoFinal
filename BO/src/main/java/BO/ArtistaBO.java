@@ -4,23 +4,44 @@
  */
 package BO;
 
+import DTO.ArtistasDTO;
+import DTO.IntegranteDTO;
 import IBO.IArtistasBO;
 import IDAO.IArtistaDAO;
-
+import POJO.ArtistaPOJO;
+import java.util.List;
 
 /**
  *
  * @author cesar
  */
-public class ArtistaBO implements IArtistasBO{
- private final IArtistaDAO artistasDAO;
+public class ArtistaBO implements IArtistasBO {
+
+    private final IArtistaDAO artistasDAO;
 
     public ArtistaBO(IArtistaDAO artistasDAO) {
-        this.artistasDAO = artistasDAO;  // Inyección del DAO a través de la interfaz
+        this.artistasDAO = artistasDAO;
     }
 
     @Override
-    public void insertarArtistas() {
-        artistasDAO.insertarArtistas();
+    public void insertarArtistasSolistas(ArtistasDTO artista) {
+        artistasDAO.insertarArtistasSolistas(CovertirDTOaPOJOSolista(artista));
+    }
+
+    public void insertarArtistasGrupo(ArtistasDTO artista,List<IntegranteDTO> lista) {
+        artistasDAO.insertarArtistasGrupo();
+    }
+
+    @Override
+    public String obtenerIdPorNombre(String nombreArtista) {
+        return artistasDAO.obtenerIdPorNombre(nombreArtista);
+    }
+    
+    public ArtistaPOJO CovertirDTOaPOJOSolista(ArtistasDTO artistaDTO){
+        
+        
+        return null;
+        
+        
     }
 }

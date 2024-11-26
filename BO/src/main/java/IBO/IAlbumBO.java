@@ -4,12 +4,11 @@
  */
 package IBO;
 
-import DTO.CancionDTO;
-
 /**
  *
  * @author cesar
  */
-public interface ICancionBO {
-     void insertarCanciones(CancionDTO cancion);
+public interface IAlbumBO {
+
+    String obtenerIdPorNombre(String nombreArtista);
 }

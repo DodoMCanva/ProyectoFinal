@@ -6,10 +6,13 @@ package DAO;
 
 import Conexion.ConexionDB;
 import IDAO.IArtistaDAO;
+import POJO.ArtistaPOJO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import java.util.List;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -27,7 +30,7 @@ public class ArtistaDAO implements IArtistaDAO {
     }
 
     @Override
-    public void insertarArtistas() {
+    public void insertarArtistasSolistas(ArtistaPOJO artistaPOJO) {
         MongoCollection<Document> collection = database.getCollection("artistas");
 
         // Predefinir los 90 artistas: 45 solistas y 45 bandas
@@ -158,8 +161,18 @@ public class ArtistaDAO implements IArtistaDAO {
                         .append("genero", "pop")
                         .append("integrantes", List.of())
                         .append("albumes", List.of())
-                        .append("canciones", List.of()),
-                // Bandas (con integrantes)
+                        .append("canciones", List.of())
+        );
+                
+                collection.insertOne((Document) artistas);
+    }
+ @Override
+    public void insertarArtistasGrupo() {
+        MongoCollection<Document> collection = database.getCollection("artistas");
+
+        // Predefinir los 90 artistas: 45 solistas y 45 bandas
+        List<Document> artistas = List.of(                
+// Bandas (con integrantes)
                 new Document("nombre", "Coldplay")
                         .append("tipo", "banda")
                         .append("genero", "rock")
@@ -400,7 +413,24 @@ public class ArtistaDAO implements IArtistaDAO {
                         .append("canciones", List.of())
         );
 
-        // Insertar los artistas en la colección
         collection.insertMany(artistas);
     }
+
+    @Override
+    public String obtenerIdPorNombre(String nombreArtista) {
+        try {
+            MongoCollection<Document> collection = database.getCollection("artistas");
+            Document artista = collection.find(Filters.eq("nombre", nombreArtista)).first();
+
+            if (artista != null) {
+                ObjectId id = artista.getObjectId("_id");
+                return id.toHexString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+
 }

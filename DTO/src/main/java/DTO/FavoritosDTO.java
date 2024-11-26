@@ -11,6 +11,7 @@ import java.util.List;
  * @author cesar
  */
 public class FavoritosDTO {
+
     private List<String> artistas;
     private List<String> albums;
     private List<String> canciones;
@@ -38,6 +39,5 @@ public class FavoritosDTO {
     public void setCanciones(List<String> canciones) {
         this.canciones = canciones;
     }
-    
-    
+
 }
