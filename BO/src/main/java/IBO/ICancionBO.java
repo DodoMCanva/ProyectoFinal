@@ -1,15 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package IBO;
 
 import DTO.CancionDTO;
+import Exceptions.ExceptionBO;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public interface ICancionBO {
-     void insertarCanciones(CancionDTO cancion);
+    
+     void insertarCancion(CancionDTO cancion) throws ExceptionBO; 
 }

@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package IDAO;
+
+import Exceptions.ExceptionDAO;
+import POJO.CancionPOJO;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public interface ICancionDAO {
-    void insertarCanciones(); 
+    
+    void insertarCancion(CancionPOJO cancion) throws ExceptionDAO; 
 }

@@ -1,27 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package BO;
 
+import DAO.CancionDAO;
 import DTO.CancionDTO;
+import Exceptions.ExceptionBO;
+import Exceptions.ExceptionDAO;
 import IBO.ICancionBO;
 import IDAO.ICancionDAO;
+import POJO.CancionPOJO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class CancionBO implements ICancionBO{
-     private ICancionDAO cancionDAO;
+     private ICancionDAO cancionDAO = new CancionDAO();
 
-    public CancionBO(ICancionDAO cancionDAO) {
-        this.cancionDAO = cancionDAO;
+    public CancionBO() {
     }
 
     @Override
-    public void insertarCanciones(CancionDTO cancion) {
-        cancionDAO.insertarCanciones(); 
+    public void insertarCancion(CancionDTO cancion) throws ExceptionBO{
+         try { 
+             cancionDAO.insertarCancion(convertirDTOaPOJO(cancion));
+         } catch (ExceptionDAO ex) {
+             Logger.getLogger(CancionBO.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    
+    public CancionPOJO convertirDTOaPOJO(CancionDTO dto){
+        return null;
     }
 }
 

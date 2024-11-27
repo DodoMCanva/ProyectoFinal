@@ -1,33 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DTO;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class AlbumDTO {
 
     private String id;
     private String nombre;
-    private Date fechaLanzamiento;
+    private LocalDate fechaLanzamiento;
     private String genero;
     private String portada;
+    private ArtistasDTO artista;
     private List<CancionDTO> canciones;
 
     public AlbumDTO() {
     }
 
-    public AlbumDTO(String nombre, Date fechaLanzamiento, String genero, String portada, List<CancionDTO> canciones) {
+    public AlbumDTO(String id, String nombre, LocalDate fechaLanzamiento, String genero, String portada, ArtistasDTO artista, List<CancionDTO> canciones) {
+        this.id = id;
         this.nombre = nombre;
         this.fechaLanzamiento = fechaLanzamiento;
         this.genero = genero;
         this.portada = portada;
+        this.artista = artista;
         this.canciones = canciones;
     }
 
@@ -47,11 +47,11 @@ public class AlbumDTO {
         this.nombre = nombre;
     }
 
-    public Date getFechaLanzamiento() {
+    public LocalDate getFechaLanzamiento() {
         return fechaLanzamiento;
     }
 
-    public void setFechaLanzamiento(Date fechaLanzamiento) {
+    public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
@@ -71,6 +71,14 @@ public class AlbumDTO {
         this.portada = portada;
     }
 
+    public ArtistasDTO getArtista() {
+        return artista;
+    }
+
+    public void setArtista(ArtistasDTO artista) {
+        this.artista = artista;
+    }
+
     public List<CancionDTO> getCanciones() {
         return canciones;
     }
@@ -78,6 +86,8 @@ public class AlbumDTO {
     public void setCanciones(List<CancionDTO> canciones) {
         this.canciones = canciones;
     }
+
+    
 
     @Override
     public String toString() {
