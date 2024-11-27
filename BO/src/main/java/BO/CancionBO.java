@@ -29,6 +29,12 @@ public class CancionBO implements ICancionBO {
             Logger.getLogger(CancionBO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    @Override
+    public String obtenerIdPorNombre(String nombre) throws ExceptionBO {
+        return "";
+    }
 
     public CancionPOJO convertirDTOaPOJO(CancionDTO dto) {
         CancionPOJO POJO;

@@ -9,5 +9,7 @@ import Exceptions.ExceptionBO;
  */
 public interface ICancionBO {
     
-     void insertarCancion(CancionDTO cancion) throws ExceptionBO; 
+    public void insertarCancion(CancionDTO cancion) throws ExceptionBO; 
+
+    public String obtenerIdPorNombre(String nombre) throws ExceptionBO;
 }

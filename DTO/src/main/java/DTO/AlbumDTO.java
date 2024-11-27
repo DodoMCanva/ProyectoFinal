@@ -15,13 +15,13 @@ public class AlbumDTO {
     private LocalDate fechaLanzamiento;
     private String genero;
     private String portada;
-    private ArtistasDTO artista;
-    private List<CancionDTO> canciones;
+    private String artista;
+    private List<String> canciones;
 
     public AlbumDTO() {
     }
 
-    public AlbumDTO(String id, String nombre, LocalDate fechaLanzamiento, String genero, String portada, ArtistasDTO artista, List<CancionDTO> canciones) {
+    public AlbumDTO(String id, String nombre, LocalDate fechaLanzamiento, String genero, String portada, String artista, List<String> canciones) {
         this.id = id;
         this.nombre = nombre;
         this.fechaLanzamiento = fechaLanzamiento;
@@ -71,24 +71,24 @@ public class AlbumDTO {
         this.portada = portada;
     }
 
-    public ArtistasDTO getArtista() {
+    public String getArtista() {
         return artista;
     }
 
-    public void setArtista(ArtistasDTO artista) {
+    public void setArtista(String artista) {
         this.artista = artista;
     }
 
-    public List<CancionDTO> getCanciones() {
+    public List<String> getCanciones() {
         return canciones;
     }
 
-    public void setCanciones(List<CancionDTO> canciones) {
+    public void setCanciones(List<String> canciones) {
         this.canciones = canciones;
     }
-
     
-
+    
+    
     @Override
     public String toString() {
         return "AlbumDTO{" + "id="

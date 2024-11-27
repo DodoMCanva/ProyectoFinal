@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package POJO;
 
 import java.util.Date;
@@ -10,7 +6,7 @@ import org.bson.types.ObjectId;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class AlbumPOJO {
 
@@ -19,19 +15,10 @@ public class AlbumPOJO {
     private Date fechaLanzamiento;
     private String genero;
     private String portada;
-    private List<CancionPOJO> canciones;
     private ObjectId artistaId;
+    private List<ObjectId> canciones;
 
     public AlbumPOJO() {
-    }
-
-    public AlbumPOJO(String nombre, Date fechaLanzamiento, String genero, String portada, List<CancionPOJO> canciones, ObjectId artistaId) {
-        this.nombre = nombre;
-        this.fechaLanzamiento = fechaLanzamiento;
-        this.genero = genero;
-        this.portada = portada;
-        this.canciones = canciones;
-        this.artistaId = artistaId;
     }
 
     public ObjectId getId() {
@@ -74,14 +61,6 @@ public class AlbumPOJO {
         this.portada = portada;
     }
 
-    public List<CancionPOJO> getCanciones() {
-        return canciones;
-    }
-
-    public void setCanciones(List<CancionPOJO> canciones) {
-        this.canciones = canciones;
-    }
-
     public ObjectId getArtistaId() {
         return artistaId;
     }
@@ -90,6 +69,16 @@ public class AlbumPOJO {
         this.artistaId = artistaId;
     }
 
+    public List<ObjectId> getCanciones() {
+        return canciones;
+    }
+
+    public void setCanciones(List<ObjectId> canciones) {
+        this.canciones = canciones;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return "AlbumPOJO{" + "id="

@@ -450,249 +450,209 @@ public class ArranqueInicioBO implements IArranqueInicio {
         }
     }
 
-  public void crearCanciones() {
-  try {
-      
-    List<CancionDTO> canciones = List.of(
-        // Canciones de Taylor Swift
-        new CancionDTO("Love Story", "3:55"),
-        new CancionDTO("You Belong With Me", "3:52"),
-        new CancionDTO("Shake It Off", "3:39"),
-        
-        // Canciones de Ed Sheeran
-        new CancionDTO("Shape of You", "3:53"),
-        new CancionDTO("Castle on the Hill", "4:21"),
-        new CancionDTO("Thinking Out Loud", "4:41"),
-        
-        // Canciones de Adele
-        new CancionDTO("Hello", "4:55"),
-        new CancionDTO("Rolling in the Deep", "3:48"),
-        new CancionDTO("Someone Like You", "4:45"),
-        
-        // Canciones de Bruno Mars
-        new CancionDTO("Just the Way You Are", "3:40"),
-        new CancionDTO("Grenade", "3:42"),
-        new CancionDTO("Uptown Funk", "4:30"),
-        
-        // Canciones de Billie Eilish
-        new CancionDTO("Bad Guy", "3:14"),
-        new CancionDTO("Ocean Eyes", "3:20"),
-        new CancionDTO("Everything I Wanted", "4:05"),
-        
-        // Canciones de Shawn Mendes
-        new CancionDTO("Stitches", "3:27"),
-        new CancionDTO("Treat You Better", "3:08"),
-        new CancionDTO("In My Blood", "3:31"),
-        
-        // Canciones de Lady Gaga
-        new CancionDTO("Bad Romance", "4:54"),
-        new CancionDTO("Poker Face", "3:57"),
-        new CancionDTO("Shallow", "3:35"),
-        
-        // Canciones de Justin Bieber
-        new CancionDTO("Sorry", "3:20"),
-        new CancionDTO("Love Yourself", "3:54"),
-        new CancionDTO("Baby", "3:36"),
-        
-        // Canciones de Rihanna
-        new CancionDTO("Umbrella", "4:36"),
-        new CancionDTO("Diamonds", "3:45"),
-        new CancionDTO("Work", "3:39"),
-        
-        // Canciones de Sam Smith
-        new CancionDTO("Stay With Me", "2:52"),
-        new CancionDTO("I'm Not the Only One", "3:59"),
-        new CancionDTO("Too Good at Goodbyes", "3:21"),
-        
-        // Canciones de Ariana Grande
-        new CancionDTO("Thank U, Next", "3:27"),
-        new CancionDTO("7 Rings", "2:58"),
-        new CancionDTO("Side to Side", "3:46"),
-        
-        // Canciones de Dua Lipa
-        new CancionDTO("Don't Start Now", "3:03"),
-        new CancionDTO("New Rules", "3:29"),
-        new CancionDTO("Levitating", "3:24"),
-        
-        // Canciones de The Weeknd
-        new CancionDTO("Blinding Lights", "3:20"),
-        new CancionDTO("Can't Feel My Face", "3:35"),
-        new CancionDTO("Starboy", "3:50"),
-        
-        // Canciones de Harry Styles
-        new CancionDTO("Watermelon Sugar", "2:54"),
-        new CancionDTO("Adore You", "3:27"),
-        new CancionDTO("Sign of the Times", "5:40"),
-        
-        // Canciones de Selena Gomez
-        new CancionDTO("Lose You to Love Me", "3:27"),
-        new CancionDTO("Bad Liar", "3:34"),
-        new CancionDTO("Come & Get It", "3:51"),
-        
-        // Canciones de Post Malone
-        new CancionDTO("Rockstar", "3:38"),
-        new CancionDTO("Circles", "3:35"),
-        new CancionDTO("Sunflower", "2:38"),
-        
-        // Canciones de Drake
-        new CancionDTO("Hotline Bling", "4:27"),
-        new CancionDTO("God's Plan", "3:18"),
-        new CancionDTO("In My Feelings", "3:37"),
-        
-        // Canciones de Miley Cyrus
-        new CancionDTO("Wrecking Ball", "3:41"),
-        new CancionDTO("Party in the U.S.A.", "3:22"),
-        new CancionDTO("Malibu", "3:51"),
-        
-        // Canciones de Katy Perry
-        new CancionDTO("Roar", "3:42"),
-        new CancionDTO("Firework", "3:48"),
-        new CancionDTO("Teenage Dream", "3:47"),
-        
-        // Canciones de Beyoncé
-        new CancionDTO("Halo", "4:21"),
-        new CancionDTO("Single Ladies", "3:13"),
-        new CancionDTO("Formation", "3:26"),
-        
-        // Canciones de Lana Del Rey
-        new CancionDTO("Summertime Sadness", "4:25"),
-        new CancionDTO("Young and Beautiful", "3:56"),
-        new CancionDTO("Video Games", "4:42"),
-        
-        // Canciones de Halsey
-        new CancionDTO("Without Me", "3:21"),
-        new CancionDTO("Graveyard", "3:01"),
-        new CancionDTO("Bad at Love", "3:01"),
-        
-        // Canciones de Charlie Puth
-        new CancionDTO("Attention", "3:31"),
-        new CancionDTO("See You Again", "3:49"),
-        new CancionDTO("We Don't Talk Anymore", "3:37"),
-        
-        // Canciones de Camila Cabello
-        new CancionDTO("Havana", "3:37"),
-        new CancionDTO("Never Be the Same", "3:47"),
-        new CancionDTO("Senorita", "3:11"),
-        
-        // Canciones de Lil Nas X
-        new CancionDTO("Old Town Road", "2:37"),
-        new CancionDTO("Panini", "1:55"),
-        new CancionDTO("Montero (Call Me By Your Name)", "2:18"),
-        
-        // Canciones de Doja Cat
-        new CancionDTO("Say So", "3:57"),
-        new CancionDTO("Streets", "2:53"),
-        new CancionDTO("Juicy", "3:18"),
-        
-        // Canciones de Lizzo
-        new CancionDTO("Truth Hurts", "2:53"),
-        new CancionDTO("Good as Hell", "2:39"),
-        new CancionDTO("Juice", "3:15"),
-        
-        // Canciones de Shakira
-        new CancionDTO("Hips Don't Lie", "3:38"),
-        new CancionDTO("La Tortura", "3:33"),
-        new CancionDTO("Waka Waka (This Time for Africa)", "3:22"),
-        
-        // Canciones de Jennifer Lopez
-        new CancionDTO("On The Floor", "4:44"),
-        new CancionDTO("Ain't Your Mama", "3:38"),
-        new CancionDTO("Jenny From the Block", "3:08"),
-        
-        // Canciones de Nicki Minaj
-        new CancionDTO("Super Bass", "3:20"),
-        new CancionDTO("Starships", "3:30"),
-        new CancionDTO("Anaconda", "4:20"),
-        
-        // Canciones de Kendrick Lamar
-        new CancionDTO("HUMBLE.", "2:57"),
-        new CancionDTO("DNA.", "3:06"),
-        new CancionDTO("Alright", "3:39"),
-        
-        // Canciones de Sia
-        new CancionDTO("Chandelier", "3:36"),
-        new CancionDTO("Elastic Heart", "4:17"),
-        new CancionDTO("Cheap Thrills", "3:31"),
-        
-        // Canciones de John Legend
-        new CancionDTO("All of Me", "4:29"),
-        new CancionDTO("Ordinary People", "4:41"),
-        new CancionDTO("Love Me Now", "3:30"),
-        
-        // Canciones de Ellie Goulding
-        new CancionDTO("Love Me Like You Do", "4:12"),
-        new CancionDTO("Lights", "3:30"),
-        new CancionDTO("Burn", "3:51"),
-        
-        // Canciones de Avril Lavigne
-        new CancionDTO("Complicated", "4:05"),
-        new CancionDTO("Sk8er Boi", "3:24"),
-        new CancionDTO("Girlfriend", "3:37"),
-        
-        // Canciones de Amy Winehouse
-        new CancionDTO("Rehab", "3:35"),
-        new CancionDTO("Back to Black", "4:01"),
-        new CancionDTO("You Know I'm No Good", "4:17"),
-        
-        // Canciones de Bad Bunny
-        new CancionDTO("MIA", "3:31"),
-        new CancionDTO("Safaera", "4:55"),
-               new CancionDTO("Dákiti", "3:25"),
+    public void crearCanciones() {
+        try {
 
-        // Canciones de ROSALÍA
-        new CancionDTO("Malamente", "2:48"),
-        new CancionDTO("Pienso en tu mirá", "3:13"),
-        new CancionDTO("Con Altura", "2:42"),
-        
-        // Canciones de Miguel Bosé
-        new CancionDTO("Amante Bandido", "4:25"),
-        new CancionDTO("Morena Mía", "4:01"),
-        new CancionDTO("Si Tú No Vuelves", "4:47"),
-        
-        // Canciones de Cazzu
-        new CancionDTO("Nada", "3:20"),
-        new CancionDTO("Mucha Data", "3:24"),
-        new CancionDTO("Visto a las 00:00", "2:47"),
-        
-        // Canciones de Natalia Lafourcade
-        new CancionDTO("Hasta la Raíz", "3:41"),
-        new CancionDTO("Lo Que Construimos", "4:11"),
-        new CancionDTO("Tú Sí Sabes Quererme", "3:34"),
-        
-        // Canciones de Carla Morrison
-        new CancionDTO("Disfruto", "4:41"),
-        new CancionDTO("Eres Tú", "3:35"),
-        new CancionDTO("Déjenme Llorar", "4:15"),
-        
-        // Canciones de Ángela Aguilar
-        new CancionDTO("La Llorona", "3:44"),
-        new CancionDTO("Dime Cómo Quieres", "3:13"),
-        new CancionDTO("Bésame Mucho", "3:32"),
-        
-        // Canciones de José José
-        new CancionDTO("El Triste", "4:03"),
-        new CancionDTO("La Nave del Olvido", "3:24"),
-        new CancionDTO("Gavilán o Paloma", "3:24"),
-        
-        // Canciones de Rocío Dúrcal
-        new CancionDTO("Amor Eterno", "5:05"),
-        new CancionDTO("La Gata Bajo la Lluvia", "3:42"),
-        new CancionDTO("Como Tu Mujer", "3:54")
-    );
+            List<CancionDTO> canciones = List.of(
+                    // Canciones de Taylor Swift
+                    new CancionDTO("Love Story", "3:55"),
+                    new CancionDTO("You Belong With Me", "3:52"),
+                    new CancionDTO("Shake It Off", "3:39"),
+                    // Canciones de Ed Sheeran
+                    new CancionDTO("Shape of You", "3:53"),
+                    new CancionDTO("Castle on the Hill", "4:21"),
+                    new CancionDTO("Thinking Out Loud", "4:41"),
+                    // Canciones de Adele
+                    new CancionDTO("Hello", "4:55"),
+                    new CancionDTO("Rolling in the Deep", "3:48"),
+                    new CancionDTO("Someone Like You", "4:45"),
+                    // Canciones de Bruno Mars
+                    new CancionDTO("Just the Way You Are", "3:40"),
+                    new CancionDTO("Grenade", "3:42"),
+                    new CancionDTO("Uptown Funk", "4:30"),
+                    // Canciones de Billie Eilish
+                    new CancionDTO("Bad Guy", "3:14"),
+                    new CancionDTO("Ocean Eyes", "3:20"),
+                    new CancionDTO("Everything I Wanted", "4:05"),
+                    // Canciones de Shawn Mendes
+                    new CancionDTO("Stitches", "3:27"),
+                    new CancionDTO("Treat You Better", "3:08"),
+                    new CancionDTO("In My Blood", "3:31"),
+                    // Canciones de Lady Gaga
+                    new CancionDTO("Bad Romance", "4:54"),
+                    new CancionDTO("Poker Face", "3:57"),
+                    new CancionDTO("Shallow", "3:35"),
+                    // Canciones de Justin Bieber
+                    new CancionDTO("Sorry", "3:20"),
+                    new CancionDTO("Love Yourself", "3:54"),
+                    new CancionDTO("Baby", "3:36"),
+                    // Canciones de Rihanna
+                    new CancionDTO("Umbrella", "4:36"),
+                    new CancionDTO("Diamonds", "3:45"),
+                    new CancionDTO("Work", "3:39"),
+                    // Canciones de Sam Smith
+                    new CancionDTO("Stay With Me", "2:52"),
+                    new CancionDTO("I'm Not the Only One", "3:59"),
+                    new CancionDTO("Too Good at Goodbyes", "3:21"),
+                    // Canciones de Ariana Grande
+                    new CancionDTO("Thank U, Next", "3:27"),
+                    new CancionDTO("7 Rings", "2:58"),
+                    new CancionDTO("Side to Side", "3:46"),
+                    // Canciones de Dua Lipa
+                    new CancionDTO("Don't Start Now", "3:03"),
+                    new CancionDTO("New Rules", "3:29"),
+                    new CancionDTO("Levitating", "3:24"),
+                    // Canciones de The Weeknd
+                    new CancionDTO("Blinding Lights", "3:20"),
+                    new CancionDTO("Can't Feel My Face", "3:35"),
+                    new CancionDTO("Starboy", "3:50"),
+                    // Canciones de Harry Styles
+                    new CancionDTO("Watermelon Sugar", "2:54"),
+                    new CancionDTO("Adore You", "3:27"),
+                    new CancionDTO("Sign of the Times", "5:40"),
+                    // Canciones de Selena Gomez
+                    new CancionDTO("Lose You to Love Me", "3:27"),
+                    new CancionDTO("Bad Liar", "3:34"),
+                    new CancionDTO("Come & Get It", "3:51"),
+                    // Canciones de Post Malone
+                    new CancionDTO("Rockstar", "3:38"),
+                    new CancionDTO("Circles", "3:35"),
+                    new CancionDTO("Sunflower", "2:38"),
+                    // Canciones de Drake
+                    new CancionDTO("Hotline Bling", "4:27"),
+                    new CancionDTO("God's Plan", "3:18"),
+                    new CancionDTO("In My Feelings", "3:37"),
+                    // Canciones de Miley Cyrus
+                    new CancionDTO("Wrecking Ball", "3:41"),
+                    new CancionDTO("Party in the U.S.A.", "3:22"),
+                    new CancionDTO("Malibu", "3:51"),
+                    // Canciones de Katy Perry
+                    new CancionDTO("Roar", "3:42"),
+                    new CancionDTO("Firework", "3:48"),
+                    new CancionDTO("Teenage Dream", "3:47"),
+                    // Canciones de Beyoncé
+                    new CancionDTO("Halo", "4:21"),
+                    new CancionDTO("Single Ladies", "3:13"),
+                    new CancionDTO("Formation", "3:26"),
+                    // Canciones de Lana Del Rey
+                    new CancionDTO("Summertime Sadness", "4:25"),
+                    new CancionDTO("Young and Beautiful", "3:56"),
+                    new CancionDTO("Video Games", "4:42"),
+                    // Canciones de Halsey
+                    new CancionDTO("Without Me", "3:21"),
+                    new CancionDTO("Graveyard", "3:01"),
+                    new CancionDTO("Bad at Love", "3:01"),
+                    // Canciones de Charlie Puth
+                    new CancionDTO("Attention", "3:31"),
+                    new CancionDTO("See You Again", "3:49"),
+                    new CancionDTO("We Don't Talk Anymore", "3:37"),
+                    // Canciones de Camila Cabello
+                    new CancionDTO("Havana", "3:37"),
+                    new CancionDTO("Never Be the Same", "3:47"),
+                    new CancionDTO("Senorita", "3:11"),
+                    // Canciones de Lil Nas X
+                    new CancionDTO("Old Town Road", "2:37"),
+                    new CancionDTO("Panini", "1:55"),
+                    new CancionDTO("Montero (Call Me By Your Name)", "2:18"),
+                    // Canciones de Doja Cat
+                    new CancionDTO("Say So", "3:57"),
+                    new CancionDTO("Streets", "2:53"),
+                    new CancionDTO("Juicy", "3:18"),
+                    // Canciones de Lizzo
+                    new CancionDTO("Truth Hurts", "2:53"),
+                    new CancionDTO("Good as Hell", "2:39"),
+                    new CancionDTO("Juice", "3:15"),
+                    // Canciones de Shakira
+                    new CancionDTO("Hips Don't Lie", "3:38"),
+                    new CancionDTO("La Tortura", "3:33"),
+                    new CancionDTO("Waka Waka (This Time for Africa)", "3:22"),
+                    // Canciones de Jennifer Lopez
+                    new CancionDTO("On The Floor", "4:44"),
+                    new CancionDTO("Ain't Your Mama", "3:38"),
+                    new CancionDTO("Jenny From the Block", "3:08"),
+                    // Canciones de Nicki Minaj
+                    new CancionDTO("Super Bass", "3:20"),
+                    new CancionDTO("Starships", "3:30"),
+                    new CancionDTO("Anaconda", "4:20"),
+                    // Canciones de Kendrick Lamar
+                    new CancionDTO("HUMBLE.", "2:57"),
+                    new CancionDTO("DNA.", "3:06"),
+                    new CancionDTO("Alright", "3:39"),
+                    // Canciones de Sia
+                    new CancionDTO("Chandelier", "3:36"),
+                    new CancionDTO("Elastic Heart", "4:17"),
+                    new CancionDTO("Cheap Thrills", "3:31"),
+                    // Canciones de John Legend
+                    new CancionDTO("All of Me", "4:29"),
+                    new CancionDTO("Ordinary People", "4:41"),
+                    new CancionDTO("Love Me Now", "3:30"),
+                    // Canciones de Ellie Goulding
+                    new CancionDTO("Love Me Like You Do", "4:12"),
+                    new CancionDTO("Lights", "3:30"),
+                    new CancionDTO("Burn", "3:51"),
+                    // Canciones de Avril Lavigne
+                    new CancionDTO("Complicated", "4:05"),
+                    new CancionDTO("Sk8er Boi", "3:24"),
+                    new CancionDTO("Girlfriend", "3:37"),
+                    // Canciones de Amy Winehouse
+                    new CancionDTO("Rehab", "3:35"),
+                    new CancionDTO("Back to Black", "4:01"),
+                    new CancionDTO("You Know I'm No Good", "4:17"),
+                    // Canciones de Bad Bunny
+                    new CancionDTO("MIA", "3:31"),
+                    new CancionDTO("Safaera", "4:55"),
+                    new CancionDTO("Dákiti", "3:25"),
+                    // Canciones de ROSALÍA
+                    new CancionDTO("Malamente", "2:48"),
+                    new CancionDTO("Pienso en tu mirá", "3:13"),
+                    new CancionDTO("Con Altura", "2:42"),
+                    // Canciones de Miguel Bosé
+                    new CancionDTO("Amante Bandido", "4:25"),
+                    new CancionDTO("Morena Mía", "4:01"),
+                    new CancionDTO("Si Tú No Vuelves", "4:47"),
+                    // Canciones de Cazzu
+                    new CancionDTO("Nada", "3:20"),
+                    new CancionDTO("Mucha Data", "3:24"),
+                    new CancionDTO("Visto a las 00:00", "2:47"),
+                    // Canciones de Natalia Lafourcade
+                    new CancionDTO("Hasta la Raíz", "3:41"),
+                    new CancionDTO("Lo Que Construimos", "4:11"),
+                    new CancionDTO("Tú Sí Sabes Quererme", "3:34"),
+                    // Canciones de Carla Morrison
+                    new CancionDTO("Disfruto", "4:41"),
+                    new CancionDTO("Eres Tú", "3:35"),
+                    new CancionDTO("Déjenme Llorar", "4:15"),
+                    // Canciones de Ángela Aguilar
+                    new CancionDTO("La Llorona", "3:44"),
+                    new CancionDTO("Dime Cómo Quieres", "3:13"),
+                    new CancionDTO("Bésame Mucho", "3:32"),
+                    // Canciones de José José
+                    new CancionDTO("El Triste", "4:03"),
+                    new CancionDTO("La Nave del Olvido", "3:24"),
+                    new CancionDTO("Gavilán o Paloma", "3:24"),
+                    // Canciones de Rocío Dúrcal
+                    new CancionDTO("Amor Eterno", "5:05"),
+                    new CancionDTO("La Gata Bajo la Lluvia", "3:42"),
+                    new CancionDTO("Como Tu Mujer", "3:54")
+            );
 
-  
-        for (CancionDTO cancion : canciones) {
-            cancionBO.insertarCancion(cancion);
+            for (CancionDTO cancion : canciones) {
+                cancionBO.insertarCancion(cancion);
+            }
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(ArranqueInicioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } catch (ExceptionBO ex) {
-        Logger.getLogger(ArranqueInicioBO.class.getName()).log(Level.SEVERE, null, ex);
     }
-}
-
-    
 
     public void crearAlbums() {
-        //AlbumDTO ejemplo = new AlbumDTO("Los cadete de linares", LocalDate.of(20224, Month.MARCH, 10), "Rock", " ", *artista por album*,*canciones por album*)
+        List<String> listaCanciones = new ArrayList<>();
+        try {
+            listaCanciones.add(cancionBO.obtenerIdPorNombre(""));
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(ArranqueInicioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        AlbumDTO ejemplo = new AlbumDTO("Los cadete de linares", LocalDate.of(2024, Month.MARCH, 10), "Rock", " ", artistaBO.obtenerIdPorNombre(""), listaCanciones);
+        
     }
 
 }
