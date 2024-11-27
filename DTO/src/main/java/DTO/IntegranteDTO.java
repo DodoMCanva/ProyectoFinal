@@ -16,6 +16,7 @@ public class IntegranteDTO {
     private String id;
     private String nombre;
     private String rol;
+    private String imagen;
     private LocalDate ingreso;
     private LocalDate salida;
     private boolean estado;
@@ -23,12 +24,13 @@ public class IntegranteDTO {
     public IntegranteDTO() {
     }
 
-    public IntegranteDTO(String nombre, String rol, LocalDate ingreso, LocalDate salida, boolean estado) {
+    public IntegranteDTO(String nombre, String rol, String imagen, LocalDate ingreso, LocalDate salida, boolean estado) {
         this.nombre = nombre;
         this.rol = rol;
         this.ingreso = ingreso;
         this.salida = salida;
         this.estado = estado;
+        this.imagen = imagen;
     }
 
     public String getId() {
@@ -63,6 +65,14 @@ public class IntegranteDTO {
         this.ingreso = ingreso;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     public LocalDate getSalida() {
         return salida;
     }
@@ -70,8 +80,6 @@ public class IntegranteDTO {
     public void setSalida(LocalDate salida) {
         this.salida = salida;
     }
-
-    
 
     public boolean isEstado() {
         return estado;
@@ -83,11 +91,9 @@ public class IntegranteDTO {
 
     @Override
     public String toString() {
-        return "IntegranteDTO{" + "id="
-                + id + ", nombre=" + nombre
-                + ", rol=" + rol + ", ingreso="
-                + ingreso + ", salida=" + salida
-                + ", estado=" + estado + '}';
+        return "IntegranteDTO{" + "id=" + id + ", nombre=" + nombre + ", rol=" + rol + ", imagen=" + imagen + ", ingreso=" + ingreso + ", salida=" + salida + ", estado=" + estado + '}';
     }
+
+   
 
 }

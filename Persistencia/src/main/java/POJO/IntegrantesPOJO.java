@@ -13,6 +13,7 @@ public class IntegrantesPOJO {
     private ObjectId id;
     private String nombre;
     private String rol;
+    private String imagen;
     private LocalDate ingreso;
     private LocalDate salida;
     private boolean estado;
@@ -20,12 +21,21 @@ public class IntegrantesPOJO {
     public IntegrantesPOJO() {
     }
 
-    public IntegrantesPOJO(String nombre, String rol, LocalDate ingreso, LocalDate salida, boolean estado) {
+    public IntegrantesPOJO(String nombre, String rol,String imagen, LocalDate ingreso, LocalDate salida, boolean estado) {
         this.nombre = nombre;
         this.rol = rol;
         this.ingreso = ingreso;
         this.salida = salida;
         this.estado = estado;
+        this.imagen=imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public ObjectId getId() {
@@ -78,13 +88,9 @@ public class IntegrantesPOJO {
 
     @Override
     public String toString() {
-        return "IntegrantesPOJO{" + "id="
-                + id + ", nombre="
-                + nombre + ", rol="
-                + rol + ", ingreso="
-                + ingreso + ", salida="
-                + salida + ", estado="
-                + estado + '}';
+        return "IntegrantesPOJO{" + "id=" + id + ", nombre=" + nombre + ", rol=" + rol + ", imagen=" + imagen + ", ingreso=" + ingreso + ", salida=" + salida + ", estado=" + estado + '}';
     }
+
+   
 
 }
