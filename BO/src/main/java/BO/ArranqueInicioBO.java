@@ -37,7 +37,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         //Crear Solistas
         ArtistasDTO ArtistaSolista[] = new ArtistasDTO[45];
 
-// Creación de 45 solistas
+        // Creación de 45 solistas
         ArtistaSolista[0] = new ArtistasDTO("Taylor Swift", "/ImagenesArtistas/Taylor.jpeg", "solista", "Pop");
         ArtistaSolista[1] = new ArtistasDTO("Ed Sheeran", "/ImagenesArtistas/Ed Cheran.jpeg", "solista", "Pop");
         ArtistaSolista[2] = new ArtistasDTO("Adele", "/ImagenesArtistas/Adele.jpeg", "solista", "Soul");
