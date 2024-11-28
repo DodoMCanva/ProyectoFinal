@@ -32,8 +32,8 @@ public class CancionBO implements ICancionBO {
     
     
     @Override
-    public String obtenerIdPorNombre(String nombre) throws ExceptionBO {
-        return "";
+    public String obtenerIdPorNombre(String nombreCancion) throws ExceptionBO {
+        return cancionDAO.obtenerIdPorNombre(nombreCancion);
     }
 
     public CancionPOJO convertirDTOaPOJO(CancionDTO dto) {

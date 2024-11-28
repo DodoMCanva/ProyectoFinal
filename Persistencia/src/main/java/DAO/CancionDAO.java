@@ -6,8 +6,9 @@ import IDAO.ICancionDAO;
 import POJO.CancionPOJO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import java.util.List;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -36,6 +37,21 @@ public class CancionDAO implements ICancionDAO {
       }catch(Exception e){
           throw new ExceptionDAO("Error al guardar la cancion en la base de datos", e);
       }
+    }
+    @Override
+    public String obtenerIdPorNombre(String nombreCancion){
+        try{
+        MongoCollection<Document> collection = database.getCollection("canciones");
+            Document canciones = collection.find(Filters.eq("nombre", nombreCancion)).first();
+
+            if (canciones != null) {
+                ObjectId id = canciones.getObjectId("_id");
+                return id.toHexString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

@@ -163,6 +163,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
         arranqueInicio.crearArtistas();
         arranqueInicio.crearCanciones();
+        arranqueInicio.crearAlbums();
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     /**

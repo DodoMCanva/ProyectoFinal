@@ -2,21 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package IBO;
+package IDAO;
 
-import DTO.AlbumDTO;
+import Exceptions.ExceptionDAO;
 import POJO.AlbumPOJO;
 
 /**
  *
  * @author cesar
  */
-public interface IAlbumBO {
-
-    public void insertarAlbum(AlbumDTO album);
-    
-    String obtenerIdPorNombre(String nombreArtista);
+public interface IAlbumDAO {
     
     
-    
+    void InsertarAlbum(AlbumPOJO album) throws ExceptionDAO;
 }

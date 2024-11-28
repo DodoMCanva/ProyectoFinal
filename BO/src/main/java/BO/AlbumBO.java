@@ -4,21 +4,64 @@
  */
 package BO;
 
+import DAO.AlbumDAO;
+import DTO.AlbumDTO;
+import Exceptions.ExceptionDAO;
 import IBO.IAlbumBO;
 import IBO.IArtistasBO;
+import IDAO.IAlbumDAO;
+import POJO.AlbumPOJO;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author cesar
  */
 public class AlbumBO implements IAlbumBO {
-    
+
     private IArtistasBO artistaBO;
+    private IAlbumDAO albumDAO;
     
-     @Override
+      public AlbumBO() {
+        this.albumDAO = new AlbumDAO(); // Inicialización explícita
+    }
+
+    @Override
+    public void insertarAlbum(AlbumDTO album) {
+        try {
+            albumDAO.InsertarAlbum(convertirAlbumdeDTOaPOJO(album));
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(AlbumBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
     public String obtenerIdPorNombre(String nombreArtista) {
         return artistaBO.obtenerIdPorNombre(nombreArtista);
     }
+
     
-    
+    public AlbumPOJO convertirAlbumdeDTOaPOJO(AlbumDTO dto) {
+        AlbumPOJO POJO;
+        List<ObjectId> cancionesObjectId = new ArrayList<>();
+        for (String cancionId : dto.getCanciones()) {
+            cancionesObjectId.add(new ObjectId(cancionId));
+        }
+
+        POJO = new AlbumPOJO(
+                dto.getNombre(),
+                dto.getFechaLanzamiento(),
+                dto.getGenero(),
+                dto.getPortada(),
+                new ObjectId(dto.getArtista()),
+                cancionesObjectId
+        );
+
+        return POJO;
+    }
+
 }

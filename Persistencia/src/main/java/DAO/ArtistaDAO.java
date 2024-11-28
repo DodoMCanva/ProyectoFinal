@@ -7,9 +7,6 @@ import POJO.ArtistaPOJO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -20,7 +17,7 @@ import org.bson.types.ObjectId;
 public class ArtistaDAO implements IArtistaDAO {
     // Usar la clase ConexionDB para obtener la conexión a la base de datos
 
-    private MongoDatabase database;
+     private MongoDatabase database;
 
     public ArtistaDAO() {
         // Crear una instancia de ConexionDB para obtener la conexión

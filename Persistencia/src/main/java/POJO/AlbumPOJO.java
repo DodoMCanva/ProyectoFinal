@@ -1,6 +1,6 @@
 package POJO;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -12,13 +12,22 @@ public class AlbumPOJO {
 
     private ObjectId id;
     private String nombre;
-    private Date fechaLanzamiento;
+    private LocalDate fechaLanzamiento;
     private String genero;
     private String portada;
     private ObjectId artistaId;
     private List<ObjectId> canciones;
 
     public AlbumPOJO() {
+    }
+
+    public AlbumPOJO(String nombre, LocalDate fechaLanzamiento, String genero, String portada, ObjectId artistaId, List<ObjectId> canciones) {
+        this.nombre = nombre;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.genero = genero;
+        this.portada = portada;
+        this.artistaId = artistaId;
+        this.canciones = canciones;
     }
 
     public ObjectId getId() {
@@ -37,11 +46,11 @@ public class AlbumPOJO {
         this.nombre = nombre;
     }
 
-    public Date getFechaLanzamiento() {
+    public LocalDate getFechaLanzamiento() {
         return fechaLanzamiento;
     }
 
-    public void setFechaLanzamiento(Date fechaLanzamiento) {
+    public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
@@ -76,9 +85,7 @@ public class AlbumPOJO {
     public void setCanciones(List<ObjectId> canciones) {
         this.canciones = canciones;
     }
-    
-    
-    
+
     @Override
     public String toString() {
         return "AlbumPOJO{" + "id="
