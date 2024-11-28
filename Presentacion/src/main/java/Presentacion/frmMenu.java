@@ -14,6 +14,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form frmMenu
+     * @param sesion
      */
     public frmMenu(String sesion) {
         initComponents();
@@ -198,6 +199,11 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
 
         cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Canciones", "Albums", "Artistas", " " }));
+        cboxFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxFiltroActionPerformed(evt);
+            }
+        });
         jPanel1.add(cboxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,7 +224,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Pasamos la referencia del frmMenu al JDialog
-        frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true, this.sesion); // 'this' es el frmMenu actual
+        frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true, this.sesion); 
         dialog.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -234,6 +240,10 @@ public class frmMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void cboxFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxFiltroActionPerformed
+
+    }//GEN-LAST:event_cboxFiltroActionPerformed
+
     public void formatearTablas() {
         TableColumnModel modeloColumnas = this.tblCanciones.getColumnModel();
         ActionListener onOrdenadoresClickListener = new ActionListener() {
@@ -244,8 +254,8 @@ public class frmMenu extends javax.swing.JFrame {
 
             }
         };
-        modeloColumnas.getColumn(2).setCellRenderer(new JButtonRenderer("Software"));
-        modeloColumnas.getColumn(2).setCellEditor(new JButtonCellEditor("Software", onOrdenadoresClickListener));
+//        modeloColumnas.getColumn(2).setCellRenderer(new JButtonRenderer("Software"));
+//        modeloColumnas.getColumn(2).setCellEditor(new JButtonCellEditor("Software", onOrdenadoresClickListener));
 
         
 
@@ -253,7 +263,7 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     public void cargarTablaCancion() {
-
+    
     }
 
 //    /**

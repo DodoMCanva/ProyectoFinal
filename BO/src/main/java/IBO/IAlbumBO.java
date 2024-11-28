@@ -5,7 +5,8 @@
 package IBO;
 
 import DTO.AlbumDTO;
-import POJO.AlbumPOJO;
+import Exceptions.ExceptionBO;
+import java.util.List;
 
 /**
  *
@@ -14,9 +15,11 @@ import POJO.AlbumPOJO;
 public interface IAlbumBO {
 
     public void insertarAlbum(AlbumDTO album);
-    
+
     String obtenerIdPorNombre(String nombreArtista);
-    
-    
-    
+
+    List<AlbumDTO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionBO;
+
+    List<AlbumDTO> busquedaGeneralAlbum(List<String> generosRestringidos, String busqueda) throws ExceptionBO;
+
 }

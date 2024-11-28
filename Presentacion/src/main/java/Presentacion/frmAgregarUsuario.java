@@ -16,8 +16,9 @@ import IBO.IUsuarioBO;
  * @author cesar
  */
 public class frmAgregarUsuario extends javax.swing.JFrame {
- private final IArtistasBO boArtista = null;
-      private final ICancionBO cancionBO=null;
+
+    private final IArtistasBO boArtista = null;
+    private final ICancionBO cancionBO = null;
 
     /**
      * Creates new form JframeAgregarUsuario
@@ -133,30 +134,30 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
- try {
-        // Crear instancia del BO
-        IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
+        try {
+            // Crear instancia del BO
+            IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
 
-        // Obtener datos del formulario
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
-        usuarioDTO.setNombre(txtNombreUsuario.getText());
-        usuarioDTO.setEmail(txtCorreoElectronico.getText());
-        usuarioDTO.setPassword(txtContrsena.getText());
-        //usuarioDTO.setImagen(txtImagen.getText()); // Suponiendo que tienes un campo para la URL de la imagen
-        //usuarioDTO.setFavoritos(new FavoritosDTO(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-        //usuarioDTO.setRestringidosGeneros(new ArrayList<>());
+            // Obtener datos del formulario
+            UsuarioDTO usuarioDTO = new UsuarioDTO();
+            usuarioDTO.setNombre(txtNombreUsuario.getText());
+            usuarioDTO.setEmail(txtCorreoElectronico.getText());
+            usuarioDTO.setPassword(txtContrsena.getText());
+            //usuarioDTO.setImagen(txtImagen.getText()); // Suponiendo que tienes un campo para la URL de la imagen
+            //usuarioDTO.setFavoritos(new FavoritosDTO(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+            //usuarioDTO.setRestringidosGeneros(new ArrayList<>());
 
-        // Registrar usuario
-        usuarioBO.guardarUsuario(usuarioDTO);
-        System.out.println("sss"+ usuarioDTO.getNombre());
+            // Registrar usuario
+            usuarioBO.guardarUsuario(usuarioDTO);
+            System.out.println("sss" + usuarioDTO.getNombre());
 
-        // Mensaje de éxito
-        javax.swing.JOptionPane.showMessageDialog(this, "Usuario registrado con éxito.");
-    } catch (Exception e) {
-        // Mostrar error
-        javax.swing.JOptionPane.showMessageDialog(this, "Error al registrar usuario: " + e.getMessage());
-    }
-        frmInicioSesion ini=new frmInicioSesion();
+            // Mensaje de éxito
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuario registrado con éxito.");
+        } catch (Exception e) {
+            // Mostrar error
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al registrar usuario: " + e.getMessage());
+        }
+        frmInicioSesion ini = new frmInicioSesion();
         ini.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed

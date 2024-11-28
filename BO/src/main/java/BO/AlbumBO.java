@@ -6,6 +6,7 @@ package BO;
 
 import DAO.AlbumDAO;
 import DTO.AlbumDTO;
+import Exceptions.ExceptionBO;
 import Exceptions.ExceptionDAO;
 import IBO.IAlbumBO;
 import IBO.IArtistasBO;
@@ -19,14 +20,14 @@ import org.bson.types.ObjectId;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class AlbumBO implements IAlbumBO {
 
     private IArtistasBO artistaBO;
     private IAlbumDAO albumDAO;
-    
-      public AlbumBO() {
+
+    public AlbumBO() {
         this.albumDAO = new AlbumDAO(); // Inicialización explícita
     }
 
@@ -44,7 +45,26 @@ public class AlbumBO implements IAlbumBO {
         return artistaBO.obtenerIdPorNombre(nombreArtista);
     }
 
-    
+    @Override
+    public List<AlbumDTO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionBO {
+        try {
+            List<AlbumPOJO> pojoList = albumDAO.consultaGeneralAlbums(generosRestringidos);
+            return convertirListaDePOJOaDTO(pojoList);
+        } catch (ExceptionDAO ex) {
+            throw new ExceptionBO("Error al consultar álbumes en la capa BO", ex);
+        }
+    }
+
+    @Override
+    public List<AlbumDTO> busquedaGeneralAlbum(List<String> generosRestringidos, String busqueda) throws ExceptionBO {
+        try {
+            List<AlbumPOJO> pojoList = albumDAO.busquedaGeneralAlbum(generosRestringidos, busqueda);
+            return convertirListaDePOJOaDTO(pojoList);
+        } catch (ExceptionDAO ex) {
+            throw new ExceptionBO("Error en la búsqueda de álbumes en la capa BO", ex);
+        }
+    }
+
     public AlbumPOJO convertirAlbumdeDTOaPOJO(AlbumDTO dto) {
         AlbumPOJO POJO;
         List<ObjectId> cancionesObjectId = new ArrayList<>();
@@ -64,4 +84,25 @@ public class AlbumBO implements IAlbumBO {
         return POJO;
     }
 
+    private AlbumDTO convertirAlbumdePOJOaDTO(AlbumPOJO pojo) {
+        List<String> cancionesString = new ArrayList<>();
+        for (ObjectId cancionId : pojo.getCanciones()) {
+            cancionesString.add(cancionId.toHexString());
+        }
+        return new AlbumDTO(
+                pojo.getNombre(),
+                pojo.getFechaLanzamiento(),
+                pojo.getGenero(),
+                pojo.getPortada(),
+                pojo.getArtistaId().toHexString(),
+                cancionesString);
+    }
+
+    private List<AlbumDTO> convertirListaDePOJOaDTO(List<AlbumPOJO> pojoList) {
+        List<AlbumDTO> dtoList = new ArrayList<>();
+        for (AlbumPOJO pojo : pojoList) {
+            dtoList.add(convertirAlbumdePOJOaDTO(pojo));
+        }
+        return dtoList;
+    }
 }

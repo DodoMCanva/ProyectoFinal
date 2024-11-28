@@ -8,7 +8,6 @@ import POJO.IntegrantesPOJO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,8 +116,8 @@ public class ArtistaDAO implements IArtistaDAO {
             Bson filtroGeneros = Filters.nin("genero", generosRestringidos);
             String busquedaAjustada = ".*" + busqueda + ".*";
             Bson filtroBusqueda = Filters.or(
-                    Filters.regex("nombre", busquedaAjustada, "i"), 
-                    Filters.regex("tipo", busquedaAjustada, "i") 
+                    Filters.regex("nombre", busquedaAjustada, "i"),
+                    Filters.regex("tipo", busquedaAjustada, "i")
             );
             Bson filtroCombinado = Filters.and(filtroGeneros, filtroBusqueda);
             for (Document doc : coleccionArtistas.find(filtroCombinado)) {

@@ -161,7 +161,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
 
         // Grupo 9: Coldplay
         ListaIntegrantes = new ArrayList<>();
-         ListaIntegrantes.add(new IntegranteDTO("Chris Martin", "Vocalista", "/ImagenesArtistas/ChrisMartin.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Fecha de fundación oficial
+        ListaIntegrantes.add(new IntegranteDTO("Chris Martin", "Vocalista", "/ImagenesArtistas/ChrisMartin.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Fecha de fundación oficial
         ListaIntegrantes.add(new IntegranteDTO("Jonny Buckland", "Guitarrista", "/ImagenesArtistas/JonnyBuckland.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Fecha inicial del grupo
         ListaIntegrantes.add(new IntegranteDTO("Guy Berryman", "Bajista", "/ImagenesArtistas/GuyBerryman.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Inicio del proyecto musical
         ListaIntegrantes.add(new IntegranteDTO("Will Champion", "Baterista", "/ImagenesArtistas/WillChampion.jpeg", LocalDate.of(1998, 7, 31), null, true)); // Fecha de ingreso oficial
@@ -208,7 +208,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         // Grupo 14: Arctic Monkeys
         ListaIntegrantes.add(new IntegranteDTO("Alex Turner", "Vocalista/Guitarrista", "/ImagenesArtistas/AlexTurner.jpeg", LocalDate.of(2002, 6, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Jamie Cook", "Guitarrista", "/ImagenesArtistas/JamieCook.jpeg", LocalDate.of(2002, 6, 1), null, true));
-        ListaIntegrantes.add(new IntegranteDTO("Andy Nicholson", "Bajista", "/ImagenesArtistas/AndyNicholson.jpeg", LocalDate.of(2002, 6, 1), LocalDate.of(2006, 1, 1), true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Andy Nicholson", "Bajista", "/ImagenesArtistas/AndyNicholson.jpeg", LocalDate.of(2002, 6, 1), LocalDate.of(2006, 1, 1), true));
         ListaIntegrantes.add(new IntegranteDTO("Nick O'Malley", "Bajista", "/ImagenesArtistas/NickOMalley.jpeg", LocalDate.of(2006, 5, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Matt Helders", "Baterista", "/ImagenesArtistas/MattHelders.jpeg", LocalDate.of(2002, 6, 1), null, true));
         ListaArtistasGrupo[13] = new ArtistasDTO("Arctic Monkeys", "/ImagenesArtistas/ArcticMonkeys.jpeg", "Grupo", "Indie Rock", ListaIntegrantes);
@@ -370,7 +370,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaIntegrantes.add(new IntegranteDTO("Irasema", "Vocalista", "/ImagenesArtistas/IrasemaPandora.jpeg", LocalDate.of(1985, 1, 1), null, true));  // Miembro original
         ListaIntegrantes.add(new IntegranteDTO("Marta", "Vocalista", "/ImagenesArtistas/MartaPandora.jpeg", LocalDate.of(1985, 1, 1), null, true));  // Miembro original
         ListaArtistasGrupo[34] = new ArtistasDTO("Pandora", "/ImagenesArtistas/Pandora.jpeg", "Grupo", "Pop", ListaIntegrantes);
-        
+
         // Grupo 36: Spice Girls
         ListaIntegrantes = new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Mel B (Scary Spice)", "Vocalista", "/ImagenesArtistas/MelB.jpeg", LocalDate.of(1994, 1, 1), null, true));  // Miembro original
