@@ -1,12 +1,17 @@
-
 package Presentacion;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author equipo 2
  */
 public class frmMenu extends javax.swing.JFrame {
+
     private String sesion;
+
     /**
      * Creates new form frmMenu
      */
@@ -212,35 +217,45 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      // Pasamos la referencia del frmMenu al JDialog
-    frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true, this.sesion); // 'this' es el frmMenu actual
-    dialog.setVisible(true);
-      
+        // Pasamos la referencia del frmMenu al JDialog
+        frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true, this.sesion); // 'this' es el frmMenu actual
+        dialog.setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String filtro = cboxFiltro.getSelectedItem().toString();
         switch (filtro) {
             case "Ninguno":
-                
+
                 break;
             default:
                 throw new AssertionError();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    
-    
-    public void formatearTablas(){
-    
-    }
-    
-    public void cargarTablaCancion(){
+    public void formatearTablas() {
+        TableColumnModel modeloColumnas = this.tblCanciones.getColumnModel();
+        ActionListener onOrdenadoresClickListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               /* int id = getIdSeleccionadoTabla();
+                Ordenadores(Long.valueOf(id));*/
+
+            }
+        };
+        modeloColumnas.getColumn(2).setCellRenderer(new JButtonRenderer("Software"));
+        modeloColumnas.getColumn(2).setCellEditor(new JButtonCellEditor("Software", onOrdenadoresClickListener));
+
+        
+
         
     }
-    
-    
-    
+
+    public void cargarTablaCancion() {
+
+    }
+
 //    /**
 //     * @param args the command line arguments
 //     */
