@@ -6,28 +6,38 @@ import org.bson.types.ObjectId;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class UsuarioPOJO {
 
     private ObjectId id;
     private String nombre;
     private String email;
-    private String password; // hashed
+    private String password;
     private String imagen;
-    //private Favoritos favoritos;
     private List<String> restringidosGeneros;
 
     public UsuarioPOJO() {
     }
 
-    public UsuarioPOJO(String nombre, String email, String password, String imagen) {
+    public UsuarioPOJO(String nombre, String email, String password, String imagen, List<String> restringidosGeneros) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.imagen = imagen;
-        //this.restringidosGeneros = restringidosGeneros;
+        this.restringidosGeneros = restringidosGeneros;
     }
+
+    public UsuarioPOJO(ObjectId id, String nombre, String email, String password, String imagen, List<String> restringidosGeneros) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.imagen = imagen;
+        this.restringidosGeneros = restringidosGeneros;
+    }
+
+    
 
     public ObjectId getId() {
         return id;

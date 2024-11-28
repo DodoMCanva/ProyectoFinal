@@ -1,14 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package POJO;
 
 import org.bson.types.ObjectId;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class CancionPOJO {
 
@@ -17,6 +14,12 @@ public class CancionPOJO {
     private String duracion;
 
     public CancionPOJO() {
+    }
+
+    public CancionPOJO(ObjectId id, String nombre, String duracion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.duracion = duracion;
     }
 
     public CancionPOJO(String nombre, String duracion) {

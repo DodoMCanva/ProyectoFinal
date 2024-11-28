@@ -21,6 +21,18 @@ public class AlbumPOJO {
     public AlbumPOJO() {
     }
 
+    public AlbumPOJO(ObjectId id, String nombre, LocalDate fechaLanzamiento, String genero, String portada, ObjectId artistaId, List<ObjectId> canciones) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.genero = genero;
+        this.portada = portada;
+        this.artistaId = artistaId;
+        this.canciones = canciones;
+    }
+
+    
+    
     public AlbumPOJO(String nombre, LocalDate fechaLanzamiento, String genero, String portada, ObjectId artistaId, List<ObjectId> canciones) {
         this.nombre = nombre;
         this.fechaLanzamiento = fechaLanzamiento;

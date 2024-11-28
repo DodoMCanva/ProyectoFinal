@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package POJO;
 
 import java.util.List;
@@ -21,6 +17,15 @@ public class ArtistaPOJO {
     private List<IntegrantesPOJO> integrantes;
 
     public ArtistaPOJO() {
+    }
+
+    public ArtistaPOJO(ObjectId id, String nombre, String imagen, String tipo, String genero, List<IntegrantesPOJO> integrantes) {
+        this.id = id;
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.tipo = tipo;
+        this.genero = genero;
+        this.integrantes = integrantes;
     }
 
     public ArtistaPOJO(String nombre, String imagen, String tipo, String genero) {
