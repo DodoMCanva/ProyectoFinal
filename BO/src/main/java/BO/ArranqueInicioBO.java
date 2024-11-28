@@ -770,7 +770,77 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("La Gata Bajo la Lluvia", "3:42"),
                     new CancionDTO("Como Tu Mujer", "3:54"),
                     new CancionDTO("Tarde", "3:57"),
-                    new CancionDTO("Jamás Te Prometí un Jardín de Rosas", "3:00")
+                    new CancionDTO("Jamás Te Prometí un Jardín de Rosas", "3:00"),
+                    // Canciones de The Beatles
+                    new CancionDTO("Come Together", "4:20"),
+                    new CancionDTO("Something", "3:03"),
+                    new CancionDTO("Here Comes the Sun", "3:05"),
+                    new CancionDTO("Lucy in the Sky with Diamonds", "3:28"),
+                    new CancionDTO("A Day in the Life", "5:38"),
+                    new CancionDTO("Sgt. Pepper's Lonely Hearts Club Band", "2:02"),
+                    // Canciones de The Rolling Stones
+                    new CancionDTO("Tumbling Dice", "3:45"),
+                    new CancionDTO("Rocks Off", "4:32"),
+                    new CancionDTO("Happy", "3:04"),
+                    new CancionDTO("Brown Sugar", "3:49"),
+                    new CancionDTO("Wild Horses", "5:43"),
+                    new CancionDTO("Can't You Hear Me Knocking", "7:15"),
+                    // Canciones de Queen
+                    new CancionDTO("Bohemian Rhapsody", "5:55"),
+                    new CancionDTO("Somebody to Love", "4:56"),
+                    new CancionDTO("You're My Best Friend", "2:52"),
+                    new CancionDTO("We Will Rock You", "2:02"),
+                    new CancionDTO("We Are the Champions", "3:00"),
+                    new CancionDTO("Don't Stop Me Now", "3:29"),
+                    // Canciones de Pink Floyd
+                    new CancionDTO("Time", "6:53"),
+                    new CancionDTO("Money", "6:22"),
+                    new CancionDTO("Us and Them", "7:49"),
+                    new CancionDTO("Another Brick in the Wall (Part 2)", "3:59"),
+                    new CancionDTO("Comfortably Numb", "6:22"),
+                    new CancionDTO("Hey You", "4:41"),
+                    // Canciones de Nirvana
+                    new CancionDTO("Smells Like Teen Spirit", "5:01"),
+                    new CancionDTO("Come as You Are", "3:38"),
+                    new CancionDTO("Lithium", "4:17"),
+                    new CancionDTO("Heart-Shaped Box", "4:41"),
+                    new CancionDTO("Rape Me", "2:49"),
+                    new CancionDTO("All Apologies", "3:52"),
+                    // Canciones de The Eagles
+                    new CancionDTO("Hotel California", "6:30"),
+                    new CancionDTO("New Kid in Town", "5:03"),
+                    new CancionDTO("Life in the Fast Lane", "4:46"),
+                    new CancionDTO("Tequila Sunrise", "2:52"),
+                    new CancionDTO("Desperado", "3:33"),
+                    new CancionDTO("Doolin' Dalton", "3:26"),
+                    // Canciones de Metallica
+                    new CancionDTO("Battery", "5:12"),
+                    new CancionDTO("Welcome Home (Sanitarium)", "6:27"),
+                    new CancionDTO("Master of Puppets", "8:35"),
+                    new CancionDTO("For Whom the Bell Tolls", "5:10"),
+                    new CancionDTO("Fade to Black", "6:57"),
+                    new CancionDTO("One", "7:24"),
+                    // Canciones de Led Zeppelin
+                    new CancionDTO("Stairway to Heaven", "8:02"),
+                    new CancionDTO("Black Dog", "4:55"),
+                    new CancionDTO("Rock and Roll", "3:41"),
+                    new CancionDTO("Kashmir", "8:31"),
+                    new CancionDTO("Trampled Under Foot", "5:35"),
+                    new CancionDTO("Houses of the Holy", "4:01"),
+                    // Canciones de Coldplay
+                    new CancionDTO("Clocks", "5:07"),
+                    new CancionDTO("The Scientist", "5:09"),
+                    new CancionDTO("In My Place", "3:48"),
+                    new CancionDTO("Viva la Vida", "4:02"),
+                    new CancionDTO("Yellow", "4:29"),
+                    new CancionDTO("Fix You", "4:55"),
+                    // Canciones de Imagine Dragons
+                    new CancionDTO("Radioactive", "3:07"),
+                    new CancionDTO("Demons", "2:57"),
+                    new CancionDTO("It's Time", "4:00"),
+                    new CancionDTO("Believer", "3:24"),
+                    new CancionDTO("Thunder", "3:07"),
+                    new CancionDTO("Whatever It Takes", "3:21")
             );
 
             for (CancionDTO cancion : canciones) {
@@ -1445,6 +1515,156 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Jamás Te Prometí un Jardín de Rosas"));
             AlbumDTO album92 = new AlbumDTO("Canta a Juan Gabriel Vol. 6", LocalDate.of(1988, Month.JUNE, 21), "Ranchera", "/ImagenesAlbumes/CantaAJuanGabrielVol6.jpeg", artistaBO.obtenerIdPorNombre("Rosio Durcal"), listaCanciones);
             albumBO.insertarAlbum(album92);
+
+            //AQUI TERMINAN ALBUMS SOLISTAS, COMIENZAN EN GRUPO
+            // Álbumes de The Beatles
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Come Together"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Something"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Here Comes the Sun"));
+            AlbumDTO album93 = new AlbumDTO("Abbey Road", LocalDate.of(1969, Month.SEPTEMBER, 26), "Rock", "/ImagenesAlbumes/AbbeyRoad.jpeg", artistaBO.obtenerIdPorNombre("The Beatles"), listaCanciones);
+            albumBO.insertarAlbum(album93);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Lucy in the Sky with Diamonds"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("A Day in the Life"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Sgt. Pepper's Lonely Hearts Club Band"));
+            AlbumDTO album94 = new AlbumDTO("Sgt. Pepper's Lonely Hearts Club Band", LocalDate.of(1967, Month.JUNE, 1), "Rock", "/ImagenesAlbumes/SgtPepper.jpeg", artistaBO.obtenerIdPorNombre("The Beatles"), listaCanciones);
+            albumBO.insertarAlbum(album94);
+
+            // Álbumes de The Rolling Stones
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Tumbling Dice"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Rocks Off"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Happy"));
+            AlbumDTO album95 = new AlbumDTO("Exile on Main St.", LocalDate.of(1972, Month.MAY, 12), "Rock", "/ImagenesAlbumes/ExileOnMainSt.jpeg", artistaBO.obtenerIdPorNombre("The Rolling Stones"), listaCanciones);
+            albumBO.insertarAlbum(album95);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Brown Sugar"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Wild Horses"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Can't You Hear Me Knocking"));
+            AlbumDTO album96 = new AlbumDTO("Sticky Fingers", LocalDate.of(1971, Month.APRIL, 23), "Rock", "/ImagenesAlbumes/StickyFingers.jpeg", artistaBO.obtenerIdPorNombre("The Rolling Stones"), listaCanciones);
+            albumBO.insertarAlbum(album96);
+
+            // Álbumes de Queen
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Bohemian Rhapsody"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Somebody to Love"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("You're My Best Friend"));
+            AlbumDTO album97 = new AlbumDTO("A Night at the Opera", LocalDate.of(1975, Month.NOVEMBER, 21), "Rock", "/ImagenesAlbumes/ANightAtTheOpera.jpeg", artistaBO.obtenerIdPorNombre("Queen"), listaCanciones);
+            albumBO.insertarAlbum(album97);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("We Will Rock You"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("We Are the Champions"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Don't Stop Me Now"));
+            AlbumDTO album98 = new AlbumDTO("News of the World", LocalDate.of(1977, Month.OCTOBER, 28), "Rock", "/ImagenesAlbumes/NewsOfTheWorld.jpeg", artistaBO.obtenerIdPorNombre("Queen"), listaCanciones);
+            albumBO.insertarAlbum(album98);
+
+            // Álbumes de Pink Floyd
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Time"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Money"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Us and Them"));
+            AlbumDTO album99 = new AlbumDTO("The Dark Side of the Moon", LocalDate.of(1973, Month.MARCH, 1), "Rock", "/ImagenesAlbumes/TheDarkSideOfTheMoon.jpeg", artistaBO.obtenerIdPorNombre("Pink Floyd"), listaCanciones);
+            albumBO.insertarAlbum(album99);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Another Brick in the Wall (Part 2)"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Comfortably Numb"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Hey You"));
+            AlbumDTO album100 = new AlbumDTO("The Wall", LocalDate.of(1979, Month.NOVEMBER, 30), "Rock", "/ImagenesAlbumes/TheWall.jpeg", artistaBO.obtenerIdPorNombre("Pink Floyd"), listaCanciones);
+            albumBO.insertarAlbum(album100);
+
+            // Álbumes de Nirvana
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Smells Like Teen Spirit"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Come as You Are"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Lithium"));
+            AlbumDTO album101 = new AlbumDTO("Nevermind", LocalDate.of(1991, Month.SEPTEMBER, 24), "Grunge", "/ImagenesAlbumes/Nevermind.jpeg", artistaBO.obtenerIdPorNombre("Nirvana"), listaCanciones);
+            albumBO.insertarAlbum(album101);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Heart-Shaped Box"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Rape Me"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("All Apologies"));
+            AlbumDTO album102 = new AlbumDTO("In Utero", LocalDate.of(1993, Month.SEPTEMBER, 21), "Grunge", "/ImagenesAlbumes/InUtero.jpeg", artistaBO.obtenerIdPorNombre("Nirvana"), listaCanciones);
+            albumBO.insertarAlbum(album102);
+
+            // Álbumes de The Eagles
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Hotel California"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("New Kid in Town"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Life in the Fast Lane"));
+            AlbumDTO album103 = new AlbumDTO("Hotel California", LocalDate.of(1976, Month.DECEMBER, 8), "Rock", "/ImagenesAlbumes/HotelCalifornia.jpeg", artistaBO.obtenerIdPorNombre("The Eagles"), listaCanciones);
+            albumBO.insertarAlbum(album103);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Tequila Sunrise"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Desperado"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Doolin' Dalton"));
+            AlbumDTO album104 = new AlbumDTO("Desperado", LocalDate.of(1973, Month.APRIL, 17), "Rock", "/ImagenesAlbumes/Desperado.jpeg", artistaBO.obtenerIdPorNombre("The Eagles"), listaCanciones);
+            albumBO.insertarAlbum(album104);
+
+            // Álbumes de Metallica
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Battery"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Welcome Home (Sanitarium)"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Master of Puppets"));
+            AlbumDTO album105 = new AlbumDTO("Master of Puppets", LocalDate.of(1986, Month.MARCH, 3), "Metal", "/ImagenesAlbumes/MasterOfPuppets.jpeg", artistaBO.obtenerIdPorNombre("Metallica"), listaCanciones);
+            albumBO.insertarAlbum(album105);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("For Whom the Bell Tolls"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Fade to Black"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("One"));
+            AlbumDTO album106 = new AlbumDTO("Ride the Lightning", LocalDate.of(1984, Month.JULY, 27), "Metal", "/ImagenesAlbumes/RideTheLightning.jpeg", artistaBO.obtenerIdPorNombre("Metallica"), listaCanciones);
+            albumBO.insertarAlbum(album106);
+
+            // Álbumes de Led Zeppelin
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Stairway to Heaven"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Black Dog"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Rock and Roll"));
+            AlbumDTO album107 = new AlbumDTO("IV (Four Symbols)", LocalDate.of(1971, Month.NOVEMBER, 8), "Rock", "/ImagenesAlbumes/IV.jpeg", artistaBO.obtenerIdPorNombre("Led Zeppelin"), listaCanciones);
+            albumBO.insertarAlbum(album107);
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Kashmir"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Trampled Under Foot"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Houses of the Holy"));
+            AlbumDTO album108 = new AlbumDTO("Physical Graffiti", LocalDate.of(1975, Month.FEBRUARY, 24), "Rock", "/ImagenesAlbumes/PhysicalGraffiti.jpeg", artistaBO.obtenerIdPorNombre("Led Zeppelin"), listaCanciones);
+            albumBO.insertarAlbum(album108);
+
+            // Álbumes de Coldplay
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Clocks"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("The Scientist"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("In My Place"));
+            AlbumDTO album109 = new AlbumDTO("A Rush of Blood to the Head", LocalDate.of(2002, Month.AUGUST, 26), "Rock", "/ImagenesAlbumes/ARushOfBloodToTheHead.jpeg", artistaBO.obtenerIdPorNombre("Coldplay"), listaCanciones);
+            albumBO.insertarAlbum(album109);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Viva la Vida"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Yellow"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Fix You"));
+            AlbumDTO album110 = new AlbumDTO("Viva la Vida or Death and All His Friends", LocalDate.of(2008, Month.JUNE, 12), "Rock", "/ImagenesAlbumes/VivaLaVida.jpeg", artistaBO.obtenerIdPorNombre("Coldplay"), listaCanciones);
+            albumBO.insertarAlbum(album110);
+
+            // Álbumes de Imagine Dragons
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Radioactive"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Demons"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("It's Time"));
+            AlbumDTO album111 = new AlbumDTO("Night Visions", LocalDate.of(2012, Month.SEPTEMBER, 4), "Rock", "/ImagenesAlbumes/NightVisions.jpeg", artistaBO.obtenerIdPorNombre("Imagine Dragons"), listaCanciones);
+            albumBO.insertarAlbum(album111);
+
+            listaCanciones.clear();
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Believer"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Thunder"));
+            listaCanciones.add(cancionBO.obtenerIdPorNombre("Whatever It Takes"));
+            AlbumDTO album112 = new AlbumDTO("Evolve", LocalDate.of(2017, Month.JUNE, 23), "Rock", "/ImagenesAlbumes/Evolve.jpeg", artistaBO.obtenerIdPorNombre("Imagine Dragons"), listaCanciones);
+            albumBO.insertarAlbum(album112);
 
         } catch (ExceptionBO ex) {
             Logger.getLogger(ArranqueInicioBO.class.getName()).log(Level.SEVERE, null, ex);
