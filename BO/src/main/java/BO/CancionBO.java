@@ -7,6 +7,8 @@ import Exceptions.ExceptionDAO;
 import IBO.ICancionBO;
 import IDAO.ICancionDAO;
 import POJO.CancionPOJO;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,8 +31,7 @@ public class CancionBO implements ICancionBO {
             Logger.getLogger(CancionBO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     @Override
     public String obtenerIdPorNombre(String nombreCancion) throws ExceptionBO {
         return cancionDAO.obtenerIdPorNombre(nombreCancion);
@@ -45,4 +46,38 @@ public class CancionBO implements ICancionBO {
 
     }
 
+    @Override
+    public List<CancionDTO> consultaGeneralCancion(List<String> generosRestringidos) throws ExceptionBO {
+        try {
+            List<CancionPOJO> pojoList = cancionDAO.consultaGeneralCancion(generosRestringidos);
+            return convertirListaDePOJOaDTO(pojoList);
+        } catch (ExceptionDAO ex) {
+            throw new ExceptionBO("Error al consultar las canciones en la capa BO", ex);
+        }
+    }
+
+    @Override
+    public List<CancionDTO> busquedaGeneralCancion(List<String> generosRestringidos, String busqueda) throws ExceptionBO {
+        try {
+            List<CancionPOJO> pojoList = cancionDAO.busquedaGeneralCancion(generosRestringidos, busqueda);
+            return convertirListaDePOJOaDTO(pojoList);
+        } catch (ExceptionDAO ex) {
+            throw new ExceptionBO("Error en la búsqueda de canciones en la capa BO", ex);
+        }
+    }
+
+    private CancionDTO convertirCancionPOJOaDTO(CancionPOJO pojo) {
+        return new CancionDTO(
+                pojo.getNombre(),
+                pojo.getDuracion()
+        );
+    }
+
+    private List<CancionDTO> convertirListaDePOJOaDTO(List<CancionPOJO> pojoList) {
+        List<CancionDTO> dtoList = new ArrayList<>();
+        for (CancionPOJO pojo : pojoList) {
+            dtoList.add(convertirCancionPOJOaDTO(pojo));
+        }
+        return dtoList;
+    }
 }

@@ -3,6 +3,7 @@ package BO;
 import DAO.ArtistaDAO;
 import DTO.ArtistasDTO;
 import DTO.IntegranteDTO;
+import Exceptions.ExceptionBO;
 import Exceptions.ExceptionDAO;
 import IBO.IArtistasBO;
 import IDAO.IArtistaDAO;
@@ -59,6 +60,60 @@ public class ArtistaBO implements IArtistasBO {
 
         return POJO;
     }
+
+       @Override
+    public List<ArtistasDTO> consultaGeneralArtista(List<String> generosRestringidos) throws ExceptionBO {
+        try {
+            List<ArtistaPOJO> pojoList = artistasDAO.consultaGeneralArtista(generosRestringidos);
+            return convertirListaDePOJOaDTO(pojoList);
+        } catch (ExceptionDAO ex) {
+            throw new ExceptionBO("Error al consultar los artistas en la capa BO", ex);
+        }
+    }
+
+    @Override
+    public List<ArtistasDTO> busquedaGeneralArtista(List<String> generosRestringidos, String busqueda) throws ExceptionBO {
+        try {
+            List<ArtistaPOJO> pojoList = artistasDAO.busquedaGeneralArtista(generosRestringidos, busqueda);
+            return convertirListaDePOJOaDTO(pojoList);
+        } catch (ExceptionDAO ex) {
+            throw new ExceptionBO("Error en la búsqueda de artistas en la capa BO", ex);
+        }
+    }
+
+   
+
+    private ArtistasDTO convertirArtistaPOJOaDTO(ArtistaPOJO pojo) {
+        List<IntegranteDTO> integrantesDTO = new ArrayList<>();
+        if (pojo.getIntegrantes() != null) {
+            for (IntegrantesPOJO integrante : pojo.getIntegrantes()) {
+                integrantesDTO.add(new IntegranteDTO(
+                        integrante.getNombre(),
+                        integrante.getRol(),
+                        integrante.getImagen(),
+                        integrante.getIngreso(),
+                        integrante.getSalida(),
+                        integrante.isEstado()
+                ));
+            }
+        }
+        return new ArtistasDTO(
+                pojo.getNombre(),
+                pojo.getImagen(),
+                pojo.getTipo(),
+                pojo.getGenero(),
+                integrantesDTO
+        );
+    }
+
+    private List<ArtistasDTO> convertirListaDePOJOaDTO(List<ArtistaPOJO> pojoList) {
+        List<ArtistasDTO> dtoList = new ArrayList<>();
+        for (ArtistaPOJO pojo : pojoList) {
+            dtoList.add(convertirArtistaPOJOaDTO(pojo));
+        }
+        return dtoList;
+    }
+
 
     public List<IntegrantesPOJO> convertirIntegrantesDTOaPOJO(ArtistasDTO artDTO) {
         List<IntegrantesPOJO> listaPOJO = new ArrayList<>();
