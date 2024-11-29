@@ -83,19 +83,19 @@ public class frmBiblioteca extends javax.swing.JFrame {
         tblCanciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Imagen", "Nombre", "Duración", "Favorito"
+                "Nombre", "Duración", "Favorito"
             }
         ));
         tblCanciones.setGridColor(new java.awt.Color(204, 153, 255));
@@ -204,19 +204,19 @@ public class frmBiblioteca extends javax.swing.JFrame {
         tblIntegrantes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblIntegrantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Estado", "Nombre", "Rol", "Ingreso", "Salida"
+                "Estado", "Nombre", "Rol", "Ingreso", "Salida", "Imagen"
             }
         ));
         tblIntegrantes.setGridColor(new java.awt.Color(204, 153, 255));

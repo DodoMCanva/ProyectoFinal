@@ -238,7 +238,7 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnElectronica, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 90, 20));
 
-        getContentPane().add(pnlGenNoDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
+        getContentPane().add(pnlGenNoDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

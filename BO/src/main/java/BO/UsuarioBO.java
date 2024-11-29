@@ -7,6 +7,7 @@ import Exceptions.ExceptionDAO;
 import IBO.IUsuarioBO;
 import IDAO.IUsuarioDAO;
 import POJO.UsuarioPOJO;
+import java.util.ArrayList;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
@@ -76,7 +77,9 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public List<String> consultaRestringidos(String sesion) throws ExceptionBO {
-        return null;
+       List<String> ListaVAcia= new ArrayList<>();
+       ListaVAcia.add("PRecioso");
+        return ListaVAcia;
     }
 
     @Override

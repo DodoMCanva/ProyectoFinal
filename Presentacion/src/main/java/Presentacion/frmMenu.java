@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import utilerias.ImageRenderer;
 import utilerias.JButtonCellEditor;
 import utilerias.JButtonRenderer;
 
@@ -33,10 +34,11 @@ public class frmMenu extends javax.swing.JFrame {
     private ICancionBO canBO = new CancionBO();
     private IArtistasBO artBO = new ArtistaBO();
     private IAlbumBO albBO = new AlbumBO();
+    
 
     private List<CancionDTO> listaCanciones;
-//    private List<ArtistasDTO> listaArtistas;
-//    private List<AlbumDTO> listaAlbumes;
+    private List<ArtistasDTO> listaArtistas;
+    private List<AlbumDTO> listaAlbumes;
 
     /**
      * Creates new form frmMenu
@@ -44,14 +46,18 @@ public class frmMenu extends javax.swing.JFrame {
      * @param sesion
      */
     public frmMenu(String sesion) throws ExceptionBO {
+        
         System.out.println("SESION"+sesion);
         this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
-//        this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
-//        this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
+        this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
+        this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
         this.sesion = sesion;
         initComponents();
        formatearTablas();
+       reiniciarTablas();
        cargarRegistrosCanciones();
+       cargarRegistrosArtistas();
+       cargarRegistrosAlbum();
        
     }
 
@@ -69,16 +75,16 @@ public class frmMenu extends javax.swing.JFrame {
         tblCanciones = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblAlbumes = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         cboxFiltro = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 500));
 
         jPanel1.setBackground(new java.awt.Color(204, 190, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,8 +106,8 @@ public class frmMenu extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, -1));
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 220, -1));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 70, -1));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 220, -1));
 
         tblArtistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,7 +122,7 @@ public class frmMenu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblArtistas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 170, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 240, 310));
 
         tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,7 +142,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblCanciones);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 170, 260));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 250, 310));
 
         tblAlbumes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,44 +157,7 @@ public class frmMenu extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tblAlbumes);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 170, 260));
-
-        jPanel3.setBackground(new java.awt.Color(204, 102, 255));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Canciones");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(54, 54, 54))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 170, 30));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 240, 310));
 
         jPanel5.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -200,9 +169,9 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(93, 93, 93)
                 .addComponent(jLabel2)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +181,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 170, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 240, -1));
 
         jPanel4.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -223,20 +192,20 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(93, 93, 93))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap())
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 240, -1));
 
         cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Canciones", "Albums", "Artistas", " " }));
         cboxFiltro.addActionListener(new java.awt.event.ActionListener() {
@@ -244,18 +213,44 @@ public class frmMenu extends javax.swing.JFrame {
                 cboxFiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(cboxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 100, -1));
+        jPanel1.add(cboxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, -1));
+
+        jPanel3.setBackground(new java.awt.Color(204, 102, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Canciones");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(108, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(85, 85, 85))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 250, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -358,7 +353,7 @@ public class frmMenu extends javax.swing.JFrame {
 
 
     public void cargarRegistrosCanciones() {
-        reiniciarTablas();
+        //reiniciarTablas();
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaCanciones.forEach(row -> {
             Object[] fila = new Object[3];
@@ -368,30 +363,30 @@ public class frmMenu extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
         });
     }
-//    public void cargarRegistrosAlbum() {
-//        reiniciarTablas();
-//        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
-//        listaAlbumes.forEach(row -> {
-//            Object[] fila = new Object[3];
-//            //implementar imagenes
-//            fila[0] = row.getPortada();
-//            fila[1] = row.getNombre();
-//            fila[2] = "favoritos";
-//            modeloTabla.addRow(fila);
-//        });
-//    }
-//    public void cargarRegistrosArtistas() {
-//        reiniciarTablas();
-//        DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
-//        listaArtistas.forEach(row -> {
-//            Object[] fila = new Object[3];
-//            //implementar imagenes
-//            fila[0] = row.getImagen();
-//            fila[1] = row.getNombre();
-//            fila[2] = "favoritos";
-//            modeloTabla.addRow(fila);
-//        });
-//    }
+    public void cargarRegistrosAlbum() {
+        //reiniciarTablas();
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaAlbumes.forEach(row -> {
+            Object[] fila = new Object[3];
+            //implementar imagenes
+            fila[0] = row.getPortada();
+            fila[1] = row.getNombre();
+            fila[2] = "favoritos";
+            modeloTabla.addRow(fila);
+        });
+    }
+    public void cargarRegistrosArtistas() {
+    DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
+    tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Establecer el renderizador para la columna de imágenes
+    listaArtistas.forEach(row -> {
+        Object[] fila = new Object[3];
+        fila[0] = row.getImagen(); // Ruta de la imagen
+        fila[1] = row.getNombre();
+        fila[2] = "favoritos";
+        modeloTabla.addRow(fila);
+    });
+}
+
 
     private void reiniciarTablas() {
         DefaultTableModel modeloTablaCan = (DefaultTableModel) this.tblCanciones.getModel();
@@ -445,7 +440,6 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
