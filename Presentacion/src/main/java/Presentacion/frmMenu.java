@@ -19,7 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import utilerias.ImageRenderer;
 import utilerias.JButtonCellEditor;
 import utilerias.JButtonRenderer;
 
@@ -377,7 +376,7 @@ public class frmMenu extends javax.swing.JFrame {
     }
     public void cargarRegistrosArtistas() {
     DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
-    tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Establecer el renderizador para la columna de imágenes
+    //tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Establecer el renderizador para la columna de imágenes
     listaArtistas.forEach(row -> {
         Object[] fila = new Object[3];
         fila[0] = row.getImagen(); // Ruta de la imagen

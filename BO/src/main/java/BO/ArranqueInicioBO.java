@@ -1687,6 +1687,531 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Whatever It Takes"));
             AlbumDTO album112 = new AlbumDTO("Evolve", LocalDate.of(2017, Month.JUNE, 23), "Rock", "/ImagenesAlbumes/Evolve.jpeg", artistaBO.obtenerIdPorNombre("Imagine Dragons"), listaCanciones);
             albumBO.insertarAlbum(album112);
+            
+        // Álbumes de Maroon 5
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("She Will Be Loved"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("This Love"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Sunday Morning"));
+        AlbumDTO album113 = new AlbumDTO("Songs About Jane", LocalDate.of(2002, Month.JUNE, 25), "Pop/Rock", "/ImagenesAlbumes/SongsAboutJane.jpeg", artistaBO.obtenerIdPorNombre("Maroon 5"), listaCanciones);
+        albumBO.insertarAlbum(album113);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Sugar"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Animals"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Maps"));
+        AlbumDTO album114 = new AlbumDTO("V", LocalDate.of(2014, Month.SEPTEMBER, 2), "Pop", "/ImagenesAlbumes/V.jpeg", artistaBO.obtenerIdPorNombre("Maroon 5"), listaCanciones);
+        albumBO.insertarAlbum(album114);
+
+        // Álbumes de AC/DC
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Highway to Hell"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Girls Got Rhythm"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("If You Want Blood (You've Got It)"));
+        AlbumDTO album115 = new AlbumDTO("Highway to Hell", LocalDate.of(1979, Month.JULY, 27), "Rock", "/ImagenesAlbumes/HighwayToHell.jpeg", artistaBO.obtenerIdPorNombre("AC/DC"), listaCanciones);
+        albumBO.insertarAlbum(album115);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Back in Black"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Hells Bells"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("You Shook Me All Night Long"));
+        AlbumDTO album116 = new AlbumDTO("Back in Black", LocalDate.of(1980, Month.JULY, 25), "Rock", "/ImagenesAlbumes/BackInBlack.jpeg", artistaBO.obtenerIdPorNombre("AC/DC"), listaCanciones);
+        albumBO.insertarAlbum(album116);
+
+        // Álbumes de Linkin Park
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("In the End"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Crawling"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("One Step Closer"));
+        AlbumDTO album117 = new AlbumDTO("Hybrid Theory", LocalDate.of(2000, Month.OCTOBER, 24), "Nu Metal", "/ImagenesAlbumes/HybridTheory.jpeg", artistaBO.obtenerIdPorNombre("Linkin Park"), listaCanciones);
+        albumBO.insertarAlbum(album117);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Numb"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Faint"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Somewhere I Belong"));
+        AlbumDTO album118 = new AlbumDTO("Meteora", LocalDate.of(2003, Month.MARCH, 25), "Nu Metal", "/ImagenesAlbumes/Meteora.jpeg", artistaBO.obtenerIdPorNombre("Linkin Park"), listaCanciones);
+        albumBO.insertarAlbum(album118);
+
+        // Álbumes de Arctic Monkeys
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("I Bet You Look Good on the Dancefloor"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Fake Tales of San Francisco"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Mardy Bum"));
+        AlbumDTO album119 = new AlbumDTO("Whatever People Say I Am, That's What I'm Not", LocalDate.of(2006, Month.JANUARY, 23), "Indie Rock", "/ImagenesAlbumes/WhateverPeopleSay.jpeg", artistaBO.obtenerIdPorNombre("Arctic Monkeys"), listaCanciones);
+        albumBO.insertarAlbum(album119);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Do I Wanna Know?"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("R U Mine?"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Arabella"));
+        AlbumDTO album120 = new AlbumDTO("AM", LocalDate.of(2013, Month.SEPTEMBER, 9), "Indie Rock", "/ImagenesAlbumes/AM.jpeg", artistaBO.obtenerIdPorNombre("Arctic Monkeys"), listaCanciones);
+        albumBO.insertarAlbum(album120);
+
+        // Álbumes de Twenty One Pilots
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Stressed Out"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Ride"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Tear in My Heart"));
+        AlbumDTO album121 = new AlbumDTO("Blurryface", LocalDate.of(2015, Month.MAY, 17), "Alternative/Indie", "/ImagenesAlbumes/Blurryface.jpeg", artistaBO.obtenerIdPorNombre("Twenty One Pilots"), listaCanciones);
+        albumBO.insertarAlbum(album121);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Heathens"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Lane Boy"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Polarize"));
+        AlbumDTO album122 = new AlbumDTO("Trench", LocalDate.of(2018, Month.OCTOBER, 5), "Alternative/Indie", "/ImagenesAlbumes/Trench.jpeg", artistaBO.obtenerIdPorNombre("Twenty One Pilots"), listaCanciones);
+        albumBO.insertarAlbum(album122);
+
+        // Álbumes de Paramore
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Misery Business"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Crushcrushcrush"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("That's What You Get"));
+        AlbumDTO album123 = new AlbumDTO("Riot!", LocalDate.of(2007, Month.JUNE, 12), "Alternative Rock", "/ImagenesAlbumes/Riot.jpeg", artistaBO.obtenerIdPorNombre("Paramore"), listaCanciones);
+        albumBO.insertarAlbum(album123);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Still Into You"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Ain't It Fun"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Daydreaming"));
+        AlbumDTO album124 = new AlbumDTO("Paramore", LocalDate.of(2013, Month.APRIL, 5), "Alternative Rock", "/ImagenesAlbumes/Paramore.jpeg", artistaBO.obtenerIdPorNombre("Paramore"), listaCanciones);
+        albumBO.insertarAlbum(album124);
+
+        // Álbumes de BTS
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("DNA"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Mic Drop"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Fake Love"));
+        AlbumDTO album125 = new AlbumDTO("Love Yourself: Tear", LocalDate.of(2018, Month.MAY, 18), "K-Pop", "/ImagenesAlbumes/LoveYourselfTear.jpeg", artistaBO.obtenerIdPorNombre("BTS"), listaCanciones);
+        albumBO.insertarAlbum(album125);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Yet To Come"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Run BTS"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("For Youth"));
+        AlbumDTO album126 = new AlbumDTO("Proof", LocalDate.of(2022, Month.JUNE, 10), "K-Pop", "/ImagenesAlbumes/Proof.jpeg", artistaBO.obtenerIdPorNombre("BTS"), listaCanciones);
+        albumBO.insertarAlbum(album126);
+
+        // Álbumes de ABBA
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Dancing Queen"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Mamma Mia"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Take a Chance on Me"));
+        AlbumDTO album127 = new AlbumDTO("Arrival", LocalDate.of(1976, Month.AUGUST, 11), "Pop", "/ImagenesAlbumes/Arrival.jpeg", artistaBO.obtenerIdPorNombre("ABBA"), listaCanciones);
+        albumBO.insertarAlbum(album127);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Waterloo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Honey, Honey"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("I Do, I Do, I Do, I Do, I Do"));
+        AlbumDTO album128 = new AlbumDTO("Waterloo", LocalDate.of(1974, Month.MARCH, 4), "Pop", "/ImagenesAlbumes/Waterloo.jpeg", artistaBO.obtenerIdPorNombre("ABBA"), listaCanciones);
+        albumBO.insertarAlbum(album128);
+
+        // Álbumes de BLACKPINK
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("DDU-DU DDU-DU"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Kill This Love"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("As If It's Your Last"));
+        AlbumDTO album129 = new AlbumDTO("The Album", LocalDate.of(2020, Month.OCTOBER, 2), "K-Pop", "/ImagenesAlbumes/TheAlbum.jpeg", artistaBO.obtenerIdPorNombre("BLACKPINK"), listaCanciones);
+        albumBO.insertarAlbum(album129);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("How You Like That"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Lovesick Girls"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Ice Cream"));
+        AlbumDTO album130 = new AlbumDTO("Born Pink", LocalDate.of(2022, Month.SEPTEMBER, 16), "K-Pop", "/ImagenesAlbumes/BornPink.jpeg", artistaBO.obtenerIdPorNombre("BLACKPINK"), listaCanciones);
+        albumBO.insertarAlbum(album130);
+
+        // Álbumes de The Piano Guys
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("A Thousand Years"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Beethoven's 5 Secrets"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("All of Me"));
+        AlbumDTO album131 = new AlbumDTO("The Piano Guys", LocalDate.of(2012, Month.AUGUST, 7), "Classical Crossover", "/ImagenesAlbumes/ThePianoGuys.jpeg", artistaBO.obtenerIdPorNombre("The Piano Guys"), listaCanciones);
+        albumBO.insertarAlbum(album131);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Fight Song"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("What Makes You Beautiful"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Let It Go"));
+        AlbumDTO album132 = new AlbumDTO("The Piano Guys 2", LocalDate.of(2013, Month.OCTOBER, 8), "Classical Crossover", "/ImagenesAlbumes/ThePianoGuys2.jpeg", artistaBO.obtenerIdPorNombre("The Piano Guys"), listaCanciones);
+        albumBO.insertarAlbum(album132);
+
+        // Álbumes de Daft Punk
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("One More Time"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Digital Love"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Harder, Better, Faster, Stronger"));
+        AlbumDTO album133 = new AlbumDTO("Discovery", LocalDate.of(2001, Month.MARCH, 12), "Electronic", "/ImagenesAlbumes/Discovery.jpeg", artistaBO.obtenerIdPorNombre("Daft Punk"), listaCanciones);
+        albumBO.insertarAlbum(album133);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Get Lucky"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Lose Yourself to Dance"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Give Life Back to Music"));
+        AlbumDTO album134 = new AlbumDTO("Random Access Memories", LocalDate.of(2013, Month.MAY, 17), "Electronic", "/ImagenesAlbumes/RandomAccessMemories.jpeg", artistaBO.obtenerIdPorNombre("Daft Punk"), listaCanciones);
+        albumBO.insertarAlbum(album134);
+
+        // Álbumes de Camila (banda)
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Elypse"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("No Es Así"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Quiero Verte"));
+        AlbumDTO album135 = new AlbumDTO("Elypse", LocalDate.of(2017, Month.OCTOBER, 6), "Pop", "/ImagenesAlbumes/Elypse.jpeg", artistaBO.obtenerIdPorNombre("Camila"), listaCanciones);
+        albumBO.insertarAlbum(album135);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Regresa"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te Extraño"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Por Un Segundo"));
+        AlbumDTO album136 = new AlbumDTO("Regresa", LocalDate.of(2019, Month.AUGUST, 16), "Pop", "/ImagenesAlbumes/Regresa.jpeg", artistaBO.obtenerIdPorNombre("Camila"), listaCanciones);
+        albumBO.insertarAlbum(album136);
+
+        // Álbumes de Måneskin
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Zitti E Buoni"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("I Wanna Be Your Slave"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Coraline"));
+        AlbumDTO album137 = new AlbumDTO("Il Ballo Della Vita", LocalDate.of(2018, Month.OCTOBER, 26), "Rock", "/ImagenesAlbumes/IlBalloDellaVita.jpeg", artistaBO.obtenerIdPorNombre("Måneskin"), listaCanciones);
+        albumBO.insertarAlbum(album137);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("The Loneliest"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Mammamia"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Gossip"));
+        AlbumDTO album138 = new AlbumDTO("Rush!", LocalDate.of(2021, Month.MAY, 7), "Rock", "/ImagenesAlbumes/Rush.jpeg", artistaBO.obtenerIdPorNombre("Måneskin"), listaCanciones);
+        albumBO.insertarAlbum(album138);
+
+        // Álbumes de Grupo Frontera
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Baila Conmigo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("No Me Tienes Que Decir"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("En Mi Corazón"));
+        AlbumDTO album139 = new AlbumDTO("El Comienzo", LocalDate.of(2021, Month.JUNE, 18), "Banda", "/ImagenesAlbumes/ElComienzo.jpeg", artistaBO.obtenerIdPorNombre("Grupo Frontera"), listaCanciones);
+        albumBO.insertarAlbum(album139);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Amigos No"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Mi Última Carta"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("A Tu Lado"));
+        AlbumDTO album140 = new AlbumDTO("Jugando A Que No Pase Nada", LocalDate.of(2022, Month.APRIL, 2), "Banda", "/ImagenesAlbumes/JugandoAQueNoPaseNada.jpeg", artistaBO.obtenerIdPorNombre("Grupo Frontera"), listaCanciones);
+        albumBO.insertarAlbum(album140);
+
+        // Álbumes de One Direction
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("What Makes You Beautiful"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Gotta Be You"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("One Thing"));
+        AlbumDTO album141 = new AlbumDTO("Up All Night", LocalDate.of(2011, Month.MARCH, 18), "Pop", "/ImagenesAlbumes/UpAllNight.jpeg", artistaBO.obtenerIdPorNombre("One Direction"), listaCanciones);
+        albumBO.insertarAlbum(album141);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Live While We're Young"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Little Things"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Kiss You"));
+        AlbumDTO album142 = new AlbumDTO("Take Me Home", LocalDate.of(2012, Month.NOVEMBER, 9), "Pop", "/ImagenesAlbumes/TakeMeHome.jpeg", artistaBO.obtenerIdPorNombre("One Direction"), listaCanciones);
+        albumBO.insertarAlbum(album142);
+
+        // Álbumes de Le Sserafim
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Fearless"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Blue Flame"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("The World is My Oyster"));
+        AlbumDTO album143 = new AlbumDTO("Fearless", LocalDate.of(2022, Month.MAY, 2), "K-Pop", "/ImagenesAlbumes/Fearless.jpeg", artistaBO.obtenerIdPorNombre("Le Sserafim"), listaCanciones);
+        albumBO.insertarAlbum(album143);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Pierrot"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("CRAZY"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("1-800-hot-n-fun"));
+        AlbumDTO album144 = new AlbumDTO("CRAZY", LocalDate.of(2023, Month.OCTOBER, 13), "K-Pop", "/ImagenesAlbumes/CRAZY.jpeg", artistaBO.obtenerIdPorNombre("Le Sserafim"), listaCanciones);
+        albumBO.insertarAlbum(album144);
+
+        // Álbumes de Intocable
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("¿Y Todo Lo Demás?"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te Amo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Enséñame a Olvidar"));
+        AlbumDTO album145 = new AlbumDTO("Contigo", LocalDate.of(2018, Month.AUGUST, 10), "Banda", "/ImagenesAlbumes/Contigo.jpeg", artistaBO.obtenerIdPorNombre("Intocable"), listaCanciones);
+        albumBO.insertarAlbum(album145);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Fuerte No Soy"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Dímelo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te Va A Doler"));
+        AlbumDTO album146 = new AlbumDTO("Percepción", LocalDate.of(2021, Month.JUNE, 11), "Banda", "/ImagenesAlbumes/Percepcion.jpeg", artistaBO.obtenerIdPorNombre("Intocable"), listaCanciones);
+        albumBO.insertarAlbum(album146);
+
+        // Álbumes de Banda MS
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Mi Razón de Ser"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Hermosa Experiencia"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Por Siempre"));
+        AlbumDTO album147 = new AlbumDTO("Mi Razón de Ser", LocalDate.of(2015, Month.APRIL, 22), "Banda", "/ImagenesAlbumes/MiRazonDeSer.jpeg", artistaBO.obtenerIdPorNombre("Banda MS"), listaCanciones);
+        albumBO.insertarAlbum(album147);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("El Color de Tus Ojos"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Qué Bendición"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("La Mejor de Todas"));
+        AlbumDTO album148 = new AlbumDTO("Qué Bendición", LocalDate.of(2017, Month.MAY, 19), "Banda", "/ImagenesAlbumes/QueBendicion.jpeg", artistaBO.obtenerIdPorNombre("Banda MS"), listaCanciones);
+        albumBO.insertarAlbum(album148);
+
+        // Álbumes de Timbiriche
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Soy un desastre"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("México"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Ojos de Miel"));
+        AlbumDTO album149 = new AlbumDTO("Singles", LocalDate.of(1982, Month.MARCH, 1), "Pop", "/ImagenesAlbumes/Singles.jpeg", artistaBO.obtenerIdPorNombre("Timbiriche"), listaCanciones);
+        albumBO.insertarAlbum(album149);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Soy el mismo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("La Vida No Es Igual"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Me Puedo Matar"));
+        AlbumDTO album150 = new AlbumDTO("Timbiriche 7", LocalDate.of(1989, Month.SEPTEMBER, 19), "Pop", "/ImagenesAlbumes/Timbiriche7.jpeg", artistaBO.obtenerIdPorNombre("Timbiriche"), listaCanciones);
+        albumBO.insertarAlbum(album150);
+
+        // Álbumes de RBD
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Rebelde"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Sálvame"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Solo Quédate en Silencio"));
+        AlbumDTO album151 = new AlbumDTO("Rebelde", LocalDate.of(2004, Month.NOVEMBER, 30), "Pop", "/ImagenesAlbumes/Rebelde.jpeg", artistaBO.obtenerIdPorNombre("RBD"), listaCanciones);
+        albumBO.insertarAlbum(album151);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Nuestro Amor"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Aún Hay Algo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Tras de Mí"));
+        AlbumDTO album152 = new AlbumDTO("Nuestro Amor", LocalDate.of(2005, Month.SEPTEMBER, 22), "Pop", "/ImagenesAlbumes/NuestroAmor.jpeg", artistaBO.obtenerIdPorNombre("RBD"), listaCanciones);
+        albumBO.insertarAlbum(album152);
+
+        // Álbumes de Mecano
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Hoy No Me Puedo Levantar"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Me Cuesta Tanto Olvidarte"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Perdido en Mi Habitación"));
+        AlbumDTO album153 = new AlbumDTO("Entre el Cielo y el Suelo", LocalDate.of(1986, Month.JUNE, 3), "Pop/Rock", "/ImagenesAlbumes/EntreElCieloYElSuelo.jpeg", artistaBO.obtenerIdPorNombre("Mecano"), listaCanciones);
+        albumBO.insertarAlbum(album153);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Mujer Contra Mujer"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Un Año Más"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Cruz de Navajas"));
+        AlbumDTO album154 = new AlbumDTO("Descanso Dominical", LocalDate.of(1988, Month.MAY, 24), "Pop/Rock", "/ImagenesAlbumes/DescansoDominical.jpeg", artistaBO.obtenerIdPorNombre("Mecano"), listaCanciones);
+        albumBO.insertarAlbum(album154);
+
+        // Álbumes de OV7
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Tus Besos"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te Quiero Tanto, Tanto"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Enloquéceme"));
+        AlbumDTO album155 = new AlbumDTO("OV7 Primera Fila", LocalDate.of(1998, Month.APRIL, 21), "Pop", "/ImagenesAlbumes/PrimeraFila.jpeg", artistaBO.obtenerIdPorNombre("OV7"), listaCanciones);
+        albumBO.insertarAlbum(album155);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Jam"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("No Es Obsesión"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Volveras"));
+        AlbumDTO album156 = new AlbumDTO("Punto", LocalDate.of(2001, Month.JUNE, 19), "Pop", "/ImagenesAlbumes/Punto.jpeg", artistaBO.obtenerIdPorNombre("OV7"), listaCanciones);
+        albumBO.insertarAlbum(album156);
+
+        // Álbumes de Ha-Ash
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Lo Aprendí de Ti"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te Dejo en Libertad"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Qué Hago Yo"));
+        AlbumDTO album157 = new AlbumDTO("A Tiempo", LocalDate.of(2011, Month.MAY, 16), "Pop", "/ImagenesAlbumes/ATiempo.jpeg", artistaBO.obtenerIdPorNombre("Ha-Ash"), listaCanciones);
+        albumBO.insertarAlbum(album157);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te acuerdas"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Todavía No"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te Apuesto"));
+        AlbumDTO album158 = new AlbumDTO("Haashville", LocalDate.of(2014, Month.NOVEMBER, 11), "Pop", "/ImagenesAlbumes/Haashville.jpeg", artistaBO.obtenerIdPorNombre("Ha-Ash"), listaCanciones);
+        albumBO.insertarAlbum(album158);
+
+        // Álbumes de Los Tigres del Norte
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("La Puerta Negra"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Golpes en el Corazón"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Jefe de Jefes"));
+        AlbumDTO album159 = new AlbumDTO("Jefe de Jefes", LocalDate.of(1997, Month.JULY, 15), "Norteño", "/ImagenesAlbumes/JefeDeJefes.jpeg", artistaBO.obtenerIdPorNombre("Los Tigres del Norte"), listaCanciones);
+        albumBO.insertarAlbum(album159);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Ni Parientes Somos"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("La Mesa del Rincón"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Pacas de a Kilo"));
+        AlbumDTO album160 = new AlbumDTO("El Ejemplo", LocalDate.of(2001, Month.APRIL, 10), "Norteño", "/ImagenesAlbumes/ElEjemplo.jpeg", artistaBO.obtenerIdPorNombre("Los Tigres del Norte"), listaCanciones);
+        albumBO.insertarAlbum(album160);
+
+        // Álbumes de Pandora
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Como te va mi amor"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Solo él y yo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Todo tiene su tiempo"));
+        AlbumDTO album161 = new AlbumDTO("1985-1998", LocalDate.of(1985, Month.JUNE, 1), "Balada/Pop", "/ImagenesAlbumes/Pandora1985.jpeg", artistaBO.obtenerIdPorNombre("Pandora"), listaCanciones);
+        albumBO.insertarAlbum(album161);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Con tu amor"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("En carne viva"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Popurrí: Éxitos de Juan Gabriel"));
+        AlbumDTO album162 = new AlbumDTO("Con Amor Eterno", LocalDate.of(1991, Month.NOVEMBER, 15), "Balada/Pop", "/ImagenesAlbumes/ConAmorEterno.jpeg", artistaBO.obtenerIdPorNombre("Pandora"), listaCanciones);
+        albumBO.insertarAlbum(album162);
+
+        // Álbumes de Spice Girls
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Wannabe"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Say You'll Be There"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("2 Become 1"));
+        AlbumDTO album163 = new AlbumDTO("Spice", LocalDate.of(1996, Month.NOVEMBER, 4), "Pop", "/ImagenesAlbumes/Spice.jpeg", artistaBO.obtenerIdPorNombre("Spice Girls"), listaCanciones);
+        albumBO.insertarAlbum(album163);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Spice Up Your Life"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Stop"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Too Much"));
+        AlbumDTO album164 = new AlbumDTO("Spiceworld", LocalDate.of(1997, Month.NOVEMBER, 3), "Pop", "/ImagenesAlbumes/Spiceworld.jpeg", artistaBO.obtenerIdPorNombre("Spice Girls"), listaCanciones);
+        albumBO.insertarAlbum(album164);
+
+        // Álbumes de TXT (Tomorrow X Together)
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Crown"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Blue Orangeade"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Cat & Dog"));
+        AlbumDTO album165 = new AlbumDTO("The Dream Chapter: STAR", LocalDate.of(2019, Month.MARCH, 4), "K-Pop", "/ImagenesAlbumes/TheDreamChapterStar.jpeg", artistaBO.obtenerIdPorNombre("TXT"), listaCanciones);
+        albumBO.insertarAlbum(album165);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("9 and Three Quarters (Run Away)"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Angel Or Devil"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("New Rules"));
+        AlbumDTO album166 = new AlbumDTO("The Dream Chapter: MAGIC", LocalDate.of(2019, Month.OCTOBER, 21), "K-Pop", "/ImagenesAlbumes/TheDreamChapterMagic.jpeg", artistaBO.obtenerIdPorNombre("TXT"), listaCanciones);
+        albumBO.insertarAlbum(album166);
+
+        // Álbumes de Morat
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Cómo Te Atreves"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Amor Con Hielo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Yo Contigo, Tú Conmigo"));
+        AlbumDTO album167 = new AlbumDTO("Sobre El Amor y Sus Efectos Secundarios", LocalDate.of(2016, Month.JUNE, 23), "Pop Latino", "/ImagenesAlbumes/SobreElAmor.jpeg", artistaBO.obtenerIdPorNombre("Morat"), listaCanciones);
+        albumBO.insertarAlbum(album167);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Besos en Guerra"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Cuando Nadie Ve"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Punto y Aparte"));
+        AlbumDTO album168 = new AlbumDTO("Balas Perdidas", LocalDate.of(2018, Month.OCTOBER, 26), "Pop Latino", "/ImagenesAlbumes/BalasPerdidas.jpeg", artistaBO.obtenerIdPorNombre("Morat"), listaCanciones);
+        albumBO.insertarAlbum(album168);
+
+        // Álbumes de Jesse & Joy
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Espacio Sideral"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Ya No Quiero"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Volveré"));
+        AlbumDTO album169 = new AlbumDTO("Esta Es Mi Vida", LocalDate.of(2006, Month.JUNE, 13), "Pop Latino", "/ImagenesAlbumes/EstaEsMiVida.jpeg", artistaBO.obtenerIdPorNombre("Jesse & Joy"), listaCanciones);
+        albumBO.insertarAlbum(album169);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Corre!"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("La De La Mala Suerte"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Me Voy"));
+        AlbumDTO album170 = new AlbumDTO("¿Con Quién Se Queda El Perro?", LocalDate.of(2011, Month.DECEMBER, 6), "Pop Latino", "/ImagenesAlbumes/ConQuienSeQuedaElPerro.jpeg", artistaBO.obtenerIdPorNombre("Jesse & Joy"), listaCanciones);
+        albumBO.insertarAlbum(album170);
+
+        // Álbumes de La Oreja de Van Gogh
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Cuídate"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("La Playa"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("París"));
+        AlbumDTO album171 = new AlbumDTO("El Viaje de Copperpot", LocalDate.of(2000, Month.SEPTEMBER, 11), "Pop", "/ImagenesAlbumes/ElViajeDeCopperpot.jpeg", artistaBO.obtenerIdPorNombre("La Oreja de Van Gogh"), listaCanciones);
+        albumBO.insertarAlbum(album171);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Jueves"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("El Último Vals"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Inmortal"));
+        AlbumDTO album172 = new AlbumDTO("A Las Cinco en el Astoria", LocalDate.of(2008, Month.SEPTEMBER, 2), "Pop", "/ImagenesAlbumes/ALasCincoEnElAstoria.jpeg", artistaBO.obtenerIdPorNombre("La Oreja de Van Gogh"), listaCanciones);
+        albumBO.insertarAlbum(album172);
+
+        // Álbumes de DVICIO
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Paraíso"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Nada"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Justo Ahora"));
+        AlbumDTO album173 = new AlbumDTO("Justo Ahora", LocalDate.of(2014, Month.MARCH, 18), "Pop", "/ImagenesAlbumes/JustoAhora.jpeg", artistaBO.obtenerIdPorNombre("DVICIO"), listaCanciones);
+        albumBO.insertarAlbum(album173);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Qué Tienes Tú"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("5 Sentidos"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Valeria"));
+        AlbumDTO album174 = new AlbumDTO("Qué Tienes Tú", LocalDate.of(2017, Month.APRIL, 28), "Pop", "/ImagenesAlbumes/QueTienesTu.jpeg", artistaBO.obtenerIdPorNombre("DVICIO"), listaCanciones);
+        albumBO.insertarAlbum(album174);
+
+        // Álbumes de Little Mix
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Wings"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("DNA"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Change Your Life"));
+        AlbumDTO album175 = new AlbumDTO("DNA", LocalDate.of(2012, Month.NOVEMBER, 19), "Pop", "/ImagenesAlbumes/DNA.jpeg", artistaBO.obtenerIdPorNombre("Little Mix"), listaCanciones);
+        albumBO.insertarAlbum(album175);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Shout Out to My Ex"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Touch"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Power"));
+        AlbumDTO album176 = new AlbumDTO("Glory Days", LocalDate.of(2016, Month.NOVEMBER, 18), "Pop", "/ImagenesAlbumes/GloryDays.jpeg", artistaBO.obtenerIdPorNombre("Little Mix"), listaCanciones);
+        albumBO.insertarAlbum(album176);
+
+        // Álbumes de Reik
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Yo Quisiera"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Que Vida La Mía"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Noviembre Sin Ti"));
+        AlbumDTO album177 = new AlbumDTO("Reik", LocalDate.of(2005, Month.MAY, 24), "Pop", "/ImagenesAlbumes/Reik2005.jpeg", artistaBO.obtenerIdPorNombre("Reik"), listaCanciones);
+        albumBO.insertarAlbum(album177);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Me Niego"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Amigos con Derechos"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Aleluya"));
+        AlbumDTO album178 = new AlbumDTO("Ahora", LocalDate.of(2019, Month.MAY, 31), "Pop", "/ImagenesAlbumes/Ahora.jpeg", artistaBO.obtenerIdPorNombre("Reik"), listaCanciones);
+        albumBO.insertarAlbum(album178);
+
+        // Álbumes de Río Roma
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Al Fin Te Encontré"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Me Cambiaste la Vida"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Por Eso Te Amo"));
+        AlbumDTO album179 = new AlbumDTO("Al Fin Te Encontré", LocalDate.of(2011, Month.JULY, 1), "Balada", "/ImagenesAlbumes/AlFinTeEncontre.jpeg", artistaBO.obtenerIdPorNombre("Río Roma"), listaCanciones);
+        albumBO.insertarAlbum(album179);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Caminar de Tu Mano"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Contigo"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Te Quiero Mucho Mucho"));
+        AlbumDTO album180 = new AlbumDTO("Eres la Persona Correcta en el Momento Equivocado", LocalDate.of(2016, Month.JULY, 8), "Balada", "/ImagenesAlbumes/EresLaPersonaCorrecta.jpeg", artistaBO.obtenerIdPorNombre("Río Roma"), listaCanciones);
+        albumBO.insertarAlbum(album180);
+
+        // Álbumes de Fifth Harmony
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Worth It"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Sledgehammer"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Bo$$"));
+        AlbumDTO album181 = new AlbumDTO("Reflection", LocalDate.of(2015, Month.FEBRUARY, 3), "Pop", "/ImagenesAlbumes/Reflection.jpeg", artistaBO.obtenerIdPorNombre("Fifth Harmony"), listaCanciones);
+        albumBO.insertarAlbum(album181);
+
+        listaCanciones.clear();
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("Work from Home"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("That's My Girl"));
+        listaCanciones.add(cancionBO.obtenerIdPorNombre("All in My Head"));
+        AlbumDTO album182 = new AlbumDTO("7/27", LocalDate.of(2016, Month.MAY, 27), "Pop", "/ImagenesAlbumes/727.jpeg", artistaBO.obtenerIdPorNombre("Fifth Harmony"), listaCanciones);
+        albumBO.insertarAlbum(album182);
 
         } catch (ExceptionBO ex) {
             Logger.getLogger(ArranqueInicioBO.class.getName()).log(Level.SEVERE, null, ex);
