@@ -136,7 +136,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
             // Crear instancia del BO
-            IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
+            IUsuarioBO usuarioBO = new UsuarioBO();
 
             // Obtener datos del formulario
             UsuarioDTO usuarioDTO = new UsuarioDTO();

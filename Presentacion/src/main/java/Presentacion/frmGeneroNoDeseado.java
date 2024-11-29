@@ -1,5 +1,9 @@
 package Presentacion;
 
+import Exceptions.ExceptionBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author equipo 2
@@ -240,7 +244,12 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        frmMenu menu = new frmMenu(this.sesion);
+        frmMenu menu = null;
+        try {
+            menu = new frmMenu(this.sesion);
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+        }
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed

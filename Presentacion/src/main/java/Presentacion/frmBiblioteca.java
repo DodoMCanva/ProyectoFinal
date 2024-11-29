@@ -1,6 +1,10 @@
 
 package Presentacion;
 
+import Exceptions.ExceptionBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Equipo 2
@@ -251,7 +255,12 @@ public class frmBiblioteca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCancionActionPerformed
-        frmMenu volver = new frmMenu(this.sesion);
+        frmMenu volver = null;
+        try {
+            volver = new frmMenu(this.sesion);
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(frmBiblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        }
         volver.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBuscarCancionActionPerformed

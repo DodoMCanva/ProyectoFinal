@@ -124,7 +124,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
 
     private void btniniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciarSesionActionPerformed
         try {
-            IUsuarioBO usuarioBO = new UsuarioBO(new UsuarioDAO());
+            IUsuarioBO usuarioBO = new UsuarioBO();
 
             String nombre = txtUsuario.getText();
             String password = txtContrasena.getText();

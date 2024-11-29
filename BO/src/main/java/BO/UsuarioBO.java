@@ -1,10 +1,12 @@
 package BO;
 
+import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import Exceptions.ExceptionBO;
 import IBO.IUsuarioBO;
 import IDAO.IUsuarioDAO;
 import POJO.UsuarioPOJO;
+import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -13,10 +15,9 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class UsuarioBO implements IUsuarioBO {
 
-    private final IUsuarioDAO usuarioDAO;
+    private final IUsuarioDAO usuarioDAO = new UsuarioDAO();
 
-    public UsuarioBO(IUsuarioDAO usuarioDAO) {
-        this.usuarioDAO = usuarioDAO;
+    public UsuarioBO() {
     }
 
     @Override
@@ -62,42 +63,47 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     @Override
-    public void restringirGenero(UsuarioDTO usuario, String genero) throws ExceptionBO {
+    public void restringirGenero(String sesion, String genero) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void regresaGenero(UsuarioDTO usuario, String genero) throws ExceptionBO {
+    public void regresaGenero(String sesion, String genero) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void agregarArtistaFavorito(UsuarioDTO usuario, String artista) throws ExceptionBO {
+    public List<String> consultaRestringidos(String sesion) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void eliminarFavoritoArtista(UsuarioDTO usuario, String artista) throws ExceptionBO {
+    public void agregarArtistaFavorito(String sesion, String artista) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void agregarCancionFavorito(UsuarioDTO usuario, String cancion) throws ExceptionBO {
+    public void eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void eliminarFavoritoCancion(UsuarioDTO usuario, String cancion) throws ExceptionBO {
+    public void agregarCancionFavorito(String sesion, String cancion) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void agregarAlbumFavorito(UsuarioDTO usuario, String album) throws ExceptionBO {
+    public void eliminarFavoritoCancion(String sesion, String cancion) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void eliminarFavoritoAlbum(UsuarioDTO usuario, String album) throws ExceptionBO {
+    public void agregarAlbumFavorito(String sesion, String album) throws ExceptionBO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void eliminarFavoritoAlbum(String sesion, String album) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -110,5 +116,27 @@ public class UsuarioBO implements IUsuarioBO {
     public UsuarioDTO buscar(String id) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public boolean comprobarFavoritoArtista(String id) throws ExceptionBO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean comprobarFavoritoCancion(String id) throws ExceptionBO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean comprobarFavoritoAlbum(String id) throws ExceptionBO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+    
+
+    
+
+    
 
 }

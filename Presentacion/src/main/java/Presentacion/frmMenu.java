@@ -1,8 +1,27 @@
 package Presentacion;
 
+import BO.AlbumBO;
+import BO.ArtistaBO;
+import BO.CancionBO;
+import BO.UsuarioBO;
+import DTO.AlbumDTO;
+import DTO.ArtistasDTO;
+import DTO.CancionDTO;
+import Exceptions.ExceptionBO;
+import IBO.IAlbumBO;
+import IBO.IArtistasBO;
+import IBO.ICancionBO;
+import IBO.IUsuarioBO;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import utilerias.JButtonCellEditor;
+import utilerias.JButtonRenderer;
 
 /**
  *
@@ -11,13 +30,27 @@ import javax.swing.table.TableColumnModel;
 public class frmMenu extends javax.swing.JFrame {
 
     private String sesion;
+    private IUsuarioBO usuBO = new UsuarioBO();
+    private ICancionBO canBO = new CancionBO();
+    private IArtistasBO artBO = new ArtistaBO();
+    private IAlbumBO albBO = new AlbumBO();
+
+    private List<CancionDTO> listaCanciones;
+    private List<ArtistasDTO> listaArtistas;
+    private List<AlbumDTO> listaAlbumes;
 
     /**
      * Creates new form frmMenu
+     *
      * @param sesion
      */
-    public frmMenu(String sesion) {
+    public frmMenu(String sesion) throws ExceptionBO {
+        this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
+        this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
+        this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
+        this.sesion = sesion;
         initComponents();
+        formatearTablas();
     }
 
     @SuppressWarnings("unchecked")
@@ -25,9 +58,9 @@ public class frmMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnDesplegable = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblArtistas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -48,14 +81,14 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 190, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/menu.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDesplegable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDesplegable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/menu.png"))); // NOI18N
+        btnDesplegable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDesplegableActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 50));
+        jPanel1.add(btnDesplegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 50));
 
         btnBuscar.setBackground(new java.awt.Color(153, 153, 153));
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,7 +99,7 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 220, -1));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 220, -1));
 
         tblArtistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,9 +124,14 @@ public class frmMenu extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Imagen", "Nombre", "Favoritos"
+                "Duracion", "Nombre", "Favoritos"
             }
         ));
+        tblCanciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblCancionesMouseReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblCanciones);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 170, 260));
@@ -222,18 +260,32 @@ public class frmMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDesplegableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesplegableActionPerformed
         // Pasamos la referencia del frmMenu al JDialog
-        frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true, this.sesion); 
+        frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true, this.sesion);
         dialog.setVisible(true);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDesplegableActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String filtro = cboxFiltro.getSelectedItem().toString();
         switch (filtro) {
             case "Ninguno":
-
+                String busqueda = txtBuscar.getText();
+                if (!busqueda.isEmpty()) {
+                    cargarBusquedasGeneralTabla(busqueda);
+                } else {
+                    this.dispose();
+                    try {
+                        //De preferencia cambiar por otro reseteo
+                        frmMenu m = new frmMenu(sesion);
+                        m.setVisible(true);
+                    } catch (ExceptionBO ex) {
+                        Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+            case "":
                 break;
             default:
                 throw new AssertionError();
@@ -244,26 +296,108 @@ public class frmMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cboxFiltroActionPerformed
 
+    private void tblCancionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseReleased
+        if (tblCanciones.getSelectedColumn() != 2) {
+            frmBiblioteca b = new frmBiblioteca(sesion);
+        }
+    }//GEN-LAST:event_tblCancionesMouseReleased
+
     public void formatearTablas() {
-        TableColumnModel modeloColumnas = this.tblCanciones.getColumnModel();
-        ActionListener onOrdenadoresClickListener = new ActionListener() {
+        TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
+        ActionListener onFavoritoCancionClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               /* int id = getIdSeleccionadoTabla();
-                Ordenadores(Long.valueOf(id));*/
+                List<String> ids = new ArrayList<>();
+                for (CancionDTO cancion : listaCanciones) {
+                    ids.add(cancion.getId());
+                }
+
+                try {
+                    for (int i = 0; i < ids.size(); i++) {
+                        if (usuBO.comprobarFavoritoCancion(ids.get(i))) {
+                            usuBO.eliminarFavoritoCancion(sesion, ids.get(i));
+                            break;
+                        }
+                    }
+                    usuBO.agregarCancionFavorito(sesion, ids.get(tblCanciones.getSelectedRow()));
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        modeloColumnasCanciones.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
+        modeloColumnasCanciones.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoCancionClickListener));
+
+        TableColumnModel modeloColumnasArtistas = this.tblArtistas.getColumnModel();
+        ActionListener onFavoritoArtistaClickListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
             }
         };
-//        modeloColumnas.getColumn(2).setCellRenderer(new JButtonRenderer("Software"));
-//        modeloColumnas.getColumn(2).setCellEditor(new JButtonCellEditor("Software", onOrdenadoresClickListener));
+        modeloColumnasArtistas.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
+        modeloColumnasArtistas.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoArtistaClickListener));
 
-        
+        TableColumnModel modeloColumnasAlbums = this.tblAlbumes.getColumnModel();
+        ActionListener onFavoritoAlbumClickListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        
+            }
+        };
+        modeloColumnasAlbums.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
+        modeloColumnasAlbums.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoAlbumClickListener));
+
     }
 
-    public void cargarTablaCancion() {
-    
+    public void cargarBusquedasGeneralTabla(String busqueda) {
+
+    }
+
+
+    public void cargarRegistrosCanciones() {
+        reiniciarTablas();
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
+        listaCanciones.forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getDuracion();
+            fila[1] = row.getNombre();
+            fila[2] = "favoritos";
+            modeloTabla.addRow(fila);
+        });
+    }
+    public void cargarRegistrosAlbum() {
+        reiniciarTablas();
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaAlbumes.forEach(row -> {
+            Object[] fila = new Object[3];
+            //implementar imagenes
+            fila[0] = row.getPortada();
+            fila[1] = row.getNombre();
+            fila[2] = "favoritos";
+            modeloTabla.addRow(fila);
+        });
+    }
+    public void cargarRegistrosArtistas() {
+        reiniciarTablas();
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
+        listaArtistas.forEach(row -> {
+            Object[] fila = new Object[3];
+            //implementar imagenes
+            fila[0] = row.getImagen();
+            fila[1] = row.getNombre();
+            fila[2] = "favoritos";
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    private void reiniciarTablas() {
+        DefaultTableModel modeloTablaCan = (DefaultTableModel) this.tblCanciones.getModel();
+        modeloTablaCan.setRowCount(0);
+        DefaultTableModel modeloTablaAlb = (DefaultTableModel) this.tblAlbumes.getModel();
+        modeloTablaAlb.setRowCount(0);
+        DefaultTableModel modeloTablaArt = (DefaultTableModel) this.tblArtistas.getModel();
+        modeloTablaArt.setRowCount(0);
     }
 
 //    /**
@@ -303,8 +437,8 @@ public class frmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnDesplegable;
     private javax.swing.JComboBox<String> cboxFiltro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -316,9 +450,9 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblAlbumes;
     private javax.swing.JTable tblArtistas;
     private javax.swing.JTable tblCanciones;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

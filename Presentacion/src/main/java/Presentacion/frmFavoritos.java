@@ -1,5 +1,9 @@
 package Presentacion;
 
+import Exceptions.ExceptionBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author equipo 2
@@ -137,7 +141,12 @@ public class frmFavoritos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frmMenu menu = new frmMenu(this.sesion);
+        frmMenu menu = null;
+        try {
+            menu = new frmMenu(this.sesion);
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(frmFavoritos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
