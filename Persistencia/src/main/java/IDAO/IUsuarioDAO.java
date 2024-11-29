@@ -2,6 +2,7 @@ package IDAO;
 
 import Exceptions.ExceptionDAO;
 import POJO.UsuarioPOJO;
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -34,5 +35,5 @@ public interface IUsuarioDAO {
     
     public UsuarioPOJO buscar(ObjectId id) throws ExceptionDAO;// Busca un usuario por su id;
     
-    
+     public List<String> consultaRestringidos(String sesion) throws ExceptionDAO;
 }

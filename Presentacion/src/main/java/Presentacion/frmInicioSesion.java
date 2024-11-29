@@ -133,14 +133,17 @@ public class frmInicioSesion extends javax.swing.JFrame {
             String sesion = usuarioBO.buscarPorNombre(nombre).getId();
             if (exito) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+                System.out.println("AQUIIIIIIIIIII");
                 frmMenu menu = new frmMenu(sesion);
                 menu.setVisible(true);
                 this.dispose();
+                
             } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
             }
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error al iniciar sesión: " + e.getMessage());
+            
         }
     }//GEN-LAST:event_btniniciarSesionActionPerformed
 

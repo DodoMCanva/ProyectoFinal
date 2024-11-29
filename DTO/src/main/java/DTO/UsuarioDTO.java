@@ -1,4 +1,3 @@
-
 package DTO;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class UsuarioDTO {
     private String email;
     private String password;
     private String imagen;
-    private FavoritosDTO favoritos;
     private List<String> restringidosGeneros;
 
     public UsuarioDTO() {
@@ -27,12 +25,12 @@ public class UsuarioDTO {
         this.imagen = imagen;
     }
 
-    public UsuarioDTO(String nombre, String email, String password, String imagen, FavoritosDTO favoritos, List<String> restringidosGeneros) {
+    public UsuarioDTO(String id, String nombre, String email, String password, String imagen, List<String> restringidosGeneros) {
+        this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.imagen = imagen;
-        this.favoritos = favoritos;
         this.restringidosGeneros = restringidosGeneros;
     }
 
@@ -43,7 +41,6 @@ public class UsuarioDTO {
     public void setId(String id) {
         this.id = id;
     }
-    
 
     public String getNombre() {
         return nombre;
@@ -77,14 +74,6 @@ public class UsuarioDTO {
         this.imagen = imagen;
     }
 
-    public FavoritosDTO getFavoritos() {
-        return favoritos;
-    }
-
-    public void setFavoritos(FavoritosDTO favoritos) {
-        this.favoritos = favoritos;
-    }
-
     public List<String> getRestringidosGeneros() {
         return restringidosGeneros;
     }
@@ -99,8 +88,7 @@ public class UsuarioDTO {
                 + nombre + ", email=" + email
                 + ", password=" + password
                 + ", imagen=" + imagen
-                + ", favoritos=" + favoritos
-                + ", restringidosGeneros="
+                +", restringidosGeneros="
                 + restringidosGeneros + '}';
     }
 

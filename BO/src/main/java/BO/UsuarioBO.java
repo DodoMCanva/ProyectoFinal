@@ -3,10 +3,12 @@ package BO;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import Exceptions.ExceptionBO;
+import Exceptions.ExceptionDAO;
 import IBO.IUsuarioBO;
 import IDAO.IUsuarioDAO;
 import POJO.UsuarioPOJO;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -74,7 +76,7 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public List<String> consultaRestringidos(String sesion) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     @Override
@@ -109,7 +111,37 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public UsuarioDTO buscarPorNombre(String nombre) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            UsuarioPOJO pojo = usuarioDAO.buscarPorNombre(nombre);
+            if (pojo != null) {
+                return convertirUsuarioPOJOaDTO(pojo);
+            }
+            return null;
+        } catch (ExceptionDAO ex) {
+            throw new ExceptionBO("Error al buscar el usuario por nombre en la capa BO", ex);
+        }
+    }
+
+    private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) {
+
+        return new UsuarioPOJO(
+                new ObjectId(dto.getId()),
+                dto.getNombre(),
+                dto.getEmail(),
+                dto.getPassword(),
+                dto.getImagen(),
+                dto.getRestringidosGeneros()
+        );
+    }
+
+    private UsuarioDTO convertirUsuarioPOJOaDTO(UsuarioPOJO pojo) {
+        return new UsuarioDTO(
+                pojo.getId().toHexString(),
+                pojo.getNombre(),
+                pojo.getEmail(),
+                pojo.getPassword(),
+                pojo.getImagen(),
+                pojo.getRestringidosGeneros());
     }
 
     @Override
@@ -131,12 +163,5 @@ public class UsuarioBO implements IUsuarioBO {
     public boolean comprobarFavoritoAlbum(String id) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-
-    
-
-    
-
-    
 
 }

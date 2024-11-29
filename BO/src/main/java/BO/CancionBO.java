@@ -49,7 +49,11 @@ public class CancionBO implements ICancionBO {
     @Override
     public List<CancionDTO> consultaGeneralCancion(List<String> generosRestringidos) throws ExceptionBO {
         try {
-            List<CancionPOJO> pojoList = cancionDAO.consultaGeneralCancion(generosRestringidos);
+            //Provisional
+            List<String> Listaejemplo=new ArrayList<>();
+            Listaejemplo.add("Listaejemplos");
+            
+            List<CancionPOJO> pojoList = cancionDAO.consultaGeneralCancion(Listaejemplo);
             return convertirListaDePOJOaDTO(pojoList);
         } catch (ExceptionDAO ex) {
             throw new ExceptionBO("Error al consultar las canciones en la capa BO", ex);
