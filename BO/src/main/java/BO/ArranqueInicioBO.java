@@ -161,7 +161,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
 
         // Grupo 9: Coldplay
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Chris Martin", "Vocalista", "/ImagenesArtistas/ChrisMartin.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Fecha de fundación oficial
+         ListaIntegrantes.add(new IntegranteDTO("Chris Martin", "Vocalista", "/ImagenesArtistas/ChrisMartin.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Fecha de fundación oficial
         ListaIntegrantes.add(new IntegranteDTO("Jonny Buckland", "Guitarrista", "/ImagenesArtistas/JonnyBuckland.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Fecha inicial del grupo
         ListaIntegrantes.add(new IntegranteDTO("Guy Berryman", "Bajista", "/ImagenesArtistas/GuyBerryman.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Inicio del proyecto musical
         ListaIntegrantes.add(new IntegranteDTO("Will Champion", "Baterista", "/ImagenesArtistas/WillChampion.jpeg", LocalDate.of(1998, 7, 31), null, true)); // Fecha de ingreso oficial
@@ -208,7 +208,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         // Grupo 14: Arctic Monkeys
         ListaIntegrantes.add(new IntegranteDTO("Alex Turner", "Vocalista/Guitarrista", "/ImagenesArtistas/AlexTurner.jpeg", LocalDate.of(2002, 6, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Jamie Cook", "Guitarrista", "/ImagenesArtistas/JamieCook.jpeg", LocalDate.of(2002, 6, 1), null, true));
-        ListaIntegrantes.add(new IntegranteDTO("Andy Nicholson", "Bajista", "/ImagenesArtistas/AndyNicholson.jpeg", LocalDate.of(2002, 6, 1), LocalDate.of(2006, 1, 1), true));
+        ListaIntegrantes.add(new IntegranteDTO("Andy Nicholson", "Bajista", "/ImagenesArtistas/AndyNicholson.jpeg", LocalDate.of(2002, 6, 1), LocalDate.of(2006, 1, 1), true)); 
         ListaIntegrantes.add(new IntegranteDTO("Nick O'Malley", "Bajista", "/ImagenesArtistas/NickOMalley.jpeg", LocalDate.of(2006, 5, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Matt Helders", "Baterista", "/ImagenesArtistas/MattHelders.jpeg", LocalDate.of(2002, 6, 1), null, true));
         ListaArtistasGrupo[13] = new ArtistasDTO("Arctic Monkeys", "/ImagenesArtistas/ArcticMonkeys.jpeg", "Grupo", "Indie Rock", ListaIntegrantes);
@@ -280,18 +280,22 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaArtistasGrupo[22] = new ArtistasDTO("Måneskin", "/ImagenesArtistas/Maneskin.jpeg", "Grupo", "Rock Alternativo", ListaIntegrantes);
 
         // Grupo 24: Grupo Frontera
-        ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Erik Garcia", "Vocalista", "/ImagenesArtistas/ErikGarcia.jpeg", LocalDate.of(2017, 1, 1), null, true));
-        ListaIntegrantes.add(new IntegranteDTO("Giovanni Garcia", "Acordeonista", "/ImagenesArtistas/GiovanniGarcia.jpeg", LocalDate.of(2017, 1, 1), null, true));
+        ListaIntegrantes.add(new IntegranteDTO("Adelaido Solís", "Vocalista", "/ImagenesArtistas/AdelaidoSolis.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
+        ListaIntegrantes.add(new IntegranteDTO("Juan Javier Cantú", "Acordeonista", "/ImagenesArtistas/JuanJavierCantu.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
+        ListaIntegrantes.add(new IntegranteDTO("Julián Peña Jr.", "Percusionista", "/ImagenesArtistas/JulianPeñaJr.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
+        ListaIntegrantes.add(new IntegranteDTO("Alberto Acosta", "Bajista", "/ImagenesArtistas/AlbertoAcosta.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
+        ListaIntegrantes.add(new IntegranteDTO("Carlos Guerrero", "Baterista", "/ImagenesArtistas/CarlosGuerrero.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
+        ListaIntegrantes.add(new IntegranteDTO("Carlos Zamora", "Bajista", "/ImagenesArtistas/CarlosZamora.jpeg", LocalDate.of(2022, 1, 1), LocalDate.of(2022, 11, 1), false)); // Miembro hasta junio 2023
+        ListaIntegrantes.add(new IntegranteDTO("Brian Ortega", "Bajista", "/ImagenesArtistas/BrianOrtega.jpeg", LocalDate.of(2023, 6, 1), null, true)); // Miembro desde junio 2023
         ListaArtistasGrupo[23] = new ArtistasDTO("Grupo Frontera", "/ImagenesArtistas/GrupoFrontera.jpeg", "Grupo", "Banda", ListaIntegrantes);
 
         // Grupo 25: One Direction
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Harry Styles", "Vocalista", "/ImagenesArtistas/HarryStyles.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); // Salió en 2016
-        ListaIntegrantes.add(new IntegranteDTO("Liam Payne", "Vocalista", "/ImagenesArtistas/LiamPayne.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); // Salió en 2016
-        ListaIntegrantes.add(new IntegranteDTO("Louis Tomlinson", "Vocalista", "/ImagenesArtistas/LouisTomlinson.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); // Salió en 2016
-        ListaIntegrantes.add(new IntegranteDTO("Niall Horan", "Vocalista", "/ImagenesArtistas/NiallHoran.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); // Salió en 2016
-        ListaIntegrantes.add(new IntegranteDTO("Zayn Malik", "Vocalista", "/ImagenesArtistas/ZaynMalik.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2015, 3, 25), false)); // Salió en 2015
+        ListaIntegrantes.add(new IntegranteDTO("Harry Styles", "Vocalista", "/ImagenesArtistas/HarryStyles.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); 
+        ListaIntegrantes.add(new IntegranteDTO("Liam Payne", "Vocalista", "/ImagenesArtistas/LiamPayne.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); 
+        ListaIntegrantes.add(new IntegranteDTO("Louis Tomlinson", "Vocalista", "/ImagenesArtistas/LouisTomlinson.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); 
+        ListaIntegrantes.add(new IntegranteDTO("Niall Horan", "Vocalista", "/ImagenesArtistas/NiallHoran.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2016, 1, 1), false)); 
+        ListaIntegrantes.add(new IntegranteDTO("Zayn Malik", "Vocalista", "/ImagenesArtistas/ZaynMalik.jpeg", LocalDate.of(2010, 7, 23), LocalDate.of(2015, 3, 25), false)); 
         ListaArtistasGrupo[24] = new ArtistasDTO("One Direction", "/ImagenesArtistas/OneDirection.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 26: Le Sserafim
@@ -305,120 +309,132 @@ public class ArranqueInicioBO implements IArranqueInicio {
 
         // Grupo 27: Intocable
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Ricardo Muñoz", "Vocalista", "/ImagenesArtistas/RicardoMunoz.jpeg", LocalDate.of(1994, 1, 1), null, true));
-        ListaIntegrantes.add(new IntegranteDTO("René Martínez", "Bajista", "/ImagenesArtistas/ReneMartinez.jpeg", LocalDate.of(1994, 1, 1), null, true));
-        ListaIntegrantes.add(new IntegranteDTO("Abraham Banda", "Acordeonista", "/ImagenesArtistas/AbrahamBanda.jpeg", LocalDate.of(1994, 1, 1), null, true));
+        ListaIntegrantes.add(new IntegranteDTO("Ricardo Muñoz", "Vocalista/Guitarrista", "/ImagenesArtistas/RicardoMunoz.jpeg", LocalDate.of(1993, 1, 1), null, true));
+        ListaIntegrantes.add(new IntegranteDTO("René Martínez", "Percusionista/Baterista", "/ImagenesArtistas/ReneMartinez.jpeg", LocalDate.of(1993, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Johnny Lee Rosas", "Acordeonista", "/ImagenesArtistas/JohnnyLeeRosas.jpeg", LocalDate.of(1998, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Félix Salinas", "Bajista", "/ImagenesArtistas/FelixSalinas.jpeg", LocalDate.of(1993, 1, 1), null, true));
+        ListaIntegrantes.add(new IntegranteDTO("Daniel Sánchez", "Percusionista", "/ImagenesArtistas/DanielSanchez.jpeg", LocalDate.of(1993, 1, 1), null, true));
         ListaArtistasGrupo[26] = new ArtistasDTO("Intocable", "/ImagenesArtistas/Intocable.jpeg", "Grupo", "Banda", ListaIntegrantes);
 
         // Grupo 28: Banda MS
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Alfonso Lizárraga", "Trombón", "/ImagenesArtistas/PonchoLizárraga.jpeg", LocalDate.of(2003, 1, 1), null, true));
-        ListaIntegrantes.add(new IntegranteDTO("Oswaldo Silvas", "Vocalista", "/ImagenesArtistas/OswaldoSilvas.jpeg", LocalDate.of(2003, 1, 1), null, true));
-        ListaIntegrantes.add(new IntegranteDTO("Héctor Iván Venegas", "Vocalista", "/ImagenesArtistas/HectorVenegas.jpeg", LocalDate.of(2003, 1, 1), null, true));
+        ListaIntegrantes.add(new IntegranteDTO("Oswaldo Silvas Carreón", "Vocalista", "/ImagenesArtistas/OswaldoSilvas.jpeg", LocalDate.of(2003, 1, 1), null, true));
+        ListaIntegrantes.add(new IntegranteDTO("Alan Ramírez", "Vocalista", "/ImagenesArtistas/AlanRamirez.jpeg", LocalDate.of(2006, 1, 1), null, true));   
+        ListaIntegrantes.add(new IntegranteDTO("Sergio Lizárraga", "Director Musical/Tuba", "/ImagenesArtistas/SergioLizarraga.jpeg", LocalDate.of(2003, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Julión Álvarez", "Vocalista", "/ImagenesArtistas/JulionAlvarez.jpeg", LocalDate.of(2003, 1, 1), LocalDate.of(2006, 1, 1), false)); 
         ListaArtistasGrupo[27] = new ArtistasDTO("Banda MS", "/ImagenesArtistas/BandaMS.jpeg", "Grupo", "Banda", ListaIntegrantes);
 
         // Grupo 29:  Timbiriche
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Thalía", "Vocalista", "/ImagenesArtistas/Thalia.jpeg", LocalDate.of(1986, 1, 1), LocalDate.of(1991, 1, 1), false));  // Salió de Timbiriche en 1991
-        ListaIntegrantes.add(new IntegranteDTO("Alfonso Herrera", "Vocalista", "/ImagenesArtistas/AlfonsoHerrera.jpeg", LocalDate.of(1991, 1, 1), null, true));  // Ingresó después de la salida de Thalía
-        ListaIntegrantes.add(new IntegranteDTO("Paulina Rubio", "Vocalista", "/ImagenesArtistas/PaulinaRubio.jpeg", LocalDate.of(1986, 1, 1), LocalDate.of(1991, 1, 1), false));  // Salió en 1991
-        ListaIntegrantes.add(new IntegranteDTO("Erik Rubín", "Vocalista", "/ImagenesArtistas/ErikRubin.jpeg", LocalDate.of(1986, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Benny Ibarra", "Vocalista", "/ImagenesArtistas/BennyIbarra.jpeg", LocalDate.of(1986, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Thalía", "Vocalista", "/ImagenesArtistas/Thalia.jpeg", LocalDate.of(1986, 1, 1), LocalDate.of(1989, 1, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Paulina Rubio", "Vocalista", "/ImagenesArtistas/PaulinaRubio.jpeg", LocalDate.of(1982, 1, 1), LocalDate.of(1991, 1, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Erik Rubín", "Vocalista", "/ImagenesArtistas/ErikRubin.jpeg", LocalDate.of(1983, 1, 1), LocalDate.of(1994, 1, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Benny Ibarra", "Vocalista", "/ImagenesArtistas/BennyIbarra.jpeg", LocalDate.of(1982, 1, 1), LocalDate.of(1985, 1, 1), false)); 
+        ListaIntegrantes.add(new IntegranteDTO("Alix Bauer", "Vocalista", "/ImagenesArtistas/AlixBauer.jpeg", LocalDate.of(1982, 1, 1), LocalDate.of(1991, 1, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Diego Schoening", "Vocalista", "/ImagenesArtistas/DiegoSchoening.jpeg", LocalDate.of(1982, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Sasha Sokol", "Vocalista", "/ImagenesArtistas/SashaSokol.jpeg", LocalDate.of(1982, 1, 1), LocalDate.of(1986, 1, 1), false)); 
         ListaArtistasGrupo[28] = new ArtistasDTO("Timbiriche", "/ImagenesArtistas/Timbiriche.jpeg", "Grupo", "Pop/Rock", ListaIntegrantes);
 
         // Grupo 30: RBD
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Anahí", "Vocalista", "/ImagenesArtistas/Anahi.jpeg", LocalDate.of(2004, 1, 1), LocalDate.of(2009, 1, 1), false));  // Salió en 2009
-        ListaIntegrantes.add(new IntegranteDTO("Dulce María", "Vocalista", "/ImagenesArtistas/DulceMaria.jpeg", LocalDate.of(2004, 1, 1), LocalDate.of(2009, 1, 1), false));  // Salió en 2009
-        ListaIntegrantes.add(new IntegranteDTO("Maite Perroni", "Vocalista", "/ImagenesArtistas/MaitePerroni.jpeg", LocalDate.of(2004, 1, 1), LocalDate.of(2009, 1, 1), false));  // Salió en 2009
-        ListaIntegrantes.add(new IntegranteDTO("Christian Chávez", "Vocalista", "/ImagenesArtistas/ChristianChavez.jpeg", LocalDate.of(2004, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Christopher Uckermann", "Vocalista", "/ImagenesArtistas/ChristopherUckermann.jpeg", LocalDate.of(2004, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Anahí", "Vocalista", "/ImagenesArtistas/Anahi.jpeg", LocalDate.of(2004, 1, 1), null, false));  
+        ListaIntegrantes.add(new IntegranteDTO("Dulce María", "Vocalista", "/ImagenesArtistas/DulceMaria.jpeg", LocalDate.of(2004, 1, 1), null, false));  
+        ListaIntegrantes.add(new IntegranteDTO("Maite Perroni", "Vocalista", "/ImagenesArtistas/MaitePerroni.jpeg", LocalDate.of(2004, 1, 1), null, false)); 
+        ListaIntegrantes.add(new IntegranteDTO("Christian Chávez", "Vocalista", "/ImagenesArtistas/ChristianChavez.jpeg", LocalDate.of(2004, 1, 1), null, false));
+        ListaIntegrantes.add(new IntegranteDTO("Christopher Uckermann", "Vocalista", "/ImagenesArtistas/ChristopherUckermann.jpeg", LocalDate.of(2004, 1, 1), null, false));
+        ListaIntegrantes.add(new IntegranteDTO("Alfonso Herrera", "Vocalista", "/ImagenesArtistas/AlfonsoHerrera.jpeg", LocalDate.of(2004, 1, 1), LocalDate.of(2009, 12, 21), false)); 
         ListaArtistasGrupo[29] = new ArtistasDTO("RBD", "/ImagenesArtistas/RBD.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 31: Mecano
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Ana Torroja", "Vocalista", "/ImagenesArtistas/AnaTorroja.jpeg", LocalDate.of(1982, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("José María Cano", "Compositor/Guitarrista", "/ImagenesArtistas/JoseMariaCano.jpeg", LocalDate.of(1982, 1, 1), LocalDate.of(1998, 1, 1), false));  // Salió en 1998
-        ListaIntegrantes.add(new IntegranteDTO("Nacho Cano", "Compositor/Guitarrista", "/ImagenesArtistas/NachoCano.jpeg", LocalDate.of(1982, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Ana Torroja", "Vocalista", "/ImagenesArtistas/AnaTorroja.jpeg", LocalDate.of(1982, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("José María Cano", "Compositor/Guitarrista", "/ImagenesArtistas/JoseMariaCano.jpeg", LocalDate.of(1982, 1, 1), LocalDate.of(1998, 1, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Nacho Cano", "Compositor/Guitarrista", "/ImagenesArtistas/NachoCano.jpeg", LocalDate.of(1982, 1, 1), null, true));  
         ListaArtistasGrupo[30] = new ArtistasDTO("Mecano", "/ImagenesArtistas/Mecano.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 32: OV7
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("M'balia", "Vocalista", "/ImagenesArtistas/Mbalia.jpeg", LocalDate.of(1989, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Lidia Ávila", "Vocalista", "/ImagenesArtistas/LidiaAvila.jpeg", LocalDate.of(1989, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Erika Zaba", "Vocalista", "/ImagenesArtistas/ErikaZaba.jpeg", LocalDate.of(1989, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Oscar Schwebel", "Vocalista", "/ImagenesArtistas/OscarSchwebel.jpeg", LocalDate.of(1989, 1, 1), null, true));  // Miembro original
+       ListaIntegrantes.add(new IntegranteDTO("Ari Borovoy", "Vocalista", "/ImagenesArtistas/AriBorovoy.jpeg", LocalDate.of(1989, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Mariana Ochoa", "Vocalista", "/ImagenesArtistas/MarianaOchoa.jpeg", LocalDate.of(1989, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Lidia Ávila", "Vocalista", "/ImagenesArtistas/LidiaAvila.jpeg", LocalDate.of(1989, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("M'balia Marichal", "Vocalista", "/ImagenesArtistas/Mbalia.jpeg", LocalDate.of(1989, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Erika Zaba", "Vocalista", "/ImagenesArtistas/ErikaZaba.jpeg", LocalDate.of(1989, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Oscar Schwebel", "Vocalista", "/ImagenesArtistas/OscarSchwebel.jpeg", LocalDate.of(1989, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Kalimba", "Vocalista", "/ImagenesArtistas/Kalimba.jpeg", LocalDate.of(1993, 1, 1), LocalDate.of(1997, 1, 1), false)); 
         ListaArtistasGrupo[31] = new ArtistasDTO("OV7", "/ImagenesArtistas/OV7.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 33: Ha-Ash
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Hanna", "Vocalista", "/ImagenesArtistas/Hanna.jpeg", LocalDate.of(2002, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Ashley", "Vocalista", "/ImagenesArtistas/Ashley.jpeg", LocalDate.of(2002, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Hanna", "Vocalista", "/ImagenesArtistas/Hanna.jpeg", LocalDate.of(2002, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Ashley", "Vocalista", "/ImagenesArtistas/Ashley.jpeg", LocalDate.of(2002, 1, 1), null, true));  
         ListaArtistasGrupo[32] = new ArtistasDTO("Ha-Ash", "/ImagenesArtistas/HaAsh.jpeg", "Dúo", "Pop", ListaIntegrantes);
 
         // Grupo 34: Los Tigres del Norte
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Jorge Hernández", "Vocalista", "/ImagenesArtistas/JorgeHernandez.jpeg", LocalDate.of(1968, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Eduardo Hernández", "Bajista", "/ImagenesArtistas/EduardoHernandez.jpeg", LocalDate.of(1968, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Raúl Hernández", "Acordeonista", "/ImagenesArtistas/RaulHernandez.jpeg", LocalDate.of(1968, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Luis Hernández", "Baterista", "/ImagenesArtistas/LuisHernandez.jpeg", LocalDate.of(1968, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Jorge Hernández", "Vocalista", "/ImagenesArtistas/JorgeHernandez.jpeg", LocalDate.of(1968, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Hernán Hernández", "Bajista", "/ImagenesArtistas/HernanHernandez.jpeg", LocalDate.of(1968, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Raúl Hernández", "Bajo Sexto", "/ImagenesArtistas/RaulHernandez.jpeg", LocalDate.of(1968, 1, 1), LocalDate.of(1996, 1, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Eduardo Hernández", "Acordeonista", "/ImagenesArtistas/EduardoHernandez.jpeg", LocalDate.of(1988, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Luis Hernández", "Baterista", "/ImagenesArtistas/LuisHernandez.jpeg", LocalDate.of(1996, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Óscar Lara", "Baterista", "/ImagenesArtistas/OscarLara.jpeg", LocalDate.of(1968, 1, 1), LocalDate.of(2022, 1, 1), false));  
         ListaArtistasGrupo[33] = new ArtistasDTO("Los Tigres del Norte", "/ImagenesArtistas/LosTigresDelNorte.jpeg", "Grupo", "Banda", ListaIntegrantes);
 
         // Grupo 35: Pandora
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Lupita", "Vocalista", "/ImagenesArtistas/LupitaPandora.jpeg", LocalDate.of(1985, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Irasema", "Vocalista", "/ImagenesArtistas/IrasemaPandora.jpeg", LocalDate.of(1985, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Marta", "Vocalista", "/ImagenesArtistas/MartaPandora.jpeg", LocalDate.of(1985, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Isabel Lascuráin", "Vocalista", "/ImagenesArtistas/IsabelLascurain.jpeg", LocalDate.of(1985, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Mayté Lascuráin", "Vocalista", "/ImagenesArtistas/MayteLascurain.jpeg", LocalDate.of(1985, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Fernanda Meade", "Vocalista", "/ImagenesArtistas/FernandaMeade.jpeg", LocalDate.of(1985, 1, 1), null, false)); 
         ListaArtistasGrupo[34] = new ArtistasDTO("Pandora", "/ImagenesArtistas/Pandora.jpeg", "Grupo", "Pop", ListaIntegrantes);
-
+        
         // Grupo 36: Spice Girls
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Mel B (Scary Spice)", "Vocalista", "/ImagenesArtistas/MelB.jpeg", LocalDate.of(1994, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Mel C (Sporty Spice)", "Vocalista", "/ImagenesArtistas/MelC.jpeg", LocalDate.of(1994, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Emma Bunton (Baby Spice)", "Vocalista", "/ImagenesArtistas/EmmaBunton.jpeg", LocalDate.of(1994, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Geri Halliwell (Ginger Spice)", "Vocalista", "/ImagenesArtistas/GeriHalliwell.jpeg", LocalDate.of(1994, 1, 1), LocalDate.of(1998, 1, 1), false));  // Salió en 1998
-        ListaIntegrantes.add(new IntegranteDTO("Victoria Beckham (Posh Spice)", "Vocalista", "/ImagenesArtistas/VictoriaBeckham.jpeg", LocalDate.of(1994, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Mel B", "Vocalista", "/ImagenesArtistas/MelB.jpeg", LocalDate.of(1994, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Mel C", "Vocalista", "/ImagenesArtistas/MelC.jpeg", LocalDate.of(1994, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Emma Bunton", "Vocalista", "/ImagenesArtistas/EmmaBunton.jpeg", LocalDate.of(1994, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Geri Halliwell", "Vocalista", "/ImagenesArtistas/GeriHalliwell.jpeg", LocalDate.of(1994, 1, 1), LocalDate.of(1998, 5, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Victoria Beckham", "Vocalista", "/ImagenesArtistas/VictoriaBeckham.jpeg", LocalDate.of(1994, 1, 1), null, true));  
         ListaArtistasGrupo[35] = new ArtistasDTO("Spice Girls", "/ImagenesArtistas/SpiceGirls.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 37: TXT (Tomorrow X Together)
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Soobin", "Líder/Vocalista", "/ImagenesArtistas/Soobin.jpeg", LocalDate.of(2019, 3, 4), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Yeonjun", "Vocalista", "/ImagenesArtistas/Yeonjun.jpeg", LocalDate.of(2019, 3, 4), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Beomgyu", "Vocalista", "/ImagenesArtistas/Beomgyu.jpeg", LocalDate.of(2019, 3, 4), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Taehyun", "Vocalista", "/ImagenesArtistas/Taehyun.jpeg", LocalDate.of(2019, 3, 4), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Huening Kai", "Vocalista", "/ImagenesArtistas/HueningKai.jpeg", LocalDate.of(2019, 3, 4), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Soobin", "Líder/Vocalista", "/ImagenesArtistas/Soobin.jpeg", LocalDate.of(2019, 3, 4), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Yeonjun", "Vocalista", "/ImagenesArtistas/Yeonjun.jpeg", LocalDate.of(2019, 3, 4), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Beomgyu", "Vocalista", "/ImagenesArtistas/Beomgyu.jpeg", LocalDate.of(2019, 3, 4), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Taehyun", "Vocalista", "/ImagenesArtistas/Taehyun.jpeg", LocalDate.of(2019, 3, 4), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Huening Kai", "Vocalista", "/ImagenesArtistas/HueningKai.jpeg", LocalDate.of(2019, 3, 4), null, true));  
         ListaArtistasGrupo[36] = new ArtistasDTO("TXT (Tomorrow X Together)", "/ImagenesArtistas/TXT.jpeg", "Grupo", "K-pop", ListaIntegrantes);
 
         // Grupo 38: Morat
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Juan Pablo Isaza", "Vocalista/Guitarrista", "/ImagenesArtistas/JuanPabloIsaza.jpeg", LocalDate.of(2015, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Simón Vargas", "Bajista", "/ImagenesArtistas/SimonVargas.jpeg", LocalDate.of(2015, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Martin Vargas", "Guitarrista", "/ImagenesArtistas/MartinVargas.jpeg", LocalDate.of(2015, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Alejo González", "Baterista", "/ImagenesArtistas/AlejoGonzalez.jpeg", LocalDate.of(2015, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Juan Pablo Isaza", "Vocalista/Guitarrista", "/ImagenesArtistas/JuanPabloIsaza.jpeg", LocalDate.of(2015, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Simón Vargas", "Bajista", "/ImagenesArtistas/SimonVargas.jpeg", LocalDate.of(2015, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Martin Vargas", "Guitarrista", "/ImagenesArtistas/MartinVargas.jpeg", LocalDate.of(2015, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Juan Pablo Villamil", "Bajista/Corista", "/ImagenesArtistas/JuanPabloVillamil.jpeg", LocalDate.of(2015, 1, 1), null, true));  
         ListaArtistasGrupo[37] = new ArtistasDTO("Morat", "/ImagenesArtistas/Morat.jpeg", "Grupo", "Pop/Folk", ListaIntegrantes);
 
         // Grupo 39: Jesse & Joy
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Jesse Huerta", "Vocalista/Guitarrista", "/ImagenesArtistas/JesseHuerta.jpeg", LocalDate.of(2005, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Joy Huerta", "Vocalista", "/ImagenesArtistas/JoyHuerta.jpeg", LocalDate.of(2005, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Jesse Huerta", "Vocalista/Guitarrista", "/ImagenesArtistas/JesseHuerta.jpeg", LocalDate.of(2005, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Joy Huerta", "Vocalista", "/ImagenesArtistas/JoyHuerta.jpeg", LocalDate.of(2005, 1, 1), null, true));  
         ListaArtistasGrupo[38] = new ArtistasDTO("Jesse & Joy", "/ImagenesArtistas/JesseJoy.jpeg", "Dúo", "Pop/Rock", ListaIntegrantes);
 
         // Grupo 40: La Oreja de Van Gogh
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Xabi San Martín", "Tecladista", "/ImagenesArtistas/XabiSanMartin.jpeg", LocalDate.of(1996, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Pablo Sánchez", "Guitarrista", "/ImagenesArtistas/PabloSanchez.jpeg", LocalDate.of(1996, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Alvaro Fuentes", "Bajista", "/ImagenesArtistas/AlvaroFuentes.jpeg", LocalDate.of(1996, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("David Velasco", "Baterista", "/ImagenesArtistas/DavidVelasco.jpeg", LocalDate.of(1996, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Leire Martínez", "Vocalista", "/ImagenesArtistas/LeireMartinez.jpeg", LocalDate.of(2008, 1, 1), null, true));  // Entró en 2008
+        ListaIntegrantes.add(new IntegranteDTO("Amaia Montero", "Vocalista", "/ImagenesArtistas/AmaiaMontero.jpeg", LocalDate.of(1996, 1, 1), LocalDate.of(2007, 1, 1), false));  
+        ListaIntegrantes.add(new IntegranteDTO("Xabi San Martín", "Tecladista", "/ImagenesArtistas/XabiSanMartin.jpeg", LocalDate.of(1996, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Pablo Benegas", "Guitarrista", "/ImagenesArtistas/PabloBenegas.jpeg", LocalDate.of(1996, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Alvaro Fuentes", "Bajista", "/ImagenesArtistas/AlvaroFuentes.jpeg", LocalDate.of(1996, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Haritz Garde", "Baterista", "/ImagenesArtistas/HaritzGarde.jpeg", LocalDate.of(1996, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Leire Martínez", "Vocalista", "/ImagenesArtistas/LeireMartinez.jpeg", LocalDate.of(2008, 1, 1), null, true));  
         ListaArtistasGrupo[39] = new ArtistasDTO("La Oreja de Van Gogh", "/ImagenesArtistas/OrejaDeVanGogh.jpeg", "Grupo", "Pop/Rock", ListaIntegrantes);
 
         // Grupo 41: DVICIO
         ListaIntegrantes = new ArrayList<>();
-        ListaIntegrantes.add(new IntegranteDTO("Andrés Ceballos", "Vocalista", "/ImagenesArtistas/AndresCeballos.jpeg", LocalDate.of(2013, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Alfonso Pérez", "Guitarrista", "/ImagenesArtistas/AlfonsoPerez.jpeg", LocalDate.of(2013, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Nacho Gotor", "Bajista", "/ImagenesArtistas/NachoGotor.jpeg", LocalDate.of(2013, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("Luis González", "Baterista", "/ImagenesArtistas/LuisGonzalez.jpeg", LocalDate.of(2013, 1, 1), null, true));  // Miembro original
-        ListaIntegrantes.add(new IntegranteDTO("David Otero", "Guitarrista", "/ImagenesArtistas/DavidOtero.jpeg", LocalDate.of(2013, 1, 1), null, true));  // Miembro original
+        ListaIntegrantes.add(new IntegranteDTO("Andrés Ceballos", "Vocalista", "/ImagenesArtistas/AndresCeballos.jpeg", LocalDate.of(2013, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Martín Ceballos", "Vocalista", "/ImagenesArtistas/MartinCeballos.jpeg", LocalDate.of(2013, 1, 1), null, true)); 
+        ListaIntegrantes.add(new IntegranteDTO("Alberto González", "Guitarrista", "/ImagenesArtistas/AlbertoGonzalez.jpeg", LocalDate.of(2013, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Nacho Gotor", "Bajista", "/ImagenesArtistas/NachoGotor.jpeg", LocalDate.of(2013, 1, 1), null, true));  
+        ListaIntegrantes.add(new IntegranteDTO("Luis Gonzalvo", "Baterista", "/ImagenesArtistas/LuisGonzalvo.jpeg", LocalDate.of(2013, 1, 1), null, true));  
         ListaArtistasGrupo[40] = new ArtistasDTO("DVICIO", "/ImagenesArtistas/DVICIO.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 42: Little Mix
