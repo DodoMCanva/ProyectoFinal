@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package IBO;
 
 import DTO.AlbumDTO;
@@ -10,13 +6,15 @@ import java.util.List;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public interface IAlbumBO {
 
     public void insertarAlbum(AlbumDTO album);
 
     String obtenerIdPorNombre(String nombreArtista);
+    
+    public AlbumDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO;
 
     List<AlbumDTO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionBO;
 

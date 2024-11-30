@@ -1,6 +1,9 @@
 package Presentacion;
 
+import BO.UsuarioBO;
 import Exceptions.ExceptionBO;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,6 +14,8 @@ import java.util.logging.Logger;
 public class frmGeneroNoDeseado extends javax.swing.JFrame {
 
     private String sesion;
+    private List<String> lista = new ArrayList<>();
+    private UsuarioBO usuBO = new UsuarioBO();
 
     /**
      * Creates new form frmGeneroNoDeseado
@@ -18,6 +23,20 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
     public frmGeneroNoDeseado(String sesion) {
         initComponents();
         this.sesion = sesion;
+        try {
+            this.lista = usuBO.consultaRestringidos(sesion);
+        } catch (ExceptionBO e) {
+        }
+        for (String genero : lista) {
+            switch (genero) {
+                case val:
+                    
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+
     }
 
     @SuppressWarnings("unchecked")

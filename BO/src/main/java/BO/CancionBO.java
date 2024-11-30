@@ -81,4 +81,9 @@ public class CancionBO implements ICancionBO {
         }
         return dtoList;
     }
+
+    @Override
+    public CancionDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

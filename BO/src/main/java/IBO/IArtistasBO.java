@@ -13,6 +13,8 @@ public interface IArtistasBO {
     public void insertarArtista(ArtistasDTO artista);
 
     String obtenerIdPorNombre(String nombreArtista);
+    
+    public ArtistasDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO;
 
     List<ArtistasDTO> consultaGeneralArtista(List<String> generosRestringidos) throws ExceptionBO;
 
