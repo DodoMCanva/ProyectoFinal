@@ -14,6 +14,7 @@ public class UsuarioDTO {
     private String password;
     private String imagen;
     private List<String> restringidosGeneros;
+    private FavoritosDTO favoritos;
 
     public UsuarioDTO() {
     }
@@ -25,22 +26,33 @@ public class UsuarioDTO {
         this.imagen = imagen;
     }
 
-    public UsuarioDTO(String id, String nombre, String email, String password, String imagen, List<String> restringidosGeneros) {
+    public UsuarioDTO(String id, String nombre, String email, String password, String imagen, List<String> restringidosGeneros,FavoritosDTO favoritos) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.imagen = imagen;
         this.restringidosGeneros = restringidosGeneros;
+        this.favoritos=favoritos;
     }
 
     public String getId() {
         return id;
     }
+    
 
     public void setId(String id) {
         this.id = id;
     }
+
+    public FavoritosDTO getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(FavoritosDTO favoritos) {
+        this.favoritos = favoritos;
+    }
+    
 
     public String getNombre() {
         return nombre;

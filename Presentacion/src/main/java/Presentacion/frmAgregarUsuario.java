@@ -143,9 +143,9 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
             usuarioDTO.setNombre(txtNombreUsuario.getText());
             usuarioDTO.setEmail(txtCorreoElectronico.getText());
             usuarioDTO.setPassword(txtContrsena.getText());
-            //usuarioDTO.setImagen(txtImagen.getText()); // Suponiendo que tienes un campo para la URL de la imagen
-            //usuarioDTO.setFavoritos(new FavoritosDTO(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-            //usuarioDTO.setRestringidosGeneros(new ArrayList<>());
+            usuarioDTO.setImagen(btnAnadirFoto.getText()); // Suponiendo que tienes un campo para la URL de la imagen
+//            usuarioDTO.setFavoritos(new FavoritosDTO(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+//            usuarioDTO.setRestringidosGeneros(new ArrayList<>());
 
             // Registrar usuario
             usuarioBO.guardarUsuario(usuarioDTO);

@@ -1,7 +1,10 @@
 package Presentacion;
 
+import Exceptions.ExceptionBO;
 import IBO.IArtistasBO;
 import IBO.ICancionBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -96,6 +99,7 @@ public class frmMenuSobrePuesto extends java.awt.Dialog {
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
         // Cierra el JDialog (frmMenuSobrePuesto)
+        
         this.dispose();
 
         // Cierra el frmMenu
@@ -104,7 +108,12 @@ public class frmMenuSobrePuesto extends java.awt.Dialog {
         }
 
         // Abre la pantalla de inicio de sesión
-        frmEditarPerfil ini = new frmEditarPerfil();
+        frmEditarPerfil ini = null;
+        try {
+            ini = new frmEditarPerfil(sesion);
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(frmMenuSobrePuesto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ini.setVisible(true);
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 

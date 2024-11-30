@@ -1,11 +1,13 @@
 package BO;
 
 import DAO.UsuarioDAO;
+import DTO.FavoritosDTO;
 import DTO.UsuarioDTO;
 import Exceptions.ExceptionBO;
 import Exceptions.ExceptionDAO;
 import IBO.IUsuarioBO;
 import IDAO.IUsuarioDAO;
+import POJO.FavoritosPOJO;
 import POJO.UsuarioPOJO;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,7 @@ public class UsuarioBO implements IUsuarioBO {
     public boolean iniciarSesion(String nombre, String password) throws ExceptionBO {
         try {
             // Buscar el UsuarioPOJO por nombre o email (asegúrate de que el método sea correcto)
-            UsuarioPOJO usuarioPOJO = usuarioDAO.buscarPorNombre(nombre); // O buscarPorEmail, según tu caso
+            UsuarioPOJO usuarioPOJO = usuarioDAO.buscarPorNombre(nombre);
 
             // Validar que el usuario exista y que el hash de la contraseña no sea nulo
             if (usuarioPOJO == null || usuarioPOJO.getPassword() == null) {
@@ -62,7 +64,14 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public void editarUsuario(UsuarioDTO usuario) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+
+            UsuarioPOJO usuarioPOJO = convertirUsuarioDTOaPOJO(usuario);
+            usuarioPOJO.setPassword(BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt()));
+            usuarioDAO.editarUsuario(usuarioPOJO);
+        } catch (ExceptionDAO e) {
+            throw new ExceptionBO("Error al editar el usuario en la capa BO", e);
+        }
     }
 
     @Override
@@ -77,8 +86,8 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public List<String> consultaRestringidos(String sesion) throws ExceptionBO {
-       List<String> ListaVAcia= new ArrayList<>();
-       ListaVAcia.add("PRecioso");
+        List<String> ListaVAcia = new ArrayList<>();
+        ListaVAcia.add("PRecioso");
         return ListaVAcia;
     }
 
@@ -125,31 +134,95 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
-    private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) {
-
-        return new UsuarioPOJO(
-                new ObjectId(dto.getId()),
-                dto.getNombre(),
-                dto.getEmail(),
-                dto.getPassword(),
-                dto.getImagen(),
-                dto.getRestringidosGeneros()
-        );
+   private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) {
+    // Verificar que dto.getFavoritos() no sea null
+    List<ObjectId> artistas = new ArrayList<>();
+    if (dto.getFavoritos() != null && dto.getFavoritos().getArtistas() != null) {
+        artistas = dto.getFavoritos().getArtistas().stream().map(ObjectId::new).toList();
     }
+
+    List<ObjectId> albums = new ArrayList<>();
+    if (dto.getFavoritos() != null && dto.getFavoritos().getAlbums() != null) {
+        albums = dto.getFavoritos().getAlbums().stream().map(ObjectId::new).toList();
+    }
+
+    List<ObjectId> canciones = new ArrayList<>();
+    if (dto.getFavoritos() != null && dto.getFavoritos().getCanciones() != null) {
+        canciones = dto.getFavoritos().getCanciones().stream().map(ObjectId::new).toList();
+    }
+
+    // Crear el objeto FavoritosPOJO
+    FavoritosPOJO favoritosPOJO = new FavoritosPOJO(artistas, albums, canciones);
+
+    // Devolver el UsuarioPOJO
+    return new UsuarioPOJO(
+            new ObjectId(dto.getId()),       // Conversión de String a ObjectId
+            dto.getNombre(),
+            dto.getEmail(),
+            dto.getPassword(),
+            dto.getImagen(),
+            dto.getRestringidosGeneros(),
+            favoritosPOJO                    // Asignar el objeto favoritos convertido
+    );
+}
+
 
     private UsuarioDTO convertirUsuarioPOJOaDTO(UsuarioPOJO pojo) {
-        return new UsuarioDTO(
-                pojo.getId().toHexString(),
-                pojo.getNombre(),
-                pojo.getEmail(),
-                pojo.getPassword(),
-                pojo.getImagen(),
-                pojo.getRestringidosGeneros());
+
+    List<String> artistas = new ArrayList<>();
+    if (pojo.getFavoritos() != null && pojo.getFavoritos().getArtistas() != null) {
+        for (ObjectId id : pojo.getFavoritos().getArtistas()) {
+            artistas.add(id.toHexString());
+        }
     }
+
+    List<String> albums = new ArrayList<>();
+    if (pojo.getFavoritos() != null && pojo.getFavoritos().getAlbums() != null) {
+        for (ObjectId id : pojo.getFavoritos().getAlbums()) {
+            albums.add(id.toHexString());
+        }
+    }
+
+    List<String> canciones = new ArrayList<>();
+    if (pojo.getFavoritos() != null && pojo.getFavoritos().getCanciones() != null) {
+        for (ObjectId id : pojo.getFavoritos().getCanciones()) {
+            canciones.add(id.toHexString());
+        }
+    }
+
+    // Crear el objeto FavoritosDTO
+    FavoritosDTO favoritosDTO = new FavoritosDTO(artistas, albums, canciones);
+
+    // Devolver el UsuarioDTO
+    return new UsuarioDTO(
+            pojo.getId().toHexString(),
+            pojo.getNombre(),
+            pojo.getEmail(),
+            pojo.getPassword(),
+            pojo.getImagen(),
+            pojo.getRestringidosGeneros(),
+            favoritosDTO
+    );
+}
+
 
     @Override
     public UsuarioDTO buscar(String id) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            ObjectId objectId;
+            try {
+                objectId = new ObjectId(id);
+            } catch (IllegalArgumentException e) {
+                throw new ExceptionBO("El ID del usuario no es válido: " + id, e);
+            }
+            UsuarioPOJO usuarioPOJO = usuarioDAO.buscar(objectId);
+            if (usuarioPOJO != null) {
+                return convertirUsuarioPOJOaDTO(usuarioPOJO);
+            }
+            return null;
+        } catch (ExceptionDAO e) {
+            throw new ExceptionBO("Error al buscar el usuario en la capa BO", e);
+        }
     }
 
     @Override
