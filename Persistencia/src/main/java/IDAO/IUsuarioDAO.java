@@ -51,11 +51,11 @@ public interface IUsuarioDAO {
     public List<String> consultaRestringidos(String sesion) throws ExceptionDAO;
 
     //Consulta
-    public List<ObjectId> consultarArtistasFavorito() throws ExceptionDAO;
+    public List<ObjectId> consultarArtistasFavorito(ObjectId sesion) throws ExceptionDAO;
 
     //Consulta
-    public List<ObjectId> consultarAlbumsFavorito() throws ExceptionDAO;
+    public List<ObjectId> consultarAlbumsFavorito(ObjectId sesion) throws ExceptionDAO;
 
 //Consulta
-    public List<ObjectId> consultarCancionesFavorito() throws ExceptionDAO;
+    public List<ObjectId> consultarCancionesFavorito(ObjectId sesion) throws ExceptionDAO;
 }
