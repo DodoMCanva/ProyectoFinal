@@ -95,12 +95,20 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public void agregarArtistaFavorito(String sesion, String artista) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            usuarioDAO.agregarCancionFavorito(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -114,17 +122,29 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public void eliminarFavoritoCancion(String sesion, String cancion) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(cancion));
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void agregarAlbumFavorito(String sesion, String album) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            usuarioDAO.agregarAlbumFavorito(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(album));
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void eliminarFavoritoAlbum(String sesion, String album) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(album));
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
