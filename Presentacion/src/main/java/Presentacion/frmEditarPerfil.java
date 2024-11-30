@@ -1,6 +1,9 @@
 package Presentacion;
 
+import BO.UsuarioBO;
+import DTO.UsuarioDTO;
 import Exceptions.ExceptionBO;
+import IBO.IUsuarioBO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,12 +14,27 @@ import java.util.logging.Logger;
 public class frmEditarPerfil extends javax.swing.JFrame {
 
     private String sesion;
+    private IUsuarioBO usuarioBO;
 
     /**
      * Creates new form frmEditarPerfil
      */
-    public frmEditarPerfil() {
+    public frmEditarPerfil(String sesion) throws ExceptionBO {
+        this.usuarioBO = new UsuarioBO();
+        this.sesion = sesion;
         initComponents();
+        inicializarCampos();
+    }
+
+    private void inicializarCampos() throws ExceptionBO {
+        try {
+            txtNombreUsuario.setText(usuarioBO.buscar(sesion).getNombre());
+            txtCorreoElectronico.setText(usuarioBO.buscar(sesion).getEmail());
+           // txtContrsena.setText(usuarioBO.buscar(sesion).getPassword());
+        } catch (ExceptionBO e) {
+            throw new ExceptionBO("Error al editar el usuario en la capa BO", e);
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -31,7 +49,7 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         txtCorreoElectronico = new javax.swing.JTextField();
         txtContrsena = new javax.swing.JTextField();
         lblTituloCorreoElectronico = new javax.swing.JLabel();
-        btnRegistrar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         lblLogoTitulo = new javax.swing.JLabel();
         lblTituloLogo = new javax.swing.JLabel();
         lblTituloContrasena = new javax.swing.JLabel();
@@ -82,14 +100,14 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         lblTituloCorreoElectronico.setText("Correo Electronico");
         jPanel1.add(lblTituloCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, 30));
 
-        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegistrar.setText("Guardar");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 120, 40));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 120, 40));
 
         lblLogoTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/Untitled (6).png"))); // NOI18N
         lblLogoTitulo.setText("jLabel9");
@@ -104,6 +122,11 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         jPanel1.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, 30));
 
         btnAnadirFoto.setText("Cambiar Foto");
+        btnAnadirFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnadirFotoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 110, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 540));
@@ -131,48 +154,30 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContrsenaActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        UsuarioDTO usuariodtoEdit = new UsuarioDTO(txtNombreUsuario.getText(), txtCorreoElectronico.getText(), txtContrsena.getText(), "");
+        usuariodtoEdit.setId(sesion);
+        try {
+            usuarioBO.editarUsuario(usuariodtoEdit);
+            frmMenu menu= new frmMenu(sesion);
+            menu.setVisible(true);
+            this.dispose();
+            
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(frmEditarPerfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    }//GEN-LAST:event_btnRegistrarActionPerformed
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frmEditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new frmEditarPerfil().setVisible(true);
-//            }
-//        });
-//    }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnAnadirFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFotoActionPerformed
+
+    }//GEN-LAST:event_btnAnadirFotoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAnadirFoto;
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogoTitulo;

@@ -3,12 +3,14 @@ package DAO;
 import Conexion.ConexionDB;
 import Exceptions.ExceptionDAO;
 import IDAO.IUsuarioDAO;
+import POJO.FavoritosPOJO;
 import POJO.UsuarioPOJO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
+import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -29,7 +31,12 @@ public class UsuarioDAO implements IUsuarioDAO {
                     .append("nombre", usuarioPOJO.getNombre())
                     .append("email", usuarioPOJO.getEmail())
                     .append("password", usuarioPOJO.getPassword()) // Usamos la contraseña hasheada del POJO
-                    .append("imagen", usuarioPOJO.getImagen());
+                    .append("imagen", usuarioPOJO.getImagen())
+                    .append("favoritos", new Document()
+                    .append("artistas", new ArrayList<>())
+                    .append("albums", new ArrayList<>())
+                    .append("canciones", new ArrayList<>()))
+                    .append("restringidosgeneros", new ArrayList<>());
 
             coleccionUsuarios.insertOne(usuarioDoc);
         } catch (Exception e) {
@@ -44,16 +51,22 @@ public class UsuarioDAO implements IUsuarioDAO {
             MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
 
             Document doc = coleccionUsuarios.find(Filters.eq("nombre", nombre)).first();
-
             if (doc != null) {
+                List<ObjectId> favoritosArtistas = doc.get("favoritos.artistas", List.class);
+                List<ObjectId> favoritosAlbums = doc.get("favoritos.albums", List.class);
+                List<ObjectId> favoritosCanciones = doc.get("favoritos.canciones", List.class);
+                List<String> restringidosGeneros = doc.getList("restringidosgeneros", String.class);
+
                 return new UsuarioPOJO(
                         doc.getObjectId("_id"),
                         doc.getString("nombre"),
                         doc.getString("email"),
                         doc.getString("password"),
                         doc.getString("imagen"),
-                        doc.getList("generos", String.class)//corregir
+                        restringidosGeneros,
+                        new FavoritosPOJO(favoritosArtistas, favoritosAlbums, favoritosCanciones)
                 );
+
             }
 
             return null;
@@ -153,10 +166,11 @@ public class UsuarioDAO implements IUsuarioDAO {
     }
 
     @Override
-    public List<String> consultaRestringidos(String sesion) throws ExceptionDAO{
-        
+    public List<String> consultaRestringidos(String sesion) throws ExceptionDAO {
+
         return null;
     }
+
     @Override
     public void eliminarFavoritoCancion(UsuarioPOJO usuario, ObjectId cancion) throws ExceptionDAO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -180,13 +194,19 @@ public class UsuarioDAO implements IUsuarioDAO {
             Document doc = coleccionUsuarios.find(Filters.eq("_id", id)).first();
 
             if (doc != null) {
+                List<ObjectId> favoritosArtistas = doc.get("favoritos.artistas", List.class);
+                List<ObjectId> favoritosAlbums = doc.get("favoritos.albums", List.class);
+                List<ObjectId> favoritosCanciones = doc.get("favoritos.canciones", List.class);
+                List<String> restringidosGeneros = doc.getList("restringidosgeneros", String.class);
+
                 return new UsuarioPOJO(
                         id,
                         doc.getString("nombre"),
                         doc.getString("email"),
                         doc.getString("password"),
                         doc.getString("imagen"),
-                        doc.getList("generos", String.class)//corregir
+                        restringidosGeneros,
+                        new FavoritosPOJO(favoritosArtistas, favoritosAlbums, favoritosCanciones)
                 );
             }
             return null;
@@ -194,4 +214,5 @@ public class UsuarioDAO implements IUsuarioDAO {
             throw new ExceptionDAO("Error al buscar el usuario por ID en la base de datos", e);
         }
     }
+
 }

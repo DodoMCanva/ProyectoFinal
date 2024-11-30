@@ -16,6 +16,7 @@ public class UsuarioPOJO {
     private String password;
     private String imagen;
     private List<String> restringidosGeneros;
+    private FavoritosPOJO favoritos;
 
     public UsuarioPOJO() {
     }
@@ -28,15 +29,25 @@ public class UsuarioPOJO {
         this.restringidosGeneros = restringidosGeneros;
     }
 
-    public UsuarioPOJO(ObjectId id, String nombre, String email, String password, String imagen, List<String> restringidosGeneros) {
+    public UsuarioPOJO(ObjectId id, String nombre, String email, String password, String imagen, List<String> restringidosGeneros,FavoritosPOJO favoritos) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.imagen = imagen;
         this.restringidosGeneros = restringidosGeneros;
+        this.favoritos= favoritos;
     }
 
+    public FavoritosPOJO getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(FavoritosPOJO favoritos) {
+        this.favoritos = favoritos;
+    }
+
+    
     
 
     public ObjectId getId() {
