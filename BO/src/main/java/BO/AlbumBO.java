@@ -102,4 +102,9 @@ public class AlbumBO implements IAlbumBO {
         }
         return dtoList;
     }
+
+    @Override
+    public AlbumDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
