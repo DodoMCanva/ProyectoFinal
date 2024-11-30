@@ -29,11 +29,60 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         }
         for (String genero : lista) {
             switch (genero) {
-                case val:
+                case "Pop":
                     
                     break;
-                default:
-                    throw new AssertionError();
+                case "Soul":
+                    
+                    break;
+                case "Funk":
+                    
+                    break;
+                case "Electropop":
+                    
+                    break;
+                case "R&B":
+                    
+                    break;
+                case "Rap":
+                    
+                    break;
+                case "Indie":
+                    
+                    break;
+                case "Flamenco":
+                    
+                    break;
+                case "Regional":
+                    
+                    break;
+                case "Romantica":
+                    
+                    break;
+                case "Rock":
+                    
+                    break;
+                case "Grunge":
+                    
+                    break;
+                case "Metal":
+                    
+                    break;
+                case "Hard Rock":
+                    
+                    break;
+                case "K-pop":
+                    
+                    break;
+                case "Electronica":
+                    
+                    break;
+                case "Banda":
+                    
+                    break;
+                case "Balada":
+                    
+                    break;
             }
         }
 
@@ -78,7 +127,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         lblTituloGenNoDeseados.setText(" Género no deseado");
         pnlGenNoDes.add(lblTituloGenNoDeseados, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 190, -1));
 
-        btnBanda.setBackground(new java.awt.Color(224, 224, 224));
         btnBanda.setText("Banda");
         btnBanda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +135,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnBanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 90, 20));
 
-        btnPop.setBackground(new java.awt.Color(224, 224, 224));
         btnPop.setText("Pop");
         btnPop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +159,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         lblLogoTitulo.setText("jLabel9");
         pnlGenNoDes.add(lblLogoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 80));
 
-        btnFunk.setBackground(new java.awt.Color(224, 224, 224));
         btnFunk.setText("Funk");
         btnFunk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +167,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnFunk, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 90, 20));
 
-        btnRYB.setBackground(new java.awt.Color(224, 224, 224));
         btnRYB.setText("R&B");
         btnRYB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +175,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnRYB, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 90, 20));
 
-        btnRap.setBackground(new java.awt.Color(224, 224, 224));
         btnRap.setText("Rap");
         btnRap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +183,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnRap, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 90, 20));
 
-        btnIndie.setBackground(new java.awt.Color(224, 224, 224));
         btnIndie.setText("Indie");
         btnIndie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +191,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnIndie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 90, 20));
 
-        btnFlamenco.setBackground(new java.awt.Color(224, 224, 224));
         btnFlamenco.setText("Flamenco");
         btnFlamenco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +199,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnFlamenco, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 90, 20));
 
-        btnElectropop.setBackground(new java.awt.Color(224, 224, 224));
         btnElectropop.setText("Electropop");
         btnElectropop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +207,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnElectropop, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 90, 20));
 
-        btnSoul.setBackground(new java.awt.Color(224, 224, 224));
         btnSoul.setText("Soul");
         btnSoul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +215,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnSoul, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 90, 20));
 
-        btnRegional.setBackground(new java.awt.Color(224, 224, 224));
         btnRegional.setText("Regional");
         btnRegional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +223,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnRegional, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 90, 20));
 
-        btnRomantica.setBackground(new java.awt.Color(224, 224, 224));
         btnRomantica.setText("Romantica");
         btnRomantica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +231,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnRomantica, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 90, 20));
 
-        btnRock.setBackground(new java.awt.Color(224, 224, 224));
         btnRock.setText("Rock");
         btnRock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +239,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnRock, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 90, 20));
 
-        btnGrunge.setBackground(new java.awt.Color(224, 224, 224));
         btnGrunge.setText("Grunge");
         btnGrunge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +247,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnGrunge, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 90, 20));
 
-        btnMetal.setBackground(new java.awt.Color(224, 224, 224));
         btnMetal.setText("Metal");
         btnMetal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +255,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 90, 20));
 
-        btnHardRock.setBackground(new java.awt.Color(224, 224, 224));
         btnHardRock.setText("Hard Rock");
         btnHardRock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +263,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnHardRock, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 90, 20));
 
-        btnKPOP.setBackground(new java.awt.Color(224, 224, 224));
         btnKPOP.setText("K-pop");
         btnKPOP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +271,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnKPOP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 90, 20));
 
-        btnMusicaClasica.setBackground(new java.awt.Color(224, 224, 224));
         btnMusicaClasica.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         btnMusicaClasica.setText("Musica Clasica");
         btnMusicaClasica.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +280,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnMusicaClasica, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 90, 20));
 
-        btnElectronica.setBackground(new java.awt.Color(224, 224, 224));
         btnElectronica.setText("Electronica");
         btnElectronica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -57,9 +57,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnBanda">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Banda"/>
           </Properties>
           <Events>
@@ -73,9 +70,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnPop">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Pop"/>
           </Properties>
           <Events>
@@ -128,9 +122,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnFunk">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Funk"/>
           </Properties>
           <Events>
@@ -144,9 +135,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRYB">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="R&amp;B"/>
           </Properties>
           <Events>
@@ -160,9 +148,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRap">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Rap"/>
           </Properties>
           <Events>
@@ -176,9 +161,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnIndie">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Indie"/>
           </Properties>
           <Events>
@@ -192,9 +174,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnFlamenco">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Flamenco"/>
           </Properties>
           <Events>
@@ -208,9 +187,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnElectropop">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Electropop"/>
           </Properties>
           <Events>
@@ -224,9 +200,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSoul">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Soul"/>
           </Properties>
           <Events>
@@ -240,9 +213,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRegional">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Regional"/>
           </Properties>
           <Events>
@@ -256,9 +226,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRomantica">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Romantica"/>
           </Properties>
           <Events>
@@ -272,9 +239,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRock">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Rock"/>
           </Properties>
           <Events>
@@ -288,9 +252,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnGrunge">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Grunge"/>
           </Properties>
           <Events>
@@ -304,9 +265,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnMetal">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Metal"/>
           </Properties>
           <Events>
@@ -320,9 +278,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnHardRock">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Hard Rock"/>
           </Properties>
           <Events>
@@ -336,9 +291,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnKPOP">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="K-pop"/>
           </Properties>
           <Events>
@@ -352,9 +304,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnMusicaClasica">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="8" style="0"/>
             </Property>
@@ -371,9 +320,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnElectronica">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="e0" red="e0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Electronica"/>
           </Properties>
           <Events>
