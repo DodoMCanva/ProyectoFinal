@@ -1107,7 +1107,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Bo$$", "3:30"),
                     new CancionDTO("Work from Home", "3:36"),
                     new CancionDTO("That's My Girl", "3:13"),
-                    new CancionDTO("All in My Head", "3:15"),
+                    new CancionDTO("All in My Head", "3:15")
             );
 
             for (CancionDTO cancion : canciones) {

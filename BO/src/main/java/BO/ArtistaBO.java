@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author cesar
+ * @author equipo 2
  */
 public class ArtistaBO implements IArtistasBO {
 

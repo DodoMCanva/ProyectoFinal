@@ -15,6 +15,7 @@ import IBO.IUsuarioBO;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -33,7 +34,6 @@ public class frmMenu extends javax.swing.JFrame {
     private ICancionBO canBO = new CancionBO();
     private IArtistasBO artBO = new ArtistaBO();
     private IAlbumBO albBO = new AlbumBO();
-    
 
     private List<CancionDTO> listaCanciones;
     private List<ArtistasDTO> listaArtistas;
@@ -45,19 +45,19 @@ public class frmMenu extends javax.swing.JFrame {
      * @param sesion
      */
     public frmMenu(String sesion) throws ExceptionBO {
-        
-        System.out.println("SESION"+sesion);
+
+        System.out.println("SESION" + sesion);
         this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
         this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
         this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
         this.sesion = sesion;
         initComponents();
-       formatearTablas();
-       reiniciarTablas();
-       cargarRegistrosCanciones();
-       cargarRegistrosArtistas();
-       cargarRegistrosAlbum();
-       
+        formatearTablas();
+        reiniciarTablas();
+        cargarRegistrosCanciones();
+        cargarRegistrosArtistas();
+        cargarRegistrosAlbum();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -303,22 +303,27 @@ public class frmMenu extends javax.swing.JFrame {
         ActionListener onFavoritoCancionClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                List<String> ids = new ArrayList<>();
-//                for (CancionDTO cancion : listaCanciones) {
-//                    ids.add(cancion.getId());
-//                }
-//
-//                try {
-//                    for (int i = 0; i < ids.size(); i++) {
-//                        if (usuBO.comprobarFavoritoCancion(ids.get(i))) {
-//                            usuBO.eliminarFavoritoCancion(sesion, ids.get(i));
-//                            break;
-//                        }
-//                    }
-//                    usuBO.agregarCancionFavorito(sesion, ids.get(tblCanciones.getSelectedRow()));
-//                } catch (ExceptionBO ex) {
-//                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
-//                }
+                List<String> ids = new ArrayList<>();
+                for (CancionDTO cancion : listaCanciones) {
+                    ids.add(cancion.getId());
+                }
+
+                try {
+                    boolean resultado = false;
+                    /*for (int i = 0; i < ids.size(); i++) {
+                        if (usuBO.comprobarFavoritoCancion(usuBO.buscar(sesion), ids.get(i))) {
+                            usuBO.eliminarFavoritoCancion(sesion, ids.get(i));
+                            resultado = true;
+                            break;
+                        }
+                    }*/
+                    if (!resultado) {
+                        usuBO.agregarCancionFavorito(sesion, ids.get(tblCanciones.getSelectedRow()));
+                    }
+
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
         modeloColumnasCanciones.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
@@ -350,7 +355,6 @@ public class frmMenu extends javax.swing.JFrame {
 
     }
 
-
     public void cargarRegistrosCanciones() {
         //reiniciarTablas();
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
@@ -362,6 +366,7 @@ public class frmMenu extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
         });
     }
+
     public void cargarRegistrosAlbum() {
         //reiniciarTablas();
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
@@ -374,18 +379,18 @@ public class frmMenu extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
         });
     }
-    public void cargarRegistrosArtistas() {
-    DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
-    //tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Establecer el renderizador para la columna de imágenes
-    listaArtistas.forEach(row -> {
-        Object[] fila = new Object[3];
-        fila[0] = row.getImagen(); // Ruta de la imagen
-        fila[1] = row.getNombre();
-        fila[2] = "favoritos";
-        modeloTabla.addRow(fila);
-    });
-}
 
+    public void cargarRegistrosArtistas() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
+        //tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Establecer el renderizador para la columna de imágenes
+        listaArtistas.forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getImagen(); // Ruta de la imagen
+            fila[1] = row.getNombre();
+            fila[2] = "favoritos";
+            modeloTabla.addRow(fila);
+        });
+    }
 
     private void reiniciarTablas() {
         DefaultTableModel modeloTablaCan = (DefaultTableModel) this.tblCanciones.getModel();

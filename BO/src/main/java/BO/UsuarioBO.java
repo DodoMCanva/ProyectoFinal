@@ -103,7 +103,7 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public void agregarCancionFavorito(String sesion, String cancion) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //usuarioDAO.agregarCancionFavorito(new ObjectId(sesion), new ObjectId(cancion));
     }
 
     @Override
@@ -134,77 +134,75 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
-   private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) {
-    // Verificar que dto.getFavoritos() no sea null
-    List<ObjectId> artistas = new ArrayList<>();
-    if (dto.getFavoritos() != null && dto.getFavoritos().getArtistas() != null) {
-        artistas = dto.getFavoritos().getArtistas().stream().map(ObjectId::new).toList();
+    private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) {
+        // Verificar que dto.getFavoritos() no sea null
+        List<ObjectId> artistas = new ArrayList<>();
+        if (dto.getFavoritos() != null && dto.getFavoritos().getArtistas() != null) {
+            artistas = dto.getFavoritos().getArtistas().stream().map(ObjectId::new).toList();
+        }
+
+        List<ObjectId> albums = new ArrayList<>();
+        if (dto.getFavoritos() != null && dto.getFavoritos().getAlbums() != null) {
+            albums = dto.getFavoritos().getAlbums().stream().map(ObjectId::new).toList();
+        }
+
+        List<ObjectId> canciones = new ArrayList<>();
+        if (dto.getFavoritos() != null && dto.getFavoritos().getCanciones() != null) {
+            canciones = dto.getFavoritos().getCanciones().stream().map(ObjectId::new).toList();
+        }
+
+        // Crear el objeto FavoritosPOJO
+        FavoritosPOJO favoritosPOJO = new FavoritosPOJO(artistas, albums, canciones);
+
+        // Devolver el UsuarioPOJO
+        return new UsuarioPOJO(
+                new ObjectId(dto.getId()), // Conversión de String a ObjectId
+                dto.getNombre(),
+                dto.getEmail(),
+                dto.getPassword(),
+                dto.getImagen(),
+                dto.getRestringidosGeneros(),
+                favoritosPOJO // Asignar el objeto favoritos convertido
+        );
     }
-
-    List<ObjectId> albums = new ArrayList<>();
-    if (dto.getFavoritos() != null && dto.getFavoritos().getAlbums() != null) {
-        albums = dto.getFavoritos().getAlbums().stream().map(ObjectId::new).toList();
-    }
-
-    List<ObjectId> canciones = new ArrayList<>();
-    if (dto.getFavoritos() != null && dto.getFavoritos().getCanciones() != null) {
-        canciones = dto.getFavoritos().getCanciones().stream().map(ObjectId::new).toList();
-    }
-
-    // Crear el objeto FavoritosPOJO
-    FavoritosPOJO favoritosPOJO = new FavoritosPOJO(artistas, albums, canciones);
-
-    // Devolver el UsuarioPOJO
-    return new UsuarioPOJO(
-            new ObjectId(dto.getId()),       // Conversión de String a ObjectId
-            dto.getNombre(),
-            dto.getEmail(),
-            dto.getPassword(),
-            dto.getImagen(),
-            dto.getRestringidosGeneros(),
-            favoritosPOJO                    // Asignar el objeto favoritos convertido
-    );
-}
-
 
     private UsuarioDTO convertirUsuarioPOJOaDTO(UsuarioPOJO pojo) {
 
-    List<String> artistas = new ArrayList<>();
-    if (pojo.getFavoritos() != null && pojo.getFavoritos().getArtistas() != null) {
-        for (ObjectId id : pojo.getFavoritos().getArtistas()) {
-            artistas.add(id.toHexString());
+        List<String> artistas = new ArrayList<>();
+        if (pojo.getFavoritos() != null && pojo.getFavoritos().getArtistas() != null) {
+            for (ObjectId id : pojo.getFavoritos().getArtistas()) {
+                artistas.add(id.toHexString());
+            }
         }
-    }
 
-    List<String> albums = new ArrayList<>();
-    if (pojo.getFavoritos() != null && pojo.getFavoritos().getAlbums() != null) {
-        for (ObjectId id : pojo.getFavoritos().getAlbums()) {
-            albums.add(id.toHexString());
+        List<String> albums = new ArrayList<>();
+        if (pojo.getFavoritos() != null && pojo.getFavoritos().getAlbums() != null) {
+            for (ObjectId id : pojo.getFavoritos().getAlbums()) {
+                albums.add(id.toHexString());
+            }
         }
-    }
 
-    List<String> canciones = new ArrayList<>();
-    if (pojo.getFavoritos() != null && pojo.getFavoritos().getCanciones() != null) {
-        for (ObjectId id : pojo.getFavoritos().getCanciones()) {
-            canciones.add(id.toHexString());
+        List<String> canciones = new ArrayList<>();
+        if (pojo.getFavoritos() != null && pojo.getFavoritos().getCanciones() != null) {
+            for (ObjectId id : pojo.getFavoritos().getCanciones()) {
+                canciones.add(id.toHexString());
+            }
         }
+
+        // Crear el objeto FavoritosDTO
+        FavoritosDTO favoritosDTO = new FavoritosDTO(artistas, albums, canciones);
+
+        // Devolver el UsuarioDTO
+        return new UsuarioDTO(
+                pojo.getId().toHexString(),
+                pojo.getNombre(),
+                pojo.getEmail(),
+                pojo.getPassword(),
+                pojo.getImagen(),
+                pojo.getRestringidosGeneros(),
+                favoritosDTO
+        );
     }
-
-    // Crear el objeto FavoritosDTO
-    FavoritosDTO favoritosDTO = new FavoritosDTO(artistas, albums, canciones);
-
-    // Devolver el UsuarioDTO
-    return new UsuarioDTO(
-            pojo.getId().toHexString(),
-            pojo.getNombre(),
-            pojo.getEmail(),
-            pojo.getPassword(),
-            pojo.getImagen(),
-            pojo.getRestringidosGeneros(),
-            favoritosDTO
-    );
-}
-
 
     @Override
     public UsuarioDTO buscar(String id) throws ExceptionBO {
@@ -226,18 +224,45 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     @Override
-    public boolean comprobarFavoritoArtista(String id) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean comprobarFavoritoArtista(UsuarioDTO dto, String id) throws ExceptionBO {
+        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getArtistas() == null) {
+            return false;
+        }
+
+        for (String artista : dto.getFavoritos().getArtistas()) {
+            if (artista.equals(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
-    public boolean comprobarFavoritoCancion(String id) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean comprobarFavoritoCancion(UsuarioDTO dto, String id) throws ExceptionBO {
+        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getCanciones()== null) {
+            return false;
+        }
+
+        for (String cancion : dto.getFavoritos().getCanciones()) {
+            if (cancion.equals(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
-    public boolean comprobarFavoritoAlbum(String id) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean comprobarFavoritoAlbum(UsuarioDTO dto, String id) throws ExceptionBO {
+        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getAlbums() == null) {
+            return false;
+        }
+
+        for (String cancion : dto.getFavoritos().getAlbums()) {
+            if (cancion.equals(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

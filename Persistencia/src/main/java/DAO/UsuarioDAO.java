@@ -33,9 +33,9 @@ public class UsuarioDAO implements IUsuarioDAO {
                     .append("password", usuarioPOJO.getPassword()) // Usamos la contraseña hasheada del POJO
                     .append("imagen", usuarioPOJO.getImagen())
                     .append("favoritos", new Document()
-                    .append("artistas", new ArrayList<>())
-                    .append("albums", new ArrayList<>())
-                    .append("canciones", new ArrayList<>()))
+                            .append("artistas", new ArrayList<>())
+                            .append("albums", new ArrayList<>())
+                            .append("canciones", new ArrayList<>()))
                     .append("restringidosgeneros", new ArrayList<>());
 
             coleccionUsuarios.insertOne(usuarioDoc);
@@ -132,16 +132,26 @@ public class UsuarioDAO implements IUsuarioDAO {
 
     @Override
     public void agregarArtistaFavorito(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO {
+        if (usuario == null || usuario.getNombre() == null || artista == null) {
+            throw new IllegalArgumentException("El usuario o el ID del artista no pueden ser nulos o vacíos.");
+        }
+
         try {
             MongoDatabase baseDeDatos = new ConexionDB().conexion();
             MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
-
             Bson filtro = Filters.eq("nombre", usuario.getNombre());
-            Bson actualizacion = Updates.addToSet("artistasFavoritos", artista);
-
-            coleccionUsuarios.updateOne(filtro, actualizacion);
-        } catch (Exception e) {
-            throw new ExceptionDAO("Error al agregar el artista favorito", e);
+            Bson actualizacion = Updates.addToSet("favoritos.artistas", artista);
+            UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
+            if (resultado.getMatchedCount() == 0) {
+                throw new ExceptionDAO("No se encontró un usuario con el nombre: " + usuario.getNombre());
+            }
+            if (resultado.getModifiedCount() == 0) {
+                System.out.println("El artista ya estaba en la lista de favoritos.");
+            } else {
+                System.out.println("Artista agregado a la lista de favoritos exitosamente.");
+            }
+        } catch (ExceptionDAO e) {
+            throw new ExceptionDAO("Error al agregar el artista favorito. Filtro: " + usuario.getNombre(), e);
         }
     }
 
@@ -213,6 +223,21 @@ public class UsuarioDAO implements IUsuarioDAO {
         } catch (Exception e) {
             throw new ExceptionDAO("Error al buscar el usuario por ID en la base de datos", e);
         }
+    }
+
+    @Override
+    public List<ObjectId> consultarArtistasFavorito() throws ExceptionDAO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<ObjectId> consultarAlbumsFavorito() throws ExceptionDAO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<ObjectId> consultarCancionesFavorito() throws ExceptionDAO {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
