@@ -12,6 +12,7 @@ import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -132,18 +133,122 @@ public class UsuarioDAO implements IUsuarioDAO {
 
     @Override
     public void agregarArtistaFavorito(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO {
-        if (usuario == null || usuario.getNombre() == null || artista == null) {
+        if (usuario == null || usuario.getId() == null || artista == null) {
             throw new IllegalArgumentException("El usuario o el ID del artista no pueden ser nulos o vacíos.");
         }
 
         try {
             MongoDatabase baseDeDatos = new ConexionDB().conexion();
             MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
-            Bson filtro = Filters.eq("nombre", usuario.getNombre());
+            Bson filtro = Filters.eq("_id", usuario.getId());
             Bson actualizacion = Updates.addToSet("favoritos.artistas", artista);
+
+            UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
+
+            if (resultado.getMatchedCount() == 0) {
+                throw new ExceptionDAO("No se encontró un usuario con el ID: " + usuario.getId());
+            }
+            if (resultado.getModifiedCount() == 0) {
+                JOptionPane.showMessageDialog(null, "El artista ya estaba en la lista de favoritos.");
+            } else {
+                System.out.println("Artista agregado a la lista de favoritos exitosamente.");
+            }
+        } catch (ExceptionDAO e) {
+            throw new ExceptionDAO("Error al agregar el artista favorito. Filtro: " + usuario.getId(), e);
+        }
+    }
+
+    @Override
+    public void eliminarFavoritoArtista(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO {
+        if (usuario == null || usuario.getId() == null || artista == null) {
+            throw new IllegalArgumentException("El usuario o el ID del artista no pueden ser nulos o vacíos.");
+        }
+
+        try {
+            MongoDatabase baseDeDatos = new ConexionDB().conexion();
+            MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
+            Bson filtro = Filters.eq("_id", usuario.getId());
+            Bson actualizacion = Updates.pull("favoritos.artistas", artista);
             UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
             if (resultado.getMatchedCount() == 0) {
-                throw new ExceptionDAO("No se encontró un usuario con el nombre: " + usuario.getNombre());
+                throw new ExceptionDAO("No se encontró un usuario con el ID: " + usuario.getId());
+            }
+            if (resultado.getModifiedCount() == 0) {
+                System.out.println("El artista no estaba en la lista de favoritos.");
+            } else {
+                System.out.println("Artista eliminado de la lista de favoritos exitosamente.");
+            }
+        } catch (ExceptionDAO e) {
+            throw new ExceptionDAO("Error al eliminar el artista favorito. Filtro: " + usuario.getId(), e);
+        }
+    }
+
+    @Override
+    public void agregarCancionFavorito(UsuarioPOJO usuario, ObjectId cancion) throws ExceptionDAO {
+        if (usuario == null || usuario.getNombre() == null || cancion == null) {
+            throw new IllegalArgumentException("El usuario o el ID del cancion no pueden ser nulos o vacíos.");
+        }
+
+        try {
+            MongoDatabase baseDeDatos = new ConexionDB().conexion();
+            MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
+            Bson filtro = Filters.eq("_id", usuario.getId());
+            Bson actualizacion = Updates.addToSet("favoritos.canciones", cancion);
+            UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
+            if (resultado.getMatchedCount() == 0) {
+                throw new ExceptionDAO("No se encontró: " + usuario.getNombre());
+            }
+            if (resultado.getModifiedCount() == 0) {
+                System.out.println("El artista ya estaba en la lista de favoritos.");
+            } else {
+                System.out.println("Artista agregado a la lista de favoritos exitosamente.");
+            }
+        } catch (ExceptionDAO e) {
+            throw new ExceptionDAO("Error al agregar el artista favorito. Filtro: " + usuario.getNombre(), e);
+        }
+    }
+
+    
+
+    @Override
+    public void eliminarFavoritoCancion(UsuarioPOJO usuario, ObjectId cancion) throws ExceptionDAO {
+        if (usuario == null || usuario.getId() == null || cancion == null) {
+            throw new IllegalArgumentException("El usuario o el ID del artista no pueden ser nulos o vacíos.");
+        }
+
+        try {
+            MongoDatabase baseDeDatos = new ConexionDB().conexion();
+            MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
+            Bson filtro = Filters.eq("_id", usuario.getId());
+            Bson actualizacion = Updates.pull("favoritos.canciones", cancion);
+            UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
+            if (resultado.getMatchedCount() == 0) {
+                throw new ExceptionDAO("No se encontró un usuario con el ID: " + usuario.getId());
+            }
+            if (resultado.getModifiedCount() == 0) {
+                System.out.println("El artista no estaba en la lista de favoritos.");
+            } else {
+                System.out.println("Artista eliminado de la lista de favoritos exitosamente.");
+            }
+        } catch (Exception e) {
+            throw new ExceptionDAO("Error al eliminar el artista favorito. Filtro: " + usuario.getId(), e);
+        }
+    }
+
+    @Override
+    public void agregarAlbumFavorito(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO {
+        if (usuario == null || usuario.getNombre() == null || album == null) {
+            throw new IllegalArgumentException("El usuario o el ID del artista no pueden ser nulos o vacíos.");
+        }
+
+        try {
+            MongoDatabase baseDeDatos = new ConexionDB().conexion();
+            MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
+            Bson filtro = Filters.eq("_id", usuario.getId());
+            Bson actualizacion = Updates.addToSet("favoritos.albums", album);
+            UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
+            if (resultado.getMatchedCount() == 0) {
+                throw new ExceptionDAO("No se encontró: " + usuario.getNombre());
             }
             if (resultado.getModifiedCount() == 0) {
                 System.out.println("El artista ya estaba en la lista de favoritos.");
@@ -156,23 +261,28 @@ public class UsuarioDAO implements IUsuarioDAO {
     }
 
     @Override
-    public void eliminarFavoritoArtista(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO {
+    public void eliminarFavoritoAlbum(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO {
+        if (usuario == null || usuario.getId() == null || album == null) {
+            throw new IllegalArgumentException("El usuario o el ID del artista no pueden ser nulos o vacíos.");
+        }
+
         try {
             MongoDatabase baseDeDatos = new ConexionDB().conexion();
             MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
-
-            Bson filtro = Filters.eq("nombre", usuario.getNombre());
-            Bson actualizacion = Updates.pull("artistasFavoritos", artista);
-
-            coleccionUsuarios.updateOne(filtro, actualizacion);
-        } catch (Exception e) {
-            throw new ExceptionDAO("Error al eliminar el artista favorito", e);
+            Bson filtro = Filters.eq("_id", usuario.getId());
+            Bson actualizacion = Updates.pull("favoritos.albums", album);
+            UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
+            if (resultado.getMatchedCount() == 0) {
+                throw new ExceptionDAO("No se encontró un usuario con el ID: " + usuario.getId());
+            }
+            if (resultado.getModifiedCount() == 0) {
+                System.out.println("El artista no estaba en la lista de favoritos.");
+            } else {
+                System.out.println("Artista eliminado de la lista de favoritos exitosamente.");
+            }
+        } catch (ExceptionDAO e) {
+            throw new ExceptionDAO("Error al eliminar el artista favorito. Filtro: " + usuario.getId(), e);
         }
-    }
-
-    @Override
-    public void agregarCancionFavorito(UsuarioPOJO usuario, ObjectId cancion) throws ExceptionDAO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -180,22 +290,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
         return null;
     }
-
-    @Override
-    public void eliminarFavoritoCancion(UsuarioPOJO usuario, ObjectId cancion) throws ExceptionDAO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void agregarAlbumFavorito(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void eliminarFavoritoAlbum(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO {
-
-    }
-
+    
     @Override
     public UsuarioPOJO buscar(ObjectId id) throws ExceptionDAO {
         try {

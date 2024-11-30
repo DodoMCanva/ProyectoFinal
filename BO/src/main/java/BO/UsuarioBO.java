@@ -11,6 +11,8 @@ import POJO.FavoritosPOJO;
 import POJO.UsuarioPOJO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -103,7 +105,11 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public void agregarCancionFavorito(String sesion, String cancion) throws ExceptionBO {
-        //usuarioDAO.agregarCancionFavorito(new ObjectId(sesion), new ObjectId(cancion));
+        try {
+            usuarioDAO.agregarCancionFavorito(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(cancion));
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -239,7 +245,7 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public boolean comprobarFavoritoCancion(UsuarioDTO dto, String id) throws ExceptionBO {
-        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getCanciones()== null) {
+        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getCanciones() == null) {
             return false;
         }
 
