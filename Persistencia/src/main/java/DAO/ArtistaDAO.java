@@ -155,4 +155,47 @@ public class ArtistaDAO implements IArtistaDAO {
             throw new ExceptionDAO("Error al realizar la búsqueda de artistas", e);
         }
     }
+
+    @Override
+    public ArtistaPOJO consulta(ObjectId id) throws ExceptionDAO {
+        try {
+            MongoCollection<Document> coleccionArtistas = database.getCollection("artistas");
+            Bson filtroId = Filters.eq("_id", id);
+            Document doc = coleccionArtistas.find(filtroId).first();
+            if (doc == null) {
+                throw new ExceptionDAO("No se encontró el artista con el ID especificado.");
+            }
+            List<Document> integrantesDocs = doc.getList("integrantes", Document.class);
+            List<IntegrantesPOJO> integrantes = new ArrayList<>();
+            if (integrantesDocs != null) {
+                for (Document integranteDoc : integrantesDocs) {
+                    IntegrantesPOJO integrante = new IntegrantesPOJO(
+                            integranteDoc.getString("nombre"),
+                            integranteDoc.getString("rol"),
+                            integranteDoc.getString("imagen"),
+                            integranteDoc.getDate("ingreso") != null
+                            ? integranteDoc.getDate("ingreso").toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                            : null,
+                            integranteDoc.getDate("salida") != null
+                            ? integranteDoc.getDate("salida").toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                            : null,
+                            integranteDoc.getBoolean("estado", false)
+                    );
+                    integrantes.add(integrante);
+                }
+            }
+            ArtistaPOJO artista = new ArtistaPOJO(
+                    doc.getObjectId("_id"),
+                    doc.getString("nombre"),
+                    doc.getString("imagen"),
+                    doc.getString("tipo"),
+                    doc.getString("genero"),
+                    integrantes
+            );
+
+            return artista;
+        } catch (ExceptionDAO e) {
+            throw new ExceptionDAO("Error al consultar el artista por ID", e);
+        }
+    }
 }

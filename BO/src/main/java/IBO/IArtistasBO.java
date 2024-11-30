@@ -14,7 +14,7 @@ public interface IArtistasBO {
 
     String obtenerIdPorNombre(String nombreArtista);
     
-    public ArtistasDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO;
+    public ArtistasDTO consulta( String id) throws ExceptionBO;
 
     List<ArtistasDTO> consultaGeneralArtista(List<String> generosRestringidos) throws ExceptionBO;
 

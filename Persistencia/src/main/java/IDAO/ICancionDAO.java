@@ -3,6 +3,7 @@ package IDAO;
 import Exceptions.ExceptionDAO;
 import POJO.CancionPOJO;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -13,6 +14,8 @@ public interface ICancionDAO {
     void insertarCancion(CancionPOJO cancion) throws ExceptionDAO;
 
     String obtenerIdPorNombre(String nombreCancion);
+    
+    public CancionPOJO consulta(ObjectId id) throws ExceptionDAO;
 
     public List<CancionPOJO> consultaGeneralCancion(List<String> generosRestringidos) throws ExceptionDAO;
 

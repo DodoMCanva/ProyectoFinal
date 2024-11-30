@@ -132,7 +132,7 @@ public class ArtistaBO implements IArtistasBO {
     }
 
     @Override
-    public ArtistasDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO {
+    public ArtistasDTO consulta(String id) throws ExceptionBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

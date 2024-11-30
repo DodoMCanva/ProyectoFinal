@@ -108,4 +108,26 @@ public class CancionDAO implements ICancionDAO {
         }
     }
 
+    @Override
+    public CancionPOJO consulta(ObjectId id) throws ExceptionDAO {
+        MongoDatabase baseDeDatos = new ConexionDB().conexion();
+        MongoCollection<Document> coleccionCanciones = baseDeDatos.getCollection("canciones");
+        try {
+            Bson filtroId = Filters.eq("_id", id);
+            Document doc = coleccionCanciones.find(filtroId).first();
+            if (doc == null) {
+                throw new ExceptionDAO("No se encontró la canción con el ID especificado.");
+            }
+            CancionPOJO cancion = new CancionPOJO(
+                    doc.getObjectId("_id"),
+                    doc.getString("nombre"),
+                    doc.getString("duracion")
+            );
+
+            return cancion;
+        } catch (Exception e) {
+            throw new ExceptionDAO("Error al consultar la canción por ID", e);
+        }
+    }
+
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import Conexion.ConexionDB;
@@ -119,6 +115,48 @@ public class AlbumDAO implements IAlbumDAO {
             return listaAlbums;
         } catch (Exception e) {
             throw new ExceptionDAO("Error al realizar la búsqueda de álbumes", e);
+        }
+    }
+
+    @Override
+    public String obtenerIdPorNombre(String nombreAlbum) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public AlbumPOJO consulta(ObjectId id) throws ExceptionDAO {
+        MongoDatabase baseDeDatos = new ConexionDB().conexion();
+        MongoCollection<Document> coleccionAlbums = baseDeDatos.getCollection("albums");
+
+        try {
+            Bson filtro = Filters.eq("_id", id);
+            Document resultado = coleccionAlbums.find(filtro).first();
+
+            if (resultado != null) {
+                List<ObjectId> cancionesIds = resultado.getList("canciones", ObjectId.class);
+                ObjectId artistaId = resultado.getObjectId("artistaId");
+                LocalDate fechaLanzamiento = null;
+                if (resultado.getDate("fechaLanzamiento") != null) {
+                    fechaLanzamiento = resultado.getDate("fechaLanzamiento")
+                            .toInstant()
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDate();
+                }
+
+                return new AlbumPOJO(
+                        resultado.getObjectId("_id"),
+                        resultado.getString("nombre"),
+                        fechaLanzamiento,
+                        resultado.getString("genero"),
+                        resultado.getString("portada"),
+                        artistaId,
+                        cancionesIds
+                );
+            } else {
+                throw new ExceptionDAO("No se encontró ningún álbum con el ID: " + id);
+            }
+        } catch (ExceptionDAO e) {
+            throw new ExceptionDAO("Error al consultar el álbum por ID: " + e.getMessage(), e);
         }
     }
 

@@ -3,6 +3,7 @@ package IDAO;
 import Exceptions.ExceptionDAO;
 import POJO.AlbumPOJO;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -11,6 +12,10 @@ import java.util.List;
 public interface IAlbumDAO {
 
     void InsertarAlbum(AlbumPOJO album) throws ExceptionDAO;
+    
+    public String obtenerIdPorNombre(String nombreAlbum);
+    
+    public AlbumPOJO consulta(ObjectId id) throws ExceptionDAO;
 
     public List<AlbumPOJO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionDAO;
 
