@@ -165,7 +165,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaIntegrantes.add(new IntegranteDTO("Jonny Buckland", "Guitarrista", "/ImagenesArtistas/JonnyBuckland.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Fecha inicial del grupo
         ListaIntegrantes.add(new IntegranteDTO("Guy Berryman", "Bajista", "/ImagenesArtistas/GuyBerryman.jpeg", LocalDate.of(1996, 9, 1), null, true)); // Inicio del proyecto musical
         ListaIntegrantes.add(new IntegranteDTO("Will Champion", "Baterista", "/ImagenesArtistas/WillChampion.jpeg", LocalDate.of(1998, 7, 31), null, true)); // Fecha de ingreso oficial
-        ListaArtistasGrupo[8] = new ArtistasDTO("Coldplay", "/ImagenesArtistas/Coldplay.jpeg", "Grupo", "Pop Rock", ListaIntegrantes);
+        ListaArtistasGrupo[8] = new ArtistasDTO("Coldplay", "/ImagenesArtistas/Coldplay.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 10: Imagine Dragons
         ListaIntegrantes = new ArrayList<>();
@@ -1938,7 +1938,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("She Will Be Loved"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("This Love"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Sunday Morning"));
-            AlbumDTO album113 = new AlbumDTO("Songs About Jane", LocalDate.of(2002, Month.JUNE, 25), "Pop/Rock", "/ImagenesAlbumes/SongsAboutJane.jpeg", artistaBO.obtenerIdPorNombre("Maroon 5"), listaCanciones);
+            AlbumDTO album113 = new AlbumDTO("Songs About Jane", LocalDate.of(2002, Month.JUNE, 25), "Pop", "/ImagenesAlbumes/SongsAboutJane.jpeg", artistaBO.obtenerIdPorNombre("Maroon 5"), listaCanciones);
             albumBO.insertarAlbum(album113);
 
             listaCanciones.clear();
@@ -1968,14 +1968,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("In the End"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Crawling"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("One Step Closer"));
-            AlbumDTO album117 = new AlbumDTO("Hybrid Theory", LocalDate.of(2000, Month.OCTOBER, 24), "Nu Metal", "/ImagenesAlbumes/HybridTheory.jpeg", artistaBO.obtenerIdPorNombre("Linkin Park"), listaCanciones);
+            AlbumDTO album117 = new AlbumDTO("Hybrid Theory", LocalDate.of(2000, Month.OCTOBER, 24), "Metal", "/ImagenesAlbumes/HybridTheory.jpeg", artistaBO.obtenerIdPorNombre("Linkin Park"), listaCanciones);
             albumBO.insertarAlbum(album117);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Numb"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Faint"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Somewhere I Belong"));
-            AlbumDTO album118 = new AlbumDTO("Meteora", LocalDate.of(2003, Month.MARCH, 25), "Nu Metal", "/ImagenesAlbumes/Meteora.jpeg", artistaBO.obtenerIdPorNombre("Linkin Park"), listaCanciones);
+            AlbumDTO album118 = new AlbumDTO("Meteora", LocalDate.of(2003, Month.MARCH, 25), "Metal", "/ImagenesAlbumes/Meteora.jpeg", artistaBO.obtenerIdPorNombre("Linkin Park"), listaCanciones);
             albumBO.insertarAlbum(album118);
 
             // Álbumes de Arctic Monkeys
@@ -1983,14 +1983,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("I Bet You Look Good on the Dancefloor"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Fake Tales of San Francisco"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Mardy Bum"));
-            AlbumDTO album119 = new AlbumDTO("Whatever People Say I Am, That's What I'm Not", LocalDate.of(2006, Month.JANUARY, 23), "Indie Rock", "/ImagenesAlbumes/WhateverPeopleSay.jpeg", artistaBO.obtenerIdPorNombre("Arctic Monkeys"), listaCanciones);
+            AlbumDTO album119 = new AlbumDTO("Whatever People Say I Am, That's What I'm Not", LocalDate.of(2006, Month.JANUARY, 23), "Indie", "/ImagenesAlbumes/WhateverPeopleSay.jpeg", artistaBO.obtenerIdPorNombre("Arctic Monkeys"), listaCanciones);
             albumBO.insertarAlbum(album119);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Do I Wanna Know?"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("R U Mine?"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Arabella"));
-            AlbumDTO album120 = new AlbumDTO("AM", LocalDate.of(2013, Month.SEPTEMBER, 9), "Indie Rock", "/ImagenesAlbumes/AM.jpeg", artistaBO.obtenerIdPorNombre("Arctic Monkeys"), listaCanciones);
+            AlbumDTO album120 = new AlbumDTO("AM", LocalDate.of(2013, Month.SEPTEMBER, 9), "Indie", "/ImagenesAlbumes/AM.jpeg", artistaBO.obtenerIdPorNombre("Arctic Monkeys"), listaCanciones);
             albumBO.insertarAlbum(album120);
 
             // Álbumes de Twenty One Pilots
@@ -2028,14 +2028,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("DNA"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Mic Drop"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Fake Love"));
-            AlbumDTO album125 = new AlbumDTO("Love Yourself: Tear", LocalDate.of(2018, Month.MAY, 18), "K-Pop", "/ImagenesAlbumes/LoveYourselfTear.jpeg", artistaBO.obtenerIdPorNombre("BTS"), listaCanciones);
+            AlbumDTO album125 = new AlbumDTO("Love Yourself: Tear", LocalDate.of(2018, Month.MAY, 18), "K-pop", "/ImagenesAlbumes/LoveYourselfTear.jpeg", artistaBO.obtenerIdPorNombre("BTS"), listaCanciones);
             albumBO.insertarAlbum(album125);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Yet To Come"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Run BTS"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("For Youth"));
-            AlbumDTO album126 = new AlbumDTO("Proof", LocalDate.of(2022, Month.JUNE, 10), "K-Pop", "/ImagenesAlbumes/Proof.jpeg", artistaBO.obtenerIdPorNombre("BTS"), listaCanciones);
+            AlbumDTO album126 = new AlbumDTO("Proof", LocalDate.of(2022, Month.JUNE, 10), "K-pop", "/ImagenesAlbumes/Proof.jpeg", artistaBO.obtenerIdPorNombre("BTS"), listaCanciones);
             albumBO.insertarAlbum(album126);
 
             // Álbumes de ABBA
@@ -2058,14 +2058,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("DDU-DU DDU-DU"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Kill This Love"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("As If It's Your Last"));
-            AlbumDTO album129 = new AlbumDTO("The Album", LocalDate.of(2020, Month.OCTOBER, 2), "K-Pop", "/ImagenesAlbumes/TheAlbum.jpeg", artistaBO.obtenerIdPorNombre("BLACKPINK"), listaCanciones);
+            AlbumDTO album129 = new AlbumDTO("The Album", LocalDate.of(2020, Month.OCTOBER, 2), "K-pop", "/ImagenesAlbumes/TheAlbum.jpeg", artistaBO.obtenerIdPorNombre("BLACKPINK"), listaCanciones);
             albumBO.insertarAlbum(album129);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("How You Like That"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Lovesick Girls"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Ice Cream"));
-            AlbumDTO album130 = new AlbumDTO("Born Pink", LocalDate.of(2022, Month.SEPTEMBER, 16), "K-Pop", "/ImagenesAlbumes/BornPink.jpeg", artistaBO.obtenerIdPorNombre("BLACKPINK"), listaCanciones);
+            AlbumDTO album130 = new AlbumDTO("Born Pink", LocalDate.of(2022, Month.SEPTEMBER, 16), "K-pop", "/ImagenesAlbumes/BornPink.jpeg", artistaBO.obtenerIdPorNombre("BLACKPINK"), listaCanciones);
             albumBO.insertarAlbum(album130);
 
             // Álbumes de The Piano Guys
@@ -2163,14 +2163,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Fearless"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Blue Flame"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("The World is My Oyster"));
-            AlbumDTO album143 = new AlbumDTO("Fearless", LocalDate.of(2022, Month.MAY, 2), "K-Pop", "/ImagenesAlbumes/Fearless.jpeg", artistaBO.obtenerIdPorNombre("Le Sserafim"), listaCanciones);
+            AlbumDTO album143 = new AlbumDTO("Fearless", LocalDate.of(2022, Month.MAY, 2), "K-pop", "/ImagenesAlbumes/Fearless.jpeg", artistaBO.obtenerIdPorNombre("Le Sserafim"), listaCanciones);
             albumBO.insertarAlbum(album143);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Pierrot"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("CRAZY"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("1-800-hot-n-fun"));
-            AlbumDTO album144 = new AlbumDTO("CRAZY", LocalDate.of(2023, Month.OCTOBER, 13), "K-Pop", "/ImagenesAlbumes/CRAZY.jpeg", artistaBO.obtenerIdPorNombre("Le Sserafim"), listaCanciones);
+            AlbumDTO album144 = new AlbumDTO("CRAZY", LocalDate.of(2023, Month.OCTOBER, 13), "K-pop", "/ImagenesAlbumes/CRAZY.jpeg", artistaBO.obtenerIdPorNombre("Le Sserafim"), listaCanciones);
             albumBO.insertarAlbum(album144);
 
             // Álbumes de Intocable
@@ -2238,14 +2238,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Hoy No Me Puedo Levantar"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Me Cuesta Tanto Olvidarte"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Perdido en Mi Habitación"));
-            AlbumDTO album153 = new AlbumDTO("Entre el Cielo y el Suelo", LocalDate.of(1986, Month.JUNE, 3), "Pop/Rock", "/ImagenesAlbumes/EntreElCieloYElSuelo.jpeg", artistaBO.obtenerIdPorNombre("Mecano"), listaCanciones);
+            AlbumDTO album153 = new AlbumDTO("Entre el Cielo y el Suelo", LocalDate.of(1986, Month.JUNE, 3), "Pop", "/ImagenesAlbumes/EntreElCieloYElSuelo.jpeg", artistaBO.obtenerIdPorNombre("Mecano"), listaCanciones);
             albumBO.insertarAlbum(album153);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Mujer Contra Mujer"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Un Año Más"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Cruz de Navajas"));
-            AlbumDTO album154 = new AlbumDTO("Descanso Dominical", LocalDate.of(1988, Month.MAY, 24), "Pop/Rock", "/ImagenesAlbumes/DescansoDominical.jpeg", artistaBO.obtenerIdPorNombre("Mecano"), listaCanciones);
+            AlbumDTO album154 = new AlbumDTO("Descanso Dominical", LocalDate.of(1988, Month.MAY, 24), "Pop", "/ImagenesAlbumes/DescansoDominical.jpeg", artistaBO.obtenerIdPorNombre("Mecano"), listaCanciones);
             albumBO.insertarAlbum(album154);
 
             // Álbumes de OV7
@@ -2298,14 +2298,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Como te va mi amor"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Solo él y yo"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Todo tiene su tiempo"));
-            AlbumDTO album161 = new AlbumDTO("1985-1998", LocalDate.of(1985, Month.JUNE, 1), "Balada/Pop", "/ImagenesAlbumes/Pandora1985.jpeg", artistaBO.obtenerIdPorNombre("Pandora"), listaCanciones);
+            AlbumDTO album161 = new AlbumDTO("1985-1998", LocalDate.of(1985, Month.JUNE, 1), "Balada", "/ImagenesAlbumes/Pandora1985.jpeg", artistaBO.obtenerIdPorNombre("Pandora"), listaCanciones);
             albumBO.insertarAlbum(album161);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Con tu amor"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("En carne viva"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Popurrí: Éxitos de Juan Gabriel"));
-            AlbumDTO album162 = new AlbumDTO("Con Amor Eterno", LocalDate.of(1991, Month.NOVEMBER, 15), "Balada/Pop", "/ImagenesAlbumes/ConAmorEterno.jpeg", artistaBO.obtenerIdPorNombre("Pandora"), listaCanciones);
+            AlbumDTO album162 = new AlbumDTO("Con Amor Eterno", LocalDate.of(1991, Month.NOVEMBER, 15), "Balada", "/ImagenesAlbumes/ConAmorEterno.jpeg", artistaBO.obtenerIdPorNombre("Pandora"), listaCanciones);
             albumBO.insertarAlbum(album162);
 
             // Álbumes de Spice Girls
@@ -2328,14 +2328,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Crown"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Blue Orangeade"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Cat & Dog"));
-            AlbumDTO album165 = new AlbumDTO("The Dream Chapter: STAR", LocalDate.of(2019, Month.MARCH, 4), "K-Pop", "/ImagenesAlbumes/TheDreamChapterStar.jpeg", artistaBO.obtenerIdPorNombre("TXT"), listaCanciones);
+            AlbumDTO album165 = new AlbumDTO("The Dream Chapter: STAR", LocalDate.of(2019, Month.MARCH, 4), "K-pop", "/ImagenesAlbumes/TheDreamChapterStar.jpeg", artistaBO.obtenerIdPorNombre("TXT"), listaCanciones);
             albumBO.insertarAlbum(album165);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("9 and Three Quarters (Run Away)"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Angel Or Devil"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("New Rules"));
-            AlbumDTO album166 = new AlbumDTO("The Dream Chapter: MAGIC", LocalDate.of(2019, Month.OCTOBER, 21), "K-Pop", "/ImagenesAlbumes/TheDreamChapterMagic.jpeg", artistaBO.obtenerIdPorNombre("TXT"), listaCanciones);
+            AlbumDTO album166 = new AlbumDTO("The Dream Chapter: MAGIC", LocalDate.of(2019, Month.OCTOBER, 21), "K-pop", "/ImagenesAlbumes/TheDreamChapterMagic.jpeg", artistaBO.obtenerIdPorNombre("TXT"), listaCanciones);
             albumBO.insertarAlbum(album166);
 
             // Álbumes de Morat
@@ -2343,14 +2343,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Cómo Te Atreves"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Amor Con Hielo"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Yo Contigo, Tú Conmigo"));
-            AlbumDTO album167 = new AlbumDTO("Sobre El Amor y Sus Efectos Secundarios", LocalDate.of(2016, Month.JUNE, 23), "Pop Latino", "/ImagenesAlbumes/SobreElAmor.jpeg", artistaBO.obtenerIdPorNombre("Morat"), listaCanciones);
+            AlbumDTO album167 = new AlbumDTO("Sobre El Amor y Sus Efectos Secundarios", LocalDate.of(2016, Month.JUNE, 23), "Pop", "/ImagenesAlbumes/SobreElAmor.jpeg", artistaBO.obtenerIdPorNombre("Morat"), listaCanciones);
             albumBO.insertarAlbum(album167);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Besos en Guerra"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Cuando Nadie Ve"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Punto y Aparte"));
-            AlbumDTO album168 = new AlbumDTO("Balas Perdidas", LocalDate.of(2018, Month.OCTOBER, 26), "Pop Latino", "/ImagenesAlbumes/BalasPerdidas.jpeg", artistaBO.obtenerIdPorNombre("Morat"), listaCanciones);
+            AlbumDTO album168 = new AlbumDTO("Balas Perdidas", LocalDate.of(2018, Month.OCTOBER, 26), "Pop", "/ImagenesAlbumes/BalasPerdidas.jpeg", artistaBO.obtenerIdPorNombre("Morat"), listaCanciones);
             albumBO.insertarAlbum(album168);
 
             // Álbumes de Jesse & Joy
@@ -2358,14 +2358,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Espacio Sideral"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Ya No Quiero"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Volveré"));
-            AlbumDTO album169 = new AlbumDTO("Esta Es Mi Vida", LocalDate.of(2006, Month.JUNE, 13), "Pop Latino", "/ImagenesAlbumes/EstaEsMiVida.jpeg", artistaBO.obtenerIdPorNombre("Jesse & Joy"), listaCanciones);
+            AlbumDTO album169 = new AlbumDTO("Esta Es Mi Vida", LocalDate.of(2006, Month.JUNE, 13), "Pop", "/ImagenesAlbumes/EstaEsMiVida.jpeg", artistaBO.obtenerIdPorNombre("Jesse & Joy"), listaCanciones);
             albumBO.insertarAlbum(album169);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Corre!"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("La De La Mala Suerte"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Me Voy"));
-            AlbumDTO album170 = new AlbumDTO("¿Con Quién Se Queda El Perro?", LocalDate.of(2011, Month.DECEMBER, 6), "Pop Latino", "/ImagenesAlbumes/ConQuienSeQuedaElPerro.jpeg", artistaBO.obtenerIdPorNombre("Jesse & Joy"), listaCanciones);
+            AlbumDTO album170 = new AlbumDTO("¿Con Quién Se Queda El Perro?", LocalDate.of(2011, Month.DECEMBER, 6), "Pop", "/ImagenesAlbumes/ConQuienSeQuedaElPerro.jpeg", artistaBO.obtenerIdPorNombre("Jesse & Joy"), listaCanciones);
             albumBO.insertarAlbum(album170);
 
             // Álbumes de La Oreja de Van Gogh

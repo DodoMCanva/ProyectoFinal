@@ -64,7 +64,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         btnMetal = new javax.swing.JButton();
         btnHardRock = new javax.swing.JButton();
         btnKPOP = new javax.swing.JButton();
-        btnMusicaClasica = new javax.swing.JButton();
         btnElectronica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -238,16 +237,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnKPOP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 90, 20));
 
-        btnMusicaClasica.setBackground(new java.awt.Color(224, 224, 224));
-        btnMusicaClasica.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
-        btnMusicaClasica.setText("Musica Clasica");
-        btnMusicaClasica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMusicaClasicaActionPerformed(evt);
-            }
-        });
-        pnlGenNoDes.add(btnMusicaClasica, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 90, 20));
-
         btnElectronica.setBackground(new java.awt.Color(224, 224, 224));
         btnElectronica.setText("Electronica");
         btnElectronica.addActionListener(new java.awt.event.ActionListener() {
@@ -342,10 +331,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnKPOPActionPerformed
 
-    private void btnMusicaClasicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusicaClasicaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMusicaClasicaActionPerformed
-
     private void btnElectronicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElectronicaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnElectronicaActionPerformed
@@ -362,7 +347,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
     private javax.swing.JButton btnIndie;
     private javax.swing.JButton btnKPOP;
     private javax.swing.JButton btnMetal;
-    private javax.swing.JButton btnMusicaClasica;
     private javax.swing.JButton btnPop;
     private javax.swing.JButton btnRYB;
     private javax.swing.JButton btnRap;

@@ -26,17 +26,16 @@ public class frmInicioSesion extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         lblConstrasenaTitul = new javax.swing.JLabel();
         lblUsuarioTitul = new javax.swing.JLabel();
-        txtContrasena = new javax.swing.JTextField();
         btniniciarSesion = new javax.swing.JButton();
         btnResgistrarse = new javax.swing.JButton();
         lblTituloRegistrarse = new javax.swing.JLabel();
         btnCargarDatos = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         lblTituloLogo = new javax.swing.JLabel();
+        txtContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesión");
-        setPreferredSize(new java.awt.Dimension(370, 540));
 
         JPanelInicioSesion.setBackground(new java.awt.Color(204, 190, 255));
         JPanelInicioSesion.setToolTipText("");
@@ -58,7 +57,6 @@ public class frmInicioSesion extends javax.swing.JFrame {
         lblUsuarioTitul.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuarioTitul.setText("Usuario");
         JPanelInicioSesion.add(lblUsuarioTitul, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
-        JPanelInicioSesion.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 220, 30));
 
         btniniciarSesion.setBackground(new java.awt.Color(153, 153, 153));
         btniniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -87,7 +85,6 @@ public class frmInicioSesion extends javax.swing.JFrame {
         JPanelInicioSesion.add(lblTituloRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 420, -1, -1));
 
         btnCargarDatos.setText("Insertar Datos");
-        btnCargarDatos.setActionCommand("Insertar Datos");
         btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCargarDatosActionPerformed(evt);
@@ -102,6 +99,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
         lblTituloLogo.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         lblTituloLogo.setText("Music plux");
         JPanelInicioSesion.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        JPanelInicioSesion.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 220, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,7 +196,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloLogo;
     private javax.swing.JLabel lblTituloRegistrarse;
     private javax.swing.JLabel lblUsuarioTitul;
-    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
