@@ -33,7 +33,7 @@ public class UsuarioBO implements IUsuarioBO {
             String hashedPassword = BCrypt.hashpw(usuarioDTO.getPassword(), BCrypt.gensalt());
             UsuarioPOJO usuarioPOJO = new UsuarioPOJO(usuarioDTO.getNombre(), usuarioDTO.getEmail(), hashedPassword, usuarioDTO.getImagen(), usuarioDTO.getRestringidosGeneros());
             usuarioDAO.guardarUsuario(usuarioPOJO);
-        } catch (Exception e) {
+        } catch (ExceptionDAO e) {
             throw new ExceptionBO("no se mando la informacion a persistencia", e);
         }
     }
@@ -41,16 +41,12 @@ public class UsuarioBO implements IUsuarioBO {
     @Override
     public boolean iniciarSesion(String nombre, String password) throws ExceptionBO {
         try {
-            // Buscar el UsuarioPOJO por nombre o email (asegúrate de que el método sea correcto)
             UsuarioPOJO usuarioPOJO = usuarioDAO.buscarPorNombre(nombre);
-
-            // Validar que el usuario exista y que el hash de la contraseña no sea nulo
             if (usuarioPOJO == null || usuarioPOJO.getPassword() == null) {
                 System.out.println("Usuario no encontrado o hash no válido");
                 return false;
             }
 
-            // Comparar la contraseña con el hash almacenado
             boolean contraseñaValida = BCrypt.checkpw(password, usuarioPOJO.getPassword());
             if (contraseñaValida) {
                 System.out.println("Inicio de sesión exitoso");
@@ -59,7 +55,7 @@ public class UsuarioBO implements IUsuarioBO {
             }
 
             return contraseñaValida;
-        } catch (Exception e) {
+        } catch (ExceptionDAO e) {
             throw new ExceptionBO("Error al iniciar sesion, fallo la busqueda del usuario", e);
         }
     }
@@ -78,19 +74,31 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public void restringirGenero(String sesion, String genero) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            usuarioDAO.restringirGenero(sesion, genero);
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void regresaGenero(String sesion, String genero) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            usuarioDAO.regresaGenero(sesion, genero);
+        } catch (ExceptionDAO e) {
+        }
     }
 
     @Override
     public List<String> consultaRestringidos(String sesion) throws ExceptionBO {
-        List<String> ListaVAcia = new ArrayList<>();
-        ListaVAcia.add("PRecioso");
-        return ListaVAcia;
+        try {
+            List<String> lista = usuarioDAO.consultaRestringidos(sesion);
+            usuarioDAO.consultaRestringidos(sesion).add("Default");
+            return lista;
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override
@@ -161,7 +169,6 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) {
-        // Verificar que dto.getFavoritos() no sea null
         List<ObjectId> artistas = new ArrayList<>();
         if (dto.getFavoritos() != null && dto.getFavoritos().getArtistas() != null) {
             artistas = dto.getFavoritos().getArtistas().stream().map(ObjectId::new).toList();
@@ -176,8 +183,6 @@ public class UsuarioBO implements IUsuarioBO {
         if (dto.getFavoritos() != null && dto.getFavoritos().getCanciones() != null) {
             canciones = dto.getFavoritos().getCanciones().stream().map(ObjectId::new).toList();
         }
-
-        // Crear el objeto FavoritosPOJO
         FavoritosPOJO favoritosPOJO = new FavoritosPOJO(artistas, albums, canciones);
 
         // Devolver el UsuarioPOJO

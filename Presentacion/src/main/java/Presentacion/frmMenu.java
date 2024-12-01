@@ -299,17 +299,16 @@ public class frmMenu extends javax.swing.JFrame {
 
                 try {
                     boolean resultado = false;
-                    /*for (int i = 0; i < ids.size(); i++) {
+                    for (int i = 0; i < ids.size(); i++) {
                         if (usuBO.comprobarFavoritoCancion(usuBO.buscar(sesion), ids.get(i))) {
                             usuBO.eliminarFavoritoCancion(sesion, ids.get(i));
                             resultado = true;
                             break;
                         }
-                    }*/
+                    }
                     if (!resultado) {
                         usuBO.agregarCancionFavorito(sesion, ids.get(tblCanciones.getSelectedRow()));
                     }
-
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -21,9 +21,9 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>BO</artifactId>
-            <version>${project.version}</version>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
-        
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

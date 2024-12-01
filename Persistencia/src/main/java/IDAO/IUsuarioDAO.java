@@ -18,10 +18,10 @@ public interface IUsuarioDAO {
     void editarUsuario(UsuarioPOJO usuario) throws ExceptionDAO;
 
     //Modificacion
-    public void restringirGenero(UsuarioPOJO usuario, String genero) throws ExceptionDAO; // Restringe Genero a un usuario en la colección
+    public void restringirGenero(String sesion, String genero) throws ExceptionDAO; // Restringe Genero a un usuario en la colección
     //Modificacion
 
-    public void regresaGenero(UsuarioPOJO usuario, String genero) throws ExceptionDAO; // Regresa Genero a un usuario en la colección
+    public void regresaGenero(String sesion , String genero) throws ExceptionDAO; // Regresa Genero a un usuario en la colección
     //Creacion
 
     public void agregarArtistaFavorito(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección

@@ -2,6 +2,7 @@ package Presentacion;
 
 import BO.UsuarioBO;
 import Exceptions.ExceptionBO;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,62 +31,61 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         for (String genero : lista) {
             switch (genero) {
                 case "Pop":
-                    
+                    btnPop.setBackground(Color.GRAY);
                     break;
                 case "Soul":
-                    
+                    btnSoul.setBackground(Color.GRAY);
                     break;
                 case "Funk":
-                    
+                    btnFunk.setBackground(Color.GRAY);
                     break;
                 case "Electropop":
-                    
+                    btnElectropop.setBackground(Color.GRAY);
                     break;
                 case "R&B":
-                    
+                    btnRYB.setBackground(Color.GRAY);
                     break;
                 case "Rap":
-                    
+                    btnRap.setBackground(Color.GRAY);
                     break;
                 case "Indie":
-                    
+                    btnIndie.setBackground(Color.GRAY);
                     break;
                 case "Flamenco":
-                    
+                    btnFlamenco.setBackground(Color.GRAY);
                     break;
                 case "Regional":
-                    
+                    btnRegional.setBackground(Color.GRAY);
                     break;
                 case "Romantica":
-                    
+                    btnRomantica.setBackground(Color.GRAY);
                     break;
                 case "Rock":
-                    
+                    btnRock.setBackground(Color.GRAY);
                     break;
                 case "Grunge":
-                    
+                    btnGrunge.setBackground(Color.GRAY);
                     break;
                 case "Metal":
-                    
+                    btnMetal.setBackground(Color.GRAY);
                     break;
                 case "Hard Rock":
-                    
+                    btnHardRock.setBackground(Color.GRAY);
                     break;
                 case "K-pop":
-                    
+                    btnKPOP.setBackground(Color.GRAY);
                     break;
                 case "Electronica":
-                    
+                    btnElectronica.setBackground(Color.GRAY);
                     break;
                 case "Banda":
-                    
+                    btnBanda.setBackground(Color.GRAY);
                     break;
                 case "Balada":
-                    
+                    btnBalada.setBackground(Color.GRAY);
                     break;
             }
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -113,7 +113,7 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         btnMetal = new javax.swing.JButton();
         btnHardRock = new javax.swing.JButton();
         btnKPOP = new javax.swing.JButton();
-        btnMusicaClasica = new javax.swing.JButton();
+        btnBalada = new javax.swing.JButton();
         btnElectronica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -271,14 +271,13 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
         });
         pnlGenNoDes.add(btnKPOP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 90, 20));
 
-        btnMusicaClasica.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
-        btnMusicaClasica.setText("Musica Clasica");
-        btnMusicaClasica.addActionListener(new java.awt.event.ActionListener() {
+        btnBalada.setText("Balada");
+        btnBalada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMusicaClasicaActionPerformed(evt);
+                btnBaladaActionPerformed(evt);
             }
         });
-        pnlGenNoDes.add(btnMusicaClasica, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 90, 20));
+        pnlGenNoDes.add(btnBalada, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 90, 20));
 
         btnElectronica.setText("Electronica");
         btnElectronica.addActionListener(new java.awt.event.ActionListener() {
@@ -306,84 +305,117 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnPopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion);
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Pop");
         el.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPopActionPerformed
 
     private void btnBandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBandaActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion);
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
         el.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_btnBandaActionPerformed
 
     private void btnFunkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFunkActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnFunkActionPerformed
 
     private void btnRYBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRYBActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRYBActionPerformed
 
     private void btnRapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRapActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRapActionPerformed
 
     private void btnIndieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIndieActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnIndieActionPerformed
 
     private void btnFlamencoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlamencoActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnFlamencoActionPerformed
 
     private void btnElectropopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElectropopActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnElectropopActionPerformed
 
     private void btnSoulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoulActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSoulActionPerformed
 
     private void btnRegionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegionalActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegionalActionPerformed
 
     private void btnRomanticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRomanticaActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRomanticaActionPerformed
 
     private void btnRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRockActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRockActionPerformed
 
     private void btnGrungeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrungeActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnGrungeActionPerformed
 
     private void btnMetalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetalActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnMetalActionPerformed
 
     private void btnHardRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHardRockActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHardRockActionPerformed
 
     private void btnKPOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKPOPActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnKPOPActionPerformed
 
-    private void btnMusicaClasicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusicaClasicaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMusicaClasicaActionPerformed
+    private void btnBaladaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaladaActionPerformed
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBaladaActionPerformed
 
     private void btnElectronicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElectronicaActionPerformed
-        // TODO add your handling code here:
+        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+        el.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnElectronicaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBalada;
     private javax.swing.JButton btnBanda;
     private javax.swing.JButton btnElectronica;
     private javax.swing.JButton btnElectropop;
@@ -394,7 +426,6 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
     private javax.swing.JButton btnIndie;
     private javax.swing.JButton btnKPOP;
     private javax.swing.JButton btnMetal;
-    private javax.swing.JButton btnMusicaClasica;
     private javax.swing.JButton btnPop;
     private javax.swing.JButton btnRYB;
     private javax.swing.JButton btnRap;

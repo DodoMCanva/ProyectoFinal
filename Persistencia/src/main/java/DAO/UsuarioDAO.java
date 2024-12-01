@@ -38,7 +38,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                             .append("artistas", new ArrayList<>())
                             .append("albums", new ArrayList<>())
                             .append("canciones", new ArrayList<>()))
-                    .append("restringidosgeneros", new ArrayList<>());
+                    .append(" restringidosgeneros", new ArrayList<>());
 
             coleccionUsuarios.insertOne(usuarioDoc);
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                 List<ObjectId> favoritosArtistas = doc.get("favoritos.artistas", List.class);
                 List<ObjectId> favoritosAlbums = doc.get("favoritos.albums", List.class);
                 List<ObjectId> favoritosCanciones = doc.get("favoritos.canciones", List.class);
-                List<String> restringidosGeneros = doc.getList("restringidosgeneros", String.class);
+                List<String>  restringidosgeneros = doc.getList(" restringidosgeneros", String.class);
 
                 return new UsuarioPOJO(
                         doc.getObjectId("_id"),
@@ -65,7 +65,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                         doc.getString("email"),
                         doc.getString("password"),
                         doc.getString("imagen"),
-                        restringidosGeneros,
+                         restringidosgeneros,
                         new FavoritosPOJO(favoritosArtistas, favoritosAlbums, favoritosCanciones)
                 );
 
@@ -93,19 +93,19 @@ public class UsuarioDAO implements IUsuarioDAO {
             if (resultado.getMatchedCount() == 0) {
                 throw new ExceptionDAO("No se encontró ningún usuario con el ID proporcionado.");
             }
-        } catch (Exception e) {
+        } catch (ExceptionDAO e) {
             throw new ExceptionDAO("Error al editar el usuario", e);
         }
 
     }
 
     @Override
-    public void restringirGenero(UsuarioPOJO usuario, String genero) throws ExceptionDAO {
+    public void restringirGenero(String sesion, String genero) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
         MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
         try {
-            Bson filtro = Filters.eq("_id", usuario.getId());
-            Bson actualizacion = Updates.addToSet("restringidosGeneros", genero);
+            Bson filtro = Filters.eq("_id", new ObjectId(sesion));
+            Bson actualizacion = Updates.addToSet(" restringidosgeneros", genero);
 
             UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
             if (resultado.getMatchedCount() == 0) {
@@ -117,12 +117,12 @@ public class UsuarioDAO implements IUsuarioDAO {
     }
 
     @Override
-    public void regresaGenero(UsuarioPOJO usuario, String genero) throws ExceptionDAO {
+    public void regresaGenero(String sesion, String genero) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
         MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
         try {
-            Bson filtro = Filters.eq("_id", usuario.getId());
-            Bson actualizacion = Updates.pull("restringidosGeneros", genero);
+            Bson filtro = Filters.eq("_id", new ObjectId(sesion));
+            Bson actualizacion = Updates.pull(" restringidosgeneros", genero);
             UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
             if (resultado.getMatchedCount() == 0) {
                 throw new ExceptionDAO("No se encontró el usuario con el ID proporcionado.");
@@ -140,17 +140,16 @@ public class UsuarioDAO implements IUsuarioDAO {
         try {
             Bson filtro = Filters.eq("_id", new ObjectId(sesion));
             Document usuario = coleccionUsuarios.find(filtro)
-                    .projection(Projections.include("restringidosGeneros"))
+                    .projection(Projections.include(" restringidosgeneros"))
                     .first();
 
             if (usuario == null) {
                 throw new ExceptionDAO("No se encontró un usuario con la sesión proporcionada.");
             }
-
-            List<String> generosRestringidos = usuario.getList("restringidosGeneros", String.class);
+            List<String> generosRestringidos = usuario.getList(" restringidosgeneros", String.class);
 
             return generosRestringidos != null ? generosRestringidos : new ArrayList<>();
-        } catch (Exception e) {
+        } catch (ExceptionDAO e) {
             throw new ExceptionDAO("Error al consultar los géneros restringidos", e);
         }
     }
@@ -378,7 +377,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                 List<ObjectId> favoritosArtistas = doc.get("favoritos.artistas", List.class);
                 List<ObjectId> favoritosAlbums = doc.get("favoritos.albums", List.class);
                 List<ObjectId> favoritosCanciones = doc.get("favoritos.canciones", List.class);
-                List<String> restringidosGeneros = doc.getList("restringidosgeneros", String.class);
+                List<String>  restringidosgeneros = doc.getList(" restringidosgeneros", String.class);
 
                 return new UsuarioPOJO(
                         id,
@@ -386,7 +385,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                         doc.getString("email"),
                         doc.getString("password"),
                         doc.getString("imagen"),
-                        restringidosGeneros,
+                         restringidosgeneros,
                         new FavoritosPOJO(favoritosArtistas, favoritosAlbums, favoritosCanciones)
                 );
             }
