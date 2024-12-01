@@ -24,13 +24,13 @@ public interface IUsuarioBO {
     
     public void agregarArtistaFavorito(String sesion, String artista) throws ExceptionBO; // Agrega un artista favorito al usuario en la colección
     
-    public void eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO; // Elimina un artista favorito al usuario en la colección
+    public boolean eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO; // Elimina un artista favorito al usuario en la colección
     
     public boolean comprobarFavoritoArtista(UsuarioDTO dto, String id) throws ExceptionBO;
     
     public void agregarCancionFavorito(String sesion, String cancion) throws ExceptionBO; // Agrega una cancion favorito al usuario en la colección
     
-    public void eliminarFavoritoCancion(String sesion, String cancion) throws ExceptionBO; // Elimina una cancion favorito al usuario en la colección
+    public boolean eliminarFavoritoCancion(String sesion, String cancion) throws ExceptionBO; // Elimina una cancion favorito al usuario en la colección
     
     public boolean comprobarFavoritoCancion(UsuarioDTO dto, String id) throws ExceptionBO;
     

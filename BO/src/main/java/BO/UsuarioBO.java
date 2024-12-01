@@ -111,12 +111,13 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     @Override
-    public void eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO {
+    public boolean eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO {
         try {
-            usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
+            return usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
         } catch (ExceptionDAO ex) {
             Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
     @Override
@@ -129,12 +130,13 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     @Override
-    public void eliminarFavoritoCancion(String sesion, String cancion) throws ExceptionBO {
+    public boolean eliminarFavoritoCancion(String sesion, String cancion) throws ExceptionBO {
         try {
-            usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(cancion));
+            return usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(cancion));
         } catch (ExceptionDAO ex) {
             Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
     @Override
@@ -168,22 +170,39 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
-    private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) {
+    private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) throws IllegalArgumentException {
         List<ObjectId> artistas = new ArrayList<>();
         if (dto.getFavoritos() != null && dto.getFavoritos().getArtistas() != null) {
-            artistas = dto.getFavoritos().getArtistas().stream().map(ObjectId::new).toList();
+            for (String id : dto.getFavoritos().getArtistas()) {
+                if (ObjectId.isValid(id)) {
+                    artistas.add(new ObjectId(id));
+                }
+            }
         }
 
         List<ObjectId> albums = new ArrayList<>();
         if (dto.getFavoritos() != null && dto.getFavoritos().getAlbums() != null) {
-            albums = dto.getFavoritos().getAlbums().stream().map(ObjectId::new).toList();
+            for (String id : dto.getFavoritos().getAlbums()) {
+                if (ObjectId.isValid(id)) {
+                    albums.add(new ObjectId(id));
+                }
+            }
         }
 
         List<ObjectId> canciones = new ArrayList<>();
         if (dto.getFavoritos() != null && dto.getFavoritos().getCanciones() != null) {
-            canciones = dto.getFavoritos().getCanciones().stream().map(ObjectId::new).toList();
+            for (String id : dto.getFavoritos().getCanciones()) {
+                if (ObjectId.isValid(id)) {
+                    canciones.add(new ObjectId(id));
+                }
+            }
         }
+
         FavoritosPOJO favoritosPOJO = new FavoritosPOJO(artistas, albums, canciones);
+
+        if (!ObjectId.isValid(dto.getId())) {
+            throw new IllegalArgumentException("El ID del usuario no es válido: " + dto.getId());
+        }
 
         // Devolver el UsuarioPOJO
         return new UsuarioPOJO(
@@ -270,11 +289,9 @@ public class UsuarioBO implements IUsuarioBO {
 
     @Override
     public boolean comprobarFavoritoCancion(UsuarioDTO dto, String id) throws ExceptionBO {
-        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getCanciones() == null) {
-            return false;
-        }
-
         for (String cancion : dto.getFavoritos().getCanciones()) {
+            System.out.println("canciooooooon" + cancion);
+            System.out.println("idddsssss" + id);
             if (cancion.equals(id)) {
                 return true;
             }

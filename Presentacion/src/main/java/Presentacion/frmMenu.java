@@ -284,6 +284,8 @@ public class frmMenu extends javax.swing.JFrame {
     private void tblCancionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseReleased
         if (tblCanciones.getSelectedColumn() != 2) {
             frmBiblioteca b = new frmBiblioteca(sesion);
+            b.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_tblCancionesMouseReleased
 
@@ -292,23 +294,15 @@ public class frmMenu extends javax.swing.JFrame {
         ActionListener onFavoritoCancionClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<String> ids = new ArrayList<>();
-                for (CancionDTO cancion : listaCanciones) {
-                    ids.add(cancion.getId());
-                }
 
                 try {
-                    boolean resultado = false;
-                    for (int i = 0; i < ids.size(); i++) {
-                        if (usuBO.comprobarFavoritoCancion(usuBO.buscar(sesion), ids.get(i))) {
-                            usuBO.eliminarFavoritoCancion(sesion, ids.get(i));
-                            resultado = true;
-                            break;
-                        }
+                    boolean a = false;
+                    a = usuBO.eliminarFavoritoCancion(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarCancionFavorito(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
                     }
-                    if (!resultado) {
-                        usuBO.agregarCancionFavorito(sesion, ids.get(tblCanciones.getSelectedRow()));
-                    }
+                    
+
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -355,37 +349,37 @@ public class frmMenu extends javax.swing.JFrame {
         });
     }
 
-   public void cargarRegistrosAlbum() {
-    DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
-    listaAlbumes.forEach(row -> {
-        Object[] fila = new Object[3];
-        fila[0] = row.getPortada(); // Ruta de la imagen
-        fila[1] = row.getNombre();  // Nombre del álbum
-        fila[2] = "Favoritos";      // Acción o categoría
-        modeloTabla.addRow(fila);
-    });
-    tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Renderizar imágenes
-    tblAlbumes.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
-    modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
-    tblAlbumes.repaint();
-}
+    public void cargarRegistrosAlbum() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaAlbumes.forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getPortada(); // Ruta de la imagen
+            fila[1] = row.getNombre();  // Nombre del álbum
+            fila[2] = "Favoritos";      // Acción o categoría
+            modeloTabla.addRow(fila);
+        });
+        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Renderizar imágenes
+        tblAlbumes.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
+        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
+        tblAlbumes.repaint();
+    }
 
-public void cargarRegistrosArtistas() {
-    DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
-    listaArtistas.forEach(row -> {
-        Object[] fila = new Object[3];
-        fila[0] = row.getImagen(); // Ruta de la imagen
-        fila[1] = row.getNombre(); // Nombre del artista
-        fila[2] = "Favoritos";     // Categoría o acción
-        modeloTabla.addRow(fila);
-    });
+    public void cargarRegistrosArtistas() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
+        listaArtistas.forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getImagen(); // Ruta de la imagen
+            fila[1] = row.getNombre(); // Nombre del artista
+            fila[2] = "Favoritos";     // Categoría o acción
+            modeloTabla.addRow(fila);
+        });
 
-    // Establecer el renderizador para la columna de imágenes
-    tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
-    tblArtistas.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
-    modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
-    tblArtistas.repaint();
-}
+        // Establecer el renderizador para la columna de imágenes
+        tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblArtistas.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
+        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
+        tblArtistas.repaint();
+    }
 
     private void reiniciarTablas() {
         DefaultTableModel modeloTablaCan = (DefaultTableModel) this.tblCanciones.getModel();

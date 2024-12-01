@@ -1,6 +1,4 @@
-
 package DTO;
-
 
 /**
  *
@@ -11,13 +9,20 @@ public class CancionDTO {
     private String id;
     private String nombre;
     private String duracion;
-    
+
     public CancionDTO() {
     }
 
     public CancionDTO(String nombre, String duracion) {
         this.nombre = nombre;
         this.duracion = duracion;
+    }
+
+    public CancionDTO(String id, String nombre, String duracion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.duracion = duracion;
+
     }
 
     public String getId() {

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -49,7 +50,7 @@ public class CancionBO implements ICancionBO {
     @Override
     public List<CancionDTO> consultaGeneralCancion(List<String> generosRestringidos) throws ExceptionBO {
         try {
-                       
+
             List<CancionPOJO> pojoList = cancionDAO.consultaGeneralCancion(generosRestringidos);
             return convertirListaDePOJOaDTO(pojoList);
         } catch (ExceptionDAO ex) {
@@ -69,7 +70,7 @@ public class CancionBO implements ICancionBO {
 
     private CancionDTO convertirCancionPOJOaDTO(CancionPOJO pojo) {
         return new CancionDTO(
-                pojo.getNombre(),
+                pojo.getId().toHexString(), pojo.getNombre(),
                 pojo.getDuracion()
         );
     }
