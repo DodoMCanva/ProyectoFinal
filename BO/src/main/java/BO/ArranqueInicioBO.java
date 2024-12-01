@@ -395,14 +395,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaIntegrantes.add(new IntegranteDTO("Victoria Beckham", "Vocalista", "/ImagenesArtistas/VictoriaBeckham.jpeg", LocalDate.of(1994, 1, 1), null, true));
         ListaArtistasGrupo[35] = new ArtistasDTO("Spice Girls", "/ImagenesArtistas/SpiceGirls.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
-        // Grupo 37: TXT (Tomorrow X Together)
+        // Grupo 37: TXT
         ListaIntegrantes = new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Soobin", "Líder/Vocalista", "/ImagenesArtistas/Soobin.jpeg", LocalDate.of(2019, 3, 4), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Yeonjun", "Vocalista", "/ImagenesArtistas/Yeonjun.jpeg", LocalDate.of(2019, 3, 4), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Beomgyu", "Vocalista", "/ImagenesArtistas/Beomgyu.jpeg", LocalDate.of(2019, 3, 4), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Taehyun", "Vocalista", "/ImagenesArtistas/Taehyun.jpeg", LocalDate.of(2019, 3, 4), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Huening Kai", "Vocalista", "/ImagenesArtistas/HueningKai.jpeg", LocalDate.of(2019, 3, 4), null, true));
-        ListaArtistasGrupo[36] = new ArtistasDTO("TXT (Tomorrow X Together)", "/ImagenesArtistas/TXT.jpeg", "Grupo", "K-pop", ListaIntegrantes);
+        ListaArtistasGrupo[36] = new ArtistasDTO("TXT", "/ImagenesArtistas/TXT.jpeg", "Grupo", "K-pop", ListaIntegrantes);
 
         // Grupo 38: Morat
         ListaIntegrantes = new ArrayList<>();
@@ -1045,7 +1045,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Spice Up Your Life", "2:56"),
                     new CancionDTO("Stop", "3:27"),
                     new CancionDTO("Too Much", "4:00"),
-                    // Canciones de TXT (Tomorrow X Together)
+                    // Canciones de TXT
                     new CancionDTO("Crown", "3:31"),
                     new CancionDTO("Blue Orangeade", "3:46"),
                     new CancionDTO("Cat & Dog", "3:42"),
@@ -2323,7 +2323,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
             AlbumDTO album164 = new AlbumDTO("Spiceworld", LocalDate.of(1997, Month.NOVEMBER, 3), "Pop", "/ImagenesAlbumes/Spiceworld.jpeg", artistaBO.obtenerIdPorNombre("Spice Girls"), listaCanciones);
             albumBO.insertarAlbum(album164);
 
-            // Álbumes de TXT (Tomorrow X Together)
+            // Álbumes de TXT
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Crown"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Blue Orangeade"));
