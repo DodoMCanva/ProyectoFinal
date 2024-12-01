@@ -17,7 +17,7 @@ public interface IAlbumBO {
     public AlbumDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO;
 
     List<AlbumDTO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionBO;
-
+    
     List<AlbumDTO> busquedaGeneralAlbum(List<String> generosRestringidos, String busqueda) throws ExceptionBO;
 
 }
