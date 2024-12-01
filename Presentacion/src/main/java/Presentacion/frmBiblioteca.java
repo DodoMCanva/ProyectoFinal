@@ -31,13 +31,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
         pnlBiblioteca = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         tdpBiblioteca = new javax.swing.JTabbedPane();
-        pnlCanciones = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblCanciones = new javax.swing.JTable();
-        txtBuscarCancion = new javax.swing.JTextField();
-        txtBuscarAlbum2 = new javax.swing.JTextField();
-        btnBuscarAlbum2 = new javax.swing.JButton();
-        btnBuscarCancion1 = new javax.swing.JButton();
         pnlAlbumes = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblAlbumes = new javax.swing.JTable();
@@ -56,9 +49,18 @@ public class frmBiblioteca extends javax.swing.JFrame {
         tblIntegrantes = new javax.swing.JTable();
         txtBuscarIntegrante = new javax.swing.JTextField();
         btnBuscarIntegrante = new javax.swing.JButton();
+        pnlCanciones = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblCanciones = new javax.swing.JTable();
+        txtBuscarCancion = new javax.swing.JTextField();
+        txtBuscarAlbum2 = new javax.swing.JTextField();
+        btnBuscarAlbum2 = new javax.swing.JButton();
+        btnBuscarCancion1 = new javax.swing.JButton();
         btnBuscarCancion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 600));
+        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlBiblioteca.setBackground(new java.awt.Color(204, 190, 255));
@@ -71,56 +73,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         tdpBiblioteca.setBackground(new java.awt.Color(204, 102, 255));
         tdpBiblioteca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        pnlCanciones.setBackground(new java.awt.Color(255, 255, 255));
-        pnlCanciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
-        pnlCanciones.setForeground(new java.awt.Color(204, 153, 255));
-        pnlCanciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
-
-        tblCanciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
-        tblCanciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre", "Duración", "Favorito"
-            }
-        ));
-        tblCanciones.setGridColor(new java.awt.Color(204, 153, 255));
-        tblCanciones.setSelectionBackground(new java.awt.Color(204, 204, 255));
-        jScrollPane1.setViewportView(tblCanciones);
-
-        pnlCanciones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 180));
-
-        txtBuscarCancion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtBuscarCancion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
-        pnlCanciones.add(txtBuscarCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 400, 30));
-
-        txtBuscarAlbum2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtBuscarAlbum2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
-        pnlCanciones.add(txtBuscarAlbum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 400, 30));
-
-        btnBuscarAlbum2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscarAlbum2.setText("Buscar");
-        pnlCanciones.add(btnBuscarAlbum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
-
-        btnBuscarCancion1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscarCancion1.setText("Buscar");
-        pnlCanciones.add(btnBuscarCancion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
-
-        tdpBiblioteca.addTab("Canción", pnlCanciones);
 
         pnlAlbumes.setBackground(new java.awt.Color(255, 255, 255));
         pnlAlbumes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,7 +102,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         tblAlbumes.setSelectionBackground(new java.awt.Color(204, 204, 255));
         jScrollPane3.setViewportView(tblAlbumes);
 
-        pnlAlbumes.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 180));
+        pnlAlbumes.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 750, 220));
 
         txtBuscarAlbum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtBuscarAlbum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
@@ -223,7 +175,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         tblIntegrantes.setSelectionBackground(new java.awt.Color(204, 204, 255));
         jScrollPane5.setViewportView(tblIntegrantes);
 
-        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 180));
+        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 750, 220));
 
         txtBuscarIntegrante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtBuscarIntegrante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
@@ -235,7 +187,57 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         tdpBiblioteca.addTab("Integrantes", jPanel5);
 
-        pnlBiblioteca.add(tdpBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 750, 380));
+        pnlCanciones.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCanciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
+        pnlCanciones.setForeground(new java.awt.Color(204, 153, 255));
+        pnlCanciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
+
+        tblCanciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
+        tblCanciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Duración", "Favorito"
+            }
+        ));
+        tblCanciones.setGridColor(new java.awt.Color(204, 153, 255));
+        tblCanciones.setSelectionBackground(new java.awt.Color(204, 204, 255));
+        jScrollPane1.setViewportView(tblCanciones);
+
+        pnlCanciones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 740, 220));
+
+        txtBuscarCancion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscarCancion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
+        pnlCanciones.add(txtBuscarCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 400, 30));
+
+        txtBuscarAlbum2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscarAlbum2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
+        pnlCanciones.add(txtBuscarAlbum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 400, 30));
+
+        btnBuscarAlbum2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarAlbum2.setText("Buscar");
+        pnlCanciones.add(btnBuscarAlbum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
+
+        btnBuscarCancion1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarCancion1.setText("Buscar");
+        pnlCanciones.add(btnBuscarCancion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
+
+        tdpBiblioteca.addTab("Canción", pnlCanciones);
+
+        pnlBiblioteca.add(tdpBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 850, 420));
 
         btnBuscarCancion.setBackground(new java.awt.Color(153, 153, 153));
         btnBuscarCancion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -246,9 +248,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 btnBuscarCancionActionPerformed(evt);
             }
         });
-        pnlBiblioteca.add(btnBuscarCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(732, 20, 80, 30));
+        pnlBiblioteca.add(btnBuscarCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 80, 30));
 
-        getContentPane().add(pnlBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 550));
+        getContentPane().add(pnlBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
         pack();
         setLocationRelativeTo(null);

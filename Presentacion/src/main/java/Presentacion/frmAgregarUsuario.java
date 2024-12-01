@@ -36,7 +36,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlRegistro = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
         lblTituloRegistro = new javax.swing.JLabel();
         lblTituloNombreUsuario = new javax.swing.JLabel();
@@ -52,9 +52,14 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         btnAnadirFoto = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(370, 540));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 190, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlRegistro.setBackground(new java.awt.Color(204, 190, 255));
+        pnlRegistro.setMinimumSize(new java.awt.Dimension(0, 0));
+        pnlRegistro.setPreferredSize(new java.awt.Dimension(370, 540));
+        pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
@@ -64,73 +69,67 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlRegistro.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblTituloRegistro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloRegistro.setFont(new java.awt.Font("Segoe UI", 1, 21)); // NOI18N
         lblTituloRegistro.setText("Registro de Usuario");
-        jPanel1.add(lblTituloRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+        pnlRegistro.add(lblTituloRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
+        lblTituloNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblTituloNombreUsuario.setText("Nombre Usuario");
-        jPanel1.add(lblTituloNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
-        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 140, -1));
+        pnlRegistro.add(lblTituloNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 200, 30));
+        pnlRegistro.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 200, 30));
 
         txtCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoElectronicoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, -1));
+        pnlRegistro.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 200, 30));
 
         txtContrsena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContrsenaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtContrsena, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 140, -1));
+        pnlRegistro.add(txtContrsena, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 200, 30));
 
+        lblTituloCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblTituloCorreoElectronico.setText("CorreoElectronico");
-        jPanel1.add(lblTituloCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        pnlRegistro.add(lblTituloCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 200, 30));
 
+        lblTituloanadirFoto.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblTituloanadirFoto.setText("Añadir foto perfil(opcional)");
-        jPanel1.add(lblTituloanadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        pnlRegistro.add(lblTituloanadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 200, 30));
 
-        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 120, 40));
+        pnlRegistro.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 130, 40));
 
         lblLogoTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/Untitled (6).png"))); // NOI18N
         lblLogoTitulo.setText("jLabel9");
-        jPanel1.add(lblLogoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 90, 40));
+        pnlRegistro.add(lblLogoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 90, 40));
 
         lblTituloLogo.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         lblTituloLogo.setText("Music plux");
-        jPanel1.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
+        pnlRegistro.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
+        lblTituloContrasena.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblTituloContrasena.setText("Contraseña");
-        jPanel1.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        pnlRegistro.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
 
         btnAnadirFoto.setText("Añadir Foto");
-        jPanel1.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 110, 30));
+        pnlRegistro.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 110, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 540));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -171,7 +170,9 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-
+        frmInicioSesion volver = new frmInicioSesion();
+        volver.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
 //    /**
@@ -214,7 +215,6 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnAnadirFoto;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogoTitulo;
     private javax.swing.JLabel lblTituloContrasena;
     private javax.swing.JLabel lblTituloCorreoElectronico;
@@ -222,6 +222,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloNombreUsuario;
     private javax.swing.JLabel lblTituloRegistro;
     private javax.swing.JLabel lblTituloanadirFoto;
+    private javax.swing.JPanel pnlRegistro;
     private javax.swing.JTextField txtContrsena;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtNombreUsuario;

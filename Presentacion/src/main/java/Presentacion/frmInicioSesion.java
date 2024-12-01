@@ -39,7 +39,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
 
         JPanelInicioSesion.setBackground(new java.awt.Color(204, 190, 255));
         JPanelInicioSesion.setToolTipText("");
-        JPanelInicioSesion.setMinimumSize(new java.awt.Dimension(370, 540));
+        JPanelInicioSesion.setMinimumSize(new java.awt.Dimension(0, 0));
         JPanelInicioSesion.setPreferredSize(new java.awt.Dimension(370, 540));
         JPanelInicioSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

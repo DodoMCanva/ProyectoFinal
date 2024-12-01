@@ -44,7 +44,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ArtistaSolista[3] = new ArtistasDTO("Bruno Mars", "/ImagenesArtistas/BrunoMars.jpeg", "solista", "Funk");
         ArtistaSolista[4] = new ArtistasDTO("Billie Eilish", "/ImagenesArtistas/BillieEilish.jpeg", "solista", "Electropop");
         ArtistaSolista[5] = new ArtistasDTO("Shawn Mendes", "/ImagenesArtistas/Shawmendez.jpeg", "solista", "Pop");
-        ArtistaSolista[6] = new ArtistasDTO("Lady Gaga", "/ImagenesArtistas/LadyGafa.jpeg", "solista", "Pop");
+        ArtistaSolista[6] = new ArtistasDTO("Lady Gaga", "/ImagenesArtistas/LadyGaga.jpeg", "solista", "Pop");
         ArtistaSolista[7] = new ArtistasDTO("Justin Bieber", "/ImagenesArtistas/JustinBEBEr.jpeg", "solista", "Pop");
         ArtistaSolista[8] = new ArtistasDTO("Rihanna", "/ImagenesArtistas/RHianna.jpeg", "solista", "R&B");
         ArtistaSolista[9] = new ArtistasDTO("Sam Smith", "/ImagenesArtistas/SamSmith.jpeg", "solista", "Soul");
@@ -57,7 +57,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ArtistaSolista[16] = new ArtistasDTO("Drake", "/ImagenesArtistas/Drake.jpeg", "solista", "Rap");
         ArtistaSolista[17] = new ArtistasDTO("Miley Cyrus", "/ImagenesArtistas/MileyCyrus.jpeg", "solista", "Pop");
         ArtistaSolista[18] = new ArtistasDTO("Katy Perry", "/ImagenesArtistas/KatyPerry.jpeg", "solista", "Pop");
-        ArtistaSolista[19] = new ArtistasDTO("Beyoncé", "Beyonce", "solista", "R&B");
+        ArtistaSolista[19] = new ArtistasDTO("Beyoncé", "/ImagenesArtistas/Beyonce.jpeg", "solista", "R&B");
         ArtistaSolista[20] = new ArtistasDTO("Lana Del Rey", "/ImagenesArtistas/LanaDelrey.jpeg", "solista", "Indie");
         ArtistaSolista[21] = new ArtistasDTO("Halsey", "/ImagenesArtistas/Halsey.jpeg", "solista", "Electropop");
         ArtistaSolista[22] = new ArtistasDTO("Charlie Puth", "/ImagenesArtistas/charliePuth.jpeg", "solista", "Pop");
@@ -74,9 +74,9 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ArtistaSolista[33] = new ArtistasDTO("Ellie Goulding", "/ImagenesArtistas/ElliGoulding.jpeg", "solista", "Electropop");
         ArtistaSolista[34] = new ArtistasDTO("Avril Lavigne", "/ImagenesArtistas/AvrilLavrag.jpeg", "solista", "Rock");
         ArtistaSolista[35] = new ArtistasDTO("Amy Winehouse", "/ImagenesArtistas/AmyWineHouse.jpeg", "solista", "Pop");
-        ArtistaSolista[36] = new ArtistasDTO("Bad Bunny", "/ImagenesArtistas/BadBuny.jpeg", "solista", "Pop");
+        ArtistaSolista[36] = new ArtistasDTO("Bad Bunny", "/ImagenesArtistas/BadBunny.jpeg", "solista", "Pop");
         ArtistaSolista[37] = new ArtistasDTO("ROSALIA", "/ImagenesArtistas/Rosalia.jpeg", "solista", "Flamenco");
-        ArtistaSolista[38] = new ArtistasDTO("Miguel Bose", "MiguelBose", "solista", "Pop");
+        ArtistaSolista[38] = new ArtistasDTO("Miguel Bose", "/ImagenesArtistas/MiguelBose.jpeg", "solista", "Pop");
         ArtistaSolista[39] = new ArtistasDTO("Cazzu", "/ImagenesArtistas/Cazzu.jpeg", "solista", "Pop");
         ArtistaSolista[40] = new ArtistasDTO("Natalia Lafourcade", "/ImagenesArtistas/NataliaLafor.jpeg", "solista", "Pop");
         ArtistaSolista[41] = new ArtistasDTO("Carla Morrison", "/ImagenesArtistas/CarlaMorrison.jpeg", "solista", "Pop");
@@ -456,7 +456,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaIntegrantes = new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Raúl Ornelas", "Vocalista/Guitarrista", "/ImagenesArtistas/RaulOrnelas.jpeg", LocalDate.of(2004, 1, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("José Luis Ortega", "Vocalista/Guitarrista", "/ImagenesArtistas/JoseLuisOrtega.jpeg", LocalDate.of(2004, 1, 1), null, true));
-        ListaArtistasGrupo[43] = new ArtistasDTO("Río Roma", "/ImagenesArtistas/RioRoma.jpeg", "Dúo", "Pop", ListaIntegrantes);
+        ListaArtistasGrupo[43] = new ArtistasDTO("Río Roma", "/ImagenesArtistas/Rioroma.jpeg", "Dúo", "Pop", ListaIntegrantes);
 
         // Grupo 45: Fifth Harmony
         ListaIntegrantes = new ArrayList<>();
@@ -1126,7 +1126,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Love Story"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("You Belong With Me"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Fearless"));
-            AlbumDTO album1 = new AlbumDTO("Fearless", LocalDate.of(2008, Month.NOVEMBER, 11), "Pop", "/ImagenesAlbumes/Fearless.jpeg", artistaBO.obtenerIdPorNombre("Taylor Swift"), listaCanciones);
+            AlbumDTO album1 = new AlbumDTO("Fearless", LocalDate.of(2008, Month.NOVEMBER, 11), "Pop", "/ImagenesAlbumes/FearlessT.jpeg", artistaBO.obtenerIdPorNombre("Taylor Swift"), listaCanciones);
             albumBO.insertarAlbum(album1);
 
             listaCanciones.clear();
