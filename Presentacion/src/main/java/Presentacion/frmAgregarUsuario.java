@@ -48,8 +48,6 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         btnAnadirFoto = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(370, 540));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlRegistro.setBackground(new java.awt.Color(204, 190, 255));
@@ -105,7 +103,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        pnlRegistro.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 130, 40));
+        pnlRegistro.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 130, 40));
 
         lblLogoTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/Untitled (6).png"))); // NOI18N
         lblLogoTitulo.setText("jLabel9");
@@ -120,7 +118,12 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         pnlRegistro.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
 
         btnAnadirFoto.setText("Añadir Foto");
-        pnlRegistro.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 110, 30));
+        btnAnadirFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnadirFotoActionPerformed(evt);
+            }
+        });
+        pnlRegistro.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 110, 30));
 
         getContentPane().add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 540));
 
@@ -138,9 +141,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
             usuarioDTO.setNombre(txtNombreUsuario.getText());
             usuarioDTO.setEmail(txtCorreoElectronico.getText());
             usuarioDTO.setPassword(txtContrsena.getText());
-            usuarioDTO.setImagen(btnAnadirFoto.getText()); // Suponiendo que tienes un campo para la URL de la imagen
-//            usuarioDTO.setFavoritos(new FavoritosDTO(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-//            usuarioDTO.setRestringidosGeneros(new ArrayList<>());
+            usuarioDTO.setImagen(btnAnadirFoto.getText());
 
             // Registrar usuario
             usuarioBO.guardarUsuario(usuarioDTO);
@@ -170,6 +171,10 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         volver.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnAnadirFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnadirFotoActionPerformed
 
 //    /**
 //     * @param args the command line arguments
