@@ -14,9 +14,11 @@ import IBO.ICancionBO;
 import IBO.IUsuarioBO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import utilerias.ImageRenderer;
@@ -44,16 +46,17 @@ public class frmFavoritos extends javax.swing.JFrame {
     private List<ArtistasDTO> listaTotalArtistas;
     private List<AlbumDTO> listaTotalAlbumes;
     //ListaaUSAR
-    private List<CancionDTO> listaFavoritasCanciones;
-    private List<ArtistasDTO> listaFavoritosArtistas;
-    private List<AlbumDTO> listaFavoritosAlbumes;
+    private List<CancionDTO> listaFavoritasCanciones = new ArrayList<>();
+    private List<ArtistasDTO> listaFavoritosArtistas= new ArrayList<>();
+    private List<AlbumDTO> listaFavoritosAlbumes= new ArrayList<>();
 
     /**
      * Creates new form frmFavoritos
      */
     public frmFavoritos(String sesion) {
+        String n = null;
         try {
-            lblUsuario.setText(usuBO.buscar(sesion).getNombre());
+            n = (usuBO.buscar(sesion).getNombre());
 
             this.listaTotalCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
             this.listaTotalArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
@@ -62,7 +65,7 @@ public class frmFavoritos extends javax.swing.JFrame {
             listaSCanciones = usuBO.buscar(sesion).getFavoritos().getCanciones();
             listaSArtistas = usuBO.buscar(sesion).getFavoritos().getArtistas();
             listaSAlbumes = usuBO.buscar(sesion).getFavoritos().getAlbums();
-
+            
             for (CancionDTO cancion : listaTotalCanciones) {
                 if (listaSCanciones.contains(cancion.getId())) {
                     listaFavoritasCanciones.add(cancion);
@@ -82,10 +85,12 @@ public class frmFavoritos extends javax.swing.JFrame {
             }
 
         } catch (ExceptionBO e) {
-
+            JOptionPane.showMessageDialog(null, "Error en favoritos" + e);
         }
+        
         this.sesion = sesion;
         initComponents();
+        lblUsuario.setText(n);
         formatearTablas();
         reiniciarTablas();
         cargarRegistrosCanciones();
@@ -111,7 +116,6 @@ public class frmFavoritos extends javax.swing.JFrame {
         scllpArtistas = new javax.swing.JScrollPane();
         tblArtistas = new javax.swing.JTable();
         lblArtistas = new javax.swing.JLabel();
-        lblEstFavorito = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -193,9 +197,6 @@ public class frmFavoritos extends javax.swing.JFrame {
         lblArtistas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblArtistas.setText("Artistas");
         pnlFavoritos.add(lblArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 70, -1));
-
-        lblEstFavorito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/estrella (2).png"))); // NOI18N
-        pnlFavoritos.add(lblEstFavorito, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 30, 40));
 
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
@@ -308,10 +309,12 @@ public class frmFavoritos extends javax.swing.JFrame {
             fila[3] = "Eliminar";
             modeloTabla.addRow(fila);
         });
+        
         tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
         tblAlbumes.setRowHeight(50);
         modeloTabla.fireTableDataChanged();
         tblAlbumes.repaint();
+
     }
 
     public void cargarRegistrosArtistas() {
@@ -329,6 +332,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         tblArtistas.setRowHeight(50);
         modeloTabla.fireTableDataChanged();
         tblArtistas.repaint();
+
     }
 
     private void reiniciarTablas() {
@@ -346,7 +350,6 @@ public class frmFavoritos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblArtistas;
     private javax.swing.JLabel lblCanciones;
-    private javax.swing.JLabel lblEstFavorito;
     private javax.swing.JLabel lblTituloFavoritos;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel pnlFavoritos;

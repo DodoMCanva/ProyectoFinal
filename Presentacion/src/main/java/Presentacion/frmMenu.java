@@ -82,6 +82,7 @@ public class frmMenu extends javax.swing.JFrame {
         cboxFiltro = new javax.swing.JComboBox<>();
         pnlCanciones = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnfav = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -239,6 +240,14 @@ public class frmMenu extends javax.swing.JFrame {
 
         pnlMenu.add(pnlCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 280, -1));
 
+        btnfav.setText("jButton1");
+        btnfav.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfavActionPerformed(evt);
+            }
+        });
+        pnlMenu.add(btnfav, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
+
         getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
         pack();
@@ -288,6 +297,12 @@ public class frmMenu extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_tblCancionesMouseReleased
+
+    private void btnfavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfavActionPerformed
+        frmFavoritos f = new frmFavoritos(sesion);
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnfavActionPerformed
 
     public void formatearTablas() {
         TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
@@ -441,6 +456,7 @@ public class frmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDesplegable;
+    private javax.swing.JButton btnfav;
     private javax.swing.JComboBox<String> cboxFiltro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -47,9 +47,6 @@ public class UsuarioPOJO {
         this.favoritos = favoritos;
     }
 
-    
-    
-
     public ObjectId getId() {
         return id;
     }

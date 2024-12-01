@@ -57,7 +57,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                 List<ObjectId> favoritosArtistas = doc.get("favoritos.artistas", List.class);
                 List<ObjectId> favoritosAlbums = doc.get("favoritos.albums", List.class);
                 List<ObjectId> favoritosCanciones = doc.get("favoritos.canciones", List.class);
-                List<String>  restringidosgeneros = doc.getList(" restringidosgeneros", String.class);
+                List<String> restringidosgeneros = doc.getList(" restringidosgeneros", String.class);
 
                 return new UsuarioPOJO(
                         doc.getObjectId("_id"),
@@ -65,7 +65,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                         doc.getString("email"),
                         doc.getString("password"),
                         doc.getString("imagen"),
-                         restringidosgeneros,
+                        restringidosgeneros,
                         new FavoritosPOJO(favoritosArtistas, favoritosAlbums, favoritosCanciones)
                 );
 
@@ -375,10 +375,30 @@ public class UsuarioDAO implements IUsuarioDAO {
             Document doc = coleccionUsuarios.find(Filters.eq("_id", id)).first();
 
             if (doc != null) {
-                List<ObjectId> favoritosArtistas = doc.get("favoritos.artistas", List.class);
-                List<ObjectId> favoritosAlbums = doc.get("favoritos.albums", List.class);
-                List<ObjectId> favoritosCanciones = doc.get("favoritos.canciones", List.class);
-                List<String>  restringidosgeneros = doc.getList(" restringidosgeneros", String.class);
+                // Recuperar el subdocumento de favoritos
+                Document favoritosDoc = (Document) doc.get("favoritos");
+
+                // Asegurarse de que los subdocumentos y listas no sean nulos
+                List<ObjectId> favoritosArtistas = favoritosDoc != null ? favoritosDoc.getList("artistas", ObjectId.class) : new ArrayList<>();
+                List<ObjectId> favoritosAlbums = favoritosDoc != null ? favoritosDoc.getList("albums", ObjectId.class) : new ArrayList<>();
+                List<ObjectId> favoritosCanciones = favoritosDoc != null ? favoritosDoc.getList("canciones", ObjectId.class) : new ArrayList<>();
+                List<String> restringidosGeneros = doc.getList("restringidosgeneros", String.class);
+
+                if (favoritosArtistas == null) {
+                    System.out.println("Lista de artistas nula");
+                    favoritosArtistas = new ArrayList<>();
+                }
+                if (favoritosAlbums == null) {
+                    System.out.println("Lista de albums es nula");
+                    favoritosAlbums = new ArrayList<>();
+                }
+                if (favoritosCanciones == null) {
+                    System.out.println("Lista de canciones nula");
+                    favoritosCanciones = new ArrayList<>();
+                }
+                if (restringidosGeneros == null) {
+                    restringidosGeneros = new ArrayList<>();
+                }
 
                 return new UsuarioPOJO(
                         id,
@@ -386,7 +406,7 @@ public class UsuarioDAO implements IUsuarioDAO {
                         doc.getString("email"),
                         doc.getString("password"),
                         doc.getString("imagen"),
-                         restringidosgeneros,
+                        restringidosGeneros,
                         new FavoritosPOJO(favoritosArtistas, favoritosAlbums, favoritosCanciones)
                 );
             }

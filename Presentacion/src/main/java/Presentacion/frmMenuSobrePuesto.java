@@ -140,10 +140,10 @@ public class frmMenuSobrePuesto extends java.awt.Dialog {
         if (menu != null) {
             menu.dispose();
         }
-
-        // Abre la pantalla de inicio de sesión
+        
         frmFavoritos ini = new frmFavoritos(this.sesion);
         ini.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnFavoritosActionPerformed
 
     private void btnGeneroNOdeseadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneroNOdeseadoActionPerformed
