@@ -15,7 +15,7 @@ public class ArtistasDTO {
     private String id;
     private String nombre;
     private String imagen;
-    private String tipo; // "solista" o "banda"
+    private String tipo; 
     private String genero;
     private List<IntegranteDTO> integrantes;
 
@@ -36,6 +36,17 @@ public class ArtistasDTO {
         this.genero = genero;
         this.integrantes = integrantes;
     }
+
+    public ArtistasDTO(String id, String nombre, String imagen, String tipo, String genero, List<IntegranteDTO> integrantes) {
+        this.id = id;
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.tipo = tipo;
+        this.genero = genero;
+        this.integrantes = integrantes;
+    }
+    
+    
 
     public String getId() {
         return id;

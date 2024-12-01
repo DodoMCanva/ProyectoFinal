@@ -87,6 +87,7 @@ public class AlbumBO implements IAlbumBO {
             cancionesString.add(cancionId.toHexString());
         }
         return new AlbumDTO(
+                pojo.getId().toHexString(),
                 pojo.getNombre(),
                 pojo.getFechaLanzamiento(),
                 pojo.getGenero(),

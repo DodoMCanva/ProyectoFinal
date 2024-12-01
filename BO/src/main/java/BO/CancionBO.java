@@ -70,7 +70,8 @@ public class CancionBO implements ICancionBO {
 
     private CancionDTO convertirCancionPOJOaDTO(CancionPOJO pojo) {
         return new CancionDTO(
-                pojo.getId().toHexString(), pojo.getNombre(),
+                pojo.getId().toHexString(),
+                pojo.getNombre(),
                 pojo.getDuracion()
         );
     }

@@ -98,6 +98,7 @@ public class ArtistaBO implements IArtistasBO {
             }
         }
         return new ArtistasDTO(
+                pojo.getId().toHexString(),
                 pojo.getNombre(),
                 pojo.getImagen(),
                 pojo.getTipo(),

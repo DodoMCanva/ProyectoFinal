@@ -30,6 +30,18 @@ public class AlbumDTO {
         this.canciones = canciones;
     }
 
+    public AlbumDTO(String id, String nombre, LocalDate fechaLanzamiento, String genero, String portada, String artista, List<String> canciones) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.genero = genero;
+        this.portada = portada;
+        this.artista = artista;
+        this.canciones = canciones;
+    }
+    
+    
+
     public String getId() {
         return id;
     }

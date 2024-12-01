@@ -77,6 +77,7 @@ public class ArtistaDAO implements IArtistaDAO {
                     for (Document integranteDoc : integrantesDocs) {
                         //posible error en el nombre de las columnas
                         IntegrantesPOJO integrante = new IntegrantesPOJO(
+                                
                                 integranteDoc.getString("nombre"),
                                 integranteDoc.getString("rol"),
                                 integranteDoc.getString("imagen"),
