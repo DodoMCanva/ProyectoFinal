@@ -294,15 +294,12 @@ public class frmMenu extends javax.swing.JFrame {
         ActionListener onFavoritoCancionClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 try {
                     boolean a = false;
                     a = usuBO.eliminarFavoritoCancion(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
                     if (a) {
                         usuBO.agregarCancionFavorito(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
                     }
-                    
-
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -315,7 +312,15 @@ public class frmMenu extends javax.swing.JFrame {
         ActionListener onFavoritoArtistaClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    boolean a = false;
+                    a = usuBO.eliminarFavoritoArtista(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarArtistaFavorito(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
+                    }
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
         modeloColumnasArtistas.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
@@ -325,7 +330,15 @@ public class frmMenu extends javax.swing.JFrame {
         ActionListener onFavoritoAlbumClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    boolean a = false;
+                    a = usuBO.eliminarFavoritoCancion(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarCancionFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                    }
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
         modeloColumnasAlbums.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));

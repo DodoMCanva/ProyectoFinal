@@ -149,12 +149,13 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     @Override
-    public void eliminarFavoritoAlbum(String sesion, String album) throws ExceptionBO {
+    public boolean eliminarFavoritoAlbum(String sesion, String album) throws ExceptionBO {
         try {
             usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(album));
         } catch (ExceptionDAO ex) {
             Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
     @Override
@@ -271,46 +272,6 @@ public class UsuarioBO implements IUsuarioBO {
         } catch (ExceptionDAO e) {
             throw new ExceptionBO("Error al buscar el usuario en la capa BO", e);
         }
-    }
-
-    @Override
-    public boolean comprobarFavoritoArtista(UsuarioDTO dto, String id) throws ExceptionBO {
-        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getArtistas() == null) {
-            return false;
-        }
-
-        for (String artista : dto.getFavoritos().getArtistas()) {
-            if (artista.equals(id)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean comprobarFavoritoCancion(UsuarioDTO dto, String id) throws ExceptionBO {
-        for (String cancion : dto.getFavoritos().getCanciones()) {
-            System.out.println("canciooooooon" + cancion);
-            System.out.println("idddsssss" + id);
-            if (cancion.equals(id)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean comprobarFavoritoAlbum(UsuarioDTO dto, String id) throws ExceptionBO {
-        if (dto == null || dto.getFavoritos() == null || dto.getFavoritos().getAlbums() == null) {
-            return false;
-        }
-
-        for (String cancion : dto.getFavoritos().getAlbums()) {
-            if (cancion.equals(id)) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }
