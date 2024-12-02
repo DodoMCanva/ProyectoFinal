@@ -39,7 +39,7 @@ public class frmEditarPerfil extends javax.swing.JFrame {
             UsuarioDTO usuario = usuarioBO.buscar(sesion);
             txtNombreUsuario.setText(usuario.getNombre());
             txtCorreoElectronico.setText(usuario.getEmail());
-            // txtContrsena.setText(usuario.getPassword());
+            txtContrsena.setText(usuario.getPassword());
 
             String imagenPath = usuario.getImagen();
             if (imagenPath == null || imagenPath.isEmpty()) {
@@ -85,7 +85,6 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         lblTituloNombreUsuario = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
         txtCorreoElectronico = new javax.swing.JTextField();
-        txtContrsena = new javax.swing.JTextField();
         lblTituloCorreoElectronico = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         lblLogoTitulo = new javax.swing.JLabel();
@@ -93,6 +92,7 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         lblTituloContrasena = new javax.swing.JLabel();
         btnAnadirFoto = new javax.swing.JToggleButton();
         lblPerfil = new javax.swing.JLabel();
+        txtContrsena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,13 +127,6 @@ public class frmEditarPerfil extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 220, 30));
-
-        txtContrsena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContrsenaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtContrsena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 220, 30));
 
         lblTituloCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTituloCorreoElectronico.setText("Correo Electronico");
@@ -172,6 +165,9 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         lblPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
         jPanel1.add(lblPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 90, 90));
 
+        txtContrsena.setText("jPasswordField1");
+        jPanel1.add(txtContrsena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 220, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 540));
 
         pack();
@@ -192,10 +188,6 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
-
-    private void txtContrsenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrsenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContrsenaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
@@ -269,7 +261,7 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloLogo;
     private javax.swing.JLabel lblTituloNombreUsuario;
     private javax.swing.JLabel lblTituloRegistro;
-    private javax.swing.JTextField txtContrsena;
+    private javax.swing.JPasswordField txtContrsena;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
