@@ -19,11 +19,20 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 /**
+ * Clase que implementa la interfaz IUsuarioDAO y gestiona las operaciones de
+ * persistencia relacionadas con los usuarios en la base de datos MongoDB.
  *
  * @author equipo 2
  */
 public class UsuarioDAO implements IUsuarioDAO {
 
+    /**
+     * Guarda un nuevo usuario en la base de datos.
+     *
+     * @param usuarioPOJO el objeto que contiene los datos del usuario a
+     * guardar.
+     * @throws ExceptionDAO si ocurre un error al guardar el usuario.
+     */
     @Override
     public void guardarUsuario(UsuarioPOJO usuarioPOJO) throws ExceptionDAO {
         try {
@@ -46,6 +55,14 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Busca un usuario por su nombre en la base de datos.
+     *
+     * @param nombre el nombre del usuario a buscar.
+     * @return un objeto UsuarioPOJO si se encuentra el usuario, null si no se
+     * encuentra.
+     * @throws ExceptionDAO si ocurre un error durante la busqueda.
+     */
     @Override
     public UsuarioPOJO buscarPorNombre(String nombre) throws ExceptionDAO {
         try {
@@ -77,6 +94,13 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Actualiza los datos de un usuario en la base de datos.
+     *
+     * @param usuario el objeto UsuarioPOJO que contiene los datos actualizados
+     * del usuario.
+     * @throws ExceptionDAO si ocurre un error al actualizar el usuario.
+     */
     @Override
     public void editarUsuario(UsuarioPOJO usuario) throws ExceptionDAO {
         try {
@@ -99,6 +123,13 @@ public class UsuarioDAO implements IUsuarioDAO {
 
     }
 
+    /**
+     * Agrega un género a la lista de géneros restringidos de un usuario.
+     *
+     * @param sesion el ID del usuario en sesión.
+     * @param genero el género a restringir.
+     * @throws ExceptionDAO si ocurre un error al agregar el género restringido.
+     */
     @Override
     public void restringirGenero(String sesion, String genero) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
@@ -116,6 +147,14 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Elimina un género de la lista de géneros restringidos de un usuario.
+     *
+     * @param sesion el ID del usuario en sesión.
+     * @param genero el género a permitir nuevamente.
+     * @throws ExceptionDAO si ocurre un error al eliminar el género
+     * restringido.
+     */
     @Override
     public void regresaGenero(String sesion, String genero) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
@@ -132,6 +171,13 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Consulta la lista de géneros restringidos de un usuario.
+     *
+     * @param sesion el ID del usuario en sesión.
+     * @return una lista de géneros restringidos.
+     * @throws ExceptionDAO si ocurre un error durante la consulta.
+     */
     @Override
     public List<String> consultaRestringidos(String sesion) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
@@ -154,6 +200,13 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Agrega un artista a la lista de favoritos de un usuario.
+     *
+     * @param usuario el objeto UsuarioPOJO que representa al usuario.
+     * @param artista el ID del artista a agregar.
+     * @throws ExceptionDAO si ocurre un error al agregar el artista favorito.
+     */
     @Override
     public void agregarArtistaFavorito(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO {
         if (usuario == null || usuario.getId() == null || artista == null) {
@@ -181,6 +234,14 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Elimina un artista de la lista de favoritos de un usuario.
+     *
+     * @param usuario el objeto UsuarioPOJO que representa al usuario.
+     * @param artista el ID del artista a eliminar.
+     * @return true si el artista fue eliminado, false si no estaba en la lista.
+     * @throws ExceptionDAO si ocurre un error al eliminar el artista favorito.
+     */
     @Override
     public boolean eliminarFavoritoArtista(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO {
         if (usuario == null || usuario.getId() == null || artista == null) {
@@ -206,6 +267,13 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Consulta la lista de artistas favoritos de un usuario.
+     *
+     * @param sesion el ID del usuario en sesión.
+     * @return una lista de IDs de artistas favoritos.
+     * @throws ExceptionDAO si ocurre un error durante la consulta.
+     */
     @Override
     public List<ObjectId> consultarArtistasFavorito(ObjectId sesion) throws ExceptionDAO {
         try {
@@ -230,7 +298,7 @@ public class UsuarioDAO implements IUsuarioDAO {
     public void agregarCancionFavorito(UsuarioPOJO usuario, ObjectId cancion) throws ExceptionDAO {
         if (usuario == null || usuario.getNombre() == null || cancion == null) {
             throw new IllegalArgumentException("El usuario o el ID de la    cancion no pueden ser nulos o vacíos.");
-           
+
         }
 
         try {
@@ -297,19 +365,27 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Agrega un álbum a la lista de favoritos del usuario.
+     *
+     * @param usuario el objeto UsuarioPOJO que representa al usuario.
+     * @param album el ObjectId del álbum que se desea agregar a favoritos.
+     * @throws ExceptionDAO si ocurre un error al interactuar con la base de
+     * datos.
+     */
     @Override
     public void agregarAlbumFavorito(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO {
         if (usuario == null || usuario.getNombre() == null || album == null) {
             throw new IllegalArgumentException("El usuario o el ID del Album no pueden ser nulos o vacíos.");
         }
-        
+
         try {
             MongoDatabase baseDeDatos = new ConexionDB().conexion();
             MongoCollection<Document> coleccionUsuarios = baseDeDatos.getCollection("usuarios");
             Bson filtro = Filters.eq("_id", usuario.getId());
             Bson actualizacion = Updates.addToSet("favoritos.albums", album);
             UpdateResult resultado = coleccionUsuarios.updateOne(filtro, actualizacion);
-           
+
             if (resultado.getMatchedCount() == 0) {
                 throw new ExceptionDAO("No se encontró: " + usuario.getNombre());
             }
@@ -323,6 +399,16 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Elimina un álbum de la lista de favoritos del usuario.
+     *
+     * @param usuario el objeto UsuarioPOJO que representa al usuario.
+     * @param album el ObjectId del álbum que se desea eliminar de favoritos.
+     * @return true si el álbum fue eliminado exitosamente, false si el álbum no
+     * estaba en la lista.
+     * @throws ExceptionDAO si ocurre un error al interactuar con la base de
+     * datos.
+     */
     @Override
     public boolean eliminarFavoritoAlbum(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO {
         if (usuario == null || usuario.getId() == null || album == null) {
@@ -348,6 +434,16 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * Consulta la lista de álbumes favoritos del usuario.
+     *
+     * @param sesion el ObjectId del usuario cuya lista de álbumes favoritos se
+     * desea consultar.
+     * @return una lista de ObjectId que representa los álbumes favoritos del
+     * usuario.
+     * @throws ExceptionDAO si ocurre un error al interactuar con la base de
+     * datos.
+     */
     @Override
     public List<ObjectId> consultarAlbumsFavorito(ObjectId sesion) throws ExceptionDAO {
         try {
@@ -368,6 +464,16 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
+    /**
+     * * Busca un usuario por su ID.
+     *
+     * @param id el ObjectId del usuario que se desea buscar.
+     * @return un objeto UsuarioPOJO con la información del usuario encontrado,
+     * null si no se encuentra un usuario con el ID especificado.
+     * @throws ExceptionDAO si ocurre un error al interactuar con la base de
+     * datos.
+     *
+     */
     @Override
     public UsuarioPOJO buscar(ObjectId id) throws ExceptionDAO {
         try {
