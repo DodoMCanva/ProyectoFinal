@@ -35,7 +35,10 @@ public class CancionDAO implements ICancionDAO {
 
             Document Doc = new Document()
                     .append("nombre", cancion.getNombre())
-                    .append("duracion", cancion.getDuracion());
+                    .append("duracion", cancion.getDuracion())
+                    .append("genero",cancion.getGenero())
+                    ;
+            
 
             coleccionCanciones.insertOne(Doc);
         } catch (Exception e) {
@@ -70,10 +73,11 @@ public class CancionDAO implements ICancionDAO {
             FindIterable<Document> canciones = coleccionCanciones.find(filtroGeneros);
 
             for (Document doc : canciones) {
-                CancionPOJO cancion = new CancionPOJO(
+                CancionPOJO cancion = new CancionPOJO  (
                         doc.getObjectId("_id"),
                         doc.getString("nombre"),
-                        doc.getString("duracion")
+                        doc.getString("duracion"),
+                        doc.getString("genero")
                 );
                 listaCanciones.add(cancion);
             }
@@ -98,7 +102,8 @@ public class CancionDAO implements ICancionDAO {
                 CancionPOJO cancion = new CancionPOJO(
                         doc.getObjectId("_id"),
                         doc.getString("nombre"),
-                        doc.getString("duracion")
+                        doc.getString("duracion"),
+                        doc.getString("genero")
                 );
                 listaCanciones.add(cancion);
             }
@@ -121,7 +126,8 @@ public class CancionDAO implements ICancionDAO {
             CancionPOJO cancion = new CancionPOJO(
                     doc.getObjectId("_id"),
                     doc.getString("nombre"),
-                    doc.getString("duracion")
+                    doc.getString("duracion"),
+                    doc.getString("genero")
             );
 
             return cancion;

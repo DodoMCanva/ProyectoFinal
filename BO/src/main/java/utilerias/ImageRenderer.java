@@ -28,7 +28,7 @@ public class ImageRenderer extends DefaultTableCellRenderer {
             }
 
             // Redimensiona la imagen para que quepa bien en la celda
-            Image img = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            Image img = icon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
             return new JLabel(new ImageIcon(img));
         }
         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

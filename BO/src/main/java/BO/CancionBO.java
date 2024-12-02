@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.bson.types.ObjectId;
 
 /**
  *
@@ -42,7 +41,10 @@ public class CancionBO implements ICancionBO {
         CancionPOJO POJO;
         POJO = new CancionPOJO(
                 dto.getNombre(),
-                dto.getDuracion());
+                dto.getDuracion(),
+                dto.getGenero()
+        
+        );
         return POJO;
 
     }
@@ -72,7 +74,8 @@ public class CancionBO implements ICancionBO {
         return new CancionDTO(
                 pojo.getId().toHexString(),
                 pojo.getNombre(),
-                pojo.getDuracion()
+                pojo.getDuracion(),
+                pojo.getGenero()
         );
     }
 

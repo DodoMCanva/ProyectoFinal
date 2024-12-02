@@ -14,16 +14,10 @@ public class CancionDTO {
     public CancionDTO() {
     }
 
-    public CancionDTO(String nombre, String duracion) {
+    public CancionDTO(String nombre, String duracion,String genero) {
         this.nombre = nombre;
         this.duracion = duracion;
-    }
-
-    public CancionDTO(String id, String nombre, String duracion) {
-        this.id = id;
-        this.nombre = nombre;
-        this.duracion = duracion;
-
+        this.genero=genero;
     }
 
     public CancionDTO(String id, String nombre, String duracion, String genero) {
@@ -32,8 +26,6 @@ public class CancionDTO {
         this.duracion = duracion;
         this.genero = genero;
     }
-    
-    
 
     public String getId() {
         return id;
@@ -59,12 +51,17 @@ public class CancionDTO {
         this.duracion = duracion;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     @Override
     public String toString() {
-        return "CancionDTO{" + "id="
-                + id + ", nombre=" + nombre
-                + ", duracion=" + duracion
-                + '}';
+        return "CancionDTO{" + "id=" + id + ", nombre=" + nombre + ", duracion=" + duracion + ", genero=" + genero + '}';
     }
 
 }
