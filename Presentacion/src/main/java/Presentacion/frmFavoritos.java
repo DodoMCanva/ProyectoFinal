@@ -49,6 +49,9 @@ public class frmFavoritos extends javax.swing.JFrame {
     private List<CancionDTO> listaFavoritasCanciones = new ArrayList<>();
     private List<ArtistasDTO> listaFavoritosArtistas = new ArrayList<>();
     private List<AlbumDTO> listaFavoritosAlbumes = new ArrayList<>();
+    private List<CancionDTO> listaCancionesBusqueda;
+    private List<ArtistasDTO> listaArtistasBusqueda;
+    private List<AlbumDTO> listaAlbumesBusqueda;
 
     /**
      * Creates new form frmFavoritos
@@ -87,7 +90,6 @@ public class frmFavoritos extends javax.swing.JFrame {
         } catch (ExceptionBO e) {
             JOptionPane.showMessageDialog(null, "Error en favoritos" + e);
         }
-
         this.sesion = sesion;
         initComponents();
         lblUsuario.setText(n);
@@ -140,6 +142,11 @@ public class frmFavoritos extends javax.swing.JFrame {
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         pnlFavoritos.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, 30));
 
         tblAlbumes.setModel(new javax.swing.table.DefaultTableModel(
@@ -262,6 +269,12 @@ public class frmFavoritos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        reiniciarTablas();
+        String busqueda = txtBuscar.getText();
+        buscar(busqueda);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     public void formatearTablas() {
         TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
         ActionListener onFavoritoCancionClickListener = new ActionListener() {
@@ -269,7 +282,7 @@ public class frmFavoritos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     usuBO.eliminarFavoritoCancion(sesion, listaFavoritasCanciones.get(tblCanciones.getSelectedRow()).getId());
-                    
+
                     desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -311,8 +324,88 @@ public class frmFavoritos extends javax.swing.JFrame {
 
     }
 
-    public void cargarBusquedasGeneralTabla(String busqueda) {
+    public void buscar(String busqueda) {
+        listaCancionesBusqueda = new ArrayList<>();
+        listaArtistasBusqueda = new ArrayList<>();
+        listaAlbumesBusqueda = new ArrayList<>();
+        
+        for (CancionDTO cancion : listaFavoritasCanciones) {
+            if (cancion.getNombre().contains(busqueda)) {
+                listaCancionesBusqueda.add(cancion);
+            }
+        }
+        for (ArtistasDTO artista : listaFavoritosArtistas) {
+            if (artista.getNombre().contains(busqueda)) {
+                listaArtistasBusqueda.add(artista);
+            }
+        }
+        for (AlbumDTO album : listaFavoritosAlbumes) {
+            if (album.getNombre().contains(busqueda)) {
+                listaAlbumesBusqueda.add(album);
+            }
+        }
+        if (!busqueda.isEmpty()) {
+            cargarRegistrosAlbumBusqueda();
+            cargarRegistrosArtistasBusqueda();
+            cargarRegistrosCancionesBusqueda();
+        } else {
+            try {
+                frmMenu m = new frmMenu(sesion);
+                m.setVisible(true);
+                this.dispose();
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmMenu.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
+    }
+
+    public void cargarRegistrosCancionesBusqueda() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
+        listaCancionesBusqueda.forEach(row -> {
+            Object[] fila = new Object[4];
+            fila[0] = row.getNombre();
+            fila[1] = row.getGenero();
+            //Ajustar
+            fila[2] = row.getNombre();
+            fila[3] = "Eliminar";
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    public void cargarRegistrosAlbumBusqueda() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaAlbumesBusqueda.forEach(row -> {
+            Object[] fila = new Object[4];
+            fila[0] = row.getPortada();
+            fila[1] = row.getNombre();
+            fila[2] = row.getGenero();
+            fila[3] = "Eliminar";
+            modeloTabla.addRow(fila);
+        });
+        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Renderizar imágenes
+        tblAlbumes.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
+        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
+        tblAlbumes.repaint();
+    }
+
+    public void cargarRegistrosArtistasBusqueda() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
+        listaArtistasBusqueda.forEach(row -> {
+            Object[] fila = new Object[4];
+            fila[0] = row.getImagen();
+            fila[1] = row.getNombre();
+            fila[2] = row.getGenero();
+            fila[3] = "Eliminar";
+            modeloTabla.addRow(fila);
+        });
+
+        // Establecer el renderizador para la columna de imágenes
+        tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblArtistas.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
+        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
+        tblArtistas.repaint();
     }
 
     public void cargarRegistrosCanciones() {
@@ -320,8 +413,8 @@ public class frmFavoritos extends javax.swing.JFrame {
         listaFavoritasCanciones.forEach(row -> {
             Object[] fila = new Object[4];
             fila[0] = row.getNombre();
-            //Subconsulta con album para rellenar estos campos
             fila[1] = row.getGenero();
+            //Ajustar
             fila[2] = row.getNombre();
             fila[3] = "Eliminar";
             modeloTabla.addRow(fila);
@@ -372,7 +465,8 @@ public class frmFavoritos extends javax.swing.JFrame {
         DefaultTableModel modeloTablaArt = (DefaultTableModel) this.tblArtistas.getModel();
         modeloTablaArt.setRowCount(0);
     }
-    public void desaparecer(){
+
+    public void desaparecer() {
         frmFavoritos fm = new frmFavoritos(sesion);
         fm.setVisible(true);
         this.dispose();
