@@ -97,14 +97,18 @@ public class frmMenu extends javax.swing.JFrame {
         pnlMenu.setBackground(new java.awt.Color(204, 190, 255));
         pnlMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnDesplegable.setBackground(new java.awt.Color(204, 190, 255));
         btnDesplegable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnDesplegable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/menu.png"))); // NOI18N
+        btnDesplegable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/menuSobre.png"))); // NOI18N
+        btnDesplegable.setBorder(null);
+        btnDesplegable.setBorderPainted(false);
+        btnDesplegable.setContentAreaFilled(false);
         btnDesplegable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDesplegableActionPerformed(evt);
             }
         });
-        pnlMenu.add(btnDesplegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 50));
+        pnlMenu.add(btnDesplegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 60));
 
         btnBuscar.setBackground(new java.awt.Color(153, 153, 153));
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,9 +118,10 @@ public class frmMenu extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        pnlMenu.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 70, -1));
-        pnlMenu.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 220, -1));
+        pnlMenu.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 70, 30));
+        pnlMenu.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 300, 30));
 
+        tblArtistas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
         tblArtistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -128,6 +133,7 @@ public class frmMenu extends javax.swing.JFrame {
                 "Imagen", "Nombre", "Favoritos"
             }
         ));
+        tblArtistas.setSelectionBackground(new java.awt.Color(204, 204, 255));
         tblArtistas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblArtistasMouseClicked(evt);
@@ -135,8 +141,9 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblArtistas);
 
-        pnlMenu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 280, 460));
+        pnlMenu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 290, 460));
 
+        tblCanciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
         tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -148,6 +155,7 @@ public class frmMenu extends javax.swing.JFrame {
                 "Duracion", "Nombre", "Favoritos"
             }
         ));
+        tblCanciones.setSelectionBackground(new java.awt.Color(204, 204, 255));
         tblCanciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tblCancionesMouseReleased(evt);
@@ -155,8 +163,9 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblCanciones);
 
-        pnlMenu.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 280, 460));
+        pnlMenu.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 290, 460));
 
+        tblAlbumes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255)));
         tblAlbumes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -168,6 +177,7 @@ public class frmMenu extends javax.swing.JFrame {
                 "Imagen", "Nombre", "Favoritos"
             }
         ));
+        tblAlbumes.setSelectionBackground(new java.awt.Color(204, 204, 255));
         tblAlbumes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblAlbumesMouseClicked(evt);
@@ -175,7 +185,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblAlbumes);
 
-        pnlMenu.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 280, 460));
+        pnlMenu.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 290, 460));
 
         pnlAlbumes.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -189,7 +199,7 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(pnlAlbumesLayout.createSequentialGroup()
                 .addGap(111, 111, 111)
                 .addComponent(jLabel2)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         pnlAlbumesLayout.setVerticalGroup(
             pnlAlbumesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +209,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        pnlMenu.add(pnlAlbumes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 280, -1));
+        pnlMenu.add(pnlAlbumes, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 290, -1));
 
         pnlArtistas.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -213,7 +223,7 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(pnlArtistasLayout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addComponent(jLabel3)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         pnlArtistasLayout.setVerticalGroup(
             pnlArtistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +233,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        pnlMenu.add(pnlArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 280, 30));
+        pnlMenu.add(pnlArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 290, 30));
 
         cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Canciones", "Albums", "Artistas", " " }));
         cboxFiltro.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +241,7 @@ public class frmMenu extends javax.swing.JFrame {
                 cboxFiltroActionPerformed(evt);
             }
         });
-        pnlMenu.add(cboxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, -1));
+        pnlMenu.add(cboxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, 30));
 
         pnlCanciones.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -245,17 +255,17 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(pnlCancionesLayout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jLabel1)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         pnlCancionesLayout.setVerticalGroup(
             pnlCancionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCancionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        pnlMenu.add(pnlCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 280, -1));
+        pnlMenu.add(pnlCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 290, 30));
 
         getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
