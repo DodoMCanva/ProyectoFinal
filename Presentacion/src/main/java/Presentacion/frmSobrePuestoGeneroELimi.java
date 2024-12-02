@@ -282,7 +282,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             
             for (CancionDTO cancion : listaTotalCanciones) {
                 if (listaStringFavoritasCanciones.contains(cancion.getId())) {
-                    listaFavoritasCanciones.add(cancion);
+                    listaTotalCanciones.add(cancion);
                 }
             }
             
@@ -294,19 +294,20 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
             for (AlbumDTO album : listaTotalAlbumes) {
                 if (listaStringFavoritosAlbumes.contains(album.getId())) {
-                    listaFavoritosAlbumes.add(album);
+                    listaTotalAlbumes.add(album);
                 }
             }
             
             for (CancionDTO cancion : listaFavoritasCanciones) {
-                if (listaStringFavoritasCanciones.contains(cancion.getId())) {
+                if (cancion.getGenero().equals(genero)) {
                     listaCandidatasCanciones.add(cancion);
                 }
             }
             
+            //
             for (ArtistasDTO artista : listaFavoritosArtistas) {
                 if (artista.getGenero().equals(genero)) {
-                    listaTotalArtistas.add(artista);
+                    listaCandidatosArtistas.add(artista);
                 }
             }
             
