@@ -57,9 +57,6 @@ public class frmMenu extends javax.swing.JFrame {
         this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
         this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
         this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
-        listaCancionesBuscadas = new ArrayList<>();
-        listaArtistasBuscados = new ArrayList<>();
-        listaAlbumesBuscados = new ArrayList<>();
         this.sesion = sesion;
         initComponents();
         formatearTablas();
@@ -374,6 +371,9 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     public void buscar(String busqueda, String filtro) {
+        listaCancionesBuscadas = new ArrayList<>();
+        listaArtistasBuscados = new ArrayList<>();
+        listaAlbumesBuscados = new ArrayList<>();
         for (CancionDTO cancion : listaCanciones) {
             if (cancion.getNombre().contains(busqueda)) {
                 listaCancionesBuscadas.add(cancion);
