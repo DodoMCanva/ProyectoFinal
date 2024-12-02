@@ -232,10 +232,8 @@ public class frmFavoritos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     usuBO.eliminarFavoritoCancion(sesion, listaFavoritasCanciones.get(tblCanciones.getSelectedRow()).getId());
-                    reiniciarTablas();
-                    cargarRegistrosCanciones();
-                    cargarRegistrosArtistas();
-                    cargarRegistrosAlbum();
+                    
+                    desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -250,10 +248,7 @@ public class frmFavoritos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     usuBO.eliminarFavoritoArtista(sesion, listaFavoritosArtistas.get(tblArtistas.getSelectedRow()).getId());
-                    reiniciarTablas();
-                    cargarRegistrosCanciones();
-                    cargarRegistrosArtistas();
-                    cargarRegistrosAlbum();
+                    desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -267,11 +262,8 @@ public class frmFavoritos extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    usuBO.eliminarFavoritoCancion(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId());
-                    reiniciarTablas();
-                    cargarRegistrosCanciones();
-                    cargarRegistrosArtistas();
-                    cargarRegistrosAlbum();
+                    usuBO.eliminarFavoritoAlbum(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                    desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -342,6 +334,11 @@ public class frmFavoritos extends javax.swing.JFrame {
         modeloTablaAlb.setRowCount(0);
         DefaultTableModel modeloTablaArt = (DefaultTableModel) this.tblArtistas.getModel();
         modeloTablaArt.setRowCount(0);
+    }
+    public void desaparecer(){
+        frmFavoritos fm = new frmFavoritos(sesion);
+        fm.setVisible(true);
+        this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

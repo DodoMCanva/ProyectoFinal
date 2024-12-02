@@ -14,6 +14,7 @@ import IBO.ICancionBO;
 import IBO.IUsuarioBO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,17 +41,17 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
     private List<ArtistasDTO> listaTotalArtistas;
     private List<AlbumDTO> listaTotalAlbumes;
 
-    private List<CancionDTO> listaFavoritasCanciones;
-    private List<ArtistasDTO> listaFavoritosArtistas;
-    private List<AlbumDTO> listaFavoritosAlbumes;
+    private List<CancionDTO> listaFavoritasCanciones= new ArrayList<>();
+    private List<ArtistasDTO> listaFavoritosArtistas=new ArrayList<>();
+    private List<AlbumDTO> listaFavoritosAlbumes=new ArrayList<>();
     
     private List<String> listaStringFavoritasCanciones;
     private List<String> listaStringFavoritosArtistas;
     private List<String> listaStringFavoritosAlbumes;
 
-    private List<CancionDTO> listaCandidatasCanciones;
-    private List<ArtistasDTO> listaCandidatosArtistas;
-    private List<AlbumDTO> listaCandidatosAlbumes;
+    private List<CancionDTO> listaCandidatasCanciones= new ArrayList<>();
+    private List<ArtistasDTO> listaCandidatosArtistas= new ArrayList<>();
+    private List<AlbumDTO> listaCandidatosAlbumes= new ArrayList<>();
 
     public frmSobrePuestoGeneroELimi(java.awt.Frame parent, boolean modal, String sesion, String genero) {
         super(parent, modal);
@@ -292,7 +293,6 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             listaStringFavoritosAlbumes = usuBO.buscar(sesion).getFavoritos().getAlbums();
 
             
-            //Primero lista favorita
             for (CancionDTO cancion : listaTotalCanciones) {
                 if (listaStringFavoritasCanciones.contains(cancion.getId())) {
                     listaFavoritasCanciones.add(cancion);
@@ -313,7 +313,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             
             for (CancionDTO cancion : listaFavoritasCanciones) {
                 if (listaStringFavoritasCanciones.contains(cancion.getId())) {
-                    listaFavoritasCanciones.add(cancion);
+                    listaCandidatasCanciones.add(cancion);
                 }
             }
             
