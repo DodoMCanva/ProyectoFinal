@@ -14,7 +14,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
     /**
      * Creates new form frmBiblioteca
      */
-    public frmBiblioteca(String sesion) {
+    public frmBiblioteca(String sesion, String idAlbum, String idArtista, String idCancion) {
         initComponents();
         this.sesion = sesion;
     }

@@ -46,6 +46,8 @@ public class frmMenu extends javax.swing.JFrame {
     private List<ArtistasDTO> listaArtistasBuscados;
     private List<AlbumDTO> listaAlbumesBuscados;
 
+    boolean b = false;
+
     /**
      * Creates new form frmMenu
      *
@@ -293,25 +295,43 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void tblCancionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseReleased
         if (tblCanciones.getSelectedColumn() != 2) {
-            frmBiblioteca b = new frmBiblioteca(sesion);
-            b.setVisible(true);
-            this.dispose();
+            if (b) {
+                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                b.setVisible(true);
+                this.dispose();
+            } else {
+                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                b.setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_tblCancionesMouseReleased
 
     private void tblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlbumesMouseClicked
         if (tblArtistas.getSelectedColumn() != 2) {
-            frmBiblioteca b = new frmBiblioteca(sesion);
-            b.setVisible(true);
-            this.dispose();
+            if (b) {
+                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                b.setVisible(true);
+                this.dispose();
+            } else {
+                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                b.setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_tblAlbumesMouseClicked
 
     private void tblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArtistasMouseClicked
         if (tblAlbumes.getSelectedColumn() != 2) {
-            frmBiblioteca b = new frmBiblioteca(sesion);
-            b.setVisible(true);
-            this.dispose();
+            if (b) {
+                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                b.setVisible(true);
+                this.dispose();
+            } else {
+                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                b.setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_tblArtistasMouseClicked
 
@@ -381,6 +401,7 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     public void buscar(String busqueda, String filtro) {
+        b = true;
         listaCancionesBuscadas = new ArrayList<>();
         listaArtistasBuscados = new ArrayList<>();
         listaAlbumesBuscados = new ArrayList<>();
