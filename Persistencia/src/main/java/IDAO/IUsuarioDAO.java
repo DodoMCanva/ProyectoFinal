@@ -27,7 +27,7 @@ public interface IUsuarioDAO {
     public void agregarArtistaFavorito(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección
     //Modificacion
 
-    public void eliminarFavoritoArtista(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección
+    public boolean eliminarFavoritoArtista(UsuarioPOJO usuario, ObjectId artista) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección
 
     //Creacion
     public void agregarCancionFavorito(UsuarioPOJO usuario, ObjectId cancion) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección
@@ -39,7 +39,7 @@ public interface IUsuarioDAO {
     public void agregarAlbumFavorito(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección
 
     //Modificacion
-    public void eliminarFavoritoAlbum(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección
+    public boolean eliminarFavoritoAlbum(UsuarioPOJO usuario, ObjectId album) throws ExceptionDAO; // Agrega un artista favorito al usuario en la colección
 
     //Consulta
     public UsuarioPOJO buscarPorNombre(String nombre) throws ExceptionDAO;// Busca un usuario por su nombreUsuario

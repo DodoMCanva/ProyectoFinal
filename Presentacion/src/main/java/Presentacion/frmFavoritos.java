@@ -47,8 +47,8 @@ public class frmFavoritos extends javax.swing.JFrame {
     private List<AlbumDTO> listaTotalAlbumes;
     //ListaaUSAR
     private List<CancionDTO> listaFavoritasCanciones = new ArrayList<>();
-    private List<ArtistasDTO> listaFavoritosArtistas= new ArrayList<>();
-    private List<AlbumDTO> listaFavoritosAlbumes= new ArrayList<>();
+    private List<ArtistasDTO> listaFavoritosArtistas = new ArrayList<>();
+    private List<AlbumDTO> listaFavoritosAlbumes = new ArrayList<>();
 
     /**
      * Creates new form frmFavoritos
@@ -65,7 +65,7 @@ public class frmFavoritos extends javax.swing.JFrame {
             listaSCanciones = usuBO.buscar(sesion).getFavoritos().getCanciones();
             listaSArtistas = usuBO.buscar(sesion).getFavoritos().getArtistas();
             listaSAlbumes = usuBO.buscar(sesion).getFavoritos().getAlbums();
-            
+
             for (CancionDTO cancion : listaTotalCanciones) {
                 if (listaSCanciones.contains(cancion.getId())) {
                     listaFavoritasCanciones.add(cancion);
@@ -87,7 +87,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         } catch (ExceptionBO e) {
             JOptionPane.showMessageDialog(null, "Error en favoritos" + e);
         }
-        
+
         this.sesion = sesion;
         initComponents();
         lblUsuario.setText(n);
@@ -232,10 +232,8 @@ public class frmFavoritos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     usuBO.eliminarFavoritoCancion(sesion, listaFavoritasCanciones.get(tblCanciones.getSelectedRow()).getId());
-                    reiniciarTablas();
-                    cargarRegistrosCanciones();
-                    cargarRegistrosArtistas();
-                    cargarRegistrosAlbum();
+                    
+                    desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -250,10 +248,7 @@ public class frmFavoritos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     usuBO.eliminarFavoritoArtista(sesion, listaFavoritosArtistas.get(tblArtistas.getSelectedRow()).getId());
-                    reiniciarTablas();
-                    cargarRegistrosCanciones();
-                    cargarRegistrosArtistas();
-                    cargarRegistrosAlbum();
+                    desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -267,11 +262,8 @@ public class frmFavoritos extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    usuBO.eliminarFavoritoCancion(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId());
-                    reiniciarTablas();
-                    cargarRegistrosCanciones();
-                    cargarRegistrosArtistas();
-                    cargarRegistrosAlbum();
+                    usuBO.eliminarFavoritoAlbum(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                    desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -309,7 +301,7 @@ public class frmFavoritos extends javax.swing.JFrame {
             fila[3] = "Eliminar";
             modeloTabla.addRow(fila);
         });
-        
+
         tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
         tblAlbumes.setRowHeight(50);
         modeloTabla.fireTableDataChanged();
@@ -342,6 +334,11 @@ public class frmFavoritos extends javax.swing.JFrame {
         modeloTablaAlb.setRowCount(0);
         DefaultTableModel modeloTablaArt = (DefaultTableModel) this.tblArtistas.getModel();
         modeloTablaArt.setRowCount(0);
+    }
+    public void desaparecer(){
+        frmFavoritos fm = new frmFavoritos(sesion);
+        fm.setVisible(true);
+        this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
