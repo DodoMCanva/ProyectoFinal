@@ -1,5 +1,28 @@
 package Presentacion;
 
+import BO.AlbumBO;
+import BO.ArtistaBO;
+import BO.CancionBO;
+import BO.UsuarioBO;
+import DTO.AlbumDTO;
+import DTO.ArtistasDTO;
+import DTO.CancionDTO;
+import Exceptions.ExceptionBO;
+import IBO.IAlbumBO;
+import IBO.IArtistasBO;
+import IBO.ICancionBO;
+import IBO.IUsuarioBO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import utilerias.ImageRenderer;
+import utilerias.JButtonCellEditor;
+import utilerias.JButtonRenderer;
+
 /**
  *
  * @author equipo 2
@@ -7,9 +30,32 @@ package Presentacion;
 public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
     private String sesion;
+    private String genero;
+    private IUsuarioBO usuBO = new UsuarioBO();
+    private ICancionBO canBO = new CancionBO();
+    private IArtistasBO artBO = new ArtistaBO();
+    private IAlbumBO albBO = new AlbumBO();
+
+    private List<CancionDTO> listaTotalCanciones;
+    private List<ArtistasDTO> listaTotalArtistas;
+    private List<AlbumDTO> listaTotalAlbumes;
+
+    private List<CancionDTO> listaFavoritasCanciones;
+    private List<ArtistasDTO> listaFavoritosArtistas;
+    private List<AlbumDTO> listaFavoritosAlbumes;
     
+    private List<String> listaStringFavoritasCanciones;
+    private List<String> listaStringFavoritosArtistas;
+    private List<String> listaStringFavoritosAlbumes;
+
+    private List<CancionDTO> listaCandidatasCanciones;
+    private List<ArtistasDTO> listaCandidatosArtistas;
+    private List<AlbumDTO> listaCandidatosAlbumes;
+
     public frmSobrePuestoGeneroELimi(java.awt.Frame parent, boolean modal, String sesion, String genero) {
         super(parent, modal);
+        this.genero = genero;
+        this.sesion = sesion;
         initComponents();
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -17,7 +63,11 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
                 System.out.println("Intento de cerrar bloqueado.");
             }
         });
-        this.sesion = sesion;
+        establecerCandidatos();
+        cargarRegistrosCanciones();
+        cargarRegistrosArtistas();
+        cargarRegistrosAlbum();
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -72,13 +122,13 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
         tblArtistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Imagen", "Nombre", "Favoritos"
+                "Imagen", "Nombre"
             }
         ));
         jScrollPane1.setViewportView(tblArtistas);
@@ -87,13 +137,13 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
         tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Imagen", "Nombre", "Favoritos"
+                "Cancion", "Duracion"
             }
         ));
         jScrollPane2.setViewportView(tblCanciones);
@@ -102,13 +152,13 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
         tblAlbumes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Imagen", "Nombre", "Favoritos"
+                "Imagen", "Nombre"
             }
         ));
         jScrollPane3.setViewportView(tblAlbumes);
@@ -225,28 +275,120 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+        ejecutar();
         frmGeneroNoDeseado gene = new frmGeneroNoDeseado(this.sesion);
         gene.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnOKActionPerformed
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                frmSobrePuestoGeneroELimi dialog = new frmSobrePuestoGeneroELimi(new java.awt.Frame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
+    public void establecerCandidatos() {
+        try {
+            this.listaTotalCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
+            this.listaTotalArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
+            this.listaTotalAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
 
+            listaStringFavoritasCanciones = usuBO.buscar(sesion).getFavoritos().getCanciones();
+            listaStringFavoritosArtistas = usuBO.buscar(sesion).getFavoritos().getArtistas();
+            listaStringFavoritosAlbumes = usuBO.buscar(sesion).getFavoritos().getAlbums();
+
+            
+            //Primero lista favorita
+            for (CancionDTO cancion : listaTotalCanciones) {
+                if (listaStringFavoritasCanciones.contains(cancion.getId())) {
+                    listaFavoritasCanciones.add(cancion);
+                }
+            }
+            
+            for (ArtistasDTO artista : listaTotalArtistas) {
+                if (listaStringFavoritosArtistas.contains(artista.getId())) {
+                    listaFavoritosArtistas.add(artista);
+                }
+            }
+
+            for (AlbumDTO album : listaTotalAlbumes) {
+                if (listaStringFavoritosAlbumes.contains(album.getId())) {
+                    listaFavoritosAlbumes.add(album);
+                }
+            }
+            
+            for (CancionDTO cancion : listaFavoritasCanciones) {
+                if (listaStringFavoritasCanciones.contains(cancion.getId())) {
+                    listaFavoritasCanciones.add(cancion);
+                }
+            }
+            
+            for (ArtistasDTO artista : listaFavoritosArtistas) {
+                if (artista.getGenero().equals(genero)) {
+                    listaCandidatosArtistas.add(artista);
+                }
+            }
+            
+            for (AlbumDTO album : listaFavoritosAlbumes) {
+                if (album.getGenero().equals("genero")) {
+                    listaCandidatosAlbumes.add(album);
+                }
+            }
+
+        } catch (ExceptionBO e) {
+            System.out.println("Error" + e.toString());
+        }
+    }
+
+    public void ejecutar() {
+        try {
+            usuBO.restringirGenero(sesion, genero);
+            for (CancionDTO dto : listaCandidatasCanciones) {
+                usuBO.eliminarFavoritoCancion(sesion, dto.getId());
+            }
+            for (ArtistasDTO dto : listaCandidatosArtistas) {
+                usuBO.eliminarFavoritoArtista(sesion, dto.getId());
+            }
+            for (AlbumDTO dto : listaCandidatosAlbumes) {
+                usuBO.eliminarFavoritoAlbum(sesion, dto.getId());
+            }
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(frmSobrePuestoGeneroELimi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void cargarRegistrosCanciones() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
+        listaCandidatasCanciones.forEach(row -> {
+            Object[] fila = new Object[2];
+            fila[0] = row.getNombre();
+            fila[1] = row.getNombre();
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    public void cargarRegistrosAlbum() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaCandidatosAlbumes.forEach(row -> {
+            Object[] fila = new Object[2];
+            fila[0] = row.getPortada();
+            fila[1] = row.getNombre();
+            modeloTabla.addRow(fila);
+        });
+        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblAlbumes.setRowHeight(50);
+        modeloTabla.fireTableDataChanged();
+        tblAlbumes.repaint();
+    }
+
+    public void cargarRegistrosArtistas() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
+        listaCandidatosArtistas.forEach(row -> {
+            Object[] fila = new Object[2];
+            fila[0] = row.getImagen();
+            fila[1] = row.getNombre();
+            modeloTabla.addRow(fila);
+        });
+
+        tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblArtistas.setRowHeight(50);
+        modeloTabla.fireTableDataChanged();
+        tblArtistas.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
