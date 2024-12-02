@@ -13,10 +13,11 @@ import java.util.logging.Logger;
  * @author equipo 2
  */
 public class frmGeneroNoDeseado extends javax.swing.JFrame {
-
+    
     private String sesion;
     private List<String> lista = new ArrayList<>();
     private UsuarioBO usuBO = new UsuarioBO();
+    private boolean gR[] = new boolean[17];
 
     /**
      * Creates new form frmGeneroNoDeseado
@@ -32,62 +33,80 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
             switch (genero) {
                 case "Pop":
                     btnPop.setBackground(Color.GRAY);
+                    gR[0] = true;
                     break;
                 case "Soul":
                     btnSoul.setBackground(Color.GRAY);
+                    gR[1] = true;
                     break;
                 case "Funk":
                     btnFunk.setBackground(Color.GRAY);
+                    gR[2] = true;
                     break;
                 case "Electropop":
                     btnElectropop.setBackground(Color.GRAY);
+                    gR[3] = true;
                     break;
                 case "R&B":
                     btnRYB.setBackground(Color.GRAY);
+                    gR[4] = true;
                     break;
                 case "Rap":
                     btnRap.setBackground(Color.GRAY);
+                    gR[5] = true;
                     break;
                 case "Indie":
                     btnIndie.setBackground(Color.GRAY);
+                    gR[6] = true;
                     break;
                 case "Flamenco":
                     btnFlamenco.setBackground(Color.GRAY);
+                    gR[7] = true;
                     break;
                 case "Regional":
                     btnRegional.setBackground(Color.GRAY);
+                    gR[8] = true;
                     break;
                 case "Romantica":
                     btnRomantica.setBackground(Color.GRAY);
+                    gR[9] = true;
                     break;
                 case "Rock":
                     btnRock.setBackground(Color.GRAY);
+                    gR[10] = true;
                     break;
                 case "Grunge":
                     btnGrunge.setBackground(Color.GRAY);
+                    gR[11] = true;
                     break;
                 case "Metal":
                     btnMetal.setBackground(Color.GRAY);
+                    gR[12] = true;
                     break;
                 case "Hard Rock":
                     btnHardRock.setBackground(Color.GRAY);
+                    gR[13] = true;
                     break;
                 case "K-pop":
                     btnKPOP.setBackground(Color.GRAY);
+                    gR[14] = true;
                     break;
                 case "Electronica":
                     btnElectronica.setBackground(Color.GRAY);
+                    gR[15] = true;
                     break;
                 case "Banda":
                     btnBanda.setBackground(Color.GRAY);
+                    gR[16] = true;
                     break;
                 case "Balada":
                     btnBalada.setBackground(Color.GRAY);
+                    gR[17] = true;
                     break;
             }
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -305,112 +324,291 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnPopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Pop");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[0]) {
+            try {
+                usuBO.regresaGenero(sesion, "Pop");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnPop.setBackground(Color.WHITE);
+            gR[0] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Pop");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnPopActionPerformed
 
     private void btnBandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBandaActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
-
+        if (gR[16]) {
+            try {
+                usuBO.regresaGenero(sesion, "Banda");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnBanda.setBackground(Color.WHITE);
+            gR[16] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnBandaActionPerformed
 
     private void btnFunkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFunkActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[2]) {
+            try {
+                usuBO.regresaGenero(sesion, "Funk");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnFunk.setBackground(Color.WHITE);
+            gR[2] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Funk");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnFunkActionPerformed
 
     private void btnRYBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRYBActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[4]) {
+            try {
+                usuBO.regresaGenero(sesion, "R&B");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnRYB.setBackground(Color.WHITE);
+            gR[4] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "R&B");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnRYBActionPerformed
 
     private void btnRapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRapActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[5]) {
+            try {
+                usuBO.regresaGenero(sesion, "Rap");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnRap.setBackground(Color.WHITE);
+            gR[5] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Rap");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnRapActionPerformed
 
     private void btnIndieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIndieActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[6]) {
+            try {
+                usuBO.regresaGenero(sesion, "Indie");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnIndie.setBackground(Color.WHITE);
+            gR[6] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Indie");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnIndieActionPerformed
 
     private void btnFlamencoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlamencoActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[7]) {
+            try {
+                usuBO.regresaGenero(sesion, "Flamenco");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnFlamenco.setBackground(Color.WHITE);
+            gR[7] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Flamenco");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnFlamencoActionPerformed
 
     private void btnElectropopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElectropopActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[3]) {
+            try {
+                usuBO.regresaGenero(sesion, "Electropop");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnElectropop.setBackground(Color.WHITE);
+            gR[3] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Electropop");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnElectropopActionPerformed
 
     private void btnSoulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoulActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[1]) {
+            try {
+                usuBO.regresaGenero(sesion, "Soul");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnSoul.setBackground(Color.WHITE);
+            gR[1] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Soul");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnSoulActionPerformed
 
     private void btnRegionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegionalActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[8]) {
+            try {
+                usuBO.regresaGenero(sesion, "Regional");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnRegional.setBackground(Color.WHITE);
+            gR[8] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Regional");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnRegionalActionPerformed
 
     private void btnRomanticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRomanticaActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[9]) {
+            try {
+                usuBO.regresaGenero(sesion, "Romantica");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnPop.setBackground(Color.WHITE);
+            gR[9] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Romantica");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnRomanticaActionPerformed
 
     private void btnRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRockActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[10]) {
+            try {
+                usuBO.regresaGenero(sesion, "Rock");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnRock.setBackground(Color.WHITE);
+            gR[10] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Rock");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnRockActionPerformed
 
     private void btnGrungeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrungeActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[11]) {
+            try {
+                usuBO.regresaGenero(sesion, "Grunge");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnGrunge.setBackground(Color.WHITE);
+            gR[11] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Grunge");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnGrungeActionPerformed
 
     private void btnMetalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetalActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[12]) {
+            try {
+                usuBO.regresaGenero(sesion, "Metal");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnMetal.setBackground(Color.WHITE);
+            gR[12] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Metal");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnMetalActionPerformed
 
     private void btnHardRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHardRockActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[13]) {
+            try {
+                usuBO.regresaGenero(sesion, "Hard Rock");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnHardRock.setBackground(Color.WHITE);
+            gR[13] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Hard Rock");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnHardRockActionPerformed
 
     private void btnKPOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKPOPActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[14]) {
+            try {
+                usuBO.regresaGenero(sesion, "K-pop");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnKPOP.setBackground(Color.WHITE);
+            gR[14] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "K-pop");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnKPOPActionPerformed
 
     private void btnBaladaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaladaActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[17]) {
+            try {
+                usuBO.regresaGenero(sesion, "Balada");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnBalada.setBackground(Color.WHITE);
+            gR[17] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Balada");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnBaladaActionPerformed
 
     private void btnElectronicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElectronicaActionPerformed
-        frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Banda");
-        el.setVisible(true);
-        this.dispose();
+        if (gR[15]) {
+            try {
+                usuBO.regresaGenero(sesion, "Electronica");
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmGeneroNoDeseado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            btnPop.setBackground(Color.WHITE);
+            gR[15] = false;
+        } else {
+            frmSobrePuestoGeneroELimi el = new frmSobrePuestoGeneroELimi(this, rootPaneCheckingEnabled, this.sesion, "Electronica");
+            el.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnElectronicaActionPerformed
 
 
