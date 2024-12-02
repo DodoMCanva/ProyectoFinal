@@ -15,7 +15,6 @@ import IBO.IUsuarioBO;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -121,6 +120,11 @@ public class frmMenu extends javax.swing.JFrame {
                 "Imagen", "Nombre", "Favoritos"
             }
         ));
+        tblArtistas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblArtistasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblArtistas);
 
         pnlMenu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 280, 460));
@@ -156,6 +160,11 @@ public class frmMenu extends javax.swing.JFrame {
                 "Imagen", "Nombre", "Favoritos"
             }
         ));
+        tblAlbumes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAlbumesMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblAlbumes);
 
         pnlMenu.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 280, 460));
@@ -304,6 +313,22 @@ public class frmMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnfavActionPerformed
 
+    private void tblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlbumesMouseClicked
+        if (tblArtistas.getSelectedColumn() != 2) {
+            frmBiblioteca b = new frmBiblioteca(sesion);
+            b.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblAlbumesMouseClicked
+
+    private void tblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArtistasMouseClicked
+        if (tblAlbumes.getSelectedColumn() != 2) {
+            frmBiblioteca b = new frmBiblioteca(sesion);
+            b.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblArtistasMouseClicked
+
     public void formatearTablas() {
         TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
         ActionListener onFavoritoCancionClickListener = new ActionListener() {
@@ -347,9 +372,9 @@ public class frmMenu extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     boolean a = false;
-                    a = usuBO.eliminarFavoritoCancion(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                    a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
                     if (a) {
-                        usuBO.agregarCancionFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                        usuBO.agregarAlbumFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
                     }
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);

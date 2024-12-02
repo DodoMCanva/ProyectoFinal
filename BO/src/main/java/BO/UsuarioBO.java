@@ -104,7 +104,7 @@ public class UsuarioBO implements IUsuarioBO {
     @Override
     public void agregarArtistaFavorito(String sesion, String artista) throws ExceptionBO {
         try {
-            usuarioDAO.agregarCancionFavorito(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
+            usuarioDAO.agregarArtistaFavorito(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
         } catch (ExceptionDAO ex) {
             Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -113,7 +113,7 @@ public class UsuarioBO implements IUsuarioBO {
     @Override
     public boolean eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO {
         try {
-            return usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
+            return usuarioDAO.eliminarFavoritoArtista(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(artista));
         } catch (ExceptionDAO ex) {
             Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -151,7 +151,7 @@ public class UsuarioBO implements IUsuarioBO {
     @Override
     public boolean eliminarFavoritoAlbum(String sesion, String album) throws ExceptionBO {
         try {
-            usuarioDAO.eliminarFavoritoCancion(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(album));
+            return usuarioDAO.eliminarFavoritoAlbum(convertirUsuarioDTOaPOJO(buscar(sesion)), new ObjectId(album));
         } catch (ExceptionDAO ex) {
             Logger.getLogger(UsuarioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -218,41 +218,39 @@ public class UsuarioBO implements IUsuarioBO {
     }
 
     private UsuarioDTO convertirUsuarioPOJOaDTO(UsuarioPOJO pojo) {
-    List<String> artistas = new ArrayList<>();
-    if (pojo.getFavoritos() != null && pojo.getFavoritos().getArtistas() != null) {
-        for (ObjectId id : pojo.getFavoritos().getArtistas()) {
-            artistas.add(id.toHexString());
+        List<String> artistas = new ArrayList<>();
+        if (pojo.getFavoritos() != null && pojo.getFavoritos().getArtistas() != null) {
+            for (ObjectId id : pojo.getFavoritos().getArtistas()) {
+                artistas.add(id.toHexString());
+            }
         }
-    }
 
-    List<String> albums = new ArrayList<>();
-    if (pojo.getFavoritos() != null && pojo.getFavoritos().getAlbums() != null) {
-        for (ObjectId id : pojo.getFavoritos().getAlbums()) {
-            albums.add(id.toHexString());
+        List<String> albums = new ArrayList<>();
+        if (pojo.getFavoritos() != null && pojo.getFavoritos().getAlbums() != null) {
+            for (ObjectId id : pojo.getFavoritos().getAlbums()) {
+                albums.add(id.toHexString());
+            }
         }
-    }
 
-    List<String> canciones = new ArrayList<>();
-    if (pojo.getFavoritos() != null && pojo.getFavoritos().getCanciones() != null) {
-        for (ObjectId id : pojo.getFavoritos().getCanciones()) {
-            System.out.println("ID de Canción: " + id.toHexString());
-            canciones.add(id.toHexString());
+        List<String> canciones = new ArrayList<>();
+        if (pojo.getFavoritos() != null && pojo.getFavoritos().getCanciones() != null) {
+            for (ObjectId id : pojo.getFavoritos().getCanciones()) {
+                canciones.add(id.toHexString());
+            }
         }
+
+        FavoritosDTO favoritosDTO = new FavoritosDTO(artistas, albums, canciones);
+
+        return new UsuarioDTO(
+                pojo.getId().toHexString(),
+                pojo.getNombre(),
+                pojo.getEmail(),
+                pojo.getPassword(),
+                pojo.getImagen(),
+                pojo.getRestringidosGeneros(),
+                favoritosDTO
+        );
     }
-
-    FavoritosDTO favoritosDTO = new FavoritosDTO(artistas, albums, canciones);
-
-    return new UsuarioDTO(
-            pojo.getId().toHexString(),
-            pojo.getNombre(),
-            pojo.getEmail(),
-            pojo.getPassword(),
-            pojo.getImagen(),
-            pojo.getRestringidosGeneros(),
-            favoritosDTO
-    );
-}
-
 
     @Override
     public UsuarioDTO buscar(String id) throws ExceptionBO {
