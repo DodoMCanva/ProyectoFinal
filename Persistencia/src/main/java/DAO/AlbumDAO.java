@@ -4,7 +4,6 @@ import Conexion.ConexionDB;
 import Exceptions.ExceptionDAO;
 import IDAO.IAlbumDAO;
 import POJO.AlbumPOJO;
-import POJO.CancionPOJO;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -18,11 +17,24 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 /**
+ * Clase DAO para gestionar operaciones relacionadas con álbumes en una base de
+ * datos MongoDB.
+ *
+ * Esta clase se encarga de realizar operaciones CRUD y consultas avanzadas
+ * sobre la colección "albums".
  *
  * @author equipo 2
  */
 public class AlbumDAO implements IAlbumDAO {
 
+    /**
+     * Inserta un álbum en la colección "albums" de la base de datos.
+     *
+     * @param album el objeto {@link AlbumPOJO} que contiene la información del
+     * álbum a insertar.
+     * @throws ExceptionDAO si ocurre un error al guardar el álbum en la base de
+     * datos.
+     */
     @Override
     public void InsertarAlbum(AlbumPOJO album) throws ExceptionDAO {
         try {
@@ -43,6 +55,16 @@ public class AlbumDAO implements IAlbumDAO {
         }
     }
 
+    /**
+     * Consulta todos los álbumes en la colección, excluyendo los de géneros
+     * restringidos.
+     *
+     * @param generosRestringidos una lista de géneros que no deben incluirse en
+     * el resultado.
+     * @return una lista de objetos AlbumPOJO que representan los álbumes
+     * encontrados.
+     * @throws ExceptionDAO si ocurre un error al consultar los álbumes.
+     */
     @Override
     public List<AlbumPOJO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
@@ -80,6 +102,18 @@ public class AlbumDAO implements IAlbumDAO {
         }
     }
 
+    /**
+     * Busca álbumes en la colección que coincidan con un término de busqueda y
+     * excluyendo géneros restringidos.
+     *
+     * @param generosRestringidos lista de géneros que no deben incluirse en el
+     * resultado.
+     * @param Busqueda el termino de busqueda para coincidir con los nombres de
+     * los álbumes.
+     * @return una lista de objetos AlbumPOJO que representan los álbumes
+     * encontrados.
+     * @throws ExceptionDAO si ocurre un error durante la busqueda.
+     */
     @Override
     public List<AlbumPOJO> busquedaGeneralAlbum(List<String> generosRestringidos, String Busqueda) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();
@@ -123,6 +157,13 @@ public class AlbumDAO implements IAlbumDAO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     * Consulta un álbum en la base de datos por su ID.
+     *
+     * @param id el ID del álbum a buscar.
+     * @return un objeto AlbumPOJO que representa el álbum encontrado.
+     * @throws ExceptionDAO si ocurre un error al consultar el álbum por ID.
+     */
     @Override
     public AlbumPOJO consulta(ObjectId id) throws ExceptionDAO {
         MongoDatabase baseDeDatos = new ConexionDB().conexion();

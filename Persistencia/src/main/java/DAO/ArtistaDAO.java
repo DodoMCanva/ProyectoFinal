@@ -16,6 +16,8 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 /**
+ * Clase que implementa la interfaz IArtistaDAO para realizar operaciones CRUD
+ * relacionadas con artistas en la base de datos MongoDB.
  *
  * @author equipo 2
  */
@@ -23,11 +25,23 @@ public class ArtistaDAO implements IArtistaDAO {
 
     private MongoDatabase database;
 
+    /**
+     * Constructor de la clase ArtistaDAO. Inicializa la conexión con la base de
+     * datos MongoDB.
+     */
     public ArtistaDAO() {
         ConexionDB conexionDB = new ConexionDB();
         this.database = conexionDB.conexion();
     }
 
+    /**
+     * Inserta un nuevo artista en la colección "artistas" de la base de datos.
+     *
+     * @param artistaPOJO Objeto que contiene la información del artista a
+     * insertar.
+     * @throws ExceptionDAO Si ocurre un error durante la inserción en la base
+     * de datos.
+     */
     @Override
     public void insertarArtistas(ArtistaPOJO artistaPOJO) throws ExceptionDAO {
         try {
@@ -48,6 +62,12 @@ public class ArtistaDAO implements IArtistaDAO {
         }
     }
 
+    /**
+     * Obtiene el ID de un artista a partir de su nombre.
+     *
+     * @param nombreArtista Nombre del artista cuyo ID se desea obtener.
+     * @return ID del artista, o null si no se encuentra.
+     */
     @Override
     public String obtenerIdPorNombre(String nombreArtista) {
         try {
@@ -64,6 +84,13 @@ public class ArtistaDAO implements IArtistaDAO {
         return null;
     }
 
+    /**
+     * Consulta una lista de artistas excluyendo los géneros restringidos.
+     *
+     * @param generosRestringidos Lista de géneros que se deben excluir.
+     * @return Lista de objetos ArtistaPOJO que cumplen con el filtro.
+     * @throws ExceptionDAO Si ocurre un error durante la consulta.
+     */
     @Override
     public List<ArtistaPOJO> consultaGeneralArtista(List<String> generosRestringidos) throws ExceptionDAO {
         List<ArtistaPOJO> listaArtistas = new ArrayList<>();
@@ -77,7 +104,6 @@ public class ArtistaDAO implements IArtistaDAO {
                     for (Document integranteDoc : integrantesDocs) {
                         //posible error en el nombre de las columnas
                         IntegrantesPOJO integrante = new IntegrantesPOJO(
-                                
                                 integranteDoc.getString("nombre"),
                                 integranteDoc.getString("rol"),
                                 integranteDoc.getString("imagen"),
@@ -109,6 +135,16 @@ public class ArtistaDAO implements IArtistaDAO {
         }
     }
 
+    /**
+     * Busca artistas excluyendo géneros restringidos y filtrando por un termino
+     * de busqueda.
+     *
+     * @param generosRestringidos Lista de géneros a excluir.
+     * @param busqueda Termino de busqueda a aplicar en los campos de nombre y
+     * tipo.
+     * @return Lista de objetos ArtistaPOJO que cumplen con los filtros.
+     * @throws ExceptionDAO Si ocurre un error durante la busqueda.
+     */
     @Override
     public List<ArtistaPOJO> busquedaGeneralArtista(List<String> generosRestringidos, String busqueda) throws ExceptionDAO {
         List<ArtistaPOJO> listaArtistas = new ArrayList<>();
@@ -157,6 +193,14 @@ public class ArtistaDAO implements IArtistaDAO {
         }
     }
 
+    /**
+     * Consulta un artista por su ID unico.
+     *
+     * @param id ID del artista a consultar.
+     * @return Objeto ArtistaPOJO que representa al artista consultado.
+     * @throws ExceptionDAO Si no se encuentra el artista o ocurre un error
+     * durante la consulta.
+     */
     @Override
     public ArtistaPOJO consulta(ObjectId id) throws ExceptionDAO {
         try {
