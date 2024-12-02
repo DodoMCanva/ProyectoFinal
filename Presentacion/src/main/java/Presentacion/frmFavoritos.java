@@ -259,7 +259,7 @@ public class frmFavoritos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        frmMenu menu = null;
+         frmMenu menu = null;
         try {
             menu = new frmMenu(this.sesion);
         } catch (ExceptionBO ex) {
@@ -349,14 +349,9 @@ public class frmFavoritos extends javax.swing.JFrame {
             cargarRegistrosArtistasBusqueda();
             cargarRegistrosCancionesBusqueda();
         } else {
-            try {
-                frmMenu m = new frmMenu(sesion);
-                m.setVisible(true);
-                this.dispose();
-            } catch (ExceptionBO ex) {
-                Logger.getLogger(frmMenu.class
-                        .getName()).log(Level.SEVERE, null, ex);
-            }
+            frmFavoritos m = new frmFavoritos(sesion);
+            m.setVisible(true);
+            this.dispose();
         }
 
     }
