@@ -125,10 +125,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
         tblArtistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Imagen", "Nombre"
@@ -140,10 +137,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
         tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Cancion", "Duracion"
@@ -155,10 +149,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
 
         tblAlbumes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Imagen", "Nombre"
@@ -282,19 +273,19 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             
             for (CancionDTO cancion : listaTotalCanciones) {
                 if (listaStringFavoritasCanciones.contains(cancion.getId())) {
-                    listaTotalCanciones.add(cancion);
+                    listaFavoritasCanciones.add(cancion);
                 }
             }
             
             for (ArtistasDTO artista : listaTotalArtistas) {
                 if (listaStringFavoritosArtistas.contains(artista.getId())) {
-                    listaTotalArtistas.add(artista);
+                    listaFavoritosArtistas.add(artista);
                 }
             }
 
             for (AlbumDTO album : listaTotalAlbumes) {
                 if (listaStringFavoritosAlbumes.contains(album.getId())) {
-                    listaTotalAlbumes.add(album);
+                    listaFavoritosAlbumes.add(album);
                 }
             }
             
@@ -338,7 +329,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             Logger.getLogger(frmSobrePuestoGeneroELimi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void cargarRegistrosCanciones() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaCandidatasCanciones.forEach(row -> {
