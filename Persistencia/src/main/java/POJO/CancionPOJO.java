@@ -12,20 +12,24 @@ public class CancionPOJO {
     private ObjectId id;
     private String nombre;
     private String duracion;
+    private String genero;
 
     public CancionPOJO() {
     }
 
-    public CancionPOJO(ObjectId id, String nombre, String duracion) {
+     public CancionPOJO(String nombre, String duracion,String genero) {
+        this.nombre = nombre;
+        this.duracion = duracion;
+        this.genero = genero;
+    }
+    public CancionPOJO(ObjectId id, String nombre, String duracion,String genero) {
         this.id = id;
         this.nombre = nombre;
         this.duracion = duracion;
+        this.genero = genero;
     }
 
-    public CancionPOJO(String nombre, String duracion) {
-        this.nombre = nombre;
-        this.duracion = duracion;
-    }
+   
 
     public ObjectId getId() {
         return id;
@@ -51,6 +55,15 @@ public class CancionPOJO {
         this.duracion = duracion;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    
+    
     @Override
     public String toString() {
         return "CancionPOJO{" + "id="
