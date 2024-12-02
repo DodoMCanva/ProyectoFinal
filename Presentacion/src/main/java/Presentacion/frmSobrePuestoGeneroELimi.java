@@ -288,7 +288,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             
             for (ArtistasDTO artista : listaTotalArtistas) {
                 if (listaStringFavoritosArtistas.contains(artista.getId())) {
-                    listaFavoritosArtistas.add(artista);
+                    listaTotalArtistas.add(artista);
                 }
             }
 
@@ -306,7 +306,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             
             for (ArtistasDTO artista : listaFavoritosArtistas) {
                 if (artista.getGenero().equals(genero)) {
-                    listaCandidatosArtistas.add(artista);
+                    listaTotalArtistas.add(artista);
                 }
             }
             

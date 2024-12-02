@@ -65,7 +65,7 @@ public class UsuarioBO implements IUsuarioBO {
         try {
 
             UsuarioPOJO usuarioPOJO = convertirUsuarioDTOaPOJO(usuario);
-            usuarioPOJO.setPassword(BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt()));
+            usuarioPOJO.setPassword(usuario.getPassword());
             usuarioDAO.editarUsuario(usuarioPOJO);
         } catch (ExceptionDAO e) {
             throw new ExceptionBO("Error al editar el usuario en la capa BO", e);
