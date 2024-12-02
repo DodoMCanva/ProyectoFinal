@@ -4,6 +4,7 @@ import BO.UsuarioBO;
 import DTO.UsuarioDTO;
 import Exceptions.ExceptionBO;
 import IBO.IUsuarioBO;
+import java.awt.Image;
 import java.io.File;
 import java.net.URL;
 import java.util.logging.Level;
@@ -21,7 +22,7 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     private String sesion;
     private IUsuarioBO usuarioBO;
     private String rutaImagenSeleccionada = null;
-    private static final String IMAGEN_POR_DEFECTO = "/imegenes/perfil.png"; // Ruta de la imagen predeterminada
+    private static final String IMAGEN_POR_DEFECTO = "/imegenes/acceso.png"; // Ruta de la imagen predeterminada
 
     /**
      * Creates new form frmEditarPerfil
@@ -38,7 +39,7 @@ public class frmEditarPerfil extends javax.swing.JFrame {
             UsuarioDTO usuario = usuarioBO.buscar(sesion);
             txtNombreUsuario.setText(usuario.getNombre());
             txtCorreoElectronico.setText(usuario.getEmail());
-           // txtContrsena.setText(usuario.getPassword());
+            // txtContrsena.setText(usuario.getPassword());
 
             String imagenPath = usuario.getImagen();
             if (imagenPath == null || imagenPath.isEmpty()) {
@@ -46,21 +47,18 @@ public class frmEditarPerfil extends javax.swing.JFrame {
             }
 
             ImageIcon icon;
-            File file = new File(imagenPath);
-            if (file.exists()) {
-                System.out.println("Cargando imagen desde el sistema de archivos: " + imagenPath);
-                icon = new ImageIcon(imagenPath);
+            if (new File(imagenPath).exists()) {
+                icon = new ImageIcon(redimensionarImagen(imagenPath, lblPerfil.getWidth(), lblPerfil.getHeight()));
             } else {
+                // La ruta es un recurso en el classpath
                 URL imageUrl = getClass().getResource(imagenPath);
                 if (imageUrl != null) {
-                    System.out.println("Cargando imagen desde el classpath: " + imageUrl);
-                    icon = new ImageIcon(imageUrl);
+                    icon = new ImageIcon(redimensionarImagen(imageUrl, lblPerfil.getWidth(), lblPerfil.getHeight()));
                 } else {
                     System.out.println("No se pudo cargar la imagen: " + imagenPath);
-                    imageUrl = getClass().getResource(IMAGEN_POR_DEFECTO); // Intentar cargar la imagen predeterminada 
+                    imageUrl = getClass().getResource(IMAGEN_POR_DEFECTO);
                     if (imageUrl != null) {
-                        System.out.println("Cargando imagen predeterminada desde el classpath: " + imageUrl);
-                        icon = new ImageIcon(imageUrl);
+                        icon = new ImageIcon(redimensionarImagen(imageUrl, lblPerfil.getWidth(), lblPerfil.getHeight()));
                     } else {
                         System.out.println("No se pudo cargar la imagen predeterminada: " + IMAGEN_POR_DEFECTO);
                         icon = null;
@@ -70,39 +68,14 @@ public class frmEditarPerfil extends javax.swing.JFrame {
             if (icon != null) {
                 lblPerfil.setIcon(icon);
             } else {
-                lblPerfil.setText("Imagen no disponible"); // Texto alternativo si no se carga la imagen
+                lblPerfil.setText("Imagen no disponible"); // por si no se carga la imagen
             }
-
-//            ImageIcon icon;
-//            if (new File(imagenPath).exists()) {
-//                icon = new ImageIcon(imagenPath);
-//            } else {
-//// La ruta es un recurso en el classpath 
-//                URL imageUrl = getClass().getResource(imagenPath);
-//                if (imageUrl != null) {
-//                    icon = new ImageIcon(imageUrl);
-//                } else {
-//                    System.out.println("No se pudo cargar la imagen: " + imagenPath);
-//                    imageUrl = getClass().getResource(IMAGEN_POR_DEFECTO);
-//                    if (imageUrl != null) {
-//                        icon = new ImageIcon(imageUrl);
-//                    } else {
-//                        System.out.println("No se pudo cargar la imagen predeterminada: " + IMAGEN_POR_DEFECTO);
-//                        icon = null;
-//                    }
-//                }
-//            }
-//            if (icon != null) {
-//                lblPerfil.setIcon(icon);
-//            }
-                //      lblPerfil.setIcon(icon);
-            }catch (ExceptionBO e) {
+        } catch (ExceptionBO e) {
             throw new ExceptionBO("Error al editar el usuario en la capa BO", e);
         }
+    }
 
-        }
-
-        @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -225,19 +198,32 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContrsenaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        UsuarioDTO usuariodtoEdit = new UsuarioDTO(txtNombreUsuario.getText(), txtCorreoElectronico.getText(), txtContrsena.getText(), "");
-        usuariodtoEdit.setId(sesion);
         try {
+            // informacion actual del usuario
+            UsuarioDTO usuarioActual = usuarioBO.buscar(sesion);
+            UsuarioDTO usuariodtoEdit = new UsuarioDTO();
+            usuariodtoEdit.setNombre(txtNombreUsuario.getText());
+            usuariodtoEdit.setEmail(txtCorreoElectronico.getText());
+            usuariodtoEdit.setPassword(txtContrsena.getText());
+            usuariodtoEdit.setId(sesion);
+
+            // verifica si se ha seleccionado una nueva imagen
+            if (rutaImagenSeleccionada != null) {
+                usuariodtoEdit.setImagen(rutaImagenSeleccionada);
+            } else {
+                // mantiene la imagen actual del usuario
+                usuariodtoEdit.setImagen(usuarioActual.getImagen());
+            }
+            // guarda los cambios del usuario
             usuarioBO.editarUsuario(usuariodtoEdit);
+
             frmMenu menu = new frmMenu(sesion);
             menu.setVisible(true);
             this.dispose();
-
         } catch (ExceptionBO ex) {
             Logger.getLogger(frmEditarPerfil.class.getName()).log(Level.SEVERE, null, ex);
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al guardar los cambios: " + ex.getMessage());
         }
-
-
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAnadirFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFotoActionPerformed
@@ -251,11 +237,25 @@ public class frmEditarPerfil extends javax.swing.JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             rutaImagenSeleccionada = selectedFile.getAbsolutePath();
-            ImageIcon icon = new ImageIcon(rutaImagenSeleccionada);
+            System.out.println("Imagen seleccionada: " + rutaImagenSeleccionada);
+            ImageIcon icon = new ImageIcon(redimensionarImagen(rutaImagenSeleccionada, lblPerfil.getWidth(), lblPerfil.getHeight()));
             lblPerfil.setIcon(icon); // Actualizar la imagen en el label
         }
     }//GEN-LAST:event_btnAnadirFotoActionPerformed
 
+    private Image redimensionarImagen(String ruta, int width, int height) {
+        ImageIcon icon = new ImageIcon(ruta);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
+
+    private Image redimensionarImagen(URL url, int width, int height) {
+        ImageIcon icon = new ImageIcon(url);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAnadirFoto;

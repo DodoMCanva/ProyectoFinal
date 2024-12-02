@@ -48,7 +48,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        JPanelInicioSesion.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 220, 30));
+        JPanelInicioSesion.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 220, 35));
 
         lblConstrasenaTitul.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblConstrasenaTitul.setText("Contraseña");
@@ -99,7 +99,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
         lblTituloLogo.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         lblTituloLogo.setText("Music plux");
         JPanelInicioSesion.add(lblTituloLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
-        JPanelInicioSesion.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 220, 30));
+        JPanelInicioSesion.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 220, 35));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,13 +135,13 @@ public class frmInicioSesion extends javax.swing.JFrame {
                 frmMenu menu = new frmMenu(sesion);
                 menu.setVisible(true);
                 this.dispose();
-                
+
             } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
             }
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error al iniciar sesión: " + e.getMessage());
-            
+
         }
     }//GEN-LAST:event_btniniciarSesionActionPerformed
 
