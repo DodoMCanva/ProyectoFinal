@@ -9,6 +9,7 @@ public class CancionDTO {
     private String id;
     private String nombre;
     private String duracion;
+    private String genero;
 
     public CancionDTO() {
     }
@@ -24,6 +25,15 @@ public class CancionDTO {
         this.duracion = duracion;
 
     }
+
+    public CancionDTO(String id, String nombre, String duracion, String genero) {
+        this.id = id;
+        this.nombre = nombre;
+        this.duracion = duracion;
+        this.genero = genero;
+    }
+    
+    
 
     public String getId() {
         return id;
