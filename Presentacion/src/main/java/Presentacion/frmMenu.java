@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -41,6 +42,10 @@ public class frmMenu extends javax.swing.JFrame {
     private List<ArtistasDTO> listaArtistas;
     private List<AlbumDTO> listaAlbumes;
 
+    private List<CancionDTO> listaCancionesBuscadas;
+    private List<ArtistasDTO> listaArtistasBuscados;
+    private List<AlbumDTO> listaAlbumesBuscados;
+
     /**
      * Creates new form frmMenu
      *
@@ -52,6 +57,9 @@ public class frmMenu extends javax.swing.JFrame {
         this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
         this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
         this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
+        listaCancionesBuscadas = new ArrayList<>();
+        listaArtistasBuscados = new ArrayList<>();
+        listaAlbumesBuscados = new ArrayList<>();
         this.sesion = sesion;
         initComponents();
         formatearTablas();
@@ -264,28 +272,12 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDesplegableActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        reiniciarTablas();
         String filtro = cboxFiltro.getSelectedItem().toString();
-        switch (filtro) {
-            case "Ninguno":
-                String busqueda = txtBuscar.getText();
-                if (!busqueda.isEmpty()) {
-                    cargarBusquedasGeneralTabla(busqueda);
-                } else {
-                    this.dispose();
-                    try {
-                        //De preferencia cambiar por otro reseteo
-                        frmMenu m = new frmMenu(sesion);
-                        m.setVisible(true);
-                    } catch (ExceptionBO ex) {
-                        Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                break;
-            case "":
-                break;
-            default:
-                throw new AssertionError();
-        }
+        String busqueda = txtBuscar.getText();
+        buscar(busqueda, filtro);
+
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cboxFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxFiltroActionPerformed
@@ -326,9 +318,11 @@ public class frmMenu extends javax.swing.JFrame {
                     a = usuBO.eliminarFavoritoCancion(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
                     if (a) {
                         usuBO.agregarCancionFavorito(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+
                     }
                 } catch (ExceptionBO ex) {
-                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(frmMenu.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -343,13 +337,14 @@ public class frmMenu extends javax.swing.JFrame {
                     boolean a = false;
                     JButton sb = (JButton) e.getSource();
                     a = usuBO.eliminarFavoritoArtista(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
-                    
+
                     if (a) {
                         usuBO.agregarArtistaFavorito(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
-                        
+
                     }
                 } catch (ExceptionBO ex) {
-                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(frmMenu.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -365,9 +360,11 @@ public class frmMenu extends javax.swing.JFrame {
                     a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
                     if (a) {
                         usuBO.agregarAlbumFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+
                     }
                 } catch (ExceptionBO ex) {
-                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(frmMenu.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
@@ -376,16 +373,112 @@ public class frmMenu extends javax.swing.JFrame {
 
     }
 
-    public void cargarBusquedasGeneralTabla(String busqueda) {
+    public void buscar(String busqueda, String filtro) {
         for (CancionDTO cancion : listaCanciones) {
             if (cancion.getNombre().contains(busqueda)) {
-//                listaCancionesBuscadas.add
+                listaCancionesBuscadas.add(cancion);
             }
+        }
+        for (ArtistasDTO artista : listaArtistas) {
+            if (artista.getNombre().contains(busqueda)) {
+                listaArtistasBuscados.add(artista);
+            }
+        }
+        for (AlbumDTO album : listaAlbumes) {
+            if (album.getNombre().contains(busqueda)) {
+                listaAlbumesBuscados.add(album);
+            }
+        }
+        switch (filtro) {
+            case "Ninguno":
+                if (!busqueda.isEmpty()) {
+                    cargarRegistrosAlbumBusqueda();
+                    cargarRegistrosArtistasBusqueda();
+                    cargarRegistrosCancionesBusqueda();
+                } else {
+                    try {
+                        frmMenu m = new frmMenu(sesion);
+                        m.setVisible(true);
+                        this.dispose();
+                    } catch (ExceptionBO ex) {
+                        Logger.getLogger(frmMenu.class
+                                .getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+
+            case "Canciones":
+                if (!busqueda.isEmpty()) {
+                    cargarRegistrosCancionesBusqueda();
+                } else {
+                    cargarRegistrosCanciones();
+                }
+                break;
+
+            case "Albums":
+                if (!busqueda.isEmpty()) {
+                    cargarRegistrosAlbumBusqueda();
+                } else {
+                    cargarRegistrosAlbum();
+                }
+                break;
+
+            case "Artistas":
+                if (!busqueda.isEmpty()) {
+                    cargarRegistrosArtistasBusqueda();
+                } else {
+                    cargarRegistrosArtistasBusqueda();
+                }
+                break;
+            default:
+                System.out.println("Error con el filtro");
         }
     }
 
+    public void cargarRegistrosCancionesBusqueda() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
+        listaCancionesBuscadas.forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getDuracion();
+            fila[1] = row.getNombre();
+            fila[2] = "Favoritos";
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    public void cargarRegistrosAlbumBusqueda() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaAlbumesBuscados.forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getPortada(); // Ruta de la imagen
+            fila[1] = row.getNombre();  // Nombre del álbum
+            fila[2] = "Favoritos";      // Acción o categoría
+            modeloTabla.addRow(fila);
+        });
+        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Renderizar imágenes
+        tblAlbumes.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
+        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
+        tblAlbumes.repaint();
+    }
+
+    public void cargarRegistrosArtistasBusqueda() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblArtistas.getModel();
+        listaArtistasBuscados.forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getImagen(); // Ruta de la imagen
+            fila[1] = row.getNombre(); // Nombre del artista
+            fila[2] = "Favoritos";     // Categoría o acción
+            modeloTabla.addRow(fila);
+        });
+
+        // Establecer el renderizador para la columna de imágenes
+        tblArtistas.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblArtistas.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
+        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
+        tblArtistas.repaint();
+    }
+
     public void cargarRegistrosCanciones() {
-        //reiniciarTablas();
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaCanciones.forEach(row -> {
             Object[] fila = new Object[3];
@@ -437,40 +530,6 @@ public class frmMenu extends javax.swing.JFrame {
         modeloTablaArt.setRowCount(0);
     }
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new frmMenu().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
