@@ -7,17 +7,22 @@ import BO.UsuarioBO;
 import DTO.AlbumDTO;
 import DTO.ArtistasDTO;
 import DTO.CancionDTO;
+import DTO.UsuarioDTO;
 import Exceptions.ExceptionBO;
 import IBO.IAlbumBO;
 import IBO.IArtistasBO;
 import IBO.ICancionBO;
 import IBO.IUsuarioBO;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -98,6 +103,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         cargarRegistrosCanciones();
         cargarRegistrosArtistas();
         cargarRegistrosAlbum();
+        cargarImagenUsuario();
     }
 
     @SuppressWarnings("unchecked")
@@ -119,26 +125,28 @@ public class frmFavoritos extends javax.swing.JFrame {
         tblArtistas = new javax.swing.JTable();
         lblArtistas = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
+        lblEstrellaFav = new javax.swing.JLabel();
+        lblImagenUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Favoritos");
-        setMinimumSize(new java.awt.Dimension(680, 700));
-        setPreferredSize(new java.awt.Dimension(680, 800));
+        setMinimumSize(new java.awt.Dimension(720, 810));
+        setPreferredSize(new java.awt.Dimension(720, 810));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlFavoritos.setBackground(new java.awt.Color(204, 190, 255));
-        pnlFavoritos.setMinimumSize(new java.awt.Dimension(680, 850));
-        pnlFavoritos.setPreferredSize(new java.awt.Dimension(680, 850));
+        pnlFavoritos.setMinimumSize(new java.awt.Dimension(720, 810));
+        pnlFavoritos.setPreferredSize(new java.awt.Dimension(720, 810));
         pnlFavoritos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloFavoritos.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblTituloFavoritos.setText("Favoritos");
-        pnlFavoritos.add(lblTituloFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 120, 40));
+        pnlFavoritos.add(lblTituloFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 90, 30));
 
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblUsuario.setText("Usuario");
-        pnlFavoritos.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-        pnlFavoritos.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 400, 30));
+        pnlFavoritos.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        pnlFavoritos.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 400, 30));
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -147,7 +155,7 @@ public class frmFavoritos extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        pnlFavoritos.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, 30));
+        pnlFavoritos.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, 30));
 
         tblAlbumes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,7 +170,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         ));
         scllpAlbumes.setViewportView(tblAlbumes);
 
-        pnlFavoritos.add(scllpAlbumes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 600, 190));
+        pnlFavoritos.add(scllpAlbumes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 640, 190));
 
         tblCanciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,15 +221,15 @@ public class frmFavoritos extends javax.swing.JFrame {
         ));
         scllpCanciones.setViewportView(tblCanciones);
 
-        pnlFavoritos.add(scllpCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 600, 150));
+        pnlFavoritos.add(scllpCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 640, 150));
 
         lblCanciones.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblCanciones.setText("Canciones");
-        pnlFavoritos.add(lblCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        pnlFavoritos.add(lblCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 122, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setText("Álbumes");
-        pnlFavoritos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 30));
+        pnlFavoritos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, 30));
 
         tblArtistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -236,11 +244,11 @@ public class frmFavoritos extends javax.swing.JFrame {
         ));
         scllpArtistas.setViewportView(tblArtistas);
 
-        pnlFavoritos.add(scllpArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 600, 190));
+        pnlFavoritos.add(scllpArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 640, 190));
 
         lblArtistas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblArtistas.setText("Artistas");
-        pnlFavoritos.add(lblArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 70, -1));
+        pnlFavoritos.add(lblArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 70, 30));
 
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
@@ -252,14 +260,20 @@ public class frmFavoritos extends javax.swing.JFrame {
         });
         pnlFavoritos.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
 
-        getContentPane().add(pnlFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 850));
+        lblEstrellaFav.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/estrella.png"))); // NOI18N
+        pnlFavoritos.add(lblEstrellaFav, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 30, 30));
+
+        lblImagenUsuario.setText("ImgUsuario");
+        pnlFavoritos.add(lblImagenUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 40, 40));
+
+        getContentPane().add(pnlFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 810));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-         frmMenu menu = null;
+        frmMenu menu = null;
         try {
             menu = new frmMenu(this.sesion);
         } catch (ExceptionBO ex) {
@@ -328,7 +342,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         listaCancionesBusqueda = new ArrayList<>();
         listaArtistasBusqueda = new ArrayList<>();
         listaAlbumesBusqueda = new ArrayList<>();
-        
+
         for (CancionDTO cancion : listaFavoritasCanciones) {
             if (cancion.getNombre().contains(busqueda)) {
                 listaCancionesBusqueda.add(cancion);
@@ -467,12 +481,54 @@ public class frmFavoritos extends javax.swing.JFrame {
         this.dispose();
     }
 
+    private void cargarImagenUsuario() {
+        try {
+            UsuarioDTO usuario = usuBO.buscar(sesion);
+            String imagenPath = usuario.getImagen();
+            if (imagenPath == null || imagenPath.isEmpty()) {
+                imagenPath = "/imagenes/perfil.png"; // Ruta de imagen por defecto
+            }
+
+            ImageIcon icon;
+            if (new File(imagenPath).exists()) {
+                icon = new ImageIcon(redimensionarImagen(imagenPath, lblImagenUsuario.getWidth(), lblImagenUsuario.getHeight()));
+            } else {
+                URL imageUrl = getClass().getResource(imagenPath);
+                if (imageUrl != null) {
+                    icon = new ImageIcon(redimensionarImagen(imageUrl, lblImagenUsuario.getWidth(), lblImagenUsuario.getHeight()));
+                } else {
+                    imageUrl = getClass().getResource("/imagenes/perfil.png");
+                    icon = new ImageIcon(redimensionarImagen(imageUrl, lblImagenUsuario.getWidth(), lblImagenUsuario.getHeight()));
+                }
+            }
+            lblImagenUsuario.setIcon(icon);
+        } catch (ExceptionBO e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la imagen del usuario: " + e);
+        }
+    }
+
+    private Image redimensionarImagen(String ruta, int width, int height) {
+        ImageIcon icon = new ImageIcon(ruta);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
+
+    private Image redimensionarImagen(URL url, int width, int height) {
+        ImageIcon icon = new ImageIcon(url);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblArtistas;
     private javax.swing.JLabel lblCanciones;
+    private javax.swing.JLabel lblEstrellaFav;
+    private javax.swing.JLabel lblImagenUsuario;
     private javax.swing.JLabel lblTituloFavoritos;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel pnlFavoritos;
