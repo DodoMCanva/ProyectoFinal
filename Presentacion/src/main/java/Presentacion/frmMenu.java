@@ -46,7 +46,7 @@ public class frmMenu extends javax.swing.JFrame {
     private List<ArtistasDTO> listaArtistasBuscados;
     private List<AlbumDTO> listaAlbumesBuscados;
 
-    boolean b = false;
+    boolean b;
 
     /**
      * Creates new form frmMenu
@@ -54,7 +54,7 @@ public class frmMenu extends javax.swing.JFrame {
      * @param sesion
      */
     public frmMenu(String sesion) throws ExceptionBO {
-
+        b = false;
         System.out.println("SESION" + sesion);
         this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
         this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
@@ -281,6 +281,7 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDesplegableActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        b = true;
         reiniciarTablas();
         String filtro = cboxFiltro.getSelectedItem().toString();
         String busqueda = txtBuscar.getText();
@@ -296,40 +297,40 @@ public class frmMenu extends javax.swing.JFrame {
     private void tblCancionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseReleased
         if (tblCanciones.getSelectedColumn() != 2) {
             if (b) {
-                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
-                b.setVisible(true);
+                frmBiblioteca a = new frmBiblioteca(sesion, null, null, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                a.setVisible(true);
                 this.dispose();
             } else {
-                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCanciones.get(tblCanciones.getSelectedRow()).getId());
-                b.setVisible(true);
+                frmBiblioteca a = new frmBiblioteca(sesion, null, null, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                a.setVisible(true);
                 this.dispose();
             }
         }
     }//GEN-LAST:event_tblCancionesMouseReleased
 
     private void tblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlbumesMouseClicked
-        if (tblArtistas.getSelectedColumn() != 2) {
+        if (tblAlbumes.getSelectedColumn() != 2) {
             if (b) {
-                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
-                b.setVisible(true);
+                frmBiblioteca a = new frmBiblioteca(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId(), null, null);
+                a.setVisible(true);
                 this.dispose();
             } else {
-                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCanciones.get(tblCanciones.getSelectedRow()).getId());
-                b.setVisible(true);
+                frmBiblioteca a = new frmBiblioteca(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId(), null,null);
+                a.setVisible(true);
                 this.dispose();
             }
         }
     }//GEN-LAST:event_tblAlbumesMouseClicked
 
     private void tblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArtistasMouseClicked
-        if (tblAlbumes.getSelectedColumn() != 2) {
+        if (tblArtistas.getSelectedColumn() != 2) {
             if (b) {
-                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
-                b.setVisible(true);
+                frmBiblioteca a = new frmBiblioteca(sesion, null, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId(), null);
+                a.setVisible(true);
                 this.dispose();
             } else {
-                frmBiblioteca b = new frmBiblioteca(sesion, "", "", listaCanciones.get(tblCanciones.getSelectedRow()).getId());
-                b.setVisible(true);
+                frmBiblioteca a = new frmBiblioteca(sesion, null, listaArtistas.get(tblArtistas.getSelectedRow()).getId(), null);
+                a.setVisible(true);
                 this.dispose();
             }
         }
@@ -342,10 +343,16 @@ public class frmMenu extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     boolean a = false;
-                    a = usuBO.eliminarFavoritoCancion(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
-                    if (a) {
-                        usuBO.agregarCancionFavorito(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
-
+                    if (b) {
+                        a = usuBO.eliminarFavoritoCancion(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                        if (a) {
+                            usuBO.agregarCancionFavorito(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                        }
+                    } else {
+                        a = usuBO.eliminarFavoritoCancion(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                        if (a) {
+                            usuBO.agregarCancionFavorito(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                        }
                     }
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class
@@ -362,12 +369,17 @@ public class frmMenu extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     boolean a = false;
-                    JButton sb = (JButton) e.getSource();
-                    a = usuBO.eliminarFavoritoArtista(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
+                    if (b) {
+                        a = usuBO.eliminarFavoritoArtista(sesion, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId());
+                        if (a) {
+                            usuBO.agregarArtistaFavorito(sesion, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId());
+                        }
+                    } else {
+                        a = usuBO.eliminarFavoritoArtista(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
+                        if (a) {
+                            usuBO.agregarArtistaFavorito(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
 
-                    if (a) {
-                        usuBO.agregarArtistaFavorito(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
-
+                        }
                     }
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class
@@ -384,10 +396,16 @@ public class frmMenu extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     boolean a = false;
-                    a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
-                    if (a) {
-                        usuBO.agregarAlbumFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
-
+                    if (b) {
+                        a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
+                        if (a) {
+                            usuBO.agregarAlbumFavorito(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
+                        }
+                    } else {
+                        a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                        if (a) {
+                            usuBO.agregarAlbumFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                        }
                     }
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class

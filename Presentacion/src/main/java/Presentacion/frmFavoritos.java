@@ -58,10 +58,13 @@ public class frmFavoritos extends javax.swing.JFrame {
     private List<ArtistasDTO> listaArtistasBusqueda;
     private List<AlbumDTO> listaAlbumesBusqueda;
 
+    boolean b;
+
     /**
      * Creates new form frmFavoritos
      */
     public frmFavoritos(String sesion) {
+        b = false;
         String n = null;
         try {
             n = (usuBO.buscar(sesion).getNombre());
@@ -284,6 +287,7 @@ public class frmFavoritos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        b = true;
         reiniciarTablas();
         String busqueda = txtBuscar.getText();
         buscar(busqueda);
@@ -295,8 +299,11 @@ public class frmFavoritos extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    usuBO.eliminarFavoritoCancion(sesion, listaFavoritasCanciones.get(tblCanciones.getSelectedRow()).getId());
-
+                    if (b) {
+                        usuBO.eliminarFavoritoCancion(sesion, listaCancionesBusqueda.get(tblCanciones.getSelectedRow()).getId());
+                    } else {
+                        usuBO.eliminarFavoritoCancion(sesion, listaFavoritasCanciones.get(tblCanciones.getSelectedRow()).getId());
+                    }
                     desaparecer();
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -310,7 +317,9 @@ public class frmFavoritos extends javax.swing.JFrame {
         ActionListener onFavoritoArtistaClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
+                try {if (b) {
+                        
+                    }
                     usuBO.eliminarFavoritoArtista(sesion, listaFavoritosArtistas.get(tblArtistas.getSelectedRow()).getId());
                     desaparecer();
                 } catch (ExceptionBO ex) {
@@ -326,8 +335,13 @@ public class frmFavoritos extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    if (b) {
+                    usuBO.eliminarFavoritoAlbum(sesion, listaAlbumesBusqueda.get(tblAlbumes.getSelectedRow()).getId());
+                    desaparecer();    
+                    }else{
                     usuBO.eliminarFavoritoAlbum(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId());
                     desaparecer();
+                    }
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
