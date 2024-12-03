@@ -82,12 +82,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
         List<String> listaSCanciones = new ArrayList<>();
         switch (tipo) {
             case "cancion":
-                //Obtener Artista por cancion
-                for (CancionDTO cancion : listaPCanciones) {
-                    for (AlbumDTO album : listaPAlbumes) {
-                        if (album.getCanciones().contains(cancion.getId())) {
-                            this.Artista = artBO.consulta(album.getArtista());
-                        }
+                for (AlbumDTO album : listaPAlbumes) {
+                    if (album.getCanciones().contains(id)) {
+                        Artista = artBO.consulta(album.getArtista());
                     }
                 }
 
@@ -107,7 +104,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 }
 
                 //Consultar integrantes
-                if (Artista.getIntegrantes().get(0) != null) {
+                if (Artista.getIntegrantes() != null) {
                     listaIntegrantes = Artista.getIntegrantes();
                     tdpBiblioteca.setEnabledAt(2, true);
                 } else {
@@ -139,7 +136,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 }
 
                 //Consultar integrantes
-                if (Artista.getIntegrantes().get(0) != null) {
+                if (Artista.getIntegrantes() != null) {
                     listaIntegrantes = Artista.getIntegrantes();
                     tdpBiblioteca.setEnabledAt(2, true);
                 } else {
@@ -151,14 +148,15 @@ public class frmBiblioteca extends javax.swing.JFrame {
             case "artista":
                 //consultar artista
                 this.Artista = artBO.consulta(id);
-                this.listaAlbumes = new ArrayList<>();
 
                 //consultar albumes de artista
+                this.listaAlbumes = new ArrayList<>();
                 for (AlbumDTO album : listaPAlbumes) {
                     if (album.getArtista().equals(id)) {
                         listaAlbumes.add(album);
                     }
                 }
+
                 //consulta canciones por album
                 this.listaCanciones = new ArrayList<>();
                 listaSCanciones = listaAlbumes.get(0).getCanciones();
@@ -166,7 +164,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                     listaCanciones.add(canBO.consulta(cancion));
                 }
                 //Consultar integrantes
-                if (Artista.getIntegrantes().get(0) != null) {
+                if (Artista.getIntegrantes() != null) {
                     listaIntegrantes = Artista.getIntegrantes();
                     tdpBiblioteca.setEnabledAt(2, true);
                 } else {

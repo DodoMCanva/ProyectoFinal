@@ -54,6 +54,7 @@ public class frmFavoritos extends javax.swing.JFrame {
     private List<CancionDTO> listaFavoritasCanciones = new ArrayList<>();
     private List<ArtistasDTO> listaFavoritosArtistas = new ArrayList<>();
     private List<AlbumDTO> listaFavoritosAlbumes = new ArrayList<>();
+
     private List<CancionDTO> listaCancionesBusqueda;
     private List<ArtistasDTO> listaArtistasBusqueda;
     private List<AlbumDTO> listaAlbumesBusqueda;
@@ -482,13 +483,12 @@ public class frmFavoritos extends javax.swing.JFrame {
         listaCancionesBusqueda.forEach(row -> {
             //Obtener Artista por cancion
             String albumCancion = "";
-            for (CancionDTO cancion : listaFavoritasCanciones) {
-                for (AlbumDTO album : listaTotalAlbumes) {
-                    if (album.getCanciones().contains(cancion.getId())) {
-                        albumCancion = album.getNombre();
-                    }
+            for (AlbumDTO album : listaTotalAlbumes) {
+                if (album.getCanciones().contains(row.getId())) {
+                    albumCancion = album.getNombre();
                 }
             }
+
             Object[] fila = new Object[4];
             fila[0] = row.getNombre();
             fila[1] = row.getGenero();
@@ -497,17 +497,6 @@ public class frmFavoritos extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
         });
     }
-//    public void cargarRegistrosCancionesBusqueda() {
-//        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
-//        listaCancionesBusqueda.forEach(row -> {
-//            Object[] fila = new Object[4];
-//            fila[0] = row.getNombre();
-//            fila[1] = row.getGenero();
-//            fila[2] = row.getGenero();
-//            fila[3] = "Eliminar";
-//            modeloTabla.addRow(fila);
-//        });
-//    }
 
     public void cargarRegistrosAlbumBusqueda() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
@@ -546,13 +535,10 @@ public class frmFavoritos extends javax.swing.JFrame {
     public void cargarRegistrosCanciones() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaFavoritasCanciones.forEach(row -> {
-            //Obtener Artista por cancion
             String albumCancion = "";
-            for (CancionDTO cancion : listaFavoritasCanciones) {
-                for (AlbumDTO album : listaTotalAlbumes) {
-                    if (album.getCanciones().contains(cancion.getId())) {
-                        albumCancion = album.getNombre();
-                    }
+            for (AlbumDTO album : listaTotalAlbumes) {
+                if (album.getCanciones().contains(row.getId())) {
+                    albumCancion = album.getNombre();
                 }
             }
             Object[] fila = new Object[4];
