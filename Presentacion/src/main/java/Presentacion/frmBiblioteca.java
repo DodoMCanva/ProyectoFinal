@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import utilerias.ImageRenderer;
@@ -80,7 +81,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             case "cancion":
                 //Obtener Artista por cancion
                 for (CancionDTO listaPCancione : listaPCanciones) {
-                    
+
                 }
                 break;
             case "album":
@@ -96,19 +97,24 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 for (String cancion : listaSCanciones) {
                     listaCanciones.add(canBO.consulta(cancion));
                 }
-                
+
                 //Consultar Albumes de artista
                 this.listaAlbumes = new ArrayList<>();
                 for (AlbumDTO album : listaPAlbumes) {
                     if (album.getArtista().equals(Artista.getId())) {
-                        
                         listaAlbumes.add(album);
                     }
                 }
-                
+
                 //Consultar integrantes
-                listaIntegrantes = Artista.getIntegrantes();
-                
+                if (Artista.getIntegrantes() != null) {
+                    listaIntegrantes = Artista.getIntegrantes();
+                    tdpBiblioteca.setEnabledAt(2, true);
+                } else {
+                    tdpBiblioteca.setEnabledAt(2, false);
+                }
+                cargaInicial();
+
                 break;
             case "artista":
                 //consultar artista
@@ -457,6 +463,18 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     }
 
+    public void cargaInicial(){
+        cargarAlbumes();
+        cargarIntegrantes();
+        cargarCanciones();
+        cargarArtista();
+    }
+    public void cargarArtista(){
+        lblNombre.setText(Artista.getNombre());
+        lblGenero.setText(Artista.getGenero());
+        lblImagenArtista.setIcon(new ImageIcon(Artista.getImagen()));
+    }
+    
     public void cargarBusquedaAlbum() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
         listaAlbumesBuscados.forEach(row -> {
