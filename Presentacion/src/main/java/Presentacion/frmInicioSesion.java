@@ -2,7 +2,6 @@ package Presentacion;
 
 import BO.ArranqueInicioBO;
 import BO.UsuarioBO;
-import DAO.UsuarioDAO;
 import IBO.IArranqueInicio;
 import IBO.IUsuarioBO;
 
@@ -151,9 +150,18 @@ public class frmInicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResgistrarseActionPerformed
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
-        arranqueInicio.crearArtistas();
-        arranqueInicio.crearCanciones();
-        arranqueInicio.crearAlbums();
+    // Deshabilitar el botón para evitar múltiples clics
+    btnCargarDatos.setEnabled(false);
+
+    // Ejecutar las acciones de carga de datos
+    arranqueInicio.crearArtistas();
+    arranqueInicio.crearCanciones();
+    arranqueInicio.crearAlbums();
+    
+    // Mostrar mensaje de éxito
+    javax.swing.JOptionPane.showMessageDialog(this, "Datos cargados con éxito.");
+
+
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     /**
