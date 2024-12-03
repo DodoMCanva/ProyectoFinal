@@ -14,7 +14,7 @@ public interface ICancionBO {
 
     public String obtenerIdPorNombre(String nombre) throws ExceptionBO;
     
-    public CancionDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO;
+    public CancionDTO consulta(String id) throws ExceptionBO;
     
     public List<CancionDTO> consultaGeneralCancion(List<String> generosRestringidos) throws ExceptionBO;
 

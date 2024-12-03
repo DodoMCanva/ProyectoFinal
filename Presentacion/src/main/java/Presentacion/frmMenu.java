@@ -341,7 +341,7 @@ public class frmMenu extends javax.swing.JFrame {
             if (b) {
                 frmBiblioteca a = null;
                 try {
-                    a = new frmBiblioteca(sesion, null, null, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                    a = new frmBiblioteca(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId(), "cancion");
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -350,7 +350,7 @@ public class frmMenu extends javax.swing.JFrame {
             } else {
                 frmBiblioteca a = null;
                 try {
-                    a = new frmBiblioteca(sesion, null, null, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                    a = new frmBiblioteca(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId(), "cancion");
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -365,7 +365,7 @@ public class frmMenu extends javax.swing.JFrame {
             if (b) {
                 frmBiblioteca a = null;
                 try {
-                    a = new frmBiblioteca(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId(), null, null);
+                    a = new frmBiblioteca(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId(), "album");
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -374,7 +374,7 @@ public class frmMenu extends javax.swing.JFrame {
             } else {
                 frmBiblioteca a = null;
                 try {
-                    a = new frmBiblioteca(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId(), null, null);
+                    a = new frmBiblioteca(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId(), "album");
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -389,7 +389,7 @@ public class frmMenu extends javax.swing.JFrame {
             if (b) {
                 frmBiblioteca a = null;
                 try {
-                    a = new frmBiblioteca(sesion, null, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId(), null);
+                    a = new frmBiblioteca(sesion, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId(), "artista");
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -398,7 +398,7 @@ public class frmMenu extends javax.swing.JFrame {
             } else {
                 frmBiblioteca a = null;
                 try {
-                    a = new frmBiblioteca(sesion, null, listaArtistas.get(tblArtistas.getSelectedRow()).getId(), null);
+                    a = new frmBiblioteca(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId(), "artista");
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }

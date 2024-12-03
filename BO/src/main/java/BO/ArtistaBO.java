@@ -9,10 +9,12 @@ import IBO.IArtistasBO;
 import IDAO.IArtistaDAO;
 import POJO.ArtistaPOJO;
 import POJO.IntegrantesPOJO;
+import POJO.UsuarioPOJO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -134,7 +136,20 @@ public class ArtistaBO implements IArtistasBO {
 
     @Override
     public ArtistasDTO consulta(String id) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        try {
+            ObjectId objectId;
+            try {
+                objectId = new ObjectId(id);
+            } catch (IllegalArgumentException e) {
+                throw new ExceptionBO("El ID del usuario no es válido: " + id, e);
+            }
+            ArtistaPOJO artistaPOJO = artistasDAO.consulta(objectId);
+            if (artistaPOJO != null) {
+                return convertirArtistaPOJOaDTO(artistaPOJO);
+            }
+            return null;
+        } catch (ExceptionDAO e) {
+            throw new ExceptionBO("Error al buscar el usuario en la capa BO", e);
+        }}
 
 }

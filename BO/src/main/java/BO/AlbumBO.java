@@ -104,7 +104,21 @@ public class AlbumBO implements IAlbumBO {
     }
 
     @Override
-    public AlbumDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public AlbumDTO consulta(String id) throws ExceptionBO {
+        try {
+            ObjectId objectId;
+            try {
+                objectId = new ObjectId(id);
+            } catch (IllegalArgumentException e) {
+                throw new ExceptionBO("El ID del usuario no es válido: " + id, e);
+            }
+            AlbumPOJO usuarioPOJO = albumDAO.consulta(objectId);
+            if (usuarioPOJO != null) {
+                return convertirAlbumdePOJOaDTO(usuarioPOJO);
+            }
+            return null;
+        } catch (ExceptionDAO e) {
+            throw new ExceptionBO("Error al buscar el usuario en la capa BO", e);
+        }
     }
 }

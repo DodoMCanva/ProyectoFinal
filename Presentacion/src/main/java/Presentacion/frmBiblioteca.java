@@ -38,36 +38,92 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     private ArtistasDTO Artista;
 
+    //Fijas
+    private List<CancionDTO> listaPCanciones;
+    private List<AlbumDTO> listaPAlbumes;
+
+    //Fijas
     private List<CancionDTO> listaCanciones;
     private List<IntegranteDTO> listaIntegrantes;
     private List<AlbumDTO> listaAlbumes;
+
+    //Busqueda
     private List<CancionDTO> listaCancionesBuscadas;
     private List<IntegranteDTO> listaIntegrantesBuscados;
     private List<AlbumDTO> listaAlbumesBuscados;
 
     private boolean bc, ba, bi;
-    private String sesion, idAlbum, idArtista, idCancion;
+    private String sesion, id, tipo;
 
     /**
      * Creates new form frmBiblioteca
      */
-    public frmBiblioteca(String sesion, String idAlbum, String idArtista, String idCancion) throws ExceptionBO {
+    public frmBiblioteca(String sesion, String id, String tipo) throws ExceptionBO {
         bc = false;
         ba = false;
         bi = false;
-        this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
-        this.Artista = artBO.consulta(idArtista);
-        this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
+        this.id = id;
+        this.tipo = tipo;
         this.sesion = sesion;
+        this.listaPCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
+        this.listaPAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
         initComponents();
         formatearTablas();
-        //reiniciarTablas();
+        reiniciarTablasAlbumes();
+        reiniciarTablasCancion();
+        reiniciarTablasIntegrantes();
         inicio();
     }
 
-    public void inicio() {
-        if (rootPaneCheckingEnabled) {
+    public void inicio() throws ExceptionBO {
+        switch (tipo) {
+            case "cancion":
+                //Obtener Artista por cancion
+                for (CancionDTO listaPCancione : listaPCanciones) {
+                    
+                }
+                break;
+            case "album":
+                for (AlbumDTO album : listaPAlbumes) {
+                    if (album.getId().equals(id)) {
+                        //consultar artista por album
+                        this.Artista = artBO.consulta(albBO.consulta(id).getArtista());
+                    }
+                }
+                //Consultar canciones por album
+                this.listaCanciones = new ArrayList<>();
+                List<String> listaSCanciones = albBO.consulta(id).getCanciones();
+                for (String cancion : listaSCanciones) {
+                    listaCanciones.add(canBO.consulta(cancion));
+                }
+                
+                //Consultar Albumes de artista
+                this.listaAlbumes = new ArrayList<>();
+                for (AlbumDTO album : listaPAlbumes) {
+                    if (album.getArtista().equals(Artista.getId())) {
+                        
+                        listaAlbumes.add(album);
+                    }
+                }
+                
+                //Consultar integrantes
+                listaIntegrantes = Artista.getIntegrantes();
+                
+                break;
+            case "artista":
+                //consultar artista
+                this.Artista = artBO.consulta(id);
+                this.listaAlbumes = new ArrayList<>();
+                //consultar albumes de artista
+                for (AlbumDTO album : listaPAlbumes) {
+                    if (album.getArtista().equals(id)) {
+                        listaAlbumes.add(album);
+                    }
+                }
 
+                break;
+            default:
+                throw new AssertionError();
         }
     }
 

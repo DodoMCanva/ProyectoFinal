@@ -14,7 +14,7 @@ public interface IAlbumBO {
 
     String obtenerIdPorNombre(String nombreArtista);
     
-    public AlbumDTO consulta(List<String> generosRestringidos, String id) throws ExceptionBO;
+    public AlbumDTO consulta(String id) throws ExceptionBO;
 
     List<AlbumDTO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionBO;
     
