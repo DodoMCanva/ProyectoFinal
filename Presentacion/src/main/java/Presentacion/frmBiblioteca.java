@@ -45,7 +45,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private List<AlbumDTO> listaAlbumesBuscados;
 
     boolean b;
-
+    boolean bc;
+    boolean ba;
+    boolean bi;
     /**
      * Creates new form frmBiblioteca
      */
@@ -57,11 +59,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
         this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
         this.sesion = sesion;
         initComponents();
-        formatearTablas();
-        reiniciarTablas();
-        cargarRegistrosCanciones();
-        //cargarRegistros();
-        cargarRegistrosAlbum();
+//        formatearTablas();
+//        reiniciarTablas();
+//        cargarRegistrosCanciones();
+//        //cargarRegistros();
+//        cargarRegistrosAlbum();
     }
 
     @SuppressWarnings("unchecked")

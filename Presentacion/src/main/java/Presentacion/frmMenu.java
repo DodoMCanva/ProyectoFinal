@@ -47,9 +47,7 @@ public class frmMenu extends javax.swing.JFrame {
     private List<AlbumDTO> listaAlbumesBuscados;
 
     boolean b;
-    boolean bc;
-    boolean ba;
-    boolean bi;
+    
 
     /**
      * Creates new form frmMenu
