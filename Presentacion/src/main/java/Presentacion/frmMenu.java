@@ -278,7 +278,7 @@ public class frmMenu extends javax.swing.JFrame {
 
         pnlMenu.add(pnlArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 290, 30));
 
-        cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Canciones", "Albums", "Artistas", " " }));
+        cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Canciones", "Albums", "Artistas" }));
         cboxFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxFiltroActionPerformed(evt);
@@ -510,17 +510,21 @@ public class frmMenu extends javax.swing.JFrame {
         listaArtistasBuscados = new ArrayList<>();
         listaAlbumesBuscados = new ArrayList<>();
         for (CancionDTO cancion : listaCanciones) {
-            if (cancion.getNombre().contains(busqueda) || cancion.getGenero().contains(busqueda)) {
+            if (cancion.getNombre().toLowerCase().contains(busqueda.toLowerCase()) 
+                    || cancion.getGenero().toLowerCase().contains(busqueda.toLowerCase())) {
                 listaCancionesBuscadas.add(cancion);
             }
         }
         for (ArtistasDTO artista : listaArtistas) {
-            if (artista.getNombre().contains(busqueda)|| artista.getGenero().contains(busqueda)) {
+            if (artista.getNombre().toLowerCase().contains(busqueda.toLowerCase())
+                    || artista.getGenero().toLowerCase().contains(busqueda.toLowerCase())) {
                 listaArtistasBuscados.add(artista);
             }
         }
         for (AlbumDTO album : listaAlbumes) {
-            if (album.getNombre().contains(busqueda)|| album.getGenero().contains(busqueda) || album.getFechaLanzamiento().equals(busqueda)) {
+            if (album.getNombre().toLowerCase().contains(busqueda.toLowerCase())
+                    || album.getGenero().toLowerCase().contains(busqueda.toLowerCase()) 
+                    || album.getFechaLanzamiento().equals(busqueda)) {
                 listaAlbumesBuscados.add(album);
             }
         }

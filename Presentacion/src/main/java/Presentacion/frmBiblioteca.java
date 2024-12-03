@@ -13,8 +13,11 @@ import IBO.IAlbumBO;
 import IBO.IArtistasBO;
 import IBO.ICancionBO;
 import IBO.IUsuarioBO;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -53,7 +56,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private List<IntegranteDTO> listaIntegrantesBuscados;
     private List<AlbumDTO> listaAlbumesBuscados;
 
-    private boolean bc, ba, bi;
+    private boolean bc, ba;
     private String sesion, id, tipo;
 
     /**
@@ -62,7 +65,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
     public frmBiblioteca(String sesion, String id, String tipo) throws ExceptionBO {
         bc = false;
         ba = false;
-        bi = false;
         this.id = id;
         this.tipo = tipo;
         this.sesion = sesion;
@@ -77,12 +79,42 @@ public class frmBiblioteca extends javax.swing.JFrame {
     }
 
     public void inicio() throws ExceptionBO {
+        List<String> listaSCanciones = new ArrayList<>();
         switch (tipo) {
             case "cancion":
                 //Obtener Artista por cancion
-                for (CancionDTO listaPCancione : listaPCanciones) {
-
+                for (CancionDTO cancion : listaPCanciones) {
+                    for (AlbumDTO album : listaPAlbumes) {
+                        if (album.getCanciones().contains(cancion.getId())) {
+                            this.Artista = artBO.consulta(album.getArtista());
+                        }
+                    }
                 }
+
+                //Consultar Albumes de artista
+                this.listaAlbumes = new ArrayList<>();
+                for (AlbumDTO album : listaPAlbumes) {
+                    if (album.getArtista().equals(Artista.getId())) {
+                        listaAlbumes.add(album);
+                    }
+                }
+
+                //consulta canciones por album
+                this.listaCanciones = new ArrayList<>();
+                listaSCanciones = listaAlbumes.get(0).getCanciones();
+                for (String cancion : listaSCanciones) {
+                    listaCanciones.add(canBO.consulta(cancion));
+                }
+
+                //Consultar integrantes
+                if (Artista.getIntegrantes().get(0) != null) {
+                    listaIntegrantes = Artista.getIntegrantes();
+                    tdpBiblioteca.setEnabledAt(2, true);
+                } else {
+                    tdpBiblioteca.setEnabledAt(2, false);
+                }
+                cargaInicial();
+
                 break;
             case "album":
                 for (AlbumDTO album : listaPAlbumes) {
@@ -93,7 +125,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 }
                 //Consultar canciones por album
                 this.listaCanciones = new ArrayList<>();
-                List<String> listaSCanciones = albBO.consulta(id).getCanciones();
+                listaSCanciones = albBO.consulta(id).getCanciones();
                 for (String cancion : listaSCanciones) {
                     listaCanciones.add(canBO.consulta(cancion));
                 }
@@ -107,7 +139,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 }
 
                 //Consultar integrantes
-                if (Artista.getIntegrantes() != null) {
+                if (Artista.getIntegrantes().get(0) != null) {
                     listaIntegrantes = Artista.getIntegrantes();
                     tdpBiblioteca.setEnabledAt(2, true);
                 } else {
@@ -120,16 +152,29 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 //consultar artista
                 this.Artista = artBO.consulta(id);
                 this.listaAlbumes = new ArrayList<>();
+
                 //consultar albumes de artista
                 for (AlbumDTO album : listaPAlbumes) {
                     if (album.getArtista().equals(id)) {
                         listaAlbumes.add(album);
                     }
                 }
+                //consulta canciones por album
+                this.listaCanciones = new ArrayList<>();
+                listaSCanciones = listaAlbumes.get(0).getCanciones();
+                for (String cancion : listaSCanciones) {
+                    listaCanciones.add(canBO.consulta(cancion));
+                }
+                //Consultar integrantes
+                if (Artista.getIntegrantes().get(0) != null) {
+                    listaIntegrantes = Artista.getIntegrantes();
+                    tdpBiblioteca.setEnabledAt(2, true);
+                } else {
+                    tdpBiblioteca.setEnabledAt(2, false);
+                }
+                cargaInicial();
 
                 break;
-            default:
-                throw new AssertionError();
         }
     }
 
@@ -196,6 +241,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
         ));
         tblAlbumes.setGridColor(new java.awt.Color(204, 153, 255));
         tblAlbumes.setSelectionBackground(new java.awt.Color(204, 204, 255));
+        tblAlbumes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAlbumesMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblAlbumes);
 
         pnlAlbumes.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 750, 220));
@@ -371,8 +421,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
         if (!txtBuscarAlbum.getText().isEmpty()) {
             ba = true;
             for (AlbumDTO album : listaAlbumes) {
-                if (album.getNombre().contains(txtBuscarAlbum.getText())) {
+                if (album.getNombre().toLowerCase().contains(txtBuscarAlbum.getText().toLowerCase())
+                        || album.getGenero().toLowerCase().contains(txtBuscarAlbum.getText().toLowerCase())) {
                     listaAlbumesBuscados.add(album);
+
                 }
             }
             reiniciarTablasAlbumes();
@@ -382,11 +434,24 @@ public class frmBiblioteca extends javax.swing.JFrame {
             reiniciarTablasAlbumes();
             cargarAlbumes();
         }
-
     }//GEN-LAST:event_btnBuscarAlbumActionPerformed
 
     private void btnBuscarIntegranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIntegranteActionPerformed
+        listaIntegrantesBuscados = new ArrayList<>();
+        if (!txtBuscarIntegrante.getText().isEmpty()) {
+            for (IntegranteDTO integrante : listaIntegrantes) {
+                if (integrante.getNombre().toLowerCase().contains(txtBuscarIntegrante.getText().toLowerCase())
+                        || integrante.getRol().toLowerCase().contains(txtBuscarIntegrante.getText().toLowerCase())) {
+                    listaIntegrantesBuscados.add(integrante);
 
+                }
+            }
+            reiniciarTablasIntegrantes();
+            cargarIntegrantesBusqueda();
+        } else {
+            reiniciarTablasIntegrantes();
+            cargarIntegrantes();
+        }
     }//GEN-LAST:event_btnBuscarIntegranteActionPerformed
 
     private void btnBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCancionActionPerformed
@@ -394,7 +459,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
         if (!txtBuscarCancion.getText().isEmpty()) {
             bc = true;
             for (CancionDTO cancion : listaCanciones) {
-                if (cancion.getNombre().contains(txtBuscarCancion.getText())) {
+                if (cancion.getNombre().toLowerCase().contains(txtBuscarCancion.getText().toLowerCase())
+                        || cancion.getGenero().toLowerCase().contains(txtBuscarCancion.getText().toLowerCase())) {
                     listaCancionesBuscadas.add(cancion);
                 }
             }
@@ -405,8 +471,40 @@ public class frmBiblioteca extends javax.swing.JFrame {
             reiniciarTablasAlbumes();
             cargarAlbumes();
         }
-
     }//GEN-LAST:event_btnBuscarCancionActionPerformed
+
+    private void tblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlbumesMouseClicked
+        if (tblAlbumes.getSelectedColumn() != 4) {
+            if (ba) {
+                this.listaCanciones = new ArrayList<>();
+                List<String> listaSCanciones = listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getCanciones();
+                for (String cancion : listaSCanciones) {
+                    try {
+                        listaCanciones.add(canBO.consulta(cancion));
+                    } catch (ExceptionBO ex) {
+                        Logger.getLogger(frmBiblioteca.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                reiniciarTablasCancion();
+                cargarCanciones();
+                tdpBiblioteca.setSelectedIndex(3);
+            } else {
+                this.listaCanciones = new ArrayList<>();
+                List<String> listaSCanciones = listaAlbumes.get(tblAlbumes.getSelectedRow()).getCanciones();
+                for (String cancion : listaSCanciones) {
+                    try {
+                        listaCanciones.add(canBO.consulta(cancion));
+                    } catch (ExceptionBO ex) {
+                        Logger.getLogger(frmBiblioteca.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                reiniciarTablasCancion();
+                cargarCanciones();
+                tdpBiblioteca.setSelectedIndex(3);
+            }
+        }
+
+    }//GEN-LAST:event_tblAlbumesMouseClicked
 
     public void formatearTablas() {
         TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
@@ -463,18 +561,45 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     }
 
-    public void cargaInicial(){
+    public void cargaInicial() {
         cargarAlbumes();
         cargarIntegrantes();
         cargarCanciones();
         cargarArtista();
     }
-    public void cargarArtista(){
+
+    public void cargarArtista() {
         lblNombre.setText(Artista.getNombre());
         lblGenero.setText(Artista.getGenero());
-        lblImagenArtista.setIcon(new ImageIcon(Artista.getImagen()));
+        ImageIcon icon;
+        if (new File(Artista.getImagen()).exists()) {
+            icon = new ImageIcon(redimensionarImagen(Artista.getImagen(), lblImagenArtista.getWidth(), lblImagenArtista.getHeight()));
+        } else {
+            URL imageUrl = getClass().getResource(Artista.getImagen());
+            if (imageUrl != null) {
+                icon = new ImageIcon(redimensionarImagen(imageUrl, lblImagenArtista.getWidth(), lblImagenArtista.getHeight()));
+            } else {
+                imageUrl = getClass().getResource(Artista.getImagen());
+                icon = new ImageIcon(redimensionarImagen(imageUrl, lblImagenArtista.getWidth(), lblImagenArtista.getHeight()));
+            }
+        }
+        lblImagenArtista.setIcon(icon);
     }
-    
+
+    private Image redimensionarImagen(String ruta, int width, int height) {
+        ImageIcon icon = new ImageIcon(ruta);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
+
+    private Image redimensionarImagen(URL url, int width, int height) {
+        ImageIcon icon = new ImageIcon(url);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
+
     public void cargarBusquedaAlbum() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
         listaAlbumesBuscados.forEach(row -> {
@@ -544,7 +669,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
         });
 
-        tblIntegrantes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblIntegrantes.getColumnModel().getColumn(5).setCellRenderer(new ImageRenderer());
         tblIntegrantes.setRowHeight(50);
         modeloTabla.fireTableDataChanged();
         tblIntegrantes.repaint();
@@ -563,7 +688,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
         });
 
-        tblIntegrantes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblIntegrantes.getColumnModel().getColumn(5).setCellRenderer(new ImageRenderer());
         tblIntegrantes.setRowHeight(50);
         modeloTabla.fireTableDataChanged();
         tblIntegrantes.repaint();
