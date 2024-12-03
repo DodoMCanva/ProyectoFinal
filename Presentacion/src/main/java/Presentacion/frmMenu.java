@@ -12,14 +12,20 @@ import IBO.IAlbumBO;
 import IBO.IArtistasBO;
 import IBO.ICancionBO;
 import IBO.IUsuarioBO;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Point;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import utilerias.ImageRenderer;
@@ -47,7 +53,6 @@ public class frmMenu extends javax.swing.JFrame {
     private List<AlbumDTO> listaAlbumesBuscados;
 
     boolean b;
-    
 
     /**
      * Creates new form frmMenu
@@ -69,6 +74,43 @@ public class frmMenu extends javax.swing.JFrame {
         cargarRegistrosAlbum();
 
     }
+
+  private void mostrarMensajeTemporal(String mensaje) {
+    JDialog dialog = new JDialog();
+    dialog.setUndecorated(true); 
+    dialog.setLayout(new BorderLayout());
+    dialog.setSize(160,30); 
+
+    JLabel label = new JLabel(mensaje, SwingConstants.CENTER);
+    label.setFont(new Font("Arial", Font.BOLD, 14)); 
+    label.setOpaque(true);
+    label.setBackground(Color.YELLOW); // Establece el color de fondo
+    label.setForeground(Color.BLACK);  // Establece el color del texto
+    dialog.add(label, BorderLayout.CENTER);
+
+    // Obtener la ubicación actual del formulario
+    Point location = this.getLocation();
+    
+    // Ajustar la ubicación del diálogo para que salga más abajo
+    int offset = 300; // Ajusta este valor para cambiar qué tan abajo se muestra el mensaje
+    dialog.setLocation(location.x + this.getWidth() / 2 - dialog.getWidth() / 2, 
+                       location.y + this.getHeight() / 2 - dialog.getHeight() / 2 + offset);
+
+    dialog.setVisible(true);
+
+    Timer timer = new Timer(1400, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dialog.setVisible(false);
+            dialog.dispose();
+        }
+    });
+    timer.setRepeats(false);
+    timer.start();
+}
+
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -332,7 +374,7 @@ public class frmMenu extends javax.swing.JFrame {
             } else {
                 frmBiblioteca a = null;
                 try {
-                    a = new frmBiblioteca(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId(), null,null);
+                    a = new frmBiblioteca(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId(), null, null);
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -366,87 +408,101 @@ public class frmMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblArtistasMouseClicked
 
-    public void formatearTablas() {
-        TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
-        ActionListener onFavoritoCancionClickListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    boolean a = false;
-                    if (b) {
-                        a = usuBO.eliminarFavoritoCancion(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
-                        if (a) {
-                            usuBO.agregarCancionFavorito(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
-                        }
+   public void formatearTablas() {
+    TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
+    ActionListener onFavoritoCancionClickListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                boolean a = false;
+                if (b) {
+                    a = usuBO.eliminarFavoritoCancion(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarCancionFavorito(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                        mostrarMensajeTemporal("Agregado a favoritos");
                     } else {
-                        a = usuBO.eliminarFavoritoCancion(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
-                        if (a) {
-                            usuBO.agregarCancionFavorito(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
-                        }
+                        mostrarMensajeTemporal("Eliminado de favoritos");
                     }
-                } catch (ExceptionBO ex) {
-                    Logger.getLogger(frmMenu.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-        modeloColumnasCanciones.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
-        modeloColumnasCanciones.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoCancionClickListener));
-
-        TableColumnModel modeloColumnasArtistas = this.tblArtistas.getColumnModel();
-        ActionListener onFavoritoArtistaClickListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    boolean a = false;
-                    if (b) {
-                        a = usuBO.eliminarFavoritoArtista(sesion, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId());
-                        if (a) {
-                            usuBO.agregarArtistaFavorito(sesion, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId());
-                        }
+                } else {
+                    a = usuBO.eliminarFavoritoCancion(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarCancionFavorito(sesion, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                        mostrarMensajeTemporal("Agregado a favoritos");
                     } else {
-                        a = usuBO.eliminarFavoritoArtista(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
-                        if (a) {
-                            usuBO.agregarArtistaFavorito(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
-
-                        }
+                        mostrarMensajeTemporal("Eliminado de favoritos");
                     }
-                } catch (ExceptionBO ex) {
-                    Logger.getLogger(frmMenu.class
-                            .getName()).log(Level.SEVERE, null, ex);
                 }
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
-        };
-        modeloColumnasArtistas.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
-        modeloColumnasArtistas.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoArtistaClickListener));
+        }
+    };
+    modeloColumnasCanciones.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
+    modeloColumnasCanciones.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoCancionClickListener));
 
-        TableColumnModel modeloColumnasAlbums = this.tblAlbumes.getColumnModel();
-        ActionListener onFavoritoAlbumClickListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    boolean a = false;
-                    if (b) {
-                        a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
-                        if (a) {
-                            usuBO.agregarAlbumFavorito(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
-                        }
+    TableColumnModel modeloColumnasArtistas = this.tblArtistas.getColumnModel();
+    ActionListener onFavoritoArtistaClickListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                boolean a = false;
+                if (b) {
+                    a = usuBO.eliminarFavoritoArtista(sesion, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarArtistaFavorito(sesion, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId());
+                        mostrarMensajeTemporal("Agregado a favoritos");
                     } else {
-                        a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
-                        if (a) {
-                            usuBO.agregarAlbumFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
-                        }
+                        mostrarMensajeTemporal("Eliminado de favoritos");
                     }
-                } catch (ExceptionBO ex) {
-                    Logger.getLogger(frmMenu.class
-                            .getName()).log(Level.SEVERE, null, ex);
+                } else {
+                    a = usuBO.eliminarFavoritoArtista(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarArtistaFavorito(sesion, listaArtistas.get(tblArtistas.getSelectedRow()).getId());
+                        mostrarMensajeTemporal("Agregado a favoritos");
+                    } else {
+                        mostrarMensajeTemporal("Eliminado de favoritos");
+                    }
                 }
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
-        };
-        modeloColumnasAlbums.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
-        modeloColumnasAlbums.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoAlbumClickListener));
+        }
+    };
+    modeloColumnasArtistas.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
+    modeloColumnasArtistas.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoArtistaClickListener));
 
-    }
+    TableColumnModel modeloColumnasAlbums = this.tblAlbumes.getColumnModel();
+    ActionListener onFavoritoAlbumClickListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                boolean a = false;
+                if (b) {
+                    a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarAlbumFavorito(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
+                        mostrarMensajeTemporal("Agregado a favoritos");
+                    } else {
+                        mostrarMensajeTemporal("Eliminado de favoritos");
+                    }
+                } else {
+                    a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                    if (a) {
+                        usuBO.agregarAlbumFavorito(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                        mostrarMensajeTemporal("Agregado a favoritos");
+                    } else {
+                        mostrarMensajeTemporal("Eliminado de favoritos");
+                    }
+                }
+            } catch (ExceptionBO ex) {
+                Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+    modeloColumnasAlbums.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
+    modeloColumnasAlbums.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoAlbumClickListener));
+}
+
 
     public void buscar(String busqueda, String filtro) {
         b = true;
@@ -630,3 +686,6 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
