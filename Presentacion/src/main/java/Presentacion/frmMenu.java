@@ -520,7 +520,7 @@ public class frmMenu extends javax.swing.JFrame {
             }
         }
         for (AlbumDTO album : listaAlbumes) {
-            if (album.getNombre().contains(busqueda)|| album.getGenero().contains(busqueda)) {
+            if (album.getNombre().contains(busqueda)|| album.getGenero().contains(busqueda) || album.getFechaLanzamiento().equals(busqueda)) {
                 listaAlbumesBuscados.add(album);
             }
         }
