@@ -307,11 +307,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Generos a Eliminar"/>
+            <Property name="text" type="java.lang.String" value="Elemento pertenciente a este g&#xe9;nero"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="370" y="10" width="-1" height="-1"/>
+              <AbsoluteConstraints x="300" y="0" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

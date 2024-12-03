@@ -230,8 +230,8 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 290, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setText("Generos a Eliminar");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+        jLabel4.setText("Elemento pertenciente a este género");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, -1, -1));
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
 

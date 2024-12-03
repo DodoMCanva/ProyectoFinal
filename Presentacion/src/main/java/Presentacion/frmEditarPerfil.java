@@ -36,46 +36,46 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     }
 
     private void inicializarCampos() throws ExceptionBO {
-    try {
-        UsuarioDTO usuario = usuarioBO.buscar(sesion);
-        txtNombreUsuario.setText(usuario.getNombre());
-        txtCorreoElectronico.setText(usuario.getEmail());
-        
-        // Deja el campo de la contraseña vacío para que el usuario la ingrese si quiere cambiarla
-        txtContrsena.setText("");
-        
-        String imagenPath = usuario.getImagen();
-        if (imagenPath == null || imagenPath.isEmpty()) {
-            imagenPath = IMAGEN_POR_DEFECTO; // Usar imagen por defecto
-        }
+        try {
+            UsuarioDTO usuario = usuarioBO.buscar(sesion);
+            txtNombreUsuario.setText(usuario.getNombre());
+            txtCorreoElectronico.setText(usuario.getEmail());
 
-        ImageIcon icon;
-        if (new File(imagenPath).exists()) {
-            icon = new ImageIcon(redimensionarImagen(imagenPath, lblPerfil.getWidth(), lblPerfil.getHeight()));
-        } else {
-            // La ruta es un recurso en el classpath
-            URL imageUrl = getClass().getResource(imagenPath);
-            if (imageUrl != null) {
-                icon = new ImageIcon(redimensionarImagen(imageUrl, lblPerfil.getWidth(), lblPerfil.getHeight()));
+            // Deja el campo de la contraseña vacío para que el usuario la ingrese si quiere cambiarla
+            txtContrsena.setText("");
+
+            String imagenPath = usuario.getImagen();
+            if (imagenPath == null || imagenPath.isEmpty()) {
+                imagenPath = IMAGEN_POR_DEFECTO; // Usar imagen por defecto
+            }
+
+            ImageIcon icon;
+            if (new File(imagenPath).exists()) {
+                icon = new ImageIcon(redimensionarImagen(imagenPath, lblPerfil.getWidth(), lblPerfil.getHeight()));
             } else {
-                System.out.println("No se pudo cargar la imagen: " + imagenPath);
-                imageUrl = getClass().getResource(IMAGEN_POR_DEFECTO);
+                // La ruta es un recurso en el classpath
+                URL imageUrl = getClass().getResource(imagenPath);
                 if (imageUrl != null) {
                     icon = new ImageIcon(redimensionarImagen(imageUrl, lblPerfil.getWidth(), lblPerfil.getHeight()));
                 } else {
-                    System.out.println("No se pudo cargar la imagen predeterminada: " + IMAGEN_POR_DEFECTO);
-                    icon = null;
+                    System.out.println("No se pudo cargar la imagen: " + imagenPath);
+                    imageUrl = getClass().getResource(IMAGEN_POR_DEFECTO);
+                    if (imageUrl != null) {
+                        icon = new ImageIcon(redimensionarImagen(imageUrl, lblPerfil.getWidth(), lblPerfil.getHeight()));
+                    } else {
+                        System.out.println("No se pudo cargar la imagen predeterminada: " + IMAGEN_POR_DEFECTO);
+                        icon = null;
+                    }
                 }
             }
+            if (icon != null) {
+                lblPerfil.setIcon(icon);
+            } else {
+                lblPerfil.setText("Imagen no disponible"); // por si no se carga la imagen
+            }
+        } catch (ExceptionBO e) {
+            throw new ExceptionBO("Error al editar el usuario en la capa BO", e);
         }
-        if (icon != null) {
-            lblPerfil.setIcon(icon);
-        } else {
-            lblPerfil.setText("Imagen no disponible"); // por si no se carga la imagen
-        }
-    } catch (ExceptionBO e) {
-        throw new ExceptionBO("Error al editar el usuario en la capa BO", e);
-    }
     }
 
     @SuppressWarnings("unchecked")
@@ -193,47 +193,75 @@ public class frmEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    try {
-        // información actual del usuario
-        UsuarioDTO usuarioActual = usuarioBO.buscar(sesion);
-        UsuarioDTO usuariodtoEdit = new UsuarioDTO();
-        usuariodtoEdit.setNombre(txtNombreUsuario.getText());
-        usuariodtoEdit.setEmail(txtCorreoElectronico.getText());
-        usuariodtoEdit.setId(sesion);
+        try {
+            // Validaciones
+            String nombre = txtNombreUsuario.getText();
+            String email = txtCorreoElectronico.getText();
+            String password = txtContrsena.getText();
 
-        // Verifica si el campo de la contraseña no está vacío
-        if (!txtContrsena.getText().isEmpty()) {
-            // Hashea la nueva contraseña solo si ha cambiado
-            String hashedPassword = hashPassword(txtContrsena.getText());
-            usuariodtoEdit.setPassword(hashedPassword);
-        } else {
-            // Usa la contraseña existente si el campo está vacío
-            usuariodtoEdit.setPassword(usuarioActual.getPassword());
+            // Valida que los campos no esten vacios
+            if (nombre.isEmpty() || email.isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(this, "El nombre y el correo electrónico son obligatorios.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Valida el formato del correo electronico
+            if (!email.contains("@") || !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                javax.swing.JOptionPane.showMessageDialog(this, "El correo electrónico no tiene un formato válido.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validar longitud de la contraseña si se ha ingresado
+            if (!password.isEmpty() && (password.length() < 5 || password.length() > 15)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "La contraseña debe tener entre 5 y 15 caracteres.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // información actual del usuario
+            UsuarioDTO usuarioActual = usuarioBO.buscar(sesion);
+            UsuarioDTO usuariodtoEdit = new UsuarioDTO();
+            usuariodtoEdit.setNombre(nombre);
+            usuariodtoEdit.setEmail(email);
+            usuariodtoEdit.setId(sesion);
+
+            // Verifica si el campo de la contraseña no está vacío
+            if (!password.isEmpty()) {
+                // Hashea la nueva contraseña solo si ha cambiado
+                String hashedPassword = hashPassword(password);
+                usuariodtoEdit.setPassword(hashedPassword);
+            } else {
+                // Usa la contraseña existente si el campo está vacío
+                usuariodtoEdit.setPassword(usuarioActual.getPassword());
+            }
+
+            // Verifica si se ha seleccionado una nueva imagen
+            if (rutaImagenSeleccionada != null) {
+                usuariodtoEdit.setImagen(rutaImagenSeleccionada);
+            } else {
+                // Mantiene la imagen actual del usuario
+                usuariodtoEdit.setImagen(usuarioActual.getImagen());
+            }
+
+            // Guarda los cambios del usuario
+            usuarioBO.editarUsuario(usuariodtoEdit);
+
+            // Mensaje de éxito
+            javax.swing.JOptionPane.showMessageDialog(this, "Perfil actualizado con éxito.");
+
+            // Redirigir al menú principal
+            frmMenu menu = new frmMenu(sesion);
+            menu.setVisible(true);
+            this.dispose();
+        } catch (ExceptionBO ex) {
+            Logger.getLogger(frmEditarPerfil.class.getName()).log(Level.SEVERE, null, ex);
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al guardar los cambios: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
 
-        // Verifica si se ha seleccionado una nueva imagen
-        if (rutaImagenSeleccionada != null) {
-            usuariodtoEdit.setImagen(rutaImagenSeleccionada);
-        } else {
-            // Mantiene la imagen actual del usuario
-            usuariodtoEdit.setImagen(usuarioActual.getImagen());
-        }
-
-        // Guarda los cambios del usuario
-        usuarioBO.editarUsuario(usuariodtoEdit);
-
-        frmMenu menu = new frmMenu(sesion);
-        menu.setVisible(true);
-        this.dispose();
-    } catch (ExceptionBO ex) {
-        Logger.getLogger(frmEditarPerfil.class.getName()).log(Level.SEVERE, null, ex);
-        javax.swing.JOptionPane.showMessageDialog(this, "Error al guardar los cambios: " + ex.getMessage());
     }
-}
 
 // Método para hashear la contraseña (puedes usar una biblioteca como BCrypt)
-private String hashPassword(String password) {
-    return BCrypt.hashpw(password, BCrypt.gensalt());
+    private String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
 
 
     }//GEN-LAST:event_btnGuardarActionPerformed

@@ -8,6 +8,7 @@ import DTO.AlbumDTO;
 import DTO.ArtistasDTO;
 import DTO.CancionDTO;
 import DTO.IntegranteDTO;
+import DTO.UsuarioDTO;
 import Exceptions.ExceptionBO;
 import IBO.IAlbumBO;
 import IBO.IArtistasBO;
@@ -75,6 +76,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         reiniciarTablasAlbumes();
         reiniciarTablasCancion();
         reiniciarTablasIntegrantes();
+        inicializarUsuario();
         inicio();
     }
 
@@ -181,7 +183,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlBiblioteca = new javax.swing.JPanel();
-        lblUsuario = new javax.swing.JLabel();
+        lblNombreUsuario = new javax.swing.JLabel();
         tdpBiblioteca = new javax.swing.JTabbedPane();
         pnlAlbumes = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -206,6 +208,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         btnBuscarCancion = new javax.swing.JButton();
         btnBuscarCancion1 = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        lblImagenUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 600));
@@ -215,9 +218,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
         pnlBiblioteca.setPreferredSize(new java.awt.Dimension(850, 550));
         pnlBiblioteca.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblUsuario.setText("Usuario");
-        pnlBiblioteca.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblNombreUsuario.setText("Usuario");
+        pnlBiblioteca.add(lblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         tdpBiblioteca.setBackground(new java.awt.Color(204, 102, 255));
         tdpBiblioteca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -396,6 +399,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
         });
         pnlBiblioteca.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 80, 30));
+
+        lblImagenUsuario.setText("ImgUsuario");
+        pnlBiblioteca.add(lblImagenUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 40));
 
         getContentPane().add(pnlBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
@@ -584,19 +590,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         lblImagenArtista.setIcon(icon);
     }
 
-    private Image redimensionarImagen(String ruta, int width, int height) {
-        ImageIcon icon = new ImageIcon(ruta);
-        Image img = icon.getImage();
-        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return newImg;
-    }
 
-    private Image redimensionarImagen(URL url, int width, int height) {
-        ImageIcon icon = new ImageIcon(url);
-        Image img = icon.getImage();
-        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return newImg;
-    }
 
     public void cargarBusquedaAlbum() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
@@ -708,6 +702,51 @@ public class frmBiblioteca extends javax.swing.JFrame {
         DefaultTableModel modeloTablaArt = (DefaultTableModel) this.tblIntegrantes.getModel();
         modeloTablaArt.setRowCount(0);
     }
+    
+    private void inicializarUsuario() {
+        try {
+            UsuarioDTO usuario = usuBO.buscar(sesion);  // Obtén los datos del usuario
+            lblNombreUsuario.setText(usuario.getNombre());  // Establece el nombre del usuario
+
+            // Cargar imagen del usuario
+            String imagenPath = usuario.getImagen();
+            if (imagenPath == null || imagenPath.isEmpty()) {
+                imagenPath = "/imegenes/acceso.png";  // Usar imagen por defecto
+            }
+
+            ImageIcon icon;
+            if (new File(imagenPath).exists()) {
+                icon = new ImageIcon(redimensionarImagen(imagenPath, lblImagenUsuario.getWidth(), lblImagenUsuario.getHeight()));
+            } else {
+                // La ruta es un recurso en el classpath
+                URL imageUrl = getClass().getResource(imagenPath);
+                if (imageUrl != null) {
+                    icon = new ImageIcon(redimensionarImagen(imageUrl, lblImagenUsuario.getWidth(), lblImagenUsuario.getHeight()));
+                } else {
+                    imageUrl = getClass().getResource("/imegenes/acceso.png");
+                    icon = new ImageIcon(redimensionarImagen(imageUrl, lblImagenUsuario.getWidth(), lblImagenUsuario.getHeight()));
+                }
+            }
+            lblImagenUsuario.setIcon(icon);
+        } catch (ExceptionBO e) {
+            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar los datos del usuario: " + e.getMessage());
+        }
+    }
+    
+        private Image redimensionarImagen(String ruta, int width, int height) {
+        ImageIcon icon = new ImageIcon(ruta);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
+
+    private Image redimensionarImagen(URL url, int width, int height) {
+        ImageIcon icon = new ImageIcon(url);
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return newImg;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -723,9 +762,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblGeneroArtista;
     private javax.swing.JLabel lblImagenArtista;
+    private javax.swing.JLabel lblImagenUsuario;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreArtsiata;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JPanel pnlAlbumes;
     private javax.swing.JPanel pnlArtistas;
     private javax.swing.JPanel pnlBiblioteca;

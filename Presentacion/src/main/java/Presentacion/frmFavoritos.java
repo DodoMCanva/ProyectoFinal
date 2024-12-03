@@ -134,12 +134,13 @@ public class frmFavoritos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Favoritos");
-        setMinimumSize(new java.awt.Dimension(720, 810));
+        setMinimumSize(new java.awt.Dimension(720, 790));
+        setPreferredSize(new java.awt.Dimension(720, 790));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlFavoritos.setBackground(new java.awt.Color(204, 190, 255));
-        pnlFavoritos.setMinimumSize(new java.awt.Dimension(720, 810));
-        pnlFavoritos.setPreferredSize(new java.awt.Dimension(720, 810));
+        pnlFavoritos.setMinimumSize(new java.awt.Dimension(720, 790));
+        pnlFavoritos.setPreferredSize(new java.awt.Dimension(720, 790));
         pnlFavoritos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloFavoritos.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -224,7 +225,7 @@ public class frmFavoritos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Canción", "Genero", "Album", "Eliminar"
+                "Canción", "Género", "Album", "Eliminar"
             }
         ));
         tblCanciones.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,7 +277,7 @@ public class frmFavoritos extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        pnlFavoritos.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
+        pnlFavoritos.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, -1));
 
         lblEstrellaFav.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imegenes/estrella.png"))); // NOI18N
         pnlFavoritos.add(lblEstrellaFav, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 30, 30));
@@ -284,7 +285,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         lblImagenUsuario.setText("ImgUsuario");
         pnlFavoritos.add(lblImagenUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 40, 40));
 
-        getContentPane().add(pnlFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 810));
+        getContentPane().add(pnlFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 790));
 
         pack();
         setLocationRelativeTo(null);
