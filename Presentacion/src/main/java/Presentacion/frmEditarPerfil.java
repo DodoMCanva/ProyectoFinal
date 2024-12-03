@@ -15,7 +15,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
- *
+ *frmEditarPerfil, esta pantalla le permite al usuario editar los datos que ingreso en la parte
+ * del registro, pudiendo confirgurar nuevamente su perfil.
  * @author equipo 2
  */
 public class frmEditarPerfil extends javax.swing.JFrame {
