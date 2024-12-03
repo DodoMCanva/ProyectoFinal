@@ -134,7 +134,6 @@ public class frmFavoritos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Favoritos");
         setMinimumSize(new java.awt.Dimension(720, 810));
-        setPreferredSize(new java.awt.Dimension(720, 810));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlFavoritos.setBackground(new java.awt.Color(204, 190, 255));
@@ -219,7 +218,7 @@ public class frmFavoritos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Canción", "Genero", "Álbum", "Eliminar"
+                "Canción", "Genero", "Duracion", "Eliminar"
             }
         ));
         scllpCanciones.setViewportView(tblCanciones);
@@ -437,8 +436,7 @@ public class frmFavoritos extends javax.swing.JFrame {
             Object[] fila = new Object[4];
             fila[0] = row.getNombre();
             fila[1] = row.getGenero();
-            //Ajustar
-            fila[2] = row.getNombre();
+            fila[2] = row.getDuracion();
             fila[3] = "Eliminar";
             modeloTabla.addRow(fila);
         });
