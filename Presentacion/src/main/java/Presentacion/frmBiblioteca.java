@@ -7,6 +7,7 @@ import BO.UsuarioBO;
 import DTO.AlbumDTO;
 import DTO.ArtistasDTO;
 import DTO.CancionDTO;
+import DTO.IntegranteDTO;
 import Exceptions.ExceptionBO;
 import IBO.IAlbumBO;
 import IBO.IArtistasBO;
@@ -30,40 +31,44 @@ import utilerias.JButtonRenderer;
  */
 public class frmBiblioteca extends javax.swing.JFrame {
 
-    private String sesion;
     private IUsuarioBO usuBO = new UsuarioBO();
     private ICancionBO canBO = new CancionBO();
     private IArtistasBO artBO = new ArtistaBO();
     private IAlbumBO albBO = new AlbumBO();
 
-    private List<CancionDTO> listaCanciones;
-    private List<ArtistasDTO> listaArtistas;
-    private List<AlbumDTO> listaAlbumes;
+    private ArtistasDTO Artista;
 
+    private List<CancionDTO> listaCanciones;
+    private List<IntegranteDTO> listaIntegrantes;
+    private List<AlbumDTO> listaAlbumes;
     private List<CancionDTO> listaCancionesBuscadas;
-    private List<ArtistasDTO> listaArtistasBuscados;
+    private List<IntegranteDTO> listaIntegrantesBuscados;
     private List<AlbumDTO> listaAlbumesBuscados;
 
-    boolean b;
-    boolean bc;
-    boolean ba;
-    boolean bi;
+    private boolean bc, ba, bi;
+    private String sesion, idAlbum, idArtista, idCancion;
+
     /**
      * Creates new form frmBiblioteca
      */
     public frmBiblioteca(String sesion, String idAlbum, String idArtista, String idCancion) throws ExceptionBO {
-        b = false;
-        System.out.println("SESION" + sesion);
+        bc = false;
+        ba = false;
+        bi = false;
         this.listaCanciones = canBO.consultaGeneralCancion(usuBO.consultaRestringidos(sesion));
-        this.listaArtistas = artBO.consultaGeneralArtista(usuBO.consultaRestringidos(sesion));
+        this.Artista = artBO.consulta(idArtista);
         this.listaAlbumes = albBO.consultaGeneralAlbums(usuBO.consultaRestringidos(sesion));
         this.sesion = sesion;
         initComponents();
-//        formatearTablas();
-//        reiniciarTablas();
-//        cargarRegistrosCanciones();
-//        //cargarRegistros();
-//        cargarRegistrosAlbum();
+        formatearTablas();
+        //reiniciarTablas();
+        inicio();
+    }
+
+    public void inicio() {
+        if (rootPaneCheckingEnabled) {
+
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -93,10 +98,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCanciones = new javax.swing.JTable();
         txtBuscarCancion = new javax.swing.JTextField();
-        txtBuscarAlbum2 = new javax.swing.JTextField();
-        btnBuscarAlbum2 = new javax.swing.JButton();
-        btnBuscarCancion1 = new javax.swing.JButton();
         btnBuscarCancion = new javax.swing.JButton();
+        btnBuscarCancion1 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 600));
@@ -122,19 +126,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
         tblAlbumes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblAlbumes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Imagen", "Nombre", "Género", "Lanamiento", "Artista"
+                "Imagen", "Nombre", "Género", "Lanzamiento", "Favorito"
             }
         ));
         tblAlbumes.setGridColor(new java.awt.Color(204, 153, 255));
@@ -149,6 +144,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         btnBuscarAlbum.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBuscarAlbum.setText("Buscar");
+        btnBuscarAlbum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarAlbumActionPerformed(evt);
+            }
+        });
         pnlAlbumes.add(btnBuscarAlbum, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
 
         tdpBiblioteca.addTab("Álbum", pnlAlbumes);
@@ -214,6 +214,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         btnBuscarIntegrante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBuscarIntegrante.setText("Buscar");
+        btnBuscarIntegrante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarIntegranteActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnBuscarIntegrante, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
 
         tdpBiblioteca.addTab("Integrantes", jPanel5);
@@ -254,13 +259,14 @@ public class frmBiblioteca extends javax.swing.JFrame {
         txtBuscarCancion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
         pnlCanciones.add(txtBuscarCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 400, 30));
 
-        txtBuscarAlbum2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtBuscarAlbum2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 153, 255), 2));
-        pnlCanciones.add(txtBuscarAlbum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 400, 30));
-
-        btnBuscarAlbum2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscarAlbum2.setText("Buscar");
-        pnlCanciones.add(btnBuscarAlbum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
+        btnBuscarCancion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarCancion.setText("Buscar");
+        btnBuscarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarCancionActionPerformed(evt);
+            }
+        });
+        pnlCanciones.add(btnBuscarCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
 
         btnBuscarCancion1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBuscarCancion1.setText("Buscar");
@@ -270,16 +276,16 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         pnlBiblioteca.add(tdpBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 850, 420));
 
-        btnBuscarCancion.setBackground(new java.awt.Color(153, 153, 153));
-        btnBuscarCancion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscarCancion.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarCancion.setText("Volver");
-        btnBuscarCancion.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(153, 153, 153));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarCancionActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        pnlBiblioteca.add(btnBuscarCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 80, 30));
+        pnlBiblioteca.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 80, 30));
 
         getContentPane().add(pnlBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
@@ -287,7 +293,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCancionActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         frmMenu volver = null;
         try {
             volver = new frmMenu(this.sesion);
@@ -296,6 +302,48 @@ public class frmBiblioteca extends javax.swing.JFrame {
         }
         volver.setVisible(true);
         this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnBuscarAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAlbumActionPerformed
+        listaAlbumesBuscados = new ArrayList<>();
+        if (!txtBuscarAlbum.getText().isEmpty()) {
+            ba = true;
+            for (AlbumDTO album : listaAlbumes) {
+                if (album.getNombre().contains(txtBuscarAlbum.getText())) {
+                    listaAlbumesBuscados.add(album);
+                }
+            }
+            reiniciarTablasAlbumes();
+            cargarBusquedaAlbum();
+        } else {
+            ba = false;
+            reiniciarTablasAlbumes();
+            cargarAlbumes();
+        }
+
+    }//GEN-LAST:event_btnBuscarAlbumActionPerformed
+
+    private void btnBuscarIntegranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIntegranteActionPerformed
+
+    }//GEN-LAST:event_btnBuscarIntegranteActionPerformed
+
+    private void btnBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCancionActionPerformed
+        listaCancionesBuscadas = new ArrayList<>();
+        if (!txtBuscarCancion.getText().isEmpty()) {
+            bc = true;
+            for (CancionDTO cancion : listaCanciones) {
+                if (cancion.getNombre().contains(txtBuscarCancion.getText())) {
+                    listaCancionesBuscadas.add(cancion);
+                }
+            }
+            reiniciarTablasAlbumes();
+            cargarBusquedaAlbum();
+        } else {
+            bc = false;
+            reiniciarTablasAlbumes();
+            cargarAlbumes();
+        }
+
     }//GEN-LAST:event_btnBuscarCancionActionPerformed
 
     public void formatearTablas() {
@@ -305,7 +353,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     boolean a = false;
-                    if (b) {
+                    if (bc) {
                         a = usuBO.eliminarFavoritoCancion(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
                         if (a) {
                             usuBO.agregarCancionFavorito(sesion, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
@@ -325,14 +373,13 @@ public class frmBiblioteca extends javax.swing.JFrame {
         modeloColumnasCanciones.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
         modeloColumnasCanciones.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoCancionClickListener));
 
-        
         TableColumnModel modeloColumnasAlbums = this.tblAlbumes.getColumnModel();
         ActionListener onFavoritoAlbumClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     boolean a = false;
-                    if (b) {
+                    if (ba) {
                         a = usuBO.eliminarFavoritoAlbum(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
                         if (a) {
                             usuBO.agregarAlbumFavorito(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId());
@@ -349,78 +396,46 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 }
             }
         };
-        modeloColumnasAlbums.getColumn(2).setCellRenderer(new JButtonRenderer("Favorito"));
-        modeloColumnasAlbums.getColumn(2).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoAlbumClickListener));
+        modeloColumnasAlbums.getColumn(4).setCellRenderer(new JButtonRenderer("Favorito"));
+        modeloColumnasAlbums.getColumn(4).setCellEditor(new JButtonCellEditor("Favorito", onFavoritoAlbumClickListener));
 
     }
 
-    public void buscar(String busqueda, String filtro) {
-        b = true;
-        listaCancionesBuscadas = new ArrayList<>();
-        listaArtistasBuscados = new ArrayList<>();
-        listaAlbumesBuscados = new ArrayList<>();
-        for (CancionDTO cancion : listaCanciones) {
-            if (cancion.getNombre().contains(busqueda)) {
-                listaCancionesBuscadas.add(cancion);
-            }
-        }
-        for (ArtistasDTO artista : listaArtistas) {
-            if (artista.getNombre().contains(busqueda)) {
-                listaArtistasBuscados.add(artista);
-            }
-        }
-        for (AlbumDTO album : listaAlbumes) {
-            if (album.getNombre().contains(busqueda)) {
-                listaAlbumesBuscados.add(album);
-            }
-        }
-        switch (filtro) {
-            case "Ninguno":
-                if (!busqueda.isEmpty()) {
-                    cargarRegistrosAlbumBusqueda();
-                    cargarRegistrosArtistasBusqueda();
-                    cargarRegistrosCancionesBusqueda();
-                } else {
-                    try {
-                        frmMenu m = new frmMenu(sesion);
-                        m.setVisible(true);
-                        this.dispose();
-                    } catch (ExceptionBO ex) {
-                        Logger.getLogger(frmMenu.class
-                                .getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                break;
-
-            case "Canciones":
-                if (!busqueda.isEmpty()) {
-                    cargarRegistrosCancionesBusqueda();
-                } else {
-                    cargarRegistrosCanciones();
-                }
-                break;
-
-            case "Albums":
-                if (!busqueda.isEmpty()) {
-                    cargarRegistrosAlbumBusqueda();
-                } else {
-                    cargarRegistrosAlbum();
-                }
-                break;
-
-            case "Artistas":
-                if (!busqueda.isEmpty()) {
-                    cargarRegistrosArtistasBusqueda();
-                } else {
-                    cargarRegistrosArtistasBusqueda();
-                }
-                break;
-            default:
-                System.out.println("Error con el filtro");
-        }
+    public void cargarBusquedaAlbum() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaAlbumesBuscados.forEach(row -> {
+            Object[] fila = new Object[5];
+            fila[0] = row.getPortada();
+            fila[1] = row.getNombre();
+            fila[2] = row.getGenero();
+            fila[3] = row.getFechaLanzamiento();
+            fila[4] = "Favoritos";
+            modeloTabla.addRow(fila);
+        });
+        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblAlbumes.setRowHeight(50);
+        modeloTabla.fireTableDataChanged();
+        tblAlbumes.repaint();
     }
 
-    public void cargarRegistrosCancionesBusqueda() {
+    public void cargarAlbumes() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
+        listaAlbumes.forEach(row -> {
+            Object[] fila = new Object[5];
+            fila[0] = row.getPortada();
+            fila[1] = row.getNombre();
+            fila[2] = row.getGenero();
+            fila[3] = row.getFechaLanzamiento();
+            fila[4] = "Favoritos";
+            modeloTabla.addRow(fila);
+        });
+        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblAlbumes.setRowHeight(50);
+        modeloTabla.fireTableDataChanged();
+        tblAlbumes.repaint();
+    }
+
+    public void cargarBusquedaCanciones() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaCancionesBuscadas.forEach(row -> {
             Object[] fila = new Object[3];
@@ -431,39 +446,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         });
     }
 
-    public void cargarRegistrosAlbumBusqueda() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
-        listaAlbumesBuscados.forEach(row -> {
-            Object[] fila = new Object[3];
-            fila[0] = row.getPortada(); // Ruta de la imagen
-            fila[1] = row.getNombre();  // Nombre del álbum
-            fila[2] = "Favoritos";      // Acción o categoría
-            modeloTabla.addRow(fila);
-        });
-        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Renderizar imágenes
-        tblAlbumes.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
-        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
-        tblAlbumes.repaint();
-    }
-
-    public void cargarRegistrosArtistasBusqueda() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblIntegrantes.getModel();
-        listaArtistasBuscados.forEach(row -> {
-            Object[] fila = new Object[3];
-            fila[0] = row.getImagen(); // Ruta de la imagen
-            fila[1] = row.getNombre(); // Nombre del artista
-            fila[2] = "Favoritos";     // Categoría o acción
-            modeloTabla.addRow(fila);
-        });
-
-        // Establecer el renderizador para la columna de imágenes
-        tblIntegrantes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
-        tblIntegrantes.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
-        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
-        tblIntegrantes.repaint();
-    }
-
-    public void cargarRegistrosCanciones() {
+    public void cargarCanciones() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaCanciones.forEach(row -> {
             Object[] fila = new Object[3];
@@ -474,30 +457,55 @@ public class frmBiblioteca extends javax.swing.JFrame {
         });
     }
 
-    public void cargarRegistrosAlbum() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
-        listaAlbumes.forEach(row -> {
-            Object[] fila = new Object[3];
-            fila[0] = row.getPortada(); // Ruta de la imagen
-            fila[1] = row.getNombre();  // Nombre del álbum
-            fila[2] = "Favoritos";      // Acción o categoría
+    public void cargarIntegrantesBusqueda() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblIntegrantes.getModel();
+        listaIntegrantesBuscados.forEach(row -> {
+            Object[] fila = new Object[6];
+            fila[0] = row.isEstado();
+            fila[1] = row.getNombre();
+            fila[2] = row.getRol();
+            fila[3] = row.getIngreso();
+            fila[4] = row.getSalida();
+            fila[5] = row.getImagen();
             modeloTabla.addRow(fila);
         });
-        tblAlbumes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer()); // Renderizar imágenes
-        tblAlbumes.setRowHeight(50); // Ajustar altura de las filas para mostrar imágenes correctamente
-        modeloTabla.fireTableDataChanged(); // Asegúrate de que el modelo de la tabla esté actualizado
-        tblAlbumes.repaint();
+
+        tblIntegrantes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblIntegrantes.setRowHeight(50);
+        modeloTabla.fireTableDataChanged();
+        tblIntegrantes.repaint();
     }
 
-    public void cargarArtista() {
-        
+    public void cargarIntegrantes() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblIntegrantes.getModel();
+        listaIntegrantes.forEach(row -> {
+            Object[] fila = new Object[6];
+            fila[0] = row.isEstado();
+            fila[1] = row.getNombre();
+            fila[2] = row.getRol();
+            fila[3] = row.getIngreso();
+            fila[4] = row.getSalida();
+            fila[5] = row.getImagen();
+            modeloTabla.addRow(fila);
+        });
+
+        tblIntegrantes.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tblIntegrantes.setRowHeight(50);
+        modeloTabla.fireTableDataChanged();
+        tblIntegrantes.repaint();
     }
 
-    private void reiniciarTablas() {
+    private void reiniciarTablasCancion() {
         DefaultTableModel modeloTablaCan = (DefaultTableModel) this.tblCanciones.getModel();
         modeloTablaCan.setRowCount(0);
+    }
+
+    private void reiniciarTablasAlbumes() {
         DefaultTableModel modeloTablaAlb = (DefaultTableModel) this.tblAlbumes.getModel();
         modeloTablaAlb.setRowCount(0);
+    }
+
+    private void reiniciarTablasIntegrantes() {
         DefaultTableModel modeloTablaArt = (DefaultTableModel) this.tblIntegrantes.getModel();
         modeloTablaArt.setRowCount(0);
     }
@@ -505,10 +513,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarAlbum;
-    private javax.swing.JButton btnBuscarAlbum2;
     private javax.swing.JButton btnBuscarCancion;
     private javax.swing.JButton btnBuscarCancion1;
     private javax.swing.JButton btnBuscarIntegrante;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -528,7 +536,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private javax.swing.JTable tblIntegrantes;
     private javax.swing.JTabbedPane tdpBiblioteca;
     private javax.swing.JTextField txtBuscarAlbum;
-    private javax.swing.JTextField txtBuscarAlbum2;
     private javax.swing.JTextField txtBuscarCancion;
     private javax.swing.JTextField txtBuscarIntegrante;
     // End of variables declaration//GEN-END:variables
