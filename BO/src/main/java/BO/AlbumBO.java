@@ -18,7 +18,7 @@ import org.bson.types.ObjectId;
  * Clase que maneja la lógica de negocio para los álbumes.
  * Implementa la interfaz IAlbumBO.
  * 
- * @autor Equipo2
+ * @author Equipo2
  */
 public class AlbumBO implements IAlbumBO {
 

@@ -17,7 +17,7 @@ import org.bson.types.ObjectId;
  * Clase que maneja la lógica de negocio para las canciones.
  * Implementa la interfaz ICancionBO.
  * 
- * @autor equipo 2
+ * @author equipo 2
  */
 public class CancionBO implements ICancionBO {
 

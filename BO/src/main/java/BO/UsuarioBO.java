@@ -20,7 +20,7 @@ import org.mindrot.jbcrypt.BCrypt;
  * Clase que maneja la lógica de negocio para los usuarios.
  * Implementa la interfaz IUsuarioBO.
  * 
- * @autor equipo 2
+ * @author equipo 2
  */
 public class UsuarioBO implements IUsuarioBO {
 

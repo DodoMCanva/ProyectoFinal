@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  * iniciales de artistas, canciones y álbumes. Implementa la interfaz
  * IArranqueInicio.
  *
- * @autor equipo 2
+ * @author equipo 2
  */
 public class ArranqueInicioBO implements IArranqueInicio {
 

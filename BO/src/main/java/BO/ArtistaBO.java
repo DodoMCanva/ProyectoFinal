@@ -19,7 +19,7 @@ import org.bson.types.ObjectId;
  * Clase que maneja la lógica de negocio para los artistas.
  * Implementa la interfaz IArtistasBO.
  * 
- * @autor equipo 2
+ * @author equipo 2
  */
 public class ArtistaBO implements IArtistasBO {
 

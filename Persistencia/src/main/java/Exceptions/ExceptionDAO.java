@@ -9,7 +9,7 @@ package Exceptions;
  * Exception y se utiliza para manejar errores relacionados con la base de
  * datos.
  *
- * @author equpo 2
+ * @author Equipo2
  */
 public class ExceptionDAO extends Exception {
 
