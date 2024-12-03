@@ -5,21 +5,33 @@
 package Exceptions;
 
 /**
+ * Clase que representa una excepción específica del DAO. Extiende de la clase
+ * Exception y se utiliza para manejar errores relacionados con la base de
+ * datos.
  *
- * @author cesar
+ * @author equpo 2
  */
 public class ExceptionDAO extends Exception {
-    
-    public ExceptionDAO(String message){
-    
-    super(message);
+
+    /**
+     * Constructor que crea una nueva excepción con el mensaje especificado.
+     *
+     * @param message el mensaje de la excepción
+     */
+    public ExceptionDAO(String message) {
+
+        super(message);
     }
-     public ExceptionDAO(String message, Throwable cause) {
+
+    /**
+     * Constructor que crea una nueva excepción con el mensaje y la causa
+     * especificados.
+     *
+     * @param message el mensaje de la excepción
+     * @param cause la causa de la excepción
+     */
+    public ExceptionDAO(String message, Throwable cause) {
         super(message, cause);
     }
-    
-    }
 
-    
-
-
+}
