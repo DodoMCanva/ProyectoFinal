@@ -303,7 +303,7 @@ public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {
             }
             
             for (AlbumDTO album : listaFavoritosAlbumes) {
-                if (album.getGenero().equals("genero")) {
+                if (album.getGenero().equals(genero)) {
                     listaCandidatosAlbumes.add(album);
                 }
             }

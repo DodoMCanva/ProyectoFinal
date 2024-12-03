@@ -297,11 +297,21 @@ public class frmMenu extends javax.swing.JFrame {
     private void tblCancionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseReleased
         if (tblCanciones.getSelectedColumn() != 2) {
             if (b) {
-                frmBiblioteca a = new frmBiblioteca(sesion, null, null, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, null, null, listaCancionesBuscadas.get(tblCanciones.getSelectedRow()).getId());
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.setVisible(true);
                 this.dispose();
             } else {
-                frmBiblioteca a = new frmBiblioteca(sesion, null, null, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, null, null, listaCanciones.get(tblCanciones.getSelectedRow()).getId());
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.setVisible(true);
                 this.dispose();
             }
@@ -311,11 +321,21 @@ public class frmMenu extends javax.swing.JFrame {
     private void tblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlbumesMouseClicked
         if (tblAlbumes.getSelectedColumn() != 2) {
             if (b) {
-                frmBiblioteca a = new frmBiblioteca(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId(), null, null);
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId(), null, null);
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.setVisible(true);
                 this.dispose();
             } else {
-                frmBiblioteca a = new frmBiblioteca(sesion, listaAlbumesBuscados.get(tblAlbumes.getSelectedRow()).getId(), null,null);
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaAlbumes.get(tblAlbumes.getSelectedRow()).getId(), null,null);
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.setVisible(true);
                 this.dispose();
             }
@@ -325,11 +345,21 @@ public class frmMenu extends javax.swing.JFrame {
     private void tblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArtistasMouseClicked
         if (tblArtistas.getSelectedColumn() != 2) {
             if (b) {
-                frmBiblioteca a = new frmBiblioteca(sesion, null, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId(), null);
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, null, listaArtistasBuscados.get(tblArtistas.getSelectedRow()).getId(), null);
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.setVisible(true);
                 this.dispose();
             } else {
-                frmBiblioteca a = new frmBiblioteca(sesion, null, listaArtistas.get(tblArtistas.getSelectedRow()).getId(), null);
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, null, listaArtistas.get(tblArtistas.getSelectedRow()).getId(), null);
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.setVisible(true);
                 this.dispose();
             }
