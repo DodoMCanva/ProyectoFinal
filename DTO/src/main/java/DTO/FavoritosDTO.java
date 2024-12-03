@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Clase que representa una lista de favoritos, incluyendo artistas, álbumes y canciones.
  * 
- * @autor Equipo2
+ * @author Equipo2
  */
 public class FavoritosDTO {
 

@@ -4,7 +4,7 @@ package DTO;
  * Clase que representa una canción. Contiene información sobre el ID, nombre,
  * duración y género de la canción.
  *
- * @autor Equipo2
+ * @author Equipo2
  */
 public class CancionDTO {
 
