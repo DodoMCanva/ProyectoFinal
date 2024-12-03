@@ -206,6 +206,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaArtistasGrupo[12] = new ArtistasDTO("Linkin Park", "/ImagenesArtistas/LinkinPark.jpeg", "Grupo", "Metal", ListaIntegrantes);
 
         // Grupo 14: Arctic Monkeys
+        ListaIntegrantes= new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Alex Turner", "Vocalista/Guitarrista", "/ImagenesArtistas/AlexTurner.jpeg", LocalDate.of(2002, 6, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Jamie Cook", "Guitarrista", "/ImagenesArtistas/JamieCook.jpeg", LocalDate.of(2002, 6, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Andy Nicholson", "Bajista", "/ImagenesArtistas/AndyNicholson.jpeg", LocalDate.of(2002, 6, 1), LocalDate.of(2006, 1, 1), true));
@@ -214,12 +215,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaArtistasGrupo[13] = new ArtistasDTO("Arctic Monkeys", "/ImagenesArtistas/ArcticMonkeys.jpeg", "Grupo", "Indie", ListaIntegrantes);
 
         // Grupo 15: Twenty One Pilots
+        ListaIntegrantes= new ArrayList<>();
         ListaIntegrantes = new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Tyler Joseph", "Vocalista", "/ImagenesArtistas/TylerJoseph.jpeg", LocalDate.of(2009, 3, 29), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Josh Dun", "Baterista", "/ImagenesArtistas/JoshDun.jpeg", LocalDate.of(2011, 5, 1), null, true));
         ListaArtistasGrupo[14] = new ArtistasDTO("Twenty One Pilots", "/ImagenesArtistas/TwentyOnePilots.jpeg", "Grupo", "Electropop", ListaIntegrantes);
 
         // Grupo 16: Paramore
+        ListaIntegrantes= new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Hayley Williams", "Vocalista", "/ImagenesArtistas/HayleyWilliams.jpeg", LocalDate.of(2004, 7, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Taylor York", "Guitarrista", "/ImagenesArtistas/TaylorYork.jpeg", LocalDate.of(2007, 6, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Zac Farro", "Baterista", "/ImagenesArtistas/ZacFarro.jpeg", LocalDate.of(2004, 7, 1), null, true));
@@ -280,6 +283,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaArtistasGrupo[22] = new ArtistasDTO("Måneskin", "/ImagenesArtistas/Maneskin.jpeg", "Grupo", "Rock", ListaIntegrantes);
 
         // Grupo 24: Grupo Frontera
+        ListaIntegrantes= new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Adelaido Solís", "Vocalista", "/ImagenesArtistas/AdelaidoSolis.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
         ListaIntegrantes.add(new IntegranteDTO("Juan Javier Cantú", "Acordeonista", "/ImagenesArtistas/JuanJavierCantu.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
         ListaIntegrantes.add(new IntegranteDTO("Julián Peña Jr.", "Percusionista", "/ImagenesArtistas/JulianPeñaJr.jpeg", LocalDate.of(2022, 1, 1), null, true)); // Miembro desde la formación
