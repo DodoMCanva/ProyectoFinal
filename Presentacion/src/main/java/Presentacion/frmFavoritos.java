@@ -31,8 +31,9 @@ import utilerias.JButtonCellEditor;
 import utilerias.JButtonRenderer;
 
 /**
- *
- * @author equipo 2
+ *frmFavortios, esta pantalla muestra al usuario las canciones, albumes y artistas agregados al
+ * apartado de usuario desde las otras ventanas, permitiendo eliminarlos de la misma.
+ * @author Equipo 2
  */
 public class frmFavoritos extends javax.swing.JFrame {
 

@@ -33,7 +33,8 @@ import utilerias.JButtonCellEditor;
 import utilerias.JButtonRenderer;
 
 /**
- *
+ *frmMenu, esta pantalla despliega al usuario todos los artistas, albumes y canciones en la BD, el usuario
+ * podra modelar las busquedas por medio de filtros y seleccionar sus favoritos asi como navegar a otras pantallas.
  * @author equipo 2
  */
 public class frmMenu extends javax.swing.JFrame {

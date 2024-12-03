@@ -12,20 +12,16 @@ import IBO.IAlbumBO;
 import IBO.IArtistasBO;
 import IBO.ICancionBO;
 import IBO.IUsuarioBO;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import utilerias.ImageRenderer;
-import utilerias.JButtonCellEditor;
-import utilerias.JButtonRenderer;
 
 /**
- *
+ *frmSobrePuestoGeneroElimi, nos dara informacion de las canciones,albumes y artistas que tenemos en favoritos
+ * que se van a ir a eliminados juntos con los generos que se seleccionaron.
  * @author equipo 2
  */
 public class frmSobrePuestoGeneroELimi extends java.awt.Dialog {

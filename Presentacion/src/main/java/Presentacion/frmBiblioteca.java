@@ -31,7 +31,8 @@ import utilerias.JButtonCellEditor;
 import utilerias.JButtonRenderer;
 
 /**
- *
+ *frmBiblioteca esta pantalla muestra al usuario los detalles tanto de 
+ * Album, Cancion, Artista y integrantes de ser un grupo con integrantes.
  * @author Equipo 2
  */
 public class frmBiblioteca extends javax.swing.JFrame {

@@ -6,7 +6,8 @@ import IBO.IArranqueInicio;
 import IBO.IUsuarioBO;
 
 /**
- *
+ *frmInicioSesion, pantalla que permite al usuario ingresar con los datos de registro (contraseña y nombre), los cuales 
+ * ingreso en frmAgregarUsuario
  * @author Equipo 2
  */
 public class frmInicioSesion extends javax.swing.JFrame {

@@ -1,7 +1,6 @@
 package Presentacion;
 
 import BO.UsuarioBO;
-import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import IBO.IArtistasBO;
 import IBO.ICancionBO;
@@ -11,8 +10,9 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
- * @author cesar
+ *FrmAgregarUsuario esta clase sirve para interactuar con el usuario y agregar los datos 
+ * necesarios para la crecion de su perfil, incluyendo las validaciones necesarias.
+ * @author Equipo2
  */
 public class frmAgregarUsuario extends javax.swing.JFrame {
 

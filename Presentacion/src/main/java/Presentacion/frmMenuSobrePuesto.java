@@ -14,7 +14,8 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
- *
+ *frmMenuSobrePuesto, aqui nos despliega un menu sobrepuesto del frmMenu, que nos dara entrada a las pantallas
+ * que tenemos disponibles.
  * @author equipo 2
  */
 public class frmMenuSobrePuesto extends java.awt.Dialog {

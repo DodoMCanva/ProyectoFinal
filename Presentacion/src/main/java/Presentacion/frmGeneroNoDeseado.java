@@ -9,7 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *frmGeneroNoDeseado, aqui el usuario seleccionara el genero que no desee que le aparezcan
+ * relacionados tanto de albumes, canciones y artistas.
  * @author equipo 2
  */
 public class frmGeneroNoDeseado extends javax.swing.JFrame {
