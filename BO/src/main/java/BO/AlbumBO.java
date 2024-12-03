@@ -15,18 +15,28 @@ import java.util.logging.Logger;
 import org.bson.types.ObjectId;
 
 /**
- *
- * @author equipo 2
+ * Clase que maneja la lógica de negocio para los álbumes.
+ * Implementa la interfaz IAlbumBO.
+ * 
+ * @autor Equipo2
  */
 public class AlbumBO implements IAlbumBO {
 
-    private IArtistasBO artistaBO;
-    private IAlbumDAO albumDAO;
+    private IArtistasBO artistaBO; // Interface para manejar operaciones de Artistas
+    private IAlbumDAO albumDAO; // Interface para manejar operaciones de Álbumes
 
+    /**
+     * Constructor por defecto que inicializa el DAO de álbumes.
+     */
     public AlbumBO() {
         this.albumDAO = new AlbumDAO(); // Inicialización explícita
     }
 
+    /**
+     * Inserta un nuevo álbum.
+     * 
+     * @param album El álbum a insertar
+     */
     @Override
     public void insertarAlbum(AlbumDTO album) {
         try {
@@ -36,11 +46,24 @@ public class AlbumBO implements IAlbumBO {
         }
     }
 
+    /**
+     * Obtiene el ID de un artista por su nombre.
+     * 
+     * @param nombreArtista El nombre del artista
+     * @return El ID del artista
+     */
     @Override
     public String obtenerIdPorNombre(String nombreArtista) {
         return artistaBO.obtenerIdPorNombre(nombreArtista);
     }
 
+    /**
+     * Consulta general de álbumes restringida por géneros.
+     * 
+     * @param generosRestringidos Lista de géneros restringidos
+     * @return Lista de álbumes que no están en los géneros restringidos
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public List<AlbumDTO> consultaGeneralAlbums(List<String> generosRestringidos) throws ExceptionBO {
         try {
@@ -51,6 +74,14 @@ public class AlbumBO implements IAlbumBO {
         }
     }
 
+    /**
+     * Búsqueda general de álbumes con criterios de género y búsqueda.
+     * 
+     * @param generosRestringidos Lista de géneros restringidos
+     * @param busqueda Texto de búsqueda
+     * @return Lista de álbumes que coinciden con los criterios
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public List<AlbumDTO> busquedaGeneralAlbum(List<String> generosRestringidos, String busqueda) throws ExceptionBO {
         try {
@@ -61,6 +92,12 @@ public class AlbumBO implements IAlbumBO {
         }
     }
 
+    /**
+     * Convierte un álbum de DTO a POJO.
+     * 
+     * @param dto El DTO del álbum
+     * @return El POJO del álbum
+     */
     public AlbumPOJO convertirAlbumdeDTOaPOJO(AlbumDTO dto) {
         AlbumPOJO POJO;
         List<ObjectId> cancionesObjectId = new ArrayList<>();
@@ -80,6 +117,12 @@ public class AlbumBO implements IAlbumBO {
         return POJO;
     }
 
+    /**
+     * Convierte un álbum de POJO a DTO.
+     * 
+     * @param pojo El POJO del álbum
+     * @return El DTO del álbum
+     */
     private AlbumDTO convertirAlbumdePOJOaDTO(AlbumPOJO pojo) {
         List<String> cancionesString = new ArrayList<>();
         for (ObjectId cancionId : pojo.getCanciones()) {
@@ -95,6 +138,12 @@ public class AlbumBO implements IAlbumBO {
                 cancionesString);
     }
 
+    /**
+     * Convierte una lista de álbumes de POJO a DTO.
+     * 
+     * @param pojoList La lista de POJOs del álbum
+     * @return La lista de DTOs del álbum
+     */
     private List<AlbumDTO> convertirListaDePOJOaDTO(List<AlbumPOJO> pojoList) {
         List<AlbumDTO> dtoList = new ArrayList<>();
         for (AlbumPOJO pojo : pojoList) {
@@ -103,6 +152,13 @@ public class AlbumBO implements IAlbumBO {
         return dtoList;
     }
 
+    /**
+     * Consulta un álbum por su ID.
+     * 
+     * @param id El ID del álbum
+     * @return El DTO del álbum
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public AlbumDTO consulta(String id) throws ExceptionBO {
         try {

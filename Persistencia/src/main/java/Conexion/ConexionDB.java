@@ -39,6 +39,6 @@ public class ConexionDB {
         MongoClient dbServer = MongoClients.create(clientsSettings);
 
         // Obtiene la base de datos específica ("ClaseBaseDatosAvanzadas") del cliente MongoDB
-        return dbServer.getDatabase("BibliotecaMusicalBD");
+        return dbServer.getDatabase("bibliotecaMusical#2");
     }
 }

@@ -1,22 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package utilerias;
 import java.net.URL;
    import java.util.HashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
 /**
- *
- * @author Valeria
+ * Clase que maneja el almacenamiento en caché de imágenes para optimizar el rendimiento.
+ * 
+ * @autor Equipo2
  */
 public class ImageCache {
- 
 
+    private static Map<String, ImageIcon> cache = new HashMap<>(); // Caché para almacenar las imágenes
 
-    private static Map<String, ImageIcon> cache = new HashMap<>();
-
+    /**
+     * Obtiene el ImageIcon correspondiente a la ruta especificada.
+     * Si la imagen ya está en la caché, se devuelve desde allí.
+     * Si no, se carga desde el recurso y se almacena en la caché.
+     * 
+     * @param path La ruta del recurso de la imagen
+     * @return El ImageIcon correspondiente a la ruta, o null si la imagen no se encuentra
+     */
     public static ImageIcon getImageIcon(String path) {
         if (cache.containsKey(path)) {
             return cache.get(path);
@@ -31,5 +35,7 @@ public class ImageCache {
         return icon;
     }
 }
+
+
 
 

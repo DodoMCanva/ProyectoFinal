@@ -6,17 +6,30 @@ package utilerias;
 
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.MediaTracker;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
- *
- * @author Valeria
+ * Clase que se encarga de renderizar imágenes dentro de una celda de una tabla.
+ * Extiende DefaultTableCellRenderer.
+ * 
+ * @autor Equipo2
  */
 public class ImageRenderer extends DefaultTableCellRenderer {
+
+    /**
+     * Sobrescribe el método para obtener el componente de renderizado de la celda.
+     * 
+     * @param table La tabla a la que pertenece la celda
+     * @param value El valor de la celda
+     * @param isSelected Verdadero si la celda está seleccionada
+     * @param hasFocus Verdadero si la celda tiene el foco
+     * @param row La fila de la celda
+     * @param column La columna de la celda
+     * @return El componente que debe renderizar la celda
+     */
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         if (value instanceof String) {
@@ -34,5 +47,3 @@ public class ImageRenderer extends DefaultTableCellRenderer {
         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
     }
 }
-
-

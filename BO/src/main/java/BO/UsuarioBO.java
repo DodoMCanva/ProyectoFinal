@@ -17,16 +17,27 @@ import org.bson.types.ObjectId;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
- *
- * @author equipo 2
+ * Clase que maneja la lógica de negocio para los usuarios.
+ * Implementa la interfaz IUsuarioBO.
+ * 
+ * @autor equipo 2
  */
 public class UsuarioBO implements IUsuarioBO {
 
     private final IUsuarioDAO usuarioDAO = new UsuarioDAO();
 
+    /**
+     * Constructor por defecto.
+     */
     public UsuarioBO() {
     }
 
+    /**
+     * Guarda un nuevo usuario en la base de datos.
+     * 
+     * @param usuarioDTO El DTO del usuario a guardar
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void guardarUsuario(UsuarioDTO usuarioDTO) throws ExceptionBO {
         try {
@@ -38,6 +49,14 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Inicia sesión con el nombre de usuario y la contraseña proporcionados.
+     * 
+     * @param nombre El nombre del usuario
+     * @param password La contraseña del usuario
+     * @return true si el inicio de sesión es exitoso, false en caso contrario
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public boolean iniciarSesion(String nombre, String password) throws ExceptionBO {
         try {
@@ -60,10 +79,15 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Edita la información de un usuario existente.
+     * 
+     * @param usuario El DTO del usuario a editar
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void editarUsuario(UsuarioDTO usuario) throws ExceptionBO {
         try {
-
             UsuarioPOJO usuarioPOJO = convertirUsuarioDTOaPOJO(usuario);
             usuarioPOJO.setPassword(usuario.getPassword());
             usuarioDAO.editarUsuario(usuarioPOJO);
@@ -72,6 +96,13 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Restringe un género para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param genero El género a restringir
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void restringirGenero(String sesion, String genero) throws ExceptionBO {
         try {
@@ -81,6 +112,13 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Regresa un género previamente restringido para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param genero El género a regresar
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void regresaGenero(String sesion, String genero) throws ExceptionBO {
         try {
@@ -89,6 +127,13 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Consulta los géneros restringidos para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @return Lista de géneros restringidos
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public List<String> consultaRestringidos(String sesion) throws ExceptionBO {
         try {
@@ -101,6 +146,13 @@ public class UsuarioBO implements IUsuarioBO {
         return null;
     }
 
+    /**
+     * Agrega un artista favorito para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param artista El ID del artista a agregar
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void agregarArtistaFavorito(String sesion, String artista) throws ExceptionBO {
         try {
@@ -110,6 +162,14 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Elimina un artista favorito para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param artista El ID del artista a eliminar
+     * @return true si el artista fue eliminado, false en caso contrario
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public boolean eliminarFavoritoArtista(String sesion, String artista) throws ExceptionBO {
         try {
@@ -120,6 +180,13 @@ public class UsuarioBO implements IUsuarioBO {
         return false;
     }
 
+    /**
+     * Agrega una canción favorita para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param cancion El ID de la canción a agregar
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void agregarCancionFavorito(String sesion, String cancion) throws ExceptionBO {
         try {
@@ -129,6 +196,14 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Elimina una canción favorita para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param cancion El ID de la canción a eliminar
+     * @return true si la canción fue eliminada, false en caso contrario
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public boolean eliminarFavoritoCancion(String sesion, String cancion) throws ExceptionBO {
         try {
@@ -139,6 +214,13 @@ public class UsuarioBO implements IUsuarioBO {
         return false;
     }
 
+    /**
+     * Agrega un álbum favorito para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param album El ID del álbum a agregar
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void agregarAlbumFavorito(String sesion, String album) throws ExceptionBO {
         try {
@@ -148,6 +230,14 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Elimina un álbum favorito para el usuario en sesión.
+     * 
+     * @param sesion La sesión del usuario
+     * @param album El ID del álbum a eliminar
+     * @return true si el álbum fue eliminado, false en caso contrario
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public boolean eliminarFavoritoAlbum(String sesion, String album) throws ExceptionBO {
         try {
@@ -158,7 +248,14 @@ public class UsuarioBO implements IUsuarioBO {
         return false;
     }
 
-    @Override
+    /**
+     * Busca un usuario por su nombre.
+     * 
+     * @param nombre El nombre del usuario
+     * @return El DTO del usuario
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
+         @Override
     public UsuarioDTO buscarPorNombre(String nombre) throws ExceptionBO {
         try {
             UsuarioPOJO pojo = usuarioDAO.buscarPorNombre(nombre);
@@ -171,6 +268,13 @@ public class UsuarioBO implements IUsuarioBO {
         }
     }
 
+    /**
+     * Convierte un UsuarioDTO a UsuarioPOJO.
+     * 
+     * @param dto El DTO del usuario
+     * @return El POJO del usuario
+     * @throws IllegalArgumentException Si el ID del usuario no es válido
+     */
     private UsuarioPOJO convertirUsuarioDTOaPOJO(UsuarioDTO dto) throws IllegalArgumentException {
         List<ObjectId> artistas = new ArrayList<>();
         if (dto.getFavoritos() != null && dto.getFavoritos().getArtistas() != null) {
@@ -217,6 +321,12 @@ public class UsuarioBO implements IUsuarioBO {
         );
     }
 
+    /**
+     * Convierte un UsuarioPOJO a UsuarioDTO.
+     * 
+     * @param pojo El POJO del usuario
+     * @return El DTO del usuario
+     */
     private UsuarioDTO convertirUsuarioPOJOaDTO(UsuarioPOJO pojo) {
         List<String> artistas = new ArrayList<>();
         if (pojo.getFavoritos() != null && pojo.getFavoritos().getArtistas() != null) {
@@ -252,6 +362,13 @@ public class UsuarioBO implements IUsuarioBO {
         );
     }
 
+    /**
+     * Busca un usuario por su ID.
+     * 
+     * @param id El ID del usuario
+     * @return El DTO del usuario
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public UsuarioDTO buscar(String id) throws ExceptionBO {
         try {
@@ -270,5 +387,4 @@ public class UsuarioBO implements IUsuarioBO {
             throw new ExceptionBO("Error al buscar el usuario en la capa BO", e);
         }
     }
-
 }

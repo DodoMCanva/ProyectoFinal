@@ -9,7 +9,6 @@ import IBO.IArtistasBO;
 import IDAO.IArtistaDAO;
 import POJO.ArtistaPOJO;
 import POJO.IntegrantesPOJO;
-import POJO.UsuarioPOJO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,17 +16,27 @@ import java.util.logging.Logger;
 import org.bson.types.ObjectId;
 
 /**
- *
- * @author equipo 2
+ * Clase que maneja la lógica de negocio para los artistas.
+ * Implementa la interfaz IArtistasBO.
+ * 
+ * @autor equipo 2
  */
 public class ArtistaBO implements IArtistasBO {
 
     private final IArtistaDAO artistasDAO = new ArtistaDAO();
 
+    /**
+     * Constructor por defecto.
+     */
     public ArtistaBO() {
 
     }
 
+    /**
+     * Inserta un nuevo artista.
+     * 
+     * @param artista El artista a insertar
+     */
     @Override
     public void insertarArtista(ArtistasDTO artista) {
         try {
@@ -37,11 +46,23 @@ public class ArtistaBO implements IArtistasBO {
         }
     }
 
+    /**
+     * Obtiene el ID de un artista por su nombre.
+     * 
+     * @param nombreArtista El nombre del artista
+     * @return El ID del artista
+     */
     @Override
     public String obtenerIdPorNombre(String nombreArtista) {
         return artistasDAO.obtenerIdPorNombre(nombreArtista);
     }
 
+    /**
+     * Convierte un artista de DTO a POJO.
+     * 
+     * @param DTO El DTO del artista
+     * @return El POJO del artista
+     */
     public ArtistaPOJO covertirArtistadeDTOaPOJO(ArtistasDTO DTO) {
         ArtistaPOJO POJO;
         if (DTO.getIntegrantes() != null) {
@@ -63,7 +84,14 @@ public class ArtistaBO implements IArtistasBO {
         return POJO;
     }
 
-       @Override
+    /**
+     * Realiza una consulta general de artistas restringida por géneros.
+     * 
+     * @param generosRestringidos Lista de géneros restringidos
+     * @return Lista de artistas que no están en los géneros restringidos
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
+    @Override
     public List<ArtistasDTO> consultaGeneralArtista(List<String> generosRestringidos) throws ExceptionBO {
         try {
             List<ArtistaPOJO> pojoList = artistasDAO.consultaGeneralArtista(generosRestringidos);
@@ -73,6 +101,14 @@ public class ArtistaBO implements IArtistasBO {
         }
     }
 
+    /**
+     * Realiza una búsqueda general de artistas con criterios de género y búsqueda.
+     * 
+     * @param generosRestringidos Lista de géneros restringidos
+     * @param busqueda Texto de búsqueda
+     * @return Lista de artistas que coinciden con los criterios
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public List<ArtistasDTO> busquedaGeneralArtista(List<String> generosRestringidos, String busqueda) throws ExceptionBO {
         try {
@@ -83,8 +119,12 @@ public class ArtistaBO implements IArtistasBO {
         }
     }
 
-   
-
+    /**
+     * Convierte un artista de POJO a DTO.
+     * 
+     * @param pojo El POJO del artista
+     * @return El DTO del artista
+     */
     private ArtistasDTO convertirArtistaPOJOaDTO(ArtistaPOJO pojo) {
         List<IntegranteDTO> integrantesDTO = new ArrayList<>();
         if (pojo.getIntegrantes() != null) {
@@ -109,6 +149,12 @@ public class ArtistaBO implements IArtistasBO {
         );
     }
 
+    /**
+     * Convierte una lista de artistas de POJO a DTO.
+     * 
+     * @param pojoList La lista de POJOs de los artistas
+     * @return La lista de DTOs de los artistas
+     */
     private List<ArtistasDTO> convertirListaDePOJOaDTO(List<ArtistaPOJO> pojoList) {
         List<ArtistasDTO> dtoList = new ArrayList<>();
         for (ArtistaPOJO pojo : pojoList) {
@@ -117,7 +163,12 @@ public class ArtistaBO implements IArtistasBO {
         return dtoList;
     }
 
-
+    /**
+     * Convierte una lista de integrantes de DTO a POJO.
+     * 
+     * @param artDTO El DTO del artista
+     * @return La lista de POJOs de los integrantes
+     */
     public List<IntegrantesPOJO> convertirIntegrantesDTOaPOJO(ArtistasDTO artDTO) {
         List<IntegrantesPOJO> listaPOJO = new ArrayList<>();
 
@@ -135,6 +186,13 @@ public class ArtistaBO implements IArtistasBO {
         return listaPOJO;
     }
 
+    /**
+     * Consulta un artista por su ID.
+     * 
+     * @param id El ID del artista
+     * @return El DTO del artista
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public ArtistasDTO consulta(String id) throws ExceptionBO {
         try {
@@ -151,6 +209,6 @@ public class ArtistaBO implements IArtistasBO {
             return null;
         } catch (ExceptionDAO e) {
             throw new ExceptionBO("Error al buscar el usuario en la capa BO", e);
-        }}
-
+        }
+    }
 }
