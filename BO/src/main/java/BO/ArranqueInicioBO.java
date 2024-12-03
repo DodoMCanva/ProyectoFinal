@@ -173,7 +173,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaIntegrantes.add(new IntegranteDTO("Wayne Sermon", "Guitarrista", "/ImagenesArtistas/WayneSermon.jpeg", LocalDate.of(2009, 3, 1), null, true)); // Fecha aproximada de ingreso
         ListaIntegrantes.add(new IntegranteDTO("Ben McKee", "Bajista", "/ImagenesArtistas/BenMcKee.jpeg", LocalDate.of(2009, 3, 1), null, true)); // Se unió junto con Wayne Sermon
         ListaIntegrantes.add(new IntegranteDTO("Daniel Platzman", "Baterista", "/ImagenesArtistas/DanielPlatzman.jpeg", LocalDate.of(2011, 7, 1), LocalDate.of(2023, 8, 1), true)); // Se unió justo antes del álbum debut
-        ListaArtistasGrupo[9] = new ArtistasDTO("Imagine Dragons", "/ImagenesArtistas/ImagineDragons.jpeg", "Grupo", "Pop Rock", ListaIntegrantes);
+        ListaArtistasGrupo[9] = new ArtistasDTO("Imagine Dragons", "/ImagenesArtistas/ImagineDragons.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 11: Maroon 5
         ListaIntegrantes = new ArrayList<>();
@@ -184,7 +184,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaIntegrantes.add(new IntegranteDTO("Matt Flynn", "Baterista", "/ImagenesArtistas/MattFlynn.jpeg", LocalDate.of(2006, 9, 1), null, true)); // Reemplazó a Ryan Dusick
         ListaIntegrantes.add(new IntegranteDTO("P. J. Morton", "Tecladista", "/ImagenesArtistas/PJMorton.jpeg", LocalDate.of(2012, 1, 1), null, true)); // Miembro oficial desde 2012
         ListaIntegrantes.add(new IntegranteDTO("Sam Farrar", "Multiinstrumentista", "/ImagenesArtistas/SamFarrar.jpeg", LocalDate.of(2012, 1, 1), null, true)); // Colaborador desde 2008, miembro oficial desde 2016
-        ListaArtistasGrupo[10] = new ArtistasDTO("Maroon 5", "/ImagenesArtistas/Maroon5.jpeg", "Grupo", "Pop Rock", ListaIntegrantes);
+        ListaArtistasGrupo[10] = new ArtistasDTO("Maroon 5", "/ImagenesArtistas/Maroon5.jpeg", "Grupo", "Pop", ListaIntegrantes);
 
         // Grupo 12: AC/DC
         ListaIntegrantes = new ArrayList<>();
@@ -256,13 +256,13 @@ public class ArranqueInicioBO implements IArranqueInicio {
         ListaIntegrantes = new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Jon Schmidt", "Pianista", "/ImagenesArtistas/JonSchmidt.jpeg", LocalDate.of(2010, 3, 1), null, true));
         ListaIntegrantes.add(new IntegranteDTO("Steven Sharp Nelson", "Cellista", "/ImagenesArtistas/StevenNelson.jpeg", LocalDate.of(2010, 3, 1), null, true));
-        ListaArtistasGrupo[19] = new ArtistasDTO("The Piano Guys", "/ImagenesArtistas/ThePianoGuys.jpeg", "Grupo", "Música Clásica", ListaIntegrantes);
+        ListaArtistasGrupo[19] = new ArtistasDTO("The Piano Guys", "/ImagenesArtistas/ThePianoGuys.jpeg", "Grupo", "Soul", ListaIntegrantes);
 
         // Grupo 21: Daft Punk
         ListaIntegrantes = new ArrayList<>();
         ListaIntegrantes.add(new IntegranteDTO("Thomas Bangalter", "Productor/Músico", "/ImagenesArtistas/ThomasBangalter.jpeg", LocalDate.of(1993, 1, 12), LocalDate.of(2021, 2, 22), true));  // Daft Punk se separó en 2021
         ListaIntegrantes.add(new IntegranteDTO("Guy-Manuel de Homem-Christo", "Productor/Músico", "/ImagenesArtistas/GuyManuel.jpeg", LocalDate.of(1993, 1, 12), LocalDate.of(2021, 2, 22), true));  // Daft Punk se separó en 2021
-        ListaArtistasGrupo[20] = new ArtistasDTO("Daft Punk", "/ImagenesArtistas/DaftPunk.jpeg", "Grupo", "Electrónica", ListaIntegrantes);
+        ListaArtistasGrupo[20] = new ArtistasDTO("Daft Punk", "/ImagenesArtistas/DaftPunk.jpeg", "Grupo", "Electronica", ListaIntegrantes);
 
         // Grupo 22: Camila
         ListaIntegrantes = new ArrayList<>();
@@ -795,7 +795,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Something", "3:03", "Rock"),
                     new CancionDTO("Here Comes the Sun", "3:05", "Rock"),
                     new CancionDTO("Lucy in the Sky with Diamonds", "3:28", "Rock"),
-                    new CancionDTO("A Day in the Life", "5:38", "Progressive Rock"),
+                    new CancionDTO("A Day in the Life", "5:38", "Rock"),
                     new CancionDTO("Sgt. Pepper's Lonely Hearts Club Band", "2:02", "Rock"),
                     // Canciones de The Rolling Stones
                     new CancionDTO("Tumbling Dice", "3:45", "Rock"),
@@ -857,7 +857,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Radioactive", "3:07", "Rock"),
                     new CancionDTO("Demons", "2:57", "Pop"),
                     new CancionDTO("It's Time", "4:00", "Pop"),
-                    new CancionDTO("Believer", "3:24", "Rock "),
+                    new CancionDTO("Believer", "3:24", "Rock"),
                     new CancionDTO("Thunder", "3:07", "Pop"),
                     new CancionDTO("Whatever It Takes", "3:21", "Rock"),
                     // Canciones de Maroon 5
@@ -905,10 +905,10 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     // Canciones de BTS
                     new CancionDTO("DNA", "3:43", "Pop"),
                     new CancionDTO("Mic Drop", "3:58", "Rap"),
-                    new CancionDTO("Fake Love", "4:02", "K-Pop"),
-                    new CancionDTO("Yet To Come", "3:35", "K-Pop"),
-                    new CancionDTO("Run BTS", "3:25", "K-Pop"),
-                    new CancionDTO("For Youth", "4:42", "K-Pop"),
+                    new CancionDTO("Fake Love", "4:02", "K-pop"),
+                    new CancionDTO("Yet To Come", "3:35", "K-pop"),
+                    new CancionDTO("Run BTS", "3:25", "K-pop"),
+                    new CancionDTO("For Youth", "4:42", "K-pop"),
                     // Canciones de ABBA
                     new CancionDTO("Dancing Queen", "3:52", "Funk"),
                     new CancionDTO("Mamma Mia", "3:32", "Pop"),
@@ -917,11 +917,11 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Honey, Honey", "2:55", "Pop"),
                     new CancionDTO("I Do, I Do, I Do, I Do, I Do", "3:16", "Pop"),
                     // Canciones de BLACKPINK
-                    new CancionDTO("DDU-DU DDU-DU", "3:29", "K-Pop"),
-                    new CancionDTO("Kill This Love", "3:13", "K-Pop"),
-                    new CancionDTO("As If It's Your Last", "3:32", "K-Pop"),
-                    new CancionDTO("How You Like That", "3:01", "K-Pop"),
-                    new CancionDTO("Lovesick Girls", "3:14", "K-Pop"),
+                    new CancionDTO("DDU-DU DDU-DU", "3:29", "K-pop"),
+                    new CancionDTO("Kill This Love", "3:13", "K-pop"),
+                    new CancionDTO("As If It's Your Last", "3:32", "K-pop"),
+                    new CancionDTO("How You Like That", "3:01", "K-pop"),
+                    new CancionDTO("Lovesick Girls", "3:14", "K-pop"),
                     new CancionDTO("Ice Cream", "2:56", "Pop"),
                     // Canciones de The Piano Guys
                     new CancionDTO("A Thousand Years", "4:38", "Balada"),
@@ -966,11 +966,11 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Little Things", "3:39", "Pop"),
                     new CancionDTO("Kiss You", "3:04", "Pop"),
                     // Canciones de Le Sserafim
-                    new CancionDTO("Fearless", "2:48", "K-Pop"),
-                    new CancionDTO("Blue Flame", "3:30", "K-Pop"),
-                    new CancionDTO("The World is My Oyster", "1:30", "K-Pop"),
-                    new CancionDTO("Pierrot", "3:13", "K-Pop"),
-                    new CancionDTO("CRAZY", "2:58", "K-Pop"),
+                    new CancionDTO("Fearless", "2:48", "K-pop"),
+                    new CancionDTO("Blue Flame", "3:30", "K-pop"),
+                    new CancionDTO("The World is My Oyster", "1:30", "K-pop"),
+                    new CancionDTO("Pierrot", "3:13", "K-pop"),
+                    new CancionDTO("CRAZY", "2:58", "K-pop"),
                     new CancionDTO("1-800-hot-n-fun", "3:15", "Pop"),
                     // Canciones de Intocable
                     new CancionDTO("¿Y Todo Lo Demás?", "3:45", "Regional"),
@@ -995,7 +995,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Me Puedo Matar", "3:45", "Pop"),
                     // Canciones de RBD
                     new CancionDTO("Rebelde", "3:32", "Pop"),
-                    new CancionDTO("Sálvame", "3:43", "Balada Pop"),
+                    new CancionDTO("Sálvame", "3:43", "Balada"),
                     new CancionDTO("Solo Quédate en Silencio", "3:37", "Rock"),
                     new CancionDTO("Nuestro Amor", "3:32", "Rock"),
                     new CancionDTO("Aún Hay Algo", "3:30", "Pop"),
@@ -1043,7 +1043,7 @@ public class ArranqueInicioBO implements IArranqueInicio {
                     new CancionDTO("Stop", "3:27", "Pop"),
                     new CancionDTO("Too Much", "4:00", "Balada"),
                     // Canciones de TXT
-                    new CancionDTO("Crown", "3:31", "K-Pop"),
+                    new CancionDTO("Crown", "3:31", "K-pop"),
                     new CancionDTO("Blue Orangeade", "3:46", "Pop"),
                     new CancionDTO("Cat & Dog", "3:42", "K-pop"),
                     new CancionDTO("9 and Three Quarters (Run Away)", "3:23", "Pop"),
@@ -1995,14 +1995,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Stressed Out"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Ride"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Tear in My Heart"));
-            AlbumDTO album121 = new AlbumDTO("Blurryface", LocalDate.of(2015, Month.MAY, 17), "Alternative/Indie", "/ImagenesAlbumes/Blurryface.jpeg", artistaBO.obtenerIdPorNombre("Twenty One Pilots"), listaCanciones);
+            AlbumDTO album121 = new AlbumDTO("Blurryface", LocalDate.of(2015, Month.MAY, 17), "Pop", "/ImagenesAlbumes/Blurryface.jpeg", artistaBO.obtenerIdPorNombre("Twenty One Pilots"), listaCanciones);
             albumBO.insertarAlbum(album121);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Heathens"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Lane Boy"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Polarize"));
-            AlbumDTO album122 = new AlbumDTO("Trench", LocalDate.of(2018, Month.OCTOBER, 5), "Alternative/Indie", "/ImagenesAlbumes/Trench.jpeg", artistaBO.obtenerIdPorNombre("Twenty One Pilots"), listaCanciones);
+            AlbumDTO album122 = new AlbumDTO("Trench", LocalDate.of(2018, Month.OCTOBER, 5), "Pop", "/ImagenesAlbumes/Trench.jpeg", artistaBO.obtenerIdPorNombre("Twenty One Pilots"), listaCanciones);
             albumBO.insertarAlbum(album122);
 
             // Álbumes de Paramore
@@ -2010,14 +2010,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Misery Business"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Crushcrushcrush"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("That's What You Get"));
-            AlbumDTO album123 = new AlbumDTO("Riot!", LocalDate.of(2007, Month.JUNE, 12), "Alternative Rock", "/ImagenesAlbumes/Riot.jpeg", artistaBO.obtenerIdPorNombre("Paramore"), listaCanciones);
+            AlbumDTO album123 = new AlbumDTO("Riot!", LocalDate.of(2007, Month.JUNE, 12), "Rock", "/ImagenesAlbumes/Riot.jpeg", artistaBO.obtenerIdPorNombre("Paramore"), listaCanciones);
             albumBO.insertarAlbum(album123);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Still Into You"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Ain't It Fun"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Daydreaming"));
-            AlbumDTO album124 = new AlbumDTO("Paramore", LocalDate.of(2013, Month.APRIL, 5), "Alternative Rock", "/ImagenesAlbumes/Paramore.jpeg", artistaBO.obtenerIdPorNombre("Paramore"), listaCanciones);
+            AlbumDTO album124 = new AlbumDTO("Paramore", LocalDate.of(2013, Month.APRIL, 5), "Rock", "/ImagenesAlbumes/Paramore.jpeg", artistaBO.obtenerIdPorNombre("Paramore"), listaCanciones);
             albumBO.insertarAlbum(album124);
 
             // Álbumes de BTS
@@ -2070,14 +2070,14 @@ public class ArranqueInicioBO implements IArranqueInicio {
             listaCanciones.add(cancionBO.obtenerIdPorNombre("A Thousand Years"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Beethoven's 5 Secrets"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("All of Me"));
-            AlbumDTO album131 = new AlbumDTO("The Piano Guys", LocalDate.of(2012, Month.AUGUST, 7), "Classical Crossover", "/ImagenesAlbumes/ThePianoGuys.jpeg", artistaBO.obtenerIdPorNombre("The Piano Guys"), listaCanciones);
+            AlbumDTO album131 = new AlbumDTO("The Piano Guys", LocalDate.of(2012, Month.AUGUST, 7), "Soul", "/ImagenesAlbumes/ThePianoGuys.jpeg", artistaBO.obtenerIdPorNombre("The Piano Guys"), listaCanciones);
             albumBO.insertarAlbum(album131);
 
             listaCanciones.clear();
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Fight Song"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("What Makes You Beautiful"));
             listaCanciones.add(cancionBO.obtenerIdPorNombre("Let It Go"));
-            AlbumDTO album132 = new AlbumDTO("The Piano Guys 2", LocalDate.of(2013, Month.OCTOBER, 8), "Classical Crossover", "/ImagenesAlbumes/ThePianoGuys2.jpeg", artistaBO.obtenerIdPorNombre("The Piano Guys"), listaCanciones);
+            AlbumDTO album132 = new AlbumDTO("The Piano Guys 2", LocalDate.of(2013, Month.OCTOBER, 8), "Soul", "/ImagenesAlbumes/ThePianoGuys2.jpeg", artistaBO.obtenerIdPorNombre("The Piano Guys"), listaCanciones);
             albumBO.insertarAlbum(album132);
 
             // Álbumes de Daft Punk

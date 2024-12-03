@@ -17,7 +17,7 @@ public class frmGeneroNoDeseado extends javax.swing.JFrame {
     private String sesion;
     private List<String> lista = new ArrayList<>();
     private UsuarioBO usuBO = new UsuarioBO();
-    private boolean gR[] = new boolean[17];
+    private boolean gR[] = new boolean[18];
 
     /**
      * Creates new form frmGeneroNoDeseado
