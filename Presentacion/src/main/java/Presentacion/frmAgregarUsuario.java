@@ -49,6 +49,9 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         lblTituloLogo = new javax.swing.JLabel();
         lblTituloContrasena = new javax.swing.JLabel();
         btnAnadirFoto = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,7 +77,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
 
         lblTituloNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblTituloNombreUsuario.setText("Nombre Usuario");
-        pnlRegistro.add(lblTituloNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 200, 30));
+        pnlRegistro.add(lblTituloNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 130, 30));
         pnlRegistro.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 200, 35));
 
         txtCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +99,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         pnlRegistro.add(lblTituloCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 200, 30));
 
         lblTituloanadirFoto.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblTituloanadirFoto.setText("Añadir foto perfil(opcional)");
+        lblTituloanadirFoto.setText("Añadir foto perfil (Opcional)");
         pnlRegistro.add(lblTituloanadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 200, 30));
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -118,7 +121,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
 
         lblTituloContrasena.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblTituloContrasena.setText("Contraseña");
-        pnlRegistro.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 200, 30));
+        pnlRegistro.add(lblTituloContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 30));
 
         btnAnadirFoto.setText("Añadir Foto");
         btnAnadirFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +131,18 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         });
         pnlRegistro.add(btnAnadirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 110, 30));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("*");
+        pnlRegistro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 10, 10));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("*");
+        pnlRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 10, 10));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("*");
+        pnlRegistro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 10, 10));
+
         getContentPane().add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 540));
 
         pack();
@@ -135,7 +150,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private String rutaImagenSeleccionada = null;
-    private static final String IMAGEN_POR_DEFECTO = "/imegenes/acceso.png";
+    private static final String IMAGEN_USUARIO = "/imegenes/acceso.png";
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
             // Crear instancia del BO
@@ -147,10 +162,31 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
             usuarioDTO.setEmail(txtCorreoElectronico.getText());
             usuarioDTO.setPassword(txtContrsena.getText());
 
+            // Valida que los campos no esten vacios
+            if (usuarioDTO.getNombre().isEmpty() || usuarioDTO.getEmail().isEmpty() || usuarioDTO.getPassword().isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            // Valida que el correo contenga '@' y no tenga un formato invalido
+            if (!usuarioDTO.getEmail().contains("@")) {
+                javax.swing.JOptionPane.showMessageDialog(this, "El correo electrónico debe contener '@'.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            // Valida formato del correo electrónico
+            if (!usuarioDTO.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                javax.swing.JOptionPane.showMessageDialog(this, "El correo electrónico no tiene un formato válido.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            // Valida longitud de la contraseña
+            if (usuarioDTO.getPassword().length() < 5 || usuarioDTO.getPassword().length() > 15) {
+                javax.swing.JOptionPane.showMessageDialog(this, "La contraseña debe tener entre 5 y 15 caracteres.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             if (rutaImagenSeleccionada != null) {
                 usuarioDTO.setImagen(rutaImagenSeleccionada);
             } else {
-                usuarioDTO.setImagen(IMAGEN_POR_DEFECTO);
+                usuarioDTO.setImagen(IMAGEN_USUARIO);
             }
 
             // Registrar usuario
@@ -191,7 +227,7 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            rutaImagenSeleccionada = selectedFile.getAbsolutePath(); // obtien la ruta de la imagen seleccionada 
+            rutaImagenSeleccionada = selectedFile.getAbsolutePath(); // obtiene la ruta de la imagen seleccionada 
             btnAnadirFoto.setText(selectedFile.getName()); // muestra el nombre de la imagen en el botón 
         }
     }//GEN-LAST:event_btnAnadirFotoActionPerformed
@@ -236,6 +272,9 @@ public class frmAgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnAnadirFoto;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblLogoTitulo;
     private javax.swing.JLabel lblTituloContrasena;
     private javax.swing.JLabel lblTituloCorreoElectronico;
