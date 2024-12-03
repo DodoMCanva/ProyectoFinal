@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  * Clase que se encarga de renderizar imágenes dentro de una celda de una tabla.
  * Extiende DefaultTableCellRenderer.
  * 
- * @autor Equipo2
+ * @author Equipo2
  */
 public class ImageRenderer extends DefaultTableCellRenderer {
 

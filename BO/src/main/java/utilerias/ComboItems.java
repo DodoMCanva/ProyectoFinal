@@ -3,7 +3,7 @@ package utilerias;
 /**
  * Clase que representa un elemento de un combo (por ejemplo, un elemento en una lista desplegable).
  * 
- * @autor Equipo2
+ * @author Equipo2
  */
 public class ComboItems {
     

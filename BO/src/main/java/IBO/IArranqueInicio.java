@@ -4,7 +4,7 @@ package IBO;
 /**
  * Interfaz que define los métodos para el arranque inicial de la aplicación.
  * 
- * @autor Equipo 2
+ * @author Equipo 2
  */
 public interface IArranqueInicio {
     

@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 /**
  * Clase que maneja el almacenamiento en caché de imágenes para optimizar el rendimiento.
  * 
- * @autor Equipo2
+ * @author Equipo2
  */
 public class ImageCache {
 

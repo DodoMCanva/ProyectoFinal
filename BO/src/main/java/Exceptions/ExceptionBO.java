@@ -6,7 +6,7 @@ package Exceptions;
 /**
  * Clase que representa una excepción específica para la capa de negocio (BO).
  * 
- * @autor cesar
+ * @author Equipo2
  */
 public class ExceptionBO extends Exception {
 

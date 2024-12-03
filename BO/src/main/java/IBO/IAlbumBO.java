@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Interfaz que define los métodos para la lógica de negocio de los álbumes.
  * 
- * @autor equipo 2
+ * @author equipo 2
  */
 public interface IAlbumBO {
 

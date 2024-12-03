@@ -4,7 +4,7 @@ package utilerias;
 /**
  * Clase que proporciona métodos utilitarios.
  * 
- * @autor Equipo2
+ * @author Equipo2
  */
 public class Utilidades {
     

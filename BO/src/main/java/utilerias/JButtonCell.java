@@ -14,7 +14,7 @@ import javax.swing.table.TableCellRenderer;
  * Clase que representa una celda de tabla con un botón. 
  * Implementa TableCellRenderer y TableCellEditor para personalizar la celda.
  *
- * @autor Equipo2
+ * @author Equipo2
  */
 public class JButtonCell implements TableCellRenderer, TableCellEditor {
 

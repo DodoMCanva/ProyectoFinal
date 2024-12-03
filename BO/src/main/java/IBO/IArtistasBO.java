@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Interfaz que define los métodos para la lógica de negocio de los artistas.
  * 
- * @autor Equipo 2
+ * @author Equipo 2
  */
 public interface IArtistasBO {
 

@@ -14,7 +14,7 @@ import javax.swing.table.TableCellEditor;
  * Clase que representa un editor de celdas de tabla con un botón.
  * Implementa TableCellEditor para personalizar la edición de la celda.
  * 
- * @autor Equipo2
+ * @author Equipo2
  */
 public class JButtonCellEditor implements TableCellEditor {
 
