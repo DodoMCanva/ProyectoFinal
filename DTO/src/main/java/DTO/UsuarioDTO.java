@@ -6,7 +6,7 @@ import java.util.List;
  * Clase que representa un usuario.
  * Incluye información sobre su ID, nombre, correo electrónico, contraseña, imagen, géneros restringidos y favoritos.
  * 
- * @autor equipo 2
+ * @author equipo 2
  */
 public class UsuarioDTO {
 

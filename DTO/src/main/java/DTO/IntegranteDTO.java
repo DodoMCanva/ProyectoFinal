@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * sobre su ID, nombre, rol, imagen, fechas de ingreso y salida, y su estado
  * actual.
  *
- * @autor Equipo2
+ * @author Equipo2
  */
 public class IntegranteDTO {
 
