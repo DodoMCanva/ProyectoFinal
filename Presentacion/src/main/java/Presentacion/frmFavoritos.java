@@ -390,19 +390,19 @@ public class frmFavoritos extends javax.swing.JFrame {
 
         for (CancionDTO cancion : listaFavoritasCanciones) {
             // Convertir el nombre de la canción a minúsculas antes de comparar
-            if (cancion.getNombre().toLowerCase().contains(busquedaMinusculas)) {
+            if (cancion.getNombre().toLowerCase().contains(busquedaMinusculas)|| cancion.getGenero().contains(busqueda)) {
                 listaCancionesBusqueda.add(cancion);
             }
         }
         for (ArtistasDTO artista : listaFavoritosArtistas) {
             // Convertir el nombre del artista a minúsculas antes de comparar
-            if (artista.getNombre().toLowerCase().contains(busquedaMinusculas)) {
+            if (artista.getNombre().toLowerCase().contains(busquedaMinusculas)|| artista.getGenero().contains(busqueda)) {
                 listaArtistasBusqueda.add(artista);
             }
         }
         for (AlbumDTO album : listaFavoritosAlbumes) {
             // Convertir el nombre del álbum a minúsculas antes de comparar
-            if (album.getNombre().toLowerCase().contains(busquedaMinusculas)) {
+            if (album.getNombre().toLowerCase().contains(busquedaMinusculas)|| album.getGenero().contains(busqueda)) {
                 listaAlbumesBusqueda.add(album);
             }
         }

@@ -510,17 +510,17 @@ public class frmMenu extends javax.swing.JFrame {
         listaArtistasBuscados = new ArrayList<>();
         listaAlbumesBuscados = new ArrayList<>();
         for (CancionDTO cancion : listaCanciones) {
-            if (cancion.getNombre().contains(busqueda)) {
+            if (cancion.getNombre().contains(busqueda) || cancion.getGenero().contains(busqueda)) {
                 listaCancionesBuscadas.add(cancion);
             }
         }
         for (ArtistasDTO artista : listaArtistas) {
-            if (artista.getNombre().contains(busqueda)) {
+            if (artista.getNombre().contains(busqueda)|| artista.getGenero().contains(busqueda)) {
                 listaArtistasBuscados.add(artista);
             }
         }
         for (AlbumDTO album : listaAlbumes) {
-            if (album.getNombre().contains(busqueda)) {
+            if (album.getNombre().contains(busqueda)|| album.getGenero().contains(busqueda)) {
                 listaAlbumesBuscados.add(album);
             }
         }
