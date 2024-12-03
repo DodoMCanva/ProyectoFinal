@@ -277,7 +277,6 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDesplegableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesplegableActionPerformed
-        // Pasamos la referencia del frmMenu al JDialog
         frmMenuSobrePuesto dialog = new frmMenuSobrePuesto(this, true, this.sesion);
         dialog.setVisible(true);
 

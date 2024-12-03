@@ -170,6 +170,11 @@ public class frmFavoritos extends javax.swing.JFrame {
                 "Imagen", "Nombre", "Género", "Eliminar"
             }
         ));
+        tblAlbumes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAlbumesMouseClicked(evt);
+            }
+        });
         scllpAlbumes.setViewportView(tblAlbumes);
 
         pnlFavoritos.add(scllpAlbumes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 640, 190));
@@ -221,6 +226,11 @@ public class frmFavoritos extends javax.swing.JFrame {
                 "Canción", "Genero", "Duracion", "Eliminar"
             }
         ));
+        tblCanciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCancionesMouseClicked(evt);
+            }
+        });
         scllpCanciones.setViewportView(tblCanciones);
 
         pnlFavoritos.add(scllpCanciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 640, 150));
@@ -244,6 +254,11 @@ public class frmFavoritos extends javax.swing.JFrame {
                 "Imagen", "Nombre", "Género", "Eliminar"
             }
         ));
+        tblArtistas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblArtistasMouseClicked(evt);
+            }
+        });
         scllpArtistas.setViewportView(tblArtistas);
 
         pnlFavoritos.add(scllpArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 640, 190));
@@ -291,6 +306,18 @@ public class frmFavoritos extends javax.swing.JFrame {
         String busqueda = txtBuscar.getText();
         buscar(busqueda);
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tblCancionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblCancionesMouseClicked
+
+    private void tblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlbumesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblAlbumesMouseClicked
+
+    private void tblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArtistasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblArtistasMouseClicked
 
     public void formatearTablas() {
         TableColumnModel modeloColumnasCanciones = this.tblCanciones.getColumnModel();
