@@ -305,6 +305,7 @@ public class frmFavoritos extends javax.swing.JFrame {
         reiniciarTablas();
         String busqueda = txtBuscar.getText();
         buscar(busqueda);
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblCancionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseClicked
@@ -343,8 +344,9 @@ public class frmFavoritos extends javax.swing.JFrame {
         ActionListener onFavoritoArtistaClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {if (b) {
-                        
+                try {
+                    if (b) {
+
                     }
                     usuBO.eliminarFavoritoArtista(sesion, listaFavoritosArtistas.get(tblArtistas.getSelectedRow()).getId());
                     desaparecer();
@@ -362,11 +364,11 @@ public class frmFavoritos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     if (b) {
-                    usuBO.eliminarFavoritoAlbum(sesion, listaAlbumesBusqueda.get(tblAlbumes.getSelectedRow()).getId());
-                    desaparecer();    
-                    }else{
-                    usuBO.eliminarFavoritoAlbum(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId());
-                    desaparecer();
+                        usuBO.eliminarFavoritoAlbum(sesion, listaAlbumesBusqueda.get(tblAlbumes.getSelectedRow()).getId());
+                        desaparecer();
+                    } else {
+                        usuBO.eliminarFavoritoAlbum(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId());
+                        desaparecer();
                     }
                 } catch (ExceptionBO ex) {
                     Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -383,18 +385,24 @@ public class frmFavoritos extends javax.swing.JFrame {
         listaArtistasBusqueda = new ArrayList<>();
         listaAlbumesBusqueda = new ArrayList<>();
 
+        // Convertir el término de búsqueda a minúsculas
+        String busquedaMinusculas = busqueda.toLowerCase();
+
         for (CancionDTO cancion : listaFavoritasCanciones) {
-            if (cancion.getNombre().contains(busqueda)) {
+            // Convertir el nombre de la canción a minúsculas antes de comparar
+            if (cancion.getNombre().toLowerCase().contains(busquedaMinusculas)) {
                 listaCancionesBusqueda.add(cancion);
             }
         }
         for (ArtistasDTO artista : listaFavoritosArtistas) {
-            if (artista.getNombre().contains(busqueda)) {
+            // Convertir el nombre del artista a minúsculas antes de comparar
+            if (artista.getNombre().toLowerCase().contains(busquedaMinusculas)) {
                 listaArtistasBusqueda.add(artista);
             }
         }
         for (AlbumDTO album : listaFavoritosAlbumes) {
-            if (album.getNombre().contains(busqueda)) {
+            // Convertir el nombre del álbum a minúsculas antes de comparar
+            if (album.getNombre().toLowerCase().contains(busquedaMinusculas)) {
                 listaAlbumesBusqueda.add(album);
             }
         }
@@ -407,7 +415,6 @@ public class frmFavoritos extends javax.swing.JFrame {
             m.setVisible(true);
             this.dispose();
         }
-
     }
 
     public void cargarRegistrosCancionesBusqueda() {
