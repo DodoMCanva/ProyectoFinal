@@ -3,16 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Exceptions;
-
 /**
- *
- * @author cesar
+ * Clase que representa una excepción específica para la capa de negocio (BO).
+ * 
+ * @autor cesar
  */
-public class ExceptionBO extends Exception{
-    public ExceptionBO(String mesagge){
+public class ExceptionBO extends Exception {
+
+    /**
+     * Constructor que acepta un mensaje de error.
+     * 
+     * @param mesagge El mensaje de error
+     */
+    public ExceptionBO(String mesagge) {
         super(mesagge);
     }
-     public ExceptionBO(String message, Throwable cause) {
+
+    /**
+     * Constructor que acepta un mensaje de error y una causa.
+     * 
+     * @param message El mensaje de error
+     * @param cause La causa de la excepción
+     */
+    public ExceptionBO(String message, Throwable cause) {
         super(message, cause);
     }
 }
+

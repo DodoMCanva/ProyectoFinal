@@ -14,16 +14,27 @@ import java.util.logging.Logger;
 import org.bson.types.ObjectId;
 
 /**
- *
- * @author equipo 2
+ * Clase que maneja la lógica de negocio para las canciones.
+ * Implementa la interfaz ICancionBO.
+ * 
+ * @autor equipo 2
  */
 public class CancionBO implements ICancionBO {
 
     private ICancionDAO cancionDAO = new CancionDAO();
 
+    /**
+     * Constructor por defecto.
+     */
     public CancionBO() {
     }
 
+    /**
+     * Inserta una nueva canción.
+     * 
+     * @param cancion La canción a insertar
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public void insertarCancion(CancionDTO cancion) throws ExceptionBO {
         try {
@@ -33,27 +44,44 @@ public class CancionBO implements ICancionBO {
         }
     }
 
+    /**
+     * Obtiene el ID de una canción por su nombre.
+     * 
+     * @param nombreCancion El nombre de la canción
+     * @return El ID de la canción
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public String obtenerIdPorNombre(String nombreCancion) throws ExceptionBO {
         return cancionDAO.obtenerIdPorNombre(nombreCancion);
     }
 
+    /**
+     * Convierte una canción de DTO a POJO.
+     * 
+     * @param dto El DTO de la canción
+     * @return El POJO de la canción
+     */
     public CancionPOJO convertirDTOaPOJO(CancionDTO dto) {
         CancionPOJO POJO;
         POJO = new CancionPOJO(
                 dto.getNombre(),
                 dto.getDuracion(),
                 dto.getGenero()
-        
         );
         return POJO;
-
     }
 
+    /**
+     * Consulta general de canciones restringida por géneros.
+     * 
+     * @param generosRestringidos Lista de géneros restringidos
+     * @return Lista de canciones que no están en los géneros restringidos
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public List<CancionDTO> consultaGeneralCancion(List<String> generosRestringidos) throws ExceptionBO {
         try {
-
             List<CancionPOJO> pojoList = cancionDAO.consultaGeneralCancion(generosRestringidos);
             return convertirListaDePOJOaDTO(pojoList);
         } catch (ExceptionDAO ex) {
@@ -61,6 +89,14 @@ public class CancionBO implements ICancionBO {
         }
     }
 
+    /**
+     * Búsqueda general de canciones con criterios de género y búsqueda.
+     * 
+     * @param generosRestringidos Lista de géneros restringidos
+     * @param busqueda Texto de búsqueda
+     * @return Lista de canciones que coinciden con los criterios
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
     public List<CancionDTO> busquedaGeneralCancion(List<String> generosRestringidos, String busqueda) throws ExceptionBO {
         try {
@@ -71,6 +107,12 @@ public class CancionBO implements ICancionBO {
         }
     }
 
+    /**
+     * Convierte una canción de POJO a DTO.
+     * 
+     * @param pojo El POJO de la canción
+     * @return El DTO de la canción
+     */
     private CancionDTO convertirCancionPOJOaDTO(CancionPOJO pojo) {
         return new CancionDTO(
                 pojo.getId().toHexString(),
@@ -80,6 +122,12 @@ public class CancionBO implements ICancionBO {
         );
     }
 
+    /**
+     * Convierte una lista de canciones de POJO a DTO.
+     * 
+     * @param pojoList La lista de POJOs de las canciones
+     * @return La lista de DTOs de las canciones
+     */
     private List<CancionDTO> convertirListaDePOJOaDTO(List<CancionPOJO> pojoList) {
         List<CancionDTO> dtoList = new ArrayList<>();
         for (CancionPOJO pojo : pojoList) {
@@ -88,8 +136,15 @@ public class CancionBO implements ICancionBO {
         return dtoList;
     }
 
+    /**
+     * Consulta una canción por su ID.
+     * 
+     * @param id El ID de la canción
+     * @return El DTO de la canción
+     * @throws ExceptionBO En caso de error en la capa BO
+     */
     @Override
-    public CancionDTO consulta( String id) throws ExceptionBO {
+    public CancionDTO consulta(String id) throws ExceptionBO {
         try {
             ObjectId objectId;
             try {
@@ -104,5 +159,6 @@ public class CancionBO implements ICancionBO {
             return null;
         } catch (ExceptionDAO e) {
             throw new ExceptionBO("Error al buscar el usuario en la capa BO", e);
-        }}
+        }
+    }
 }
