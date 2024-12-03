@@ -223,7 +223,7 @@ public class frmFavoritos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Canción", "Genero", "Duracion", "Eliminar"
+                "Canción", "Genero", "Album", "Eliminar"
             }
         ));
         tblCanciones.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -309,15 +309,75 @@ public class frmFavoritos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblCancionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCancionesMouseClicked
-        // TODO add your handling code here:
+        if (tblCanciones.getSelectedColumn() != 2) {
+            if (b) {
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaCancionesBusqueda.get(tblCanciones.getSelectedRow()).getId(), "cancion");
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                a.setVisible(true);
+                this.dispose();
+            } else {
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaFavoritasCanciones.get(tblCanciones.getSelectedRow()).getId(), "cancion");
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                a.setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_tblCancionesMouseClicked
 
     private void tblAlbumesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlbumesMouseClicked
-        // TODO add your handling code here:
+        if (tblAlbumes.getSelectedColumn() != 2) {
+            if (b) {
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaAlbumesBusqueda.get(tblAlbumes.getSelectedRow()).getId(), "album");
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                a.setVisible(true);
+                this.dispose();
+            } else {
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaFavoritosAlbumes.get(tblAlbumes.getSelectedRow()).getId(), "album");
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                a.setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_tblAlbumesMouseClicked
 
     private void tblArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArtistasMouseClicked
-        // TODO add your handling code here:
+        if (tblArtistas.getSelectedColumn() != 2) {
+            if (b) {
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaArtistasBusqueda.get(tblArtistas.getSelectedRow()).getId(), "artista");
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                a.setVisible(true);
+                this.dispose();
+            } else {
+                frmBiblioteca a = null;
+                try {
+                    a = new frmBiblioteca(sesion, listaFavoritosArtistas.get(tblArtistas.getSelectedRow()).getId(), "artista");
+                } catch (ExceptionBO ex) {
+                    Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                a.setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_tblArtistasMouseClicked
 
     public void formatearTablas() {
@@ -390,19 +450,19 @@ public class frmFavoritos extends javax.swing.JFrame {
 
         for (CancionDTO cancion : listaFavoritasCanciones) {
             // Convertir el nombre de la canción a minúsculas antes de comparar
-            if (cancion.getNombre().toLowerCase().contains(busquedaMinusculas)|| cancion.getGenero().contains(busqueda)) {
+            if (cancion.getNombre().toLowerCase().contains(busquedaMinusculas) || cancion.getGenero().contains(busqueda)) {
                 listaCancionesBusqueda.add(cancion);
             }
         }
         for (ArtistasDTO artista : listaFavoritosArtistas) {
             // Convertir el nombre del artista a minúsculas antes de comparar
-            if (artista.getNombre().toLowerCase().contains(busquedaMinusculas)|| artista.getGenero().contains(busqueda)) {
+            if (artista.getNombre().toLowerCase().contains(busquedaMinusculas) || artista.getGenero().contains(busqueda)) {
                 listaArtistasBusqueda.add(artista);
             }
         }
         for (AlbumDTO album : listaFavoritosAlbumes) {
             // Convertir el nombre del álbum a minúsculas antes de comparar
-            if (album.getNombre().toLowerCase().contains(busquedaMinusculas)|| album.getGenero().contains(busqueda)) {
+            if (album.getNombre().toLowerCase().contains(busquedaMinusculas) || album.getGenero().contains(busqueda)) {
                 listaAlbumesBusqueda.add(album);
             }
         }
@@ -420,15 +480,34 @@ public class frmFavoritos extends javax.swing.JFrame {
     public void cargarRegistrosCancionesBusqueda() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaCancionesBusqueda.forEach(row -> {
+            //Obtener Artista por cancion
+            String albumCancion = "";
+            for (CancionDTO cancion : listaFavoritasCanciones) {
+                for (AlbumDTO album : listaTotalAlbumes) {
+                    if (album.getCanciones().contains(cancion.getId())) {
+                        albumCancion = album.getNombre();
+                    }
+                }
+            }
             Object[] fila = new Object[4];
             fila[0] = row.getNombre();
             fila[1] = row.getGenero();
-            //Ajustar
-            fila[2] = row.getNombre();
+            fila[2] = albumCancion;
             fila[3] = "Eliminar";
             modeloTabla.addRow(fila);
         });
     }
+//    public void cargarRegistrosCancionesBusqueda() {
+//        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
+//        listaCancionesBusqueda.forEach(row -> {
+//            Object[] fila = new Object[4];
+//            fila[0] = row.getNombre();
+//            fila[1] = row.getGenero();
+//            fila[2] = row.getGenero();
+//            fila[3] = "Eliminar";
+//            modeloTabla.addRow(fila);
+//        });
+//    }
 
     public void cargarRegistrosAlbumBusqueda() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
@@ -467,14 +546,34 @@ public class frmFavoritos extends javax.swing.JFrame {
     public void cargarRegistrosCanciones() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
         listaFavoritasCanciones.forEach(row -> {
+            //Obtener Artista por cancion
+            String albumCancion = "";
+            for (CancionDTO cancion : listaFavoritasCanciones) {
+                for (AlbumDTO album : listaTotalAlbumes) {
+                    if (album.getCanciones().contains(cancion.getId())) {
+                        albumCancion = album.getNombre();
+                    }
+                }
+            }
             Object[] fila = new Object[4];
             fila[0] = row.getNombre();
             fila[1] = row.getGenero();
-            fila[2] = row.getDuracion();
+            fila[2] = albumCancion;
             fila[3] = "Eliminar";
             modeloTabla.addRow(fila);
         });
     }
+//    public void cargarRegistrosCanciones() {
+//        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
+//        listaFavoritasCanciones.forEach(row -> {
+//            Object[] fila = new Object[4];
+//            fila[0] = row.getNombre();
+//            fila[1] = row.getGenero();
+//            fila[2] = row.getDuracion();
+//            fila[3] = "Eliminar";
+//            modeloTabla.addRow(fila);
+//        });
+//    }
 
     public void cargarRegistrosAlbum() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
