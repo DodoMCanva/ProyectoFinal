@@ -462,12 +462,12 @@ public class frmBiblioteca extends javax.swing.JFrame {
                     listaCancionesBuscadas.add(cancion);
                 }
             }
-            reiniciarTablasAlbumes();
-            cargarBusquedaAlbum();
+            reiniciarTablasCancion();
+            cargarBusquedaCanciones();
         } else {
             bc = false;
-            reiniciarTablasAlbumes();
-            cargarAlbumes();
+            reiniciarTablasCancion();
+            cargarCanciones();
         }
     }//GEN-LAST:event_btnBuscarCancionActionPerformed
 
@@ -664,6 +664,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             fila[3] = row.getIngreso();
             fila[4] = row.getSalida();
             fila[5] = row.getImagen();
+          
             modeloTabla.addRow(fila);
         });
 
@@ -683,6 +684,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             fila[3] = row.getIngreso();
             fila[4] = row.getSalida();
             fila[5] = row.getImagen();
+            System.out.println("IMAGEN"+row.getImagen());
             modeloTabla.addRow(fila);
         });
 

@@ -124,6 +124,7 @@ public class ArtistaBO implements IArtistasBO {
         for (IntegranteDTO integranteDTO : artDTO.getIntegrantes()) {
             IntegrantesPOJO integrantePOJO = new IntegrantesPOJO();
             integrantePOJO.setNombre(integranteDTO.getNombre());
+            integrantePOJO.setImagen(integranteDTO.getImagen());
             integrantePOJO.setRol(integranteDTO.getRol());
             integrantePOJO.setIngreso(integranteDTO.getIngreso());
             integrantePOJO.setSalida(integranteDTO.getSalida());

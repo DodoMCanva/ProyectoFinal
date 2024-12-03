@@ -549,17 +549,6 @@ public class frmFavoritos extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
         });
     }
-//    public void cargarRegistrosCanciones() {
-//        DefaultTableModel modeloTabla = (DefaultTableModel) tblCanciones.getModel();
-//        listaFavoritasCanciones.forEach(row -> {
-//            Object[] fila = new Object[4];
-//            fila[0] = row.getNombre();
-//            fila[1] = row.getGenero();
-//            fila[2] = row.getDuracion();
-//            fila[3] = "Eliminar";
-//            modeloTabla.addRow(fila);
-//        });
-//    }
 
     public void cargarRegistrosAlbum() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
