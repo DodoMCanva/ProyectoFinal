@@ -31,8 +31,9 @@ import utilerias.JButtonCellEditor;
 import utilerias.JButtonRenderer;
 
 /**
- *frmBiblioteca esta pantalla muestra al usuario los detalles tanto de 
- * Album, Cancion, Artista y integrantes de ser un grupo con integrantes.
+ * frmBiblioteca esta pantalla muestra al usuario los detalles tanto de Album,
+ * Cancion, Artista y integrantes de ser un grupo con integrantes.
+ *
  * @author Equipo 2
  */
 public class frmBiblioteca extends javax.swing.JFrame {
@@ -93,26 +94,33 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
                 //Consultar Albumes de artista
                 this.listaAlbumes = new ArrayList<>();
-                for (AlbumDTO album : listaPAlbumes) {
-                    if (album.getArtista().equals(Artista.getId())) {
-                        listaAlbumes.add(album);
+                if (Artista != null) {
+                    for (AlbumDTO album : listaPAlbumes) {
+                        if (album.getArtista().equals(Artista.getId())) {
+                            listaAlbumes.add(album);
+                        }
                     }
                 }
 
                 //consulta canciones por album
                 this.listaCanciones = new ArrayList<>();
-                listaSCanciones = listaAlbumes.get(0).getCanciones();
-                for (String cancion : listaSCanciones) {
-                    listaCanciones.add(canBO.consulta(cancion));
+                if (!listaAlbumes.isEmpty()) {
+                    listaSCanciones = listaAlbumes.get(0).getCanciones();
+                    for (String cancion : listaSCanciones) {
+                        listaCanciones.add(canBO.consulta(cancion));
+                    }
                 }
 
                 //Consultar integrantes
-                if (Artista.getIntegrantes() != null) {
-                    listaIntegrantes = Artista.getIntegrantes();
-                    tdpBiblioteca.setEnabledAt(2, true);
-                } else {
-                    tdpBiblioteca.setEnabledAt(2, false);
+                if (Artista != null) {
+                    if (Artista.getIntegrantes() != null) {
+                        listaIntegrantes = Artista.getIntegrantes();
+                        tdpBiblioteca.setEnabledAt(2, true);
+                    } else {
+                        tdpBiblioteca.setEnabledAt(2, false);
+                    }
                 }
+
                 cargaInicial();
 
                 break;
@@ -162,10 +170,14 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
                 //consulta canciones por album
                 this.listaCanciones = new ArrayList<>();
-                listaSCanciones = listaAlbumes.get(0).getCanciones();
-                for (String cancion : listaSCanciones) {
-                    listaCanciones.add(canBO.consulta(cancion));
+                if (!listaAlbumes.isEmpty()) {
+                    listaSCanciones = listaAlbumes.get(0).getCanciones();
+                    for (String cancion : listaSCanciones) {
+                        listaCanciones.add(canBO.consulta(cancion));
+                    }
                 }
+                ;
+
                 //Consultar integrantes
                 if (Artista.getIntegrantes() != null) {
                     listaIntegrantes = Artista.getIntegrantes();
@@ -568,9 +580,14 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     public void cargaInicial() {
         cargarAlbumes();
-        cargarIntegrantes();
+        if (listaIntegrantes != null) {
+            cargarIntegrantes();
+        }
         cargarCanciones();
-        cargarArtista();
+        if (Artista != null) {
+            cargarArtista();
+        }
+
     }
 
     public void cargarArtista() {
@@ -590,8 +607,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
         }
         lblImagenArtista.setIcon(icon);
     }
-
-
 
     public void cargarBusquedaAlbum() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblAlbumes.getModel();
@@ -659,7 +674,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             fila[3] = row.getIngreso();
             fila[4] = row.getSalida();
             fila[5] = row.getImagen();
-          
+
             modeloTabla.addRow(fila);
         });
 
@@ -679,7 +694,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             fila[3] = row.getIngreso();
             fila[4] = row.getSalida();
             fila[5] = row.getImagen();
-            System.out.println("IMAGEN"+row.getImagen());
+            System.out.println("IMAGEN" + row.getImagen());
             modeloTabla.addRow(fila);
         });
 
@@ -703,7 +718,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         DefaultTableModel modeloTablaArt = (DefaultTableModel) this.tblIntegrantes.getModel();
         modeloTablaArt.setRowCount(0);
     }
-    
+
     private void inicializarUsuario() {
         try {
             UsuarioDTO usuario = usuBO.buscar(sesion);  // Obtén los datos del usuario
@@ -734,8 +749,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar los datos del usuario: " + e.getMessage());
         }
     }
-    
-        private Image redimensionarImagen(String ruta, int width, int height) {
+
+    private Image redimensionarImagen(String ruta, int width, int height) {
         ImageIcon icon = new ImageIcon(ruta);
         Image img = icon.getImage();
         Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
